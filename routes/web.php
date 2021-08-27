@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -21,7 +23,11 @@ Route::group(
     ],
     function () {
         Route::get('/', function () {
-            return view('welcome');
+            return view('welcome', [
+                'user' => User::first(),
+            ]);
         });
+
+        Route::get('users/{user}/notifications', [UserController::class, 'notifications'])->name('users.notifications');
     }
 );
