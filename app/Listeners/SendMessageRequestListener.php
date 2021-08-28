@@ -2,11 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Notifications\MessageNotification;
+use App\Models\User;
+use App\Notifications\MessageRequestNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Auth;
 
-class SendMessageListener
+class SendMessageRequestListener
 {
     /**
      * Create the event listener.
@@ -26,6 +28,8 @@ class SendMessageListener
      */
     public function handle($event)
     {
-        $event->user->notify(new MessageNotification($event->user));
+        /** @var \App\Models\User $user */
+        $user = $event->user;
+        $user->notify(new MessageRequestNotification(Auth::user()));
     }
 }
