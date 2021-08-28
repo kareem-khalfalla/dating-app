@@ -6,3 +6,5 @@
 `composer require spatie/laravel-translatable`
 > install package to make multi auth
 `composer require spatie/laravel-permission`
+> install package to make chat
+`composer require munafio/chatify`
