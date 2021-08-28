@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContestEntryController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -24,10 +27,14 @@ Route::group(
     function () {
         Route::get('/', function () {
             return view('welcome', [
-                'user' => User::first(),
+                'user' => Auth::user() ?? User::all()->random(),
             ]);
         });
 
-        Route::get('users/{user}/notifications', [UserController::class, 'notifications'])->name('users.notifications');
+        Route::get('results', [UserController::class, 'filter'])->name('users.filter');
+        Route::get('{user}', [ProfileController::class, 'show'])->name('users.profile');
+        Route::get('{user}/message-request', [ProfileController::class, 'messageRequest'])->name('profiles.messageRequest');
+        Route::get('{user}/notifications', [UserController::class, 'notifications'])->name('users.notifications');
+        Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');
     }
 );
