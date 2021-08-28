@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class NewMessageEvent
+class MessageRequestRefusedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -22,7 +22,7 @@ class NewMessageEvent
      */
     public function __construct(public User $user)
     {
-        // 
+        //
     }
 
     /**
