@@ -4,3 +4,5 @@
 `composer require mcamara/laravel-localization`
 > install package to make models translatable
 `composer require spatie/laravel-translatable`
+> install package to make multi auth
+`composer require spatie/laravel-permission`
