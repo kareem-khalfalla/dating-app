@@ -24,7 +24,7 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/register', function () {
+        Route::get('/', function () {
             return view('auth.register', [
                 // 'user' => Auth::user() ?? User::all()->random(),
             ]);
