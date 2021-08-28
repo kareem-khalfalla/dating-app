@@ -1,0 +1,1 @@
+<a href="{{ route('profiles.messageRequest') }}">message request</a>
