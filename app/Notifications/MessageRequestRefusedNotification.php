@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class MessageNotification extends Notification implements ShouldQueue
+class MessageRequestRefusedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -17,7 +17,7 @@ class MessageNotification extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(public User $user) 
+    public function __construct(public User $user)
     {
         //
     }
@@ -42,9 +42,9 @@ class MessageNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New messages request.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line("Sadly you're get refused from {$this->user->name}")
+            ->action('Keep searching', url(env('APP_URL')))
+            ->line('Thank you for using our application!');
     }
 
     public function toDatabase(): array
