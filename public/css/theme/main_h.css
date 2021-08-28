@@ -1,0 +1,373 @@
+:root {
+    --main-bg-color: #EFECE7;
+    --color-1: #1D2625;
+    --color-2: #929AA2;
+    --color-3: #B9B0B2;
+    --color-4: #3A5154;
+    --color-5: #B7673C;
+    --color-6: #fff;
+    --main-duration: 0.4s;
+
+}
+
+.color_h{
+    color: var(--color-4);
+}
+/* start globale */
+
+body {
+    font-family: "Work Sans", sans-serif;
+    background-color: var(--main-bg-color);
+    margin: 0;
+}
+a{
+ text-decoration: none !important;
+}
+
+
+.ground{
+    background-color: var(--color-1);
+    height: calc(90vh -150px) !important;
+}
+
+/* Start Nave Bar */
+
+.navbar ul {
+    color: white;
+}
+
+.navbar-brand span:first-child {
+    color: white;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+
+.navbar-nav .dropdown-item {
+    font-size: 16px;
+    color: #fff !important;
+}
+
+.navbar-nav .dropdown-menu {
+    text-align: left;
+    background-color: var(--color-4) !important;
+    color: #fff !important;
+    padding:5px;
+}
+
+.navbar-nav .dropdown-menu a{
+    padding: 5px; 
+}
+
+.navbar-nav .dropdown-menu a:hover{
+  
+    background-color: var(--color-5) !important;
+    border: none;
+    transform: scale(1);
+}
+
+
+.navbar-nav .nav-item {
+    padding: 3px;
+}
+
+.navbar-nav .active .nav-link {
+    font-weight: 600;
+}
+
+nav {
+    background-color:var(--color-1) !important;
+    z-index: 30;
+}
+
+.navbar-nav .active {
+    border: 0.5px solid var(--color-4);
+    color: var(--color-6) !important;
+}
+
+.navbar-nav a {
+    transition: var(--main-duration);
+}
+
+
+.navbar-nav a:hover{
+    color: var(--color-6) !important;
+    transform: scale(1.05);
+}
+
+.navbar button{
+    outline: none;
+    border-color: var(--color-4) !important;
+}
+
+.navbar button:hover{
+    background-color: var(--color-4) !important;
+}
+
+nav .last_link{
+    color: var(--color-5) !important;
+    
+}
+
+
+
+/* End Nave Bar */
+
+.container-index{   
+    padding-top: 150px;
+}
+
+.container-index h1{
+    color: var(--color-5);
+    text-align: center;
+    margin: 0px;
+    font-weight: 800;
+}
+
+.h_2{
+    color: var(--color-4);
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+}
+.container-index p{
+   text-align: center;
+   padding-top: 20px;
+}
+
+.container-index .row{
+    padding-top: 20vh;
+}
+
+.container-index .row button{
+    padding: 10px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.container-index .row .btn_login{
+    background-color: transparent;
+   border: 1px solid #fff;
+   color: #fff;    
+   transition: var(--main-duration);
+   outline-color: non;
+}
+
+.container-index .btn_login:hover{
+   background-color: var(--color-5);
+   border: 1px solid var(--color-5);
+}
+
+.container-index .row .btn_register{
+    background-color: var(--color-6);
+   border: 1px solid var(--color-6);
+   color: #333;
+   transition: var(--main-duration);
+   outline-color: non;
+}
+
+.container-index .btn_register:hover{
+    background-color: var(--color-4);
+   border: 1px solid var(--color-4);
+   color: var(--color-6);
+}
+
+
+/*=========[ Start login and register pages]============ */
+.container_form{
+  margin-top: 67px;
+}
+
+.btn_form_login{
+    background-color: var(--color-5);
+    color: var(--color-6);
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.btn_form_login:hover{
+    color: var(--color-6) !important;
+   opacity: 1;
+}
+
+.btn_form_signup{
+    background-color: var(--color-4);
+    color: var(--color-6);
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.btn_form_signup:hover{
+    color: var(--color-6) !important;
+   opacity: 1;
+}
+
+.container_form a:last-child{
+    color: var(--color-4) !important;
+  }
+
+/*===============[ start profile ]==========================*/
+.container_profile,.container_settings{
+    margin-top: 67px;
+   
+}
+
+.container_profile div:first-child{
+    background-color: var(--color-6);
+    border-radius: 5px;
+    padding: 1%;
+}
+.container_profile .box_img {
+   margin: 0px auto;
+}
+
+.container_profile .box_img img{
+    border: 1px solid var(--color-3) !important;
+}
+
+.box_info_1{
+    padding: 10px;
+}
+
+.box_info_1 .username{
+    font-size: 33px;
+    font-weight: 600;
+    color: var(--color-4);
+}
+
+
+
+.box_info{
+    padding: 10px;
+    border-top: 2px solid var(--color-2);
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+
+.container_profile .box_info strong{
+    color: var(--color-5);
+    margin-right: 10px;
+}
+
+
+.hover_padding{
+    transition: var(--main-duration);
+    padding: 5px;
+}
+
+.hover_padding:hover{
+    padding-left: 15px;
+    background-color: silver !important;
+}
+
+/*==========[ Settings ]=================================*/
+.container_settings h1{
+   padding: 20px;
+}
+
+.setting_list{
+    border-right: 2px solid var(--color-3);
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+.setting_list ol{
+    list-style: none;
+    text-decoration: none;
+    padding: 3%;
+    margin: 0;
+ }
+
+.setting_list li{
+   padding: 8px;
+   cursor: pointer;
+   font-size: 18px;
+}
+
+.setting_list ol li.active{
+    font-weight: bold;
+    color: var(--color-5);
+    border: 0.5px solid silver;
+ }
+
+.setting_list ol li:hover{
+    font-weight: bold;
+    color: var(--color-5);
+ }
+
+.btn_form_settings{
+    background-color: var(--color-4);
+    color: var(--color-6);
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.btn_form_settings:hover{
+    opacity: 1;
+    color: var(--color-6);
+}
+
+/* start friends */
+.img_user{
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+}
+
+.box_frind{
+    border: 1px solid #eee;
+    margin: auto;
+}
+
+.box_frind h5,.box_frind a,.box_frind span{
+    margin:auto 0px;
+}
+
+
+/* start chat */
+.box_chat{
+    background-color: #eee;
+    height: calc(100vh - 100px);
+}
+
+.chat_sending_box textarea{
+  width: 90%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  outline: none;
+  padding: 1%;
+}
+
+.content_chat{
+    height: 450px;
+    background-image: url('img/slide-region-bg.jpg');
+    overflow-y: scroll;
+}
+
+.chat_sending_box button{
+    width: 8%;
+    position: relative;
+    top: -20px;
+  }
+
+
+  .card-contact{
+    background-color: var(--color-5);
+    color: #fff;
+  }
+
+
+  /*---------------------------------------------------------*/
+
+
+.latest_user2{
+    border-left: 3px solid var(--color-4);;
+}
+  
