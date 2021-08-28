@@ -16,7 +16,10 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('nationality_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('bio')->nullable();
+            $table->enum('gender', ['male', 'female']);
+            $table->date('dob')->nullable();
             $table->timestamps();
         });
     }
