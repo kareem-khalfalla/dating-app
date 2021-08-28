@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
-use App\Events\NewMessageEvent;
+use App\Events\MessageRequestEvent;
+use App\Events\MessageRequestRefusedEvent;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -20,9 +21,17 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
 
-        NewMessageEvent::class => [
-            \App\Listeners\SendMessageListener::class,
-        ]
+        MessageRequestEvent::class => [
+            \App\Listeners\SendMessageRequestListener::class,
+        ],
+
+        MessageRequestRefusedEvent::class => [
+            \App\Listeners\SendMessageRequestRefusedListener::class,
+        ],
+
+        Login::class => [
+            \App\Listeners\LogSuccessfulLogin::class,
+        ],
     ];
 
     /**
