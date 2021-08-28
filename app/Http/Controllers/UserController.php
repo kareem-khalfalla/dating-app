@@ -58,7 +58,14 @@ class UserController extends Controller
         $user->unreadNotifications->markAsRead();
 
         return view('users.notifications', [
-            'notifications' => $user->notifications
+            'user' => $user
+        ]);
+    }
+
+    public function filter(): View
+    {
+        return view('results', [
+            'users' => User::filterByName()->get(),
         ]);
     }
 }
