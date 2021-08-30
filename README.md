@@ -1,10 +1,12 @@
-> install package for authenticate
+> authenticate
 `composer require laravel/fortify`
-> install package for localization
+> localization
 `composer require mcamara/laravel-localization`
-> install package to make models translatable
+> make models translatable
 `composer require spatie/laravel-translatable`
-> install package to make multi auth
+> make multi auth
 `composer require spatie/laravel-permission`
-> install package to make chat
+> make chat
 `composer require munafio/chatify`
+> livewire
+`composer require livewire/livewire`
