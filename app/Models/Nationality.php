@@ -2,13 +2,7 @@
 
 namespace App\Models;
 
-use Spatie\Translatable\HasTranslations;
-
-class Nationality extends Model
+class Nationality extends ModelTranslated
 {
-    use HasTranslations;
-
-    public array $translatable = [
-        'name'
-    ];
+    // 
 }
