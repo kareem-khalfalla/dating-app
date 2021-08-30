@@ -15,7 +15,7 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            ['name' => 'admin', 'guard' => 'web'],
+            ['name' => 'admin', 'guard_name' => 'web'],
         ]);
     }
 }
