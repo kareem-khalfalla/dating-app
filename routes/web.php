@@ -10,13 +10,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['auth', 'verified', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
         Route::get('/', function () {
-            return view('auth.register', [
-                // 'user' => Auth::user() ?? User::all()->random(),
-            ]);
+            return view('welcome');
         });
 
         Route::get('results', [UserController::class, 'filter'])->name('users.filter');
