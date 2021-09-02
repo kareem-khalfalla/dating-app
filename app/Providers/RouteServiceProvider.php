@@ -12,7 +12,7 @@ use Mcamara\LaravelLocalization\Traits\LoadsTranslatedCachedRoutes;
 class RouteServiceProvider extends ServiceProvider
 {
     use LoadsTranslatedCachedRoutes;
-    
+
     /**
      * The path to the "home" route for your application.
      *
@@ -20,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/chatify';
+    public const HOME = "/";
 
     /**
      * The controller namespace for the application.
