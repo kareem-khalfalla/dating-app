@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\WorkStatuses;
+use App\Models\WorkStatus;
 use Illuminate\Database\Seeder;
 
-class WorkStatusesSeeder extends Seeder
+class WorkStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,11 +17,12 @@ class WorkStatusesSeeder extends Seeder
         $workStatus = [
             ['name' => ['en' => 'Working', 'ar' => 'يعمل', 'de' => 'Arbeiten']],
             ['name' => ['en' => 'Student', 'ar' => 'طالب', 'de' => 'Schüler']],
+            ['name' => ['en' => 'Job seeker', 'ar' => 'باحث عن عمل', 'de' => 'Arbeitsucher']],
             ['name' => ['en' => 'House wife', 'ar' => 'ربه منزل', 'de' => 'Hausfrau']],
         ];
 
         foreach ($workStatus as $workStatus) {
-            WorkStatuses::create($workStatus);
+            WorkStatus::create($workStatus);
         }
     }
 }

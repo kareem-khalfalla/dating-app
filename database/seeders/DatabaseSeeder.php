@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,14 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // User::factory(10)->create();
+
         $this->call([
             // CountrySeeder::class,
             // StateSeeder::class,
             // NationalitySeeder::class,
+            // ResidencySeeder::class,
+            // RelocateSeeder::class,
             // LanguageSeeder::class,
+            // LanguagePerfectionSeeder::class,
+            // RelationshipSeeder::class,
+            // MarriageSeeder::class,
+            // EducationSeeder::class,
+            // WorkStatusSeeder::class,
+            // AcceptWifeWorkStatusSeeder::class,
+            WifeWorkStatusSeeder::class,
             // PermissionSeeder::class,
             // RoleSeeder::class,
-            // ResidencySeeder::class,
             // ShelterTypeSeeder::class,
             // ShelterShapeSeeder::class,
             // ShelterWaySeeder::class,
@@ -28,7 +39,6 @@ class DatabaseSeeder extends Seeder
             // AlfajrPrayerSeeder::class,
             // BeardSeeder::class,
             // BodySeeder::class,
-            // EducationSeeder::class,
             // EyeColorSeeder::class,
             // EyeglassSeeder::class,
             // FastingSeeder::class,
@@ -40,9 +50,7 @@ class DatabaseSeeder extends Seeder
             // HeaddressSeeder::class,
             // HealthSeeder::class,
             // HobbySeeder::class,
-            // LanguagePerfectionSeeder::class,
             // MaritalStatusSeeder::class,
-            // MarriageSeeder::class,
             // MethodSeeder::class,
             // ObligationSeeder::class,
             // OverdressSeeder::class,
@@ -50,15 +58,11 @@ class DatabaseSeeder extends Seeder
             // PrayerSeeder::class,
             // PsychologicalPatternSeeder::class,
             // ReadingQuranSeeder::class,
-            // RelationshipSeeder::class,
             // ReligionSeeder::class,
-            // RelocateSeeder::class,
-            // ResidencySeeder::class,
             // RobeSeeder::class,
             // SkinSeeder::class,
             // SmokeSeeder::class,
             // VeilSeeder::class,
-            // WorkStatusesSeeder::class,
         ]);
     }
 }

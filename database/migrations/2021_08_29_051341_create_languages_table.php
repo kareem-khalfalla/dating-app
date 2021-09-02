@@ -19,6 +19,7 @@ class CreateLanguagesTable extends Migration
             $table->string('code', 2);
             $table->string('name');
             $table->string('nativeName');
+            $table->unsignedTinyInteger('order')->default(1);
             $table->timestamps();
         });
     }
