@@ -10,3 +10,10 @@
 `composer require munafio/chatify`
 > livewire
 `composer require livewire/livewire`
+> toastr
+`composer require yoeunes/toastr`
+
+
+    <form action="{{ route('users.filter') }}" method="GET">
+        <input type="search" name="query" placeholder="Search...">
+    </form>
