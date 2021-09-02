@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div id="layoutAuthentication" style="margin-top: 4rem !important;">
+    <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
                 <div class="container">
