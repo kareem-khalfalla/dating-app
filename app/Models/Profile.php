@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Profile extends Model
 {
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function nationality(): BelongsTo
@@ -80,6 +86,16 @@ class Profile extends Model
     public function socialStatus(): BelongsTo
     {
         return $this->belongsTo(SocialStatus::class);
+    }
+
+    public function wifeWorkStatus(): BelongsTo
+    {
+        return $this->belongsTo(WifeWorkStatuses::class);
+    }
+
+    public function acceptWifeWorkStatus(): BelongsTo
+    {
+        return $this->belongsTo(AcceptWifeWorkStatuses::class);
     }
 
     public function languages(): BelongsToMany
