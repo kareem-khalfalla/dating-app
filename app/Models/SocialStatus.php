@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SocialStatus extends ModelTranslated
 {
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
     public function maritalStatus(): BelongsTo
     {
         return $this->belongsTo(MaritalStatus::class);
@@ -16,8 +21,8 @@ class SocialStatus extends ModelTranslated
         return $this->belongsTo(PolygamyStatus::class);
     }
 
-    public function children(): BelongsTo
+    public function childrenStatus(): BelongsTo
     {
-        return $this->belongsTo(Children::class);
+        return $this->belongsTo(ChildrenStatus::class);
     }
 }

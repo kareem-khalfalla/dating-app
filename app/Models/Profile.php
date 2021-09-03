@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Profile extends Model
@@ -78,9 +79,9 @@ class Profile extends Model
         return $this->belongsTo(Detail::class);
     }
 
-    public function socialStatus(): BelongsTo
+    public function socialStatus(): HasOne
     {
-        return $this->belongsTo(SocialStatus::class);
+        return $this->hasOne(SocialStatus::class);
     }
 
     public function wifeWorkStatus(): BelongsTo
