@@ -15,7 +15,7 @@ class CreateSmokesTable extends Migration
     {
         Schema::create('smokes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

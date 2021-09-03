@@ -4,23 +4,37 @@ namespace App\Http\Livewire;
 
 use App\Models\AcceptWifeStudyStatus;
 use App\Models\AcceptWifeWorkStatus;
+use App\Models\AlfajrPrayer;
+use App\Models\Beard;
 use App\Models\ChildrenDesireStatus;
 use App\Models\ChildrenStatus;
 use App\Models\Country;
 use App\Models\Education;
+use App\Models\Fasting;
+use App\Models\Headdress;
 use App\Models\Language;
 use App\Models\LanguagePerfection;
 use App\Models\MaritalStatus;
 use App\Models\Marriage;
+use App\Models\Method;
+use App\Models\MusicStatus;
 use App\Models\Nationality;
+use App\Models\Obligation;
 use App\Models\PolygamyStatus;
+use App\Models\Prayer;
+use App\Models\ReadingQuran;
 use App\Models\Relationship;
+use App\Models\Religion;
 use App\Models\Relocate;
 use App\Models\Residency;
+use App\Models\Robe;
 use App\Models\ShelterShape;
 use App\Models\ShelterType;
 use App\Models\ShelterWay;
+use App\Models\ShowStatus;
 use App\Models\State;
+use App\Models\Tafaqah;
+use App\Models\Veil;
 use App\Models\WifePolygamyStatus;
 use App\Models\WifeStudyStatus;
 use App\Models\WifeWorkStatus;
@@ -64,6 +78,20 @@ class Profile extends Component
     public $shelterTypes;
     public $shelterShapes;
     public $shelterWays;
+    public $fastings;
+    public $tafaqahs;
+    public $religions;
+    public $obligations;
+    public $methods;
+    public $prayers;
+    public $alfajrPrayers;
+    public $readingQurans;
+    public $headdresses;
+    public $veils;
+    public $robes;
+    public $beards;
+    public $musicStatuses;
+    public $showStatuses;
     public $countries;
     public $selectedCountry;
     public $countryStates;
@@ -85,6 +113,20 @@ class Profile extends Component
         $this->imageName = auth()->user()->profile->image->url ?? '';
 
 
+        $this->religions = Religion::all();
+        $this->obligations = Obligation::all();
+        $this->methods = Method::all();
+        $this->prayers = Prayer::all();
+        $this->alfajrPrayers = AlfajrPrayer::all();
+        $this->fastings = Fasting::all();
+        $this->readingQurans = ReadingQuran::all();
+        $this->headdresses = Headdress::all();
+        $this->veils = Veil::all();
+        $this->robes = Robe::all();
+        $this->beards = Beard::all();
+        $this->tafaqahs = Tafaqah::all();
+        $this->musicStatuses = MusicStatus::all();
+        $this->showStatuses = ShowStatus::all();
         $this->countries = Country::all();
         $this->nationalities = Nationality::all();
         $this->residencies = Residency::all();
@@ -122,6 +164,7 @@ class Profile extends Component
         $this->state['divorced_reason'] = $user->profile->socialStatus->divorced_reason;
         $this->state['competence'] = $user->profile->competence;
         $this->state['income'] = $user->profile->income;
+        $this->state['listenToLesson'] = $user->profile->religionStatus->lesson_listing;
 
         $this->state['nationality_id'] = $user->profile->nationality_id;
         $this->state['relationship_id'] = $user->profile->relationship_id;
@@ -139,6 +182,21 @@ class Profile extends Component
         $this->state['shelter_type_id'] = $user->profile->socialStatus->shelterType->id ?? null;
         $this->state['shelter_shape_id'] = $user->profile->socialStatus->shelterShape->id ?? null;
         $this->state['shelter_way_id'] = $user->profile->socialStatus->shelterWay->id ?? null;
+        $this->state['religion_id'] = $user->profile->religionStatus->religion->id ?? null;
+        $this->state['obligation_id'] = $user->profile->religionStatus->obligation_id->id ?? null;
+        $this->state['method_id'] = $user->profile->religionStatus->method->id ?? null;
+        $this->state['prayer_id'] = $user->profile->religionStatus->prayer->id ?? null;
+        $this->state['alfajr_prayer_id'] = $user->profile->religionStatus->alfajrPrayer->id ?? null;
+        $this->state['fasting_id'] = $user->profile->religionStatus->fasting->id ?? null;
+        $this->state['reading_quran_id'] = $user->profile->religionStatus->fastingreadingQuran->id ?? null;
+        $this->state['headdress_id'] = $user->profile->religionStatus->headdress->id ?? null;
+        $this->state['veil_id'] = $user->profile->religionStatus->veil->id ?? null;
+        $this->state['robe_id'] = $user->profile->religionStatus->robe->id ?? null;
+        $this->state['beard_id'] = $user->profile->religionStatus->beard->id ?? null;
+        $this->state['tafaqah_id'] = $user->profile->religionStatus->tafaqah->id ?? null;
+        $this->state['music_status_id'] = $user->profile->religionStatus->musicStatus->id ?? null;
+        $this->state['show_status_id'] = $user->profile->religionStatus->showStatus->id ?? null;
+        $this->state['friend_status_id'] = $user->profile->religionStatus->friendStatus->id ?? null;
         $this->state['accept_wife_work_status_id'] = $user->profile->accept_wife_work_status_id;
         $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id;
         $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id;
@@ -232,6 +290,7 @@ class Profile extends Component
             'income' => $this->state['income'] ?? null,
             'competence' => $this->state['competence'] ?? null,
             'partner_bio' => $this->state['partner_bio'] ?? null,
+            'lesson_listing' => $this->state['lesson_listing'] ?? null,
             'postal_code' => $this->state['postal_code'] ?? null,
             'hometown_id' => $this->selectedCountry ?? null,
             'state_id' => $this->selectedState ?? null,
@@ -256,6 +315,21 @@ class Profile extends Component
             'shelter_type_id' => $this->state['shelter_type_id'] ?? null,
             'shelter_shape_id' => $this->state['shelter_shape_id'] ?? null,
             'shelter_way_id' => $this->state['shelter_way_id'] ?? null,
+            'religion_id' => $this->state['religion_id'] ?? null,
+            'obligation_id' => $this->state['obligation_id'] ?? null,
+            'method_id' => $this->state['method_id'] ?? null,
+            'prayer_id' => $this->state['prayer_id'] ?? null,
+            'alfajr_prayer_id' => $this->state['alfajr_prayer_id'] ?? null,
+            'fasting_id' => $this->state['fasting_id'] ?? null,
+            'reading_quran_id' => $this->state['reading_quran_id'] ?? null,
+            'headdress_id' => $this->state['headdress_id'] ?? null,
+            'veil_id' => $this->state['veil_id'] ?? null,
+            'robe_id' => $this->state['robe_id'] ?? null,
+            'beard_id' => $this->state['beard_id'] ?? null,
+            'tafaqah_id' => $this->state['tafaqah_id'] ?? null,
+            'music_status_id' => $this->state['music_status_id'] ?? null,
+            'show_status_id' => $this->state['show_status_id'] ?? null,
+            'friend_status_id' => $this->state['friend_status_id'] ?? null,
             'language_native' => $this->state['language_native'] ?? null,
             'language_second' => $this->state['language_second'] ?? null,
             'language_third' => $this->state['language_third'] ?? null,

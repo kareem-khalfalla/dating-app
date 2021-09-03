@@ -17,7 +17,7 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->foreignId('state_id');
             $table->foreignId('country_id');
-            $table->string('name');
+            $table->text('name');
             $table->string('state_code');
             $table->char('country_code', 2);
             $table->decimal('latitude', 10, 8);

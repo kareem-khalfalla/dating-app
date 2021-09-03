@@ -59,6 +59,7 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->profile->socialStatus()->create();
+        $user->profile->religionStatus()->create();
 
         return $user;
     }

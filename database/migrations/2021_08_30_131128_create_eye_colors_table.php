@@ -15,7 +15,7 @@ class CreateEyeColorsTable extends Migration
     {
         Schema::create('eye_colors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

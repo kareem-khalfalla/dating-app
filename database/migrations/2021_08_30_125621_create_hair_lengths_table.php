@@ -15,7 +15,7 @@ class CreateHairLengthsTable extends Migration
     {
         Schema::create('hair_lengths', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

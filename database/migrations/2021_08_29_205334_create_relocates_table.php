@@ -15,7 +15,7 @@ class CreateRelocatesTable extends Migration
     {
         Schema::create('relocates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

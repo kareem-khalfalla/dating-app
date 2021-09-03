@@ -64,11 +64,6 @@ class Profile extends Model
         return $this->belongsTo(WorkStatus::class);
     }
 
-    public function religionStatus(): BelongsTo
-    {
-        return $this->belongsTo(ReligionStatus::class);
-    }
-
     public function lifestyle(): BelongsTo
     {
         return $this->belongsTo(Lifestyle::class);
@@ -82,6 +77,11 @@ class Profile extends Model
     public function socialStatus(): HasOne
     {
         return $this->hasOne(SocialStatus::class);
+    }
+
+    public function religionStatus(): HasOne
+    {
+        return $this->hasOne(ReligionStatus::class);
     }
 
     public function wifeWorkStatus(): BelongsTo

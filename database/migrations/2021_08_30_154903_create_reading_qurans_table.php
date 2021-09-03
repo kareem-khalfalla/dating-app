@@ -15,7 +15,7 @@ class CreateReadingQuransTable extends Migration
     {
         Schema::create('reading_qurans', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

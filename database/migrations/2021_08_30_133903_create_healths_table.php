@@ -15,7 +15,7 @@ class CreateHealthsTable extends Migration
     {
         Schema::create('healths', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->text('note')->nullable();
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ class CreateShelterTypesTable extends Migration
     {
         Schema::create('shelter_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

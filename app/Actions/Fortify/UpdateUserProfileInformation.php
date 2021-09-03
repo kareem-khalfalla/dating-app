@@ -32,7 +32,19 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'partner_bio' => ['nullable', 'string', 'max:1000'],
             'divorced_reason' => ['nullable', 'string', 'max:1000'],
             'childrenInformation' => ['nullable', 'string', 'max:1000'],
+            'lesson_listing' => ['nullable', 'string', 'max:1000'],
 
+            'religion_id' => ['nullable', 'numeric'],
+            'obligation_id' => ['nullable', 'numeric'],
+            'method_id' => ['nullable', 'numeric'],
+            'prayer_id' => ['nullable', 'numeric'],
+            'alfajr_prayer_id' => ['nullable', 'numeric'],
+            'fasting_id' => ['nullable', 'numeric'],
+            'reading_quran_id' => ['nullable', 'numeric'],
+            'tafaqah_id' => ['nullable', 'numeric'],
+            'music_status_id' => ['nullable', 'numeric'],
+            'show_status_id' => ['nullable', 'numeric'],
+            'friend_status_id' => ['nullable', 'numeric'],
             'hometown_id' => ['nullable', 'numeric'],
             'country_of_residence_id' => ['nullable', 'numeric'],
             'residency_id' => ['nullable', 'numeric'],
@@ -145,6 +157,26 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'information' => $input['childrenInformation'],
             ]);
         }
+
+        $user->profile->religionStatus->update([
+            'religion_id' => $input['religion_id'],
+            'obligation_id' => $input['obligation_id'],
+            'method_id' => $input['method_id'],
+            'prayer_id' => $input['prayer_id'],
+            'alfajr_prayer_id' => $input['alfajr_prayer_id'],
+            'fasting_id' => $input['fasting_id'],
+            'reading_quran_id' => $input['reading_quran_id'],
+            'headdress_id' => $input['headdress_id'],
+            'veil_id' => $input['veil_id'],
+            'robe_id' => $input['robe_id'],
+            'beard_id' => $input['beard_id'],
+            'tafaqah_id' => $input['tafaqah_id'],
+            'lesson_listing' => $input['lesson_listing'],
+            'music_status_id' => $input['music_status_id'],
+            'show_status_id' => $input['show_status_id'],
+            'friend_status_id' => $input['friend_status_id'],
+            // 'overdress_id' => $input['overdress_id'],
+        ]);
 
         if (
             $input['email'] !== $user->email &&

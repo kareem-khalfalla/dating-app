@@ -87,16 +87,15 @@
 
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">desire to have children</label>
-            <select wire:model="state.children_desire_status_id" required="required" class="form-control form-control-lg ">
+            <select wire:model="state.children_desire_status_id" required="required"
+                class="form-control form-control-lg ">
                 <option disabled value="">desire to have children</option>
                 @foreach ($childrenDesireStatuses as $childrenDesireStatus)
                     <option value="{{ $childrenDesireStatus->id }}">{{ $childrenDesireStatus->name }}</option>
                 @endforeach
             </select>
         </div>
-        <!-- => [ End select desire to have children ] !-->
 
-        <!-- => [ Start select Current type of housing ] !-->
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Current type of housing</label>
             <select wire:model="state.shelter_type_id" required="required" class="form-control form-control-lg ">
@@ -106,9 +105,7 @@
                 @endforeach
             </select>
         </div>
-        <!-- => [ End select Curren b t type of housing ] !-->
 
-        <!-- => [ Start select housing form ] !-->
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">housing form</label>
             <select wire:model="state.shelter_shape_id" required="required" class="form-control form-control-lg ">
@@ -118,9 +115,7 @@
                 @endforeach
             </select>
         </div>
-        <!-- => [ End select ousing form ] !-->
 
-        <!-- => [ Start select housing form ] !-->
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Housing method</label>
             <select wire:model="state.shelter_way_id" required="required" class="form-control form-control-lg ">
@@ -130,12 +125,9 @@
                 @endforeach
             </select>
         </div>
-        <!-- => [ End select Housing method] !-->
-
 
         <div class="mt-4">
             <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2" value="submit">
         </div>
-
     </form>
 </div>

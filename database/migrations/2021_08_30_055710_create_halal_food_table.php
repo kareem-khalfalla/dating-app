@@ -15,7 +15,7 @@ class CreateHalalFoodTable extends Migration
     {
         Schema::create('halal_food', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

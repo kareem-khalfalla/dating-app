@@ -15,7 +15,7 @@ class CreateShelterWaysTable extends Migration
     {
         Schema::create('shelter_ways', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

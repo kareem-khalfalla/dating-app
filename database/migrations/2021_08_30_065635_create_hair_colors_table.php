@@ -15,7 +15,7 @@ class CreateHairColorsTable extends Migration
     {
         Schema::create('hair_colors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

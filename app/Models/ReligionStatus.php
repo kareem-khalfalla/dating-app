@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ReligionStatus extends Model
 {
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class);
+    }
+    
     public function religion(): BelongsTo
     {
         return $this->belongsTo(Religion::class);
@@ -64,5 +69,20 @@ class ReligionStatus extends Model
     public function beard(): BelongsTo
     {
         return $this->belongsTo(Beard::class);
+    }
+
+    public function tafaqah(): BelongsTo
+    {
+        return $this->belongsTo(Tafaqah::class);
+    }
+
+    public function musicStatus(): BelongsTo
+    {
+        return $this->belongsTo(MusicStatus::class);
+    }
+
+    public function friendStatus(): BelongsTo
+    {
+        return $this->belongsTo(FriendStatus::class);
     }
 }

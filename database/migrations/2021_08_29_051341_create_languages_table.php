@@ -17,7 +17,7 @@ class CreateLanguagesTable extends Migration
             $table->id();
             $table->foreignId('language_perfection_id')->nullable();
             $table->string('code', 2);
-            $table->string('name');
+            $table->text('name');
             $table->string('nativeName');
             $table->unsignedTinyInteger('order')->default(1);
             $table->timestamps();

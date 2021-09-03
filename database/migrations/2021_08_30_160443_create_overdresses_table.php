@@ -15,7 +15,7 @@ class CreateOverdressesTable extends Migration
     {
         Schema::create('overdresses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

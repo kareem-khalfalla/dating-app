@@ -16,7 +16,7 @@ class CreateStatesTable extends Migration
         Schema::create('states', function (Blueprint $table) {
             $table->unsignedMediumInteger('id', true);
             $table->foreignId('country_id');
-            $table->string('name');
+            $table->text('name');
             $table->char('country_code', 2);
             $table->string('fips_code')->nullable();
             $table->string('iso2')->nullable();
