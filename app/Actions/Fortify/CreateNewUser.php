@@ -58,6 +58,8 @@ class CreateNewUser implements CreatesNewUsers
             'gender' => $input['gender'],
         ]);
 
+        $user->profile->socialStatus()->create();
+
         return $user;
     }
 }

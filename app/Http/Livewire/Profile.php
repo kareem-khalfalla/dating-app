@@ -4,16 +4,20 @@ namespace App\Http\Livewire;
 
 use App\Models\AcceptWifeStudyStatus;
 use App\Models\AcceptWifeWorkStatus;
+use App\Models\ChildrenStatus;
 use App\Models\Country;
 use App\Models\Education;
 use App\Models\Language;
 use App\Models\LanguagePerfection;
+use App\Models\MaritalStatus;
 use App\Models\Marriage;
 use App\Models\Nationality;
+use App\Models\PolygamyStatus;
 use App\Models\Relationship;
 use App\Models\Relocate;
 use App\Models\Residency;
 use App\Models\State;
+use App\Models\WifePolygamyStatus;
 use App\Models\WifeStudyStatus;
 use App\Models\WifeWorkStatus;
 use App\Models\WorkStatus;
@@ -48,6 +52,10 @@ class Profile extends Component
     public $acceptWifeStudyStatuses;
     public $wifeWorkStatuses;
     public $wifeStudyStatuses;
+    public $maritalStatuses;
+    public $childrenStatuses;
+    public $polygamyStatuses;
+    public $wifePolygamyStatuses;
     public $countries;
     public $selectedCountry;
     public $countryStates;
@@ -83,6 +91,10 @@ class Profile extends Component
         $this->acceptWifeStudyStatuses = AcceptWifeStudyStatus::all();
         $this->wifeWorkStatuses = WifeWorkStatus::all();
         $this->wifeStudyStatuses = WifeStudyStatus::all();
+        $this->maritalStatuses = MaritalStatus::all();
+        $this->childrenStatuses = ChildrenStatus::all();
+        $this->polygamyStatuses = PolygamyStatus::all();
+        $this->wifePolygamyStatuses = WifePolygamyStatus::all();
         $this->selectedCountry = $user->profile->hometown_id ?? null;
         $this->selectedState = $user->profile->state_id ?? null;
 
@@ -95,6 +107,7 @@ class Profile extends Component
         $this->state['postal_code'] = $user->profile->postal_code;
         $this->state['bio'] = $user->profile->bio;
         $this->state['partner_bio'] = $user->profile->partner_bio;
+        $this->state['divorced_reason'] = $user->profile->socialStatus->divorced_reason;
         $this->state['competence'] = $user->profile->competence;
         $this->state['income'] = $user->profile->income;
 
@@ -105,6 +118,11 @@ class Profile extends Component
         $this->state['relocate_id'] = $user->profile->relocate_id;
         $this->state['education_id'] = $user->profile->education_id;
         $this->state['work_status_id'] = $user->profile->work_status_id;
+        $this->state['marital_status_id'] = $user->profile->socialStatus->maritalStatus->id ?? null;
+        $this->state['children_status_id'] = $user->profile->socialStatus->childrenStatus->id ?? null;
+        $this->state['childrenCount'] = $user->profile->socialStatus->childrenStatus->count ?? null;
+        $this->state['childrenInformation'] = $user->profile->socialStatus->childrenStatus->information ?? null;
+        $this->state['polygamy_status_id'] = $user->profile->socialStatus->polygamyStatus->id ?? null;
         $this->state['accept_wife_work_status_id'] = $user->profile->accept_wife_work_status_id;
         $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id;
         $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id;
@@ -190,10 +208,11 @@ class Profile extends Component
             'username' => $this->state['username'],
             'phone' => $this->state['phone'],
             'email' => $this->state['email'],
-            
+
             'gender' => $this->state['gender'] ?? null,
             'dob' => $this->state['dob'] ?? null,
             'bio' => $this->state['bio'] ?? null,
+            'divorced_reason' => $this->state['divorced_reason'] ?? null,
             'income' => $this->state['income'] ?? null,
             'competence' => $this->state['competence'] ?? null,
             'partner_bio' => $this->state['partner_bio'] ?? null,
@@ -212,6 +231,11 @@ class Profile extends Component
             'accept_wife_study_status_id' => $this->state['accept_wife_study_status_id'] ?? null,
             'wife_work_status_id' => $this->state['wife_work_status_id'] ?? null,
             'wife_study_status_id' => $this->state['wife_study_status_id'] ?? null,
+            'marital_status_id' => $this->state['marital_status_id'] ?? null,
+            'children_status_id' => $this->state['children_status_id'] ?? null,
+            'childrenCount' => $this->state['childrenCount'] ?? null,
+            'childrenInformation' => $this->state['childrenInformation'] ?? null,
+            'polygamy_status_id' => $this->state['polygamy_status_id'] ?? null,
             'language_native' => $this->state['language_native'] ?? null,
             'language_second' => $this->state['language_second'] ?? null,
             'language_third' => $this->state['language_third'] ?? null,

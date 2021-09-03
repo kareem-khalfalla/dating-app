@@ -25,10 +25,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
             'phone' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
             'gender' => ['required', 'string'],
+
             'dob' => ['nullable', 'date'],
             'bio' => ['nullable', 'string', 'max:1000'],
             'competence' => ['nullable', 'string', 'max:1000'],
             'partner_bio' => ['nullable', 'string', 'max:1000'],
+            'divorced_reason' => ['nullable', 'string', 'max:1000'],
+            'childrenInformation' => ['nullable', 'string', 'max:1000'],
+            
             'hometown_id' => ['nullable', 'numeric'],
             'country_of_residence_id' => ['nullable', 'numeric'],
             'residency_id' => ['nullable', 'numeric'],
@@ -42,10 +46,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'accept_wife_study_status_id' => ['nullable', 'numeric'],
             'wife_work_status_id' => ['nullable', 'numeric'],
             'wife_study_status_id' => ['nullable', 'numeric'],
+            'marital_status_id' => ['nullable', 'numeric'],
+            'children_status_id' => ['nullable', 'numeric'],
+            'polygamy_status_id' => ['nullable', 'numeric'],
             'income' => ['nullable', 'numeric'],
             'state_id' => ['nullable', 'numeric'],
-            'postal_code' => ['nullable', 'string', 'max:32'],
             'language_*' => ['nullable', 'numeric'],
+            'postal_code' => ['nullable', 'string', 'max:32'],
+            'childrenCount' => ['nullable', 'integer', 'min:0', 'max:9'],
 
             'email' => [
                 'required',
@@ -61,16 +69,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ]);
 
         foreach ($arr as $key => $value) {
-            if (is_null($value)){
+            if (is_null($value)) {
                 continue;
-            }else{
-                if ($key == 'language_second'){
+            } else {
+                if ($key == 'language_second') {
                     Language::where('id', $value)->update([
                         'order' => 2
                     ]);
                 }
 
-                if ($key == 'language_third'){
+                if ($key == 'language_third') {
                     Language::where('id', $value)->update([
                         'order' => 3
                     ]);
@@ -80,13 +88,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         }
 
 
-        if (isset($input['language_second_perfection_id'])){
+        if (isset($input['language_second_perfection_id'])) {
             $user->profile->languages()->second()->first()->update([
                 'language_perfection_id' => $input['language_second_perfection_id']
             ]);
         }
 
-        if (isset($input['language_third_perfection_id'])){
+        if (isset($input['language_third_perfection_id'])) {
             $user->profile->languages()->second()->first()->update([
                 'language_perfection_id' => $input['language_third_perfection_id']
             ]);
@@ -116,8 +124,22 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'partner_bio' => $input['partner_bio'],
         ]);
 
-        if ($input['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
+        $user->profile->socialStatus->update([
+            'marital_status_id' => $input['marital_status_id'],
+            'divorced_reason' => $input['divorced_reason'],
+            'children_status_id' => $input['children_status_id'],
+            'polygamy_status_id' => $input['polygamy_status_id'],
+        ]);
+
+        $user->profile->socialStatus->childrenStatus->update([
+            'count' => $input['childrenCount'],
+            'information' => $input['childrenInformation'],
+        ]);
+
+        if (
+            $input['email'] !== $user->email &&
+            $user instanceof MustVerifyEmail
+        ) {
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
