@@ -58,11 +58,6 @@ class Profile extends Model
         return $this->belongsTo(Marriage::class);
     }
 
-    public function education(): BelongsTo
-    {
-        return $this->belongsTo(Education::class);
-    }
-
     public function workStatus(): BelongsTo
     {
         return $this->belongsTo(WorkStatus::class);
@@ -98,38 +93,18 @@ class Profile extends Model
         return $this->belongsTo(AcceptWifeWorkStatuses::class);
     }
 
+    public function acceptWifeStudyStatus(): BelongsTo
+    {
+        return $this->belongsTo(AcceptWifeStudyStatus::class);
+    }
+
+    public function education(): BelongsTo
+    {
+        return $this->belongsTo(Education::class);
+    }
+
     public function languages(): BelongsToMany
     {
         return $this->belongsToMany(Language::class);
-    }
-
-    public function getPartnerWorkAcceptanceStatus(string $attribute): string
-    {
-        return [
-            1 => __('profiles.partnerWorkAcceptanceStatus.1'),
-            2 => __('profiles.partnerWorkAcceptanceStatus.2'),
-            3 => __('profiles.partnerWorkAcceptanceStatus.3'),
-            4 => __('profiles.partnerWorkAcceptanceStatus.4'),
-            5 => __('profiles.partnerWorkAcceptanceStatus.5'),
-            6 => __('profiles.partnerWorkAcceptanceStatus.6'),
-            7 => __('profiles.partnerWorkAcceptanceStatus.7'),
-            8 => __('profiles.partnerWorkAcceptanceStatus.8'),
-            9 => __('profiles.partnerWorkAcceptanceStatus.9'),
-        ][$attribute];
-    }
-
-    public function getPartnerEducationAcceptanceStatus(string $attribute): string
-    {
-        return [
-            1 => __('profiles.partnerEducationStatus.1'),
-            2 => __('profiles.partnerEducationStatus.2'),
-            3 => __('profiles.partnerEducationStatus.3'),
-            4 => __('profiles.partnerEducationStatus.4'),
-            5 => __('profiles.partnerEducationStatus.5'),
-            6 => __('profiles.partnerEducationStatus.6'),
-            7 => __('profiles.partnerEducationStatus.7'),
-            8 => __('profiles.partnerEducationStatus.8'),
-            9 => __('profiles.partnerEducationStatus.9'),
-        ][$attribute];
     }
 }
