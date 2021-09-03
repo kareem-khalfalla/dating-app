@@ -1,12 +1,6 @@
 <?php
 
 return [
-    'partnerEducationAcceptanceStatus' => [
-        1 => 'نعم',
-        2 => 'ﻻ',
-        3 => 'ﻻ وﻻكن اترك الخيار لها',
-        4 => 'نعم اذا اذن لي',
-    ],
 
     'accommodationType'=>[
         1=> 'ملك',

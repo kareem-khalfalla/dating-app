@@ -469,54 +469,56 @@
                         <input wire:model="state.income" placeholder="Monthly income" type="number"
                             class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                     </div>
-                    
-                    @if ($state['gender'] == 'male')
+
+                    @if (!is_null($state['gender']) && $state['gender'] == 'male')
                         <div class="input-group input-group-lg mb-3 ">
                             <label class="col-12">Do you accept the wife's work?</label>
-                            <select wire:model="state.accept_wife_work_status_id" required="required" class="form-control form-control-lg ">
+                            <select wire:model="state.accept_wife_work_status_id" required="required"
+                                class="form-control form-control-lg ">
                                 <option disabled value="">Do you accept the wife's work?</option>
                                 @foreach ($acceptWifeWorkStatuses as $acceptence)
                                     <option value="{{ $acceptence->id }}">{{ $acceptence->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="input-group input-group-lg mb-3 ">
+                            <label class="col-12">Do you accept studying the wife after marriage?</label>
+                            <select wire:model="state.accept_wife_study_status_id" required="required"
+                                class="form-control form-control-lg ">
+                                <option disabled value=""> Do you accept studying the wife after marriage?</option>
+                                @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
+                                    <option value="{{ $studyAcceptence->id }}">{{ $studyAcceptence->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     @endif
-                    @if ($state['gender'] == 'female')
+
+                    @if (!is_null($state['gender']) && $state['gender'] == 'female')
                         <div class="input-group input-group-lg mb-3 ">
                             <label class="col-12">You want the work?</label>
-                            <select wire:model="state.wife_work_status_id" required="required" class="form-control form-control-lg ">
+                            <select wire:model="state.wife_work_status_id" required="required"
+                                class="form-control form-control-lg ">
                                 <option disabled value=""> You want the work?</option>
                                 @foreach ($wifeWorkStatuses as $wifeWorkStatus)
                                     <option value="{{ $wifeWorkStatus->id }}">{{ $wifeWorkStatus->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="input-group input-group-lg mb-3 ">
+                            <label class="col-12">Do you want to study after marriage?</label>
+                            <select wire:model="state.wife_study_status_id" required="required"
+                                class="form-control form-control-lg ">
+                                <option disabled value=""> Do you want to study after marriage?</option>
+                                @foreach ($wifeStudyStatuses as $wifeStudyStatus)
+                                    <option value="{{ $wifeStudyStatus->id }}">{{ $wifeStudyStatus->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     @endif
-                    <!-- => [ End select  You want the work? ] !-->
-
-                    <!-- => [ Start select Do you accept studying the wife after marriage? ] !-->
-                    <div class="input-group input-group-lg mb-3 ">
-                        <label class="col-12">Do you accept studying the wife after marriage?</label>
-                        <select name="" required="required" class="form-control form-control-lg ">
-                            <option value=""> Do you accept studying the wife after marriage?</option>
-                            <option value="yes">yes</option>
-                            <option value="NO">NO</option>
-                            <option value="Leave the choice to her">Leave the choice to her</option>
-                        </select>
-                    </div>
-                    <!-- => [ End select Do you accept studying the wife after marriage?] !-->
-
-                    <!-- => [ Start select Do you want to study after marriage? ] !-->
-                    <div class="input-group input-group-lg mb-3 ">
-                        <label class="col-12">Do you want to study after marriage?</label>
-                        <select name="" required="required" class="form-control form-control-lg ">
-                            <option value=""> Do you want to study after marriage?</option>
-                            <option value="yes">yes</option>
-                            <option value="NO">NO</option>
-                            <option value="Yes, if I am allowed">Yes, if I am allowed</option>
-                        </select>
-                    </div>
-                    <!-- => [ End select Do you want to study after marriage?] !-->
 
                     <div class="mt-4">
                         <input type="submit" class="btn btn_form_settings btn-block p-2" value="submit">
