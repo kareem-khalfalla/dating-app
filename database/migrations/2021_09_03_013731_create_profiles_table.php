@@ -28,7 +28,9 @@ class CreateProfilesTable extends Migration
             $table->unsignedMediumInteger('state_id')->nullable()->constrained()->onDelete('cascade');
             // $table->unsignedMediumInteger('city_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('wife_work_status_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('wife_study_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('accept_wife_work_status_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('accept_wife_study_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('nationality_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('residency_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('shelter_id')->nullable()->constrained()->onDelete('cascade');
