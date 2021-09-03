@@ -32,7 +32,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'partner_bio' => ['nullable', 'string', 'max:1000'],
             'divorced_reason' => ['nullable', 'string', 'max:1000'],
             'childrenInformation' => ['nullable', 'string', 'max:1000'],
-            
+
             'hometown_id' => ['nullable', 'numeric'],
             'country_of_residence_id' => ['nullable', 'numeric'],
             'residency_id' => ['nullable', 'numeric'],
@@ -131,10 +131,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'polygamy_status_id' => $input['polygamy_status_id'],
         ]);
 
-        $user->profile->socialStatus->childrenStatus->update([
-            'count' => $input['childrenCount'],
-            'information' => $input['childrenInformation'],
-        ]);
+        if (!is_null($user->profile->socialStatus->childrenStatus)) {
+            $user->profile->socialStatus->childrenStatus->update([
+                'count' => $input['childrenCount'],
+                'information' => $input['childrenInformation'],
+            ]);
+        }
 
         if (
             $input['email'] !== $user->email &&

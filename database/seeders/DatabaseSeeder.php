@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             MaritalStatusSeeder::class,
             ChildrenStatusSeeder::class,
             PolygamyStatusSeeder::class,
-            // WifePolygamyStatusSeeder::class,
+            WifePolygamyStatusSeeder::class,
             // PermissionSeeder::class,
             // RoleSeeder::class,
             // ShelterTypeSeeder::class,
