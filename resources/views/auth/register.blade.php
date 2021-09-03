@@ -11,9 +11,12 @@
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user"></i></span>
                         </div>
                         <input name="name" value="{{ old('name') }}" placeholder="fullname" type="text"
-                            class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-                        <small id="emailHelp" class="form-text text-muted col-12">We'll never share your email with
-                            anyone else.</small>
+                            class="form-control @error('name') is-invalid @enderror" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                        @error('name')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
@@ -21,8 +24,12 @@
                                     class="fa fa-user-circle"></i></span>
                         </div>
                         <input name="username" value="{{ old('username') }}" placeholder="username" type="text"
-                            class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-                        <small id="emailHelp" class="form-text text-muted col-12"> &nbsp; </small>
+                            class="form-control @error('username') is-invalid @enderror" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                        @error('username')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
@@ -30,7 +37,14 @@
                                     class="fa fa-envelope"></i></span>
                         </div>
                         <input name="email" value="{{ old('email') }}" placeholder="email" type="email"
-                            class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            class="form-control @error('email') is-invalid @enderror" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                        <small id="emailHelp" class="form-text text-muted col-12">We'll never share your email with
+                            anyone else.</small>
+                        @error('email')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
@@ -38,7 +52,12 @@
                                     aria-hidden="true"></i></span>
                         </div>
                         <input name="phone" value="{{ old('phone') }}" placeholder="phone" type="tel"
-                            class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            class="form-control @error('phone') is-invalid @enderror" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                        @error('phone')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
@@ -46,7 +65,12 @@
                                     aria-hidden="true"></i></span>
                         </div>
                         <input id="rpassword" name="password" placeholder="password" type="password"
-                            class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            class="form-control @error('password') is-invalid @enderror" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                        @error('password')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
@@ -54,8 +78,12 @@
                                     aria-hidden="true"></i></span>
                         </div>
                         <input id="cpassword" name="password_confirmation" placeholder="cofirm password" type="password"
-                            class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-                        <small id="passError" class="d-none text-danger col-12">password not much</small>
+                            class="form-control @error('password_confirmation') is-invalid @enderror" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                        @error('password_confirmation')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <!-- => End input cofirm password  !-->
 

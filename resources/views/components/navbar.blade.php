@@ -25,7 +25,7 @@
                                 class="fas fa-lg fa-envelope p-1"></i>Chat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('profile.edit', Auth::user()->username) }}"><i
+                        <a class="nav-link hover-bar" href="{{ route('profile.edit') }}"><i
                                 class="fas fa-lg fa-cogs p-1"></i>settings</a>
                     </li>
                     <li class="nav-item">
