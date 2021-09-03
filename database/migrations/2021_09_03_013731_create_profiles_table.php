@@ -19,7 +19,6 @@ class CreateProfilesTable extends Migration
             $table->foreignId('religion_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('detail_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('lifestyle_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('social_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('education_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('work_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('marriage_id')->nullable()->constrained()->onDelete('cascade');

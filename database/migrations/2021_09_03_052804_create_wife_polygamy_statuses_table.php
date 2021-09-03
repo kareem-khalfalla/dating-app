@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChildrensTable extends Migration
+class CreateWifePolygamyStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateChildrensTable extends Migration
      */
     public function up()
     {
-        Schema::create('childrens', function (Blueprint $table) {
+        Schema::create('wife_polygamy_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedTinyInteger('count')->default(0);
-            $table->text('information')->nullable();
+            $table->text('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateChildrensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('childrens');
+        Schema::dropIfExists('wife_polygamy_statuses');
     }
 }

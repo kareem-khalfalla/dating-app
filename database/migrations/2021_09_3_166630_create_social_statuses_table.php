@@ -15,9 +15,10 @@ class CreateSocialStatusesTable extends Migration
     {
         Schema::create('social_statuses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profile_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('marital_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('polygamy_status_id')->nullable();
-            $table->foreignId('children_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('children_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->text('divorced_reason')->nullable();
             $table->timestamps();
         });

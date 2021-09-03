@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Children;
+use App\Models\ChildrenStatus;
 use Illuminate\Database\Seeder;
 
-class ChildrenSeeder extends Seeder
+class ChildrenStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,7 +21,7 @@ class ChildrenSeeder extends Seeder
         ];
 
         foreach ($childrenStatuses as $childrenStatus) {
-            Children::create($childrenStatus);
+            ChildrenStatus::create($childrenStatus);
         }
     }
 }
