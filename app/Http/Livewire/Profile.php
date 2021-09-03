@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AcceptWifeStudyStatus;
 use App\Models\AcceptWifeWorkStatus;
 use App\Models\Country;
 use App\Models\Education;
@@ -13,6 +14,7 @@ use App\Models\Relationship;
 use App\Models\Relocate;
 use App\Models\Residency;
 use App\Models\State;
+use App\Models\WifeStudyStatus;
 use App\Models\WifeWorkStatus;
 use App\Models\WorkStatus;
 use Illuminate\Contracts\View\View;
@@ -43,7 +45,9 @@ class Profile extends Component
     public $marriages;
     public $workStatuses;
     public $acceptWifeWorkStatuses;
+    public $acceptWifeStudyStatuses;
     public $wifeWorkStatuses;
+    public $wifeStudyStatuses;
     public $countries;
     public $selectedCountry;
     public $countryStates;
@@ -76,7 +80,9 @@ class Profile extends Component
         $this->educations = Education::all();
         $this->workStatuses = WorkStatus::all();
         $this->acceptWifeWorkStatuses = AcceptWifeWorkStatus::all();
+        $this->acceptWifeStudyStatuses = AcceptWifeStudyStatus::all();
         $this->wifeWorkStatuses = WifeWorkStatus::all();
+        $this->wifeStudyStatuses = WifeStudyStatus::all();
         $this->selectedCountry = $user->profile->hometown_id ?? null;
         $this->selectedState = $user->profile->state_id ?? null;
 
@@ -100,7 +106,9 @@ class Profile extends Component
         $this->state['education_id'] = $user->profile->education_id;
         $this->state['work_status_id'] = $user->profile->work_status_id;
         $this->state['accept_wife_work_status_id'] = $user->profile->accept_wife_work_status_id;
+        $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id;
         $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id;
+        $this->state['wife_study_status_id'] = $user->profile->wife_study_status_id;
         $this->state['language_native'] = $user->profile->languages()->native()->first()->id ?? null;
         $this->state['language_second'] = $user->profile->languages()->second()->first()->id ?? null;
         $this->state['language_third'] = $user->profile->languages()->third()->first()->id ?? null;
@@ -182,7 +190,8 @@ class Profile extends Component
             'username' => $this->state['username'],
             'phone' => $this->state['phone'],
             'email' => $this->state['email'],
-            'gender' => $this->state['gender'],
+            
+            'gender' => $this->state['gender'] ?? null,
             'dob' => $this->state['dob'] ?? null,
             'bio' => $this->state['bio'] ?? null,
             'income' => $this->state['income'] ?? null,
@@ -200,7 +209,9 @@ class Profile extends Component
             'education_id' => $this->state['education_id'] ?? null,
             'work_status_id' => $this->state['work_status_id'] ?? null,
             'accept_wife_work_status_id' => $this->state['accept_wife_work_status_id'] ?? null,
+            'accept_wife_study_status_id' => $this->state['accept_wife_study_status_id'] ?? null,
             'wife_work_status_id' => $this->state['wife_work_status_id'] ?? null,
+            'wife_study_status_id' => $this->state['wife_study_status_id'] ?? null,
             'language_native' => $this->state['language_native'] ?? null,
             'language_second' => $this->state['language_second'] ?? null,
             'language_third' => $this->state['language_third'] ?? null,
