@@ -7,7 +7,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 // Route::get('search', function () {
 //     return view('search');
