@@ -48,7 +48,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'wife_study_status_id' => ['nullable', 'numeric'],
             'marital_status_id' => ['nullable', 'numeric'],
             'children_status_id' => ['nullable', 'numeric'],
+            'children_desire_status_id' => ['nullable', 'numeric'],
             'polygamy_status_id' => ['nullable', 'numeric'],
+            'shelter_type_id' => ['nullable', 'numeric'],
+            'shelter_shape_id' => ['nullable', 'numeric'],
+            'shelter_way_id' => ['nullable', 'numeric'],
             'income' => ['nullable', 'numeric'],
             'state_id' => ['nullable', 'numeric'],
             'language_*' => ['nullable', 'numeric'],
@@ -128,7 +132,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'marital_status_id' => $input['marital_status_id'],
             'divorced_reason' => $input['divorced_reason'],
             'children_status_id' => $input['children_status_id'],
+            'children_desire_status_id' => $input['children_desire_status_id'],
             'polygamy_status_id' => $input['polygamy_status_id'],
+            'shelter_type_id' => $input['shelter_type_id'],
+            'shelter_shape_id' => $input['shelter_shape_id'],
+            'shelter_way_id' => $input['shelter_way_id'],
         ]);
 
         if (!is_null($user->profile->socialStatus->childrenStatus)) {

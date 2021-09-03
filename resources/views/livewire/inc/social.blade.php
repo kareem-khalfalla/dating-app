@@ -38,7 +38,7 @@
 
         <div class="input-group input-group-lg mb-3">
             <label for="" class="col-12">number of children</label>
-            <input wire:model="state.childrenCount" placeholder="number of children" type="number"
+            <input wire:model="state.childrenCount" placeholder="number of children" min="0" max="9" type="number"
                 class="form-control @error('childrenCount') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('childrenCount')
@@ -85,16 +85,13 @@
             </div>
         @endif
 
-
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">desire to have children</label>
-            <select name="" required="required" class="form-control form-control-lg ">
-                <option value="">desire to have children</option>
-                <option value="I would like it">I would like it</option>
-                <option value="I do not want it">I do not want it</option>
-                <option value="Yes but not now">Yes but not now</option>
-                <option value="According to the desire of the other party">According to the desire of
-                    the other party</option>
+            <select wire:model="state.children_desire_status_id" required="required" class="form-control form-control-lg ">
+                <option disabled value="">desire to have children</option>
+                @foreach ($childrenDesireStatuses as $childrenDesireStatus)
+                    <option value="{{ $childrenDesireStatus->id }}">{{ $childrenDesireStatus->name }}</option>
+                @endforeach
             </select>
         </div>
         <!-- => [ End select desire to have children ] !-->
@@ -102,10 +99,11 @@
         <!-- => [ Start select Current type of housing ] !-->
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Current type of housing</label>
-            <select name="" required="required" class="form-control form-control-lg ">
-                <option value="">Current type of housing</option>
-                <option value="Owner">Owner</option>
-                <option value="tenant">tenant</option>
+            <select wire:model="state.shelter_type_id" required="required" class="form-control form-control-lg ">
+                <option disabled value="">Current type of housing</option>
+                @foreach ($shelterTypes as $shelterType)
+                    <option value="{{ $shelterType->id }}">{{ $shelterType->name }}</option>
+                @endforeach
             </select>
         </div>
         <!-- => [ End select Curren b t type of housing ] !-->
@@ -113,13 +111,11 @@
         <!-- => [ Start select housing form ] !-->
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">housing form</label>
-            <select name="" required="required" class="form-control form-control-lg ">
-                <option value="">housing form</option>
-                <option value="Detached house">Detached house</option>
-                <option value="Apartment">Apartment</option>
-                <option value="room">room</option>
-                <option value="student residence">student residence</option>
-                <option value="shared housing">shared housing</option>
+            <select wire:model="state.shelter_shape_id" required="required" class="form-control form-control-lg ">
+                <option disabled value="">housing form</option>
+                @foreach ($shelterShapes as $shelterShape)
+                    <option value="{{ $shelterShape->id }}">{{ $shelterShape->name }}</option>
+                @endforeach
             </select>
         </div>
         <!-- => [ End select ousing form ] !-->
@@ -127,12 +123,11 @@
         <!-- => [ Start select housing form ] !-->
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Housing method</label>
-            <select name="" required="required" class="form-control form-control-lg ">
-                <option value="">Housing method</option>
-                <option value="Alone">Alone</option>
-                <option value="with family">with family</option>
-                <option value="with friends">with friends</option>
-
+            <select wire:model="state.shelter_way_id" required="required" class="form-control form-control-lg ">
+                <option disabled value="">Housing method</option>
+                @foreach ($shelterWays as $shelterWay)
+                    <option value="{{ $shelterWay->id }}">{{ $shelterWay->name }}</option>
+                @endforeach
             </select>
         </div>
         <!-- => [ End select Housing method] !-->

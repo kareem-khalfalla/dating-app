@@ -17,8 +17,12 @@ class CreateSocialStatusesTable extends Migration
             $table->id();
             $table->foreignId('profile_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('marital_status_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('polygamy_status_id')->nullable();
+            $table->foreignId('polygamy_status_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('shelter_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('shelter_shape_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('shelter_way_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('children_status_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('children_desire_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->text('divorced_reason')->nullable();
             $table->timestamps();
         });

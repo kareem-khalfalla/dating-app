@@ -21,8 +21,28 @@ class SocialStatus extends ModelTranslated
         return $this->belongsTo(PolygamyStatus::class);
     }
 
+    public function shelterType(): BelongsTo
+    {
+        return $this->belongsTo(ShelterType::class);
+    }
+
+    public function shelterShape(): BelongsTo
+    {
+        return $this->belongsTo(ShelterShape::class);
+    }
+
+    public function shelterWay(): BelongsTo
+    {
+        return $this->belongsTo(ShelterWay::class);
+    }
+
     public function childrenStatus(): BelongsTo
     {
         return $this->belongsTo(ChildrenStatus::class);
+    }
+
+    public function childrenDesireStatus(): BelongsTo
+    {
+        return $this->belongsTo(ChildrenDesireStatus::class);
     }
 }
