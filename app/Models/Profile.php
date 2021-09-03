@@ -85,7 +85,12 @@ class Profile extends Model
 
     public function wifeWorkStatus(): BelongsTo
     {
-        return $this->belongsTo(WifeWorkStatuses::class);
+        return $this->belongsTo(WifeWorkStatus::class);
+    }
+
+    public function wifeStudyStatus(): BelongsTo
+    {
+        return $this->belongsTo(WifeStudyStatus::class);
     }
 
     public function acceptWifeWorkStatus(): BelongsTo
