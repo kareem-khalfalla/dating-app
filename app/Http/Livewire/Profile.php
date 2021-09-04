@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\AcceptWifeStudyStatus;
 use App\Models\AcceptWifeWorkStatus;
+use App\Models\Alcohol;
 use App\Models\AlfajrPrayer;
 use App\Models\Beard;
 use App\Models\Body;
@@ -12,13 +13,17 @@ use App\Models\ChildrenStatus;
 use App\Models\Country;
 use App\Models\Education;
 use App\Models\EyeColor;
-use App\Models\Eyeglass;
+use App\Models\EyeGlass;
 use App\Models\Fasting;
+use App\Models\Food;
+use App\Models\FriendStatus;
 use App\Models\HairColor;
 use App\Models\HairKind;
 use App\Models\HairLength;
+use App\Models\HalalFood;
 use App\Models\Headdress;
 use App\Models\Health;
+use App\Models\Hobby;
 use App\Models\Language;
 use App\Models\LanguagePerfection;
 use App\Models\MaritalStatus;
@@ -41,6 +46,7 @@ use App\Models\ShelterType;
 use App\Models\ShelterWay;
 use App\Models\ShowStatus;
 use App\Models\Skin;
+use App\Models\Smoke;
 use App\Models\State;
 use App\Models\Tafaqah;
 use App\Models\Veil;
@@ -75,6 +81,7 @@ class Profile extends Component
     public $relationships;
     public $marriages;
     public $workStatuses;
+    public $friendStatuses;
     public $acceptWifeWorkStatuses;
     public $acceptWifeStudyStatuses;
     public $wifeWorkStatuses;
@@ -106,6 +113,11 @@ class Profile extends Component
     public $countryStates;
     public $selectedState;
     public $bodies;
+    public $smokes;
+    public $alcohols;
+    public $halalFoods;
+    public $foods;
+    public $hobbies;
     public $skins;
     public $hairColors;
     public $hairLengths;
@@ -155,6 +167,7 @@ class Profile extends Component
         $this->marriages = Marriage::all();
         $this->educations = Education::all();
         $this->workStatuses = WorkStatus::all();
+        $this->friendStatuses = FriendStatus::all();
         $this->acceptWifeWorkStatuses = AcceptWifeWorkStatus::all();
         $this->acceptWifeStudyStatuses = AcceptWifeStudyStatus::all();
         $this->wifeWorkStatuses = WifeWorkStatus::all();
@@ -173,9 +186,14 @@ class Profile extends Component
         $this->hairLengths = HairLength::all();
         $this->hairKinds = HairKind::all();
         $this->eyeColors = EyeColor::all();
-        $this->eyeGlasses = Eyeglass::all();
+        $this->eyeGlasses = EyeGlass::all();
         $this->healths = Health::all();
         $this->psychologicalPatterns = PsychologicalPattern::all();
+        $this->smokes = Smoke::all();
+        $this->alcohols = Alcohol::all();
+        $this->halalFoods = HalalFood::all();
+        $this->foods = Food::all();
+        $this->hobbies = Hobby::all();
         $this->selectedCountry = $user->profile->hometown_id ?? null;
         $this->selectedState = $user->profile->state_id ?? null;
 
@@ -247,6 +265,13 @@ class Profile extends Component
         $this->state['language_second_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfection->id ?? null;
         $this->state['language_third_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfection->id ?? null;
         $this->state['country_of_residence_id'] = $user->profile->country_of_residence_id;
+
+        $this->state['smoke_id'] = $user->profile->lifestyle->smoke_id;
+        $this->state['alcohol_id'] = $user->profile->lifestyle->alcohol_id;
+        $this->state['halal_food_id'] = $user->profile->lifestyle->halal_food_id;
+        $this->state['books'] = $user->profile->lifestyle->books;
+        $this->state['places'] = $user->profile->lifestyle->places;
+        $this->state['interests'] = $user->profile->lifestyle->interests;
     }
 
     public function render(): View
@@ -317,6 +342,10 @@ class Profile extends Component
 
     public function updateInfo(UpdatesUserProfileInformation $updatesUserProfileInformation): void
     {
+        $this->validate([
+            'state.interests' => ['required', 'string', 'min:3','max:1000'],
+        ]);
+
         $updatesUserProfileInformation->update(auth()->user(), [
             'name' => $this->state['name'],
             'username' => $this->state['username'],
@@ -377,6 +406,26 @@ class Profile extends Component
             'language_third' => $this->state['language_third'] ?? null,
             'language_second_perfection_id' => $this->state['language_second_perfection_id'] ?? null,
             'language_third_perfection_id' => $this->state['language_third_perfection_id'] ?? null,
+
+            'body_id' => $this->state['body_id'],
+            'skin_id' => $this->state['skin_id'],
+            'hair_color_id' => $this->state['hair_color_id'],
+            'hair_length_id' => $this->state['hair_length_id'],
+            'hair_kind_id' => $this->state['hair_kind_id'],
+            'eye_color_id' => $this->state['eye_color_id'],
+            'eye_glass_id' => $this->state['eye_glass_id'],
+            'health_id' => $this->state['health_id'],
+            'psychological_pattern_id' => $this->state['psychological_pattern_id'],
+            'height' => $this->state['height'],
+            'weight' => $this->state['weight'],
+            'clarification' => $this->state['clarification'],
+
+            'smoke_id' => $this->state['smoke_id'],
+            'alcohol_id' => $this->state['alcohol_id'],
+            'halal_food_id' => $this->state['halal_food_id'],
+            'books' => $this->state['books'],
+            'places' => $this->state['places'],
+            'interests' => $this->state['interests'],
         ]);
 
         $this->dispatchBrowserEvent('swal:modal', [

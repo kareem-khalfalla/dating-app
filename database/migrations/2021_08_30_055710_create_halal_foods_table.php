@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEyeglassesTable extends Migration
+class CreateHalalFoodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEyeglassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('eyeglasses', function (Blueprint $table) {
+        Schema::create('halal_foods', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateEyeglassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eyeglasses');
+        Schema::dropIfExists('halal_foods');
     }
 }

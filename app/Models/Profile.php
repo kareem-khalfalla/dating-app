@@ -64,9 +64,9 @@ class Profile extends Model
         return $this->belongsTo(WorkStatus::class);
     }
 
-    public function lifestyle(): BelongsTo
+    public function lifestyle(): HasOne
     {
-        return $this->belongsTo(Lifestyle::class);
+        return $this->hasOne(Lifestyle::class);
     }
 
     public function detailStatus(): HasOne

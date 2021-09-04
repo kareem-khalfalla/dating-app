@@ -4,13 +4,24 @@
         <br>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">Length</label>
-            <input wire:model="state.height" type="number" class="form-control form-control-lg" id="exampleInputEmail1"
+            <input wire:model="state.height" type="number"
+                class="form-control form-control-lg @error('height') is-invalid @enderror" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="Length">
+            @error('height')
+                <div class="invalid-feedback">
+                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                </div>
+            @enderror
         </div>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">the weight</label>
-            <input wire:model="state.weight" type="number" class="form-control form-control-lg" id="exampleInputEmail1"
+            <input wire:model="state.weight" type="number" class="form-control form-control-lg @error('weight') is-invalid @enderror" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="the weight">
+            @error('weight')
+                <div class="invalid-feedback">
+                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                </div>
+            @enderror
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">body type</label>

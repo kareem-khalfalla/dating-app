@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Lifestyle extends Model
 {
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
     public function smoke(): BelongsTo
     {
         return $this->belongsTo(Smoke::class);

@@ -25,8 +25,8 @@ class CreateDetailsTable extends Migration
             $table->foreignId('eye_glass_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('health_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('psychological_pattern_id')->nullable()->constrained()->onDelete('cascade');
-            $table->decimal('height', 4)->nullable();
-            $table->decimal('weight', 3)->nullable();
+            $table->decimal('height')->nullable();
+            $table->decimal('weight')->nullable();
             $table->text('clarification')->nullable();
             $table->timestamps();
         });

@@ -65,111 +65,11 @@
             <!--==============[ Start change the shape ]=========================-->
             
             @include('livewire.inc.shape')
-
-
+            
+            
             <!--==============[ Start change their_lifestyle ]=========================-->
-            <div id="their_lifestyle" class="col-lg-11 m-auto pb-4" wire:ignore>
-                <h3 class="color_h">Change their lifestyle</h3>
-
-                <form id="captcha_form" class="row" method="post" action="#">
-                    <br>
-
-                    <div class="form-group mb-3 col-md-6">
-                        <label for="exampleInputEmail1">smoking</label>
-                        <select name="smoking" required="required" class="form-control form-control-lg ">
-                            <option value="">smoking</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                            <option value="No and I hate its smell">No and I hate its smell</option>
-                            <option value="A little">A little</option>
-                            <option value="hookah only">hookah only</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mb-3 col-md-6">
-                        <label for="exampleInputEmail1">Alcohol</label>
-                        <select name="Alcohol" required="required" class="form-control form-control-lg ">
-                            <option value="">Alcohol</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                            <option value="No And I can't eat it">No And I can't eat it</option>
-                            <option value="Fry">Fry</option>
-
-                        </select>
-                    </div>
-
-
-                    <div class="form-group mb-3 col-md-6">
-                        <label for="exampleInputEmail1">halal food</label>
-                        <select name="halal_food" required="required" class="form-control form-control-lg ">
-                            <option value="">halal food</option>
-                            <option value="Halal only">Halal only</option>
-                            <option value="Halal if label">Halal if label</option>
-                            <option value="It does not matter">It does not matter</option>
-                            <option value="vegetarian">vegetarian</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mb-3 col-md-6">
-                        <label for="exampleInputEmail1">food style</label>
-                        <select name="food_style" required="required" class="form-control form-control-lg ">
-                            <option value="">food style</option>
-                            <option value="Arabic">Arabic</option>
-                            <option value="Turkish">Turkish</option>
-                            <option value="Western">Western</option>
-                            <option value="Asian">Asian</option>
-                            <option value="Fast Food">Fast Food</option>
-                            <option value="hearty meals">hearty meals</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mb-3 col-md-6">
-                        <label for="exampleInputEmail1">Interests</label>
-                        <select name="Interests" required="required" class="form-control form-control-lg ">
-                            <option value="">Interests</option>
-                            <option value="Sports">Sports</option>
-                            <option value="reading">reading</option>
-                            <option value="writing">writing</option>
-                            <option value="travel">travel</option>
-                            <option value="games computer">games computer</option>
-                            <option value="talk">talk</option>
-                            <option value="go to Cafeteria">go to Cafeteria</option>
-                            <option value="Challenging Games">Challenging Games</option>
-                            <option value="Chess">Chess</option>
-                            <option value="Disco">Disco</option>
-                            <option value="sitting in nature">sitting in nature</option>
-                            <option value="games Movement">games Movement</option>
-                            <option value="Watching movies">Watching movies</option>
-                            <option value="Watching movies cartoon">Watching movies cartoon</option>
-                            <option value="Going out with friends">Going out with friends</option>
-                            <option value="Walking">Walking</option>
-
-                        </select>
-                    </div>
-
-
-                    <div class="form-group  mb-3 col-md-6">
-                        <label for="exampleFormControlTextarea1">Favorite books</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group  mb-3 col-md-6">
-                        <label for="exampleFormControlTextarea1">favorite places</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group  mb-3 col-md-6">
-                        <label for="exampleFormControlTextarea1">Other interests</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-
-
-                    <div class="mt-4 col-12">
-                        <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2" value="submit">
-                    </div>
-
-                </form>
-            </div>
+            
+            @include('livewire.inc.lifestyle')
 
 
 

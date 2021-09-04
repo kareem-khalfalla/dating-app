@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Eyeglass;
+use App\Models\EyeGlass;
 use Illuminate\Database\Seeder;
 
-class EyeglassSeeder extends Seeder
+class EyeGlassSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,7 +21,7 @@ class EyeglassSeeder extends Seeder
         ];
 
         foreach ($eyeGlasses as $eyeGlass) {
-            Eyeglass::create($eyeGlass);
+            EyeGlass::create($eyeGlass);
         }
     }
 }

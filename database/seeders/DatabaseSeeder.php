@@ -61,16 +61,16 @@ class DatabaseSeeder extends Seeder
             HairLengthSeeder::class,
             HairKindSeeder::class,
             EyeColorSeeder::class,
-            EyeglassSeeder::class,
+            EyeGlassSeeder::class,
             HealthSeeder::class,
             PsychologicalPatternSeeder::class,
+            SmokeSeeder::class,
+            AlcoholSeeder::class,
+            HalalFoodSeeder::class,
+            FoodSeeder::class,
+            HobbySeeder::class,
             // RoleSeeder::class,
-            // AlcoholSeeder::class,
-            // FoodSeeder::class,
-            // HalalFoodSeeder::class,
-            // HobbySeeder::class,
             // OverdressSeeder::class,
-            // SmokeSeeder::class,
         ]);
     }
 }

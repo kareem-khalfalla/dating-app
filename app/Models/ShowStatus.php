@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class ShowStatus extends Model
+class ShowStatus extends ModelTranslated
 {
     //
 }

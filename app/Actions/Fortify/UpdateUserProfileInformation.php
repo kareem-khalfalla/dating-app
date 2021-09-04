@@ -33,6 +33,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'divorced_reason' => ['nullable', 'string', 'max:1000'],
             'childrenInformation' => ['nullable', 'string', 'max:1000'],
             'lesson_listing' => ['nullable', 'string', 'max:1000'],
+            
 
             'religion_id' => ['nullable', 'numeric'],
             'obligation_id' => ['nullable', 'numeric'],
@@ -202,6 +203,15 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'height' => $input['height'],
             'weight' => $input['weight'],
             'clarification' => $input['clarification'],
+        ]);
+
+        $user->profile->lifeStyle->update([
+            'smoke_id' => $input['smoke_id'],
+            'alcohol_id' => $input['alcohol_id'],
+            'halal_food_id' => $input['halal_food_id'],
+            'books' => $input['books'],
+            'places' => $input['places'],
+            'interests' => $input['interests'],
         ]);
 
         if (

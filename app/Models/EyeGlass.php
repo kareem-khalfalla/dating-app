@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Eyeglass extends ModelTranslated
+class EyeGlass extends ModelTranslated
 {
     //
 }

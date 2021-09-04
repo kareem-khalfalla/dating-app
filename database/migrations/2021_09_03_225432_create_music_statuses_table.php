@@ -15,7 +15,7 @@ class CreateMusicStatusesTable extends Migration
     {
         Schema::create('music_statuses', function (Blueprint $table) {
             $table->id();
-            $table->text('string');
+            $table->text('name');
             $table->timestamps();
         });
     }
