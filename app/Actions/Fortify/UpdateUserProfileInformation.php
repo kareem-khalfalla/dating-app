@@ -65,6 +65,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'shelter_type_id' => ['nullable', 'numeric'],
             'shelter_shape_id' => ['nullable', 'numeric'],
             'shelter_way_id' => ['nullable', 'numeric'],
+            'body_id' => ['nullable', 'numeric'],
+            'skin_id' => ['nullable', 'numeric'],
+            'hair_color_id' => ['nullable', 'numeric'],
+            'hair_length_id' => ['nullable', 'numeric'],
+            'hair_kind_id' => ['nullable', 'numeric'],
+            'eye_color_id' => ['nullable', 'numeric'],
+            'eye_glass_id' => ['nullable', 'numeric'],
+            'health_id' => ['nullable', 'numeric'],
+            'psychological_pattern_id' => ['nullable', 'numeric'],
+            'height' => ['nullable', 'numeric'],
+            'weight' => ['nullable', 'numeric'],
             'income' => ['nullable', 'numeric'],
             'state_id' => ['nullable', 'numeric'],
             'language_*' => ['nullable', 'numeric'],
@@ -176,6 +187,21 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'show_status_id' => $input['show_status_id'],
             'friend_status_id' => $input['friend_status_id'],
             // 'overdress_id' => $input['overdress_id'],
+        ]);
+
+        $user->profile->detailStatus->update([
+            'body_id' => $input['body_id'],
+            'skin_id' => $input['skin_id'],
+            'hair_color_id' => $input['hair_color_id'],
+            'hair_length_id' => $input['hair_length_id'],
+            'hair_kind_id' => $input['hair_kind_id'],
+            'eye_color_id' => $input['eye_color_id'],
+            'eye_glass_id' => $input['eye_glass_id'],
+            'health_id' => $input['health_id'],
+            'psychological_pattern_id' => $input['psychological_pattern_id'],
+            'height' => $input['height'],
+            'weight' => $input['weight'],
+            'clarification' => $input['clarification'],
         ]);
 
         if (

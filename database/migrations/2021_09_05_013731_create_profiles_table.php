@@ -16,7 +16,6 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('detail_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('lifestyle_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('education_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('work_status_id')->nullable()->constrained()->onDelete('cascade');

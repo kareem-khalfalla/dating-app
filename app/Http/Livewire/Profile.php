@@ -6,12 +6,19 @@ use App\Models\AcceptWifeStudyStatus;
 use App\Models\AcceptWifeWorkStatus;
 use App\Models\AlfajrPrayer;
 use App\Models\Beard;
+use App\Models\Body;
 use App\Models\ChildrenDesireStatus;
 use App\Models\ChildrenStatus;
 use App\Models\Country;
 use App\Models\Education;
+use App\Models\EyeColor;
+use App\Models\Eyeglass;
 use App\Models\Fasting;
+use App\Models\HairColor;
+use App\Models\HairKind;
+use App\Models\HairLength;
 use App\Models\Headdress;
+use App\Models\Health;
 use App\Models\Language;
 use App\Models\LanguagePerfection;
 use App\Models\MaritalStatus;
@@ -22,6 +29,7 @@ use App\Models\Nationality;
 use App\Models\Obligation;
 use App\Models\PolygamyStatus;
 use App\Models\Prayer;
+use App\Models\PsychologicalPattern;
 use App\Models\ReadingQuran;
 use App\Models\Relationship;
 use App\Models\Religion;
@@ -32,6 +40,7 @@ use App\Models\ShelterShape;
 use App\Models\ShelterType;
 use App\Models\ShelterWay;
 use App\Models\ShowStatus;
+use App\Models\Skin;
 use App\Models\State;
 use App\Models\Tafaqah;
 use App\Models\Veil;
@@ -96,6 +105,15 @@ class Profile extends Component
     public $selectedCountry;
     public $countryStates;
     public $selectedState;
+    public $bodies;
+    public $skins;
+    public $hairColors;
+    public $hairLengths;
+    public $hairKinds;
+    public $eyeColors;
+    public $eyeGlasses;
+    public $healths;
+    public $psychologicalPatterns;
 
     public $successMessage = '';
 
@@ -149,6 +167,15 @@ class Profile extends Component
         $this->shelterTypes = ShelterType::all();
         $this->shelterShapes = ShelterShape::all();
         $this->shelterWays = ShelterWay::all();
+        $this->bodies = Body::all();
+        $this->skins = Skin::all();
+        $this->hairColors = HairColor::all();
+        $this->hairLengths = HairLength::all();
+        $this->hairKinds = HairKind::all();
+        $this->eyeColors = EyeColor::all();
+        $this->eyeGlasses = Eyeglass::all();
+        $this->healths = Health::all();
+        $this->psychologicalPatterns = PsychologicalPattern::all();
         $this->selectedCountry = $user->profile->hometown_id ?? null;
         $this->selectedState = $user->profile->state_id ?? null;
 
@@ -165,6 +192,19 @@ class Profile extends Component
         $this->state['competence'] = $user->profile->competence;
         $this->state['income'] = $user->profile->income;
         $this->state['listenToLesson'] = $user->profile->religionStatus->lesson_listing;
+
+        $this->state['height'] = $user->profile->detailStatus->height;
+        $this->state['weight'] = $user->profile->detailStatus->weight;
+        $this->state['clarification'] = $user->profile->detailStatus->clarification;
+        $this->state['body_id'] = $user->profile->detailStatus->body_id;
+        $this->state['skin_id'] = $user->profile->detailStatus->skin_id;
+        $this->state['hair_color_id'] = $user->profile->detailStatus->hair_color_id;
+        $this->state['hair_length_id'] = $user->profile->detailStatus->hair_length_id;
+        $this->state['hair_kind_id'] = $user->profile->detailStatus->hair_kind_id;
+        $this->state['eye_color_id'] = $user->profile->detailStatus->eye_color_id;
+        $this->state['eye_glass_id'] = $user->profile->detailStatus->eye_glass_id;
+        $this->state['health_id'] = $user->profile->detailStatus->health_id;
+        $this->state['psychological_pattern_id'] = $user->profile->detailStatus->psychological_pattern_id;
 
         $this->state['nationality_id'] = $user->profile->nationality_id;
         $this->state['relationship_id'] = $user->profile->relationship_id;
@@ -291,6 +331,8 @@ class Profile extends Component
             'competence' => $this->state['competence'] ?? null,
             'partner_bio' => $this->state['partner_bio'] ?? null,
             'lesson_listing' => $this->state['lesson_listing'] ?? null,
+            'height' => $this->state['height'] ?? null,
+            'weight' => $this->state['weight'] ?? null,
             'postal_code' => $this->state['postal_code'] ?? null,
             'hometown_id' => $this->selectedCountry ?? null,
             'state_id' => $this->selectedState ?? null,

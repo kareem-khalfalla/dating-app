@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Detail extends Model
 {
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
     public function body(): BelongsTo
     {
         return $this->belongsTo(Body::class);
