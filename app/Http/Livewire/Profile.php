@@ -209,7 +209,7 @@ class Profile extends Component
         $this->state['divorced_reason'] = $user->profile->socialStatus->divorced_reason;
         $this->state['competence'] = $user->profile->competence;
         $this->state['income'] = $user->profile->income;
-        $this->state['listenToLesson'] = $user->profile->religionStatus->lesson_listing;
+        $this->state['lesson_listing'] = $user->profile->religionStatus->lesson_listing;
 
         $this->state['height'] = $user->profile->detailStatus->height;
         $this->state['weight'] = $user->profile->detailStatus->weight;
@@ -342,15 +342,12 @@ class Profile extends Component
 
     public function updateInfo(UpdatesUserProfileInformation $updatesUserProfileInformation): void
     {
-        $this->validate([
-            'state.interests' => ['required', 'string', 'min:3','max:1000'],
-        ]);
-
         $updatesUserProfileInformation->update(auth()->user(), [
             'name' => $this->state['name'],
             'username' => $this->state['username'],
             'phone' => $this->state['phone'],
             'email' => $this->state['email'],
+            'postal_code' => $this->state['postal_code'] ?? null,
 
             'gender' => $this->state['gender'] ?? null,
             'dob' => $this->state['dob'] ?? null,
@@ -362,7 +359,6 @@ class Profile extends Component
             'lesson_listing' => $this->state['lesson_listing'] ?? null,
             'height' => $this->state['height'] ?? null,
             'weight' => $this->state['weight'] ?? null,
-            'postal_code' => $this->state['postal_code'] ?? null,
             'hometown_id' => $this->selectedCountry ?? null,
             'state_id' => $this->selectedState ?? null,
             'country_of_residence_id' => $this->state['country_of_residence_id'] ?? null,

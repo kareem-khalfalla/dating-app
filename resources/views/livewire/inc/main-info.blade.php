@@ -7,7 +7,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user"></i></span>
             </div>
-            <input wire:model.defer="state.name" placeholder="fullname" type="text"
+            <input wire:model.defer.defer="state.name" placeholder="fullname" type="text"
                 class="form-control @error('name') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('name')
@@ -20,7 +20,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-circle"></i></span>
             </div>
-            <input wire:model.defer="state.username" placeholder="username" type="text"
+            <input wire:model.defer.defer="state.username" placeholder="username" type="text"
                 class="form-control @error('username') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('username')
@@ -34,7 +34,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-envelope"
                         aria-hidden="true"></i></span>
             </div>
-            <input wire:model.defer="state.email" placeholder="email" type="email"
+            <input wire:model.defer.defer="state.email" placeholder="email" type="email"
                 class="form-control @error('email') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('email')
@@ -48,7 +48,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-phone"
                         aria-hidden="true"></i></span>
             </div>
-            <input wire:model.defer="state.phone" placeholder="phone" type="tel"
+            <input wire:model.defer.defer="state.phone" placeholder="phone" type="tel"
                 class="form-control @error('phone') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('phone')
@@ -76,13 +76,13 @@
         <div class="mt-2 mb-2 pr-2">
             <label class="mr-3"><b>Gender</b></label>
             <label class="radio-inline p-2">
-                <input type="radio" id="male" name="gender" wire:model.defer="state.gender"
-                    wire:model.defer="state.gender" id="male" value="male">
+                <input type="radio" id="male" name="gender" wire:model.defer.defer="state.gender"
+                    wire:model.defer.defer="state.gender" id="male" value="male">
                 &nbsp;Male
             </label>
             <label class="radio-inline p-2">
-                <input type="radio" id="female" name="gender" wire:model.defer="state.gender"
-                    wire:model.defer="state.gender" id="female" value="female">
+                <input type="radio" id="female" name="gender" wire:model.defer.defer="state.gender"
+                    wire:model.defer.defer="state.gender" id="female" value="female">
                 &nbsp;Female
             </label>
         </div>

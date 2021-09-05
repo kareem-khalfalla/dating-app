@@ -16,7 +16,7 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Country of Origin</label>
-            <select wire:model="selectedCountry" required="required"
+            <select wire:model.defer="selectedCountry" required="required"
                 class="form-control form-control-lg @error('hometown_id') is-invalid @enderror">
                 <option disabled value="">Select Hometown Country</option>
                 @foreach ($countries as $country)
@@ -31,7 +31,7 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Country of Residency</label>
-            <select wire:model="state.country_of_residence_id" required="required"
+            <select wire:model.defer="state.country_of_residence_id" required="required"
                 class="form-control form-control-lg @error('country_of_residence_id') is-invalid @enderror">
                 <option disabled value="">Select residency Country</option>
                 @foreach ($countries as $country)
@@ -46,7 +46,7 @@
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">Nationality</label>
-            <select wire:model="state.nationality_id" required="required"
+            <select wire:model.defer="state.nationality_id" required="required"
                 class="form-control form-control-lg @error('nationality_id') is-invalid @enderror">
                 <option disabled value="">Select nationality</option>
                 @foreach ($nationalities as $nationality)
@@ -63,7 +63,7 @@
             @if ($selectedCountry)
                 <div class="input-group input-group-lg mb-3 col-6">
                     <label class="col-12">City</label>
-                    <select wire:model="selectedState" required="required"
+                    <select wire:model.defer="selectedState" required="required"
                         class="form-control form-control-lg @error('state_id') is-invalid @enderror">
                         <option disabled value="">Select City</option>
                         @foreach ($countryStates as $countryState)
@@ -79,8 +79,8 @@
             @endif
             <div class="input-group input-group-lg mb-3 col-6">
                 <label class="col-12">Postal code</label>
-                <input wire:model="state.postal_code" placeholder="Postal code" type="text"
-                    class="form-control @error('state_id') is-invalid @enderror" aria-label="Large"
+                <input wire:model.defer="state.postal_code" placeholder="Postal code" type="text"
+                    class="form-control @error('postal_code') is-invalid @enderror" aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm">
                 @error('postal_code')
                     <div class="invalid-feedback">
@@ -91,7 +91,7 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Type of accommodation</label>
-            <select wire:model="state.residency_id" class="form-control form-control-lg ">
+            <select wire:model.defer="state.residency_id" class="form-control form-control-lg ">
                 <option disabled value="">Type of accommodation</option>
                 @foreach ($residencies as $residency)
                     <option value="{{ $residency->id }}">{{ $residency->name }}</option>
@@ -100,7 +100,7 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Moving to another place</label>
-            <select wire:model="state.relocate_id" class="form-control form-control-lg ">
+            <select wire:model.defer="state.relocate_id" class="form-control form-control-lg ">
                 <option disabled value="">Moving to another place</option>
                 @foreach ($relocations as $relocate)
                     <option value="{{ $relocate->id }}">{{ $relocate->name }}</option>
@@ -109,7 +109,7 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Native language</label>
-            <select wire:model="state.language_native" class="form-control form-control-lg ">
+            <select wire:model.defer="state.language_native" class="form-control form-control-lg ">
                 <option disabled value="">Native language</option>
                 @foreach ($languages as $language)
                     <option value="{{ $language->id }}">{{ $language->name }}</option>
@@ -119,7 +119,7 @@
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">second language</label>
-                <select wire:model="state.language_second" class="form-control form-control-lg ">
+                <select wire:model.defer="state.language_second" class="form-control form-control-lg ">
                     <option disabled value="">second language</option>
                     @foreach ($languages as $language)
                         <option value="{{ $language->id }}">{{ $language->name }}</option>
@@ -128,7 +128,7 @@
             </div>
             <div class="input-group input-group-lg mb-3 col-5">
                 <label class="col-12">level</label>
-                <select wire:model="state.language_second_perfection_id" class="form-control form-control-lg ">
+                <select wire:model.defer="state.language_second_perfection_id" class="form-control form-control-lg ">
                     <option disabled value="">level</option>
                     @foreach ($languagePerfections as $langPerfection)
                         <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
@@ -139,7 +139,7 @@
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">third language</label>
-                <select wire:model="state.language_third" class="form-control form-control-lg ">
+                <select wire:model.defer="state.language_third" class="form-control form-control-lg ">
                     <option disabled value="">third language</option>
                     @foreach ($languages as $language)
                         <option value="{{ $language->id }}">{{ $language->name }}</option>
@@ -148,7 +148,7 @@
             </div>
             <div class="input-group input-group-lg mb-3 col-5">
                 <label class="col-12">level</label>
-                <select wire:model="state.language_third_perfection_id" class="form-control form-control-lg ">
+                <select wire:model.defer="state.language_third_perfection_id" class="form-control form-control-lg ">
                     <option disabled value="">level</option>
                     @foreach ($languagePerfections as $langPerfection)
                         <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>

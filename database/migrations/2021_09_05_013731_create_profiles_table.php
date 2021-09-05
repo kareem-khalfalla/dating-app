@@ -19,10 +19,6 @@ class CreateProfilesTable extends Migration
             $table->foreignId('education_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('work_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('marriage_id')->nullable()->constrained()->onDelete('cascade');
-            $table->unsignedMediumInteger('hometown_id')->nullable()->constrained()->onDelete('cascade');
-            $table->unsignedMediumInteger('country_of_residence_id')->nullable()->constrained()->onDelete('cascade');
-            $table->unsignedMediumInteger('state_id')->nullable()->constrained()->onDelete('cascade');
-            // $table->unsignedMediumInteger('city_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('wife_work_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('wife_study_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('accept_wife_work_status_id')->nullable()->constrained()->onDelete('cascade');
@@ -32,7 +28,10 @@ class CreateProfilesTable extends Migration
             $table->foreignId('shelter_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('relocate_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('relationship_id')->nullable()->constrained()->onDelete('cascade');
-            $table->enum('gender', ['male', 'female']);
+            $table->unsignedMediumInteger('hometown_id')->nullable()->constrained()->onDelete('cascade');
+            $table->unsignedMediumInteger('country_of_residence_id')->nullable()->constrained()->onDelete('cascade');
+            $table->unsignedMediumInteger('state_id')->nullable()->constrained()->onDelete('cascade');
+            // $table->unsignedMediumInteger('city_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('specialization')->nullable();
             $table->decimal('income')->nullable();
             $table->text('bio')->nullable();

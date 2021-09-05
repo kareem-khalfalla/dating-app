@@ -51,13 +51,12 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'username' => $input['username'],
             'phone' => $input['phone'],
+            'gender' => $input['gender'],
             'password' => Hash::make($input['password']),
         ]);
 
-        $user->profile()->create([
-            'gender' => $input['gender'],
-        ]);
-
+        
+        $user->profile()->create();
         $user->profile->socialStatus()->create();
         $user->profile->religionStatus()->create();
         $user->profile->detailStatus()->create();
