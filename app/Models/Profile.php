@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -112,6 +113,11 @@ class Profile extends Model
     public function education(): BelongsTo
     {
         return $this->belongsTo(Education::class);
+    }
+
+    public function getDobAttribute($attr): int|string
+    {
+        return Carbon::parse($attr)->age == 0 ? 'N/A' : Carbon::parse($attr)->age;
     }
 
     public function languages(): BelongsToMany

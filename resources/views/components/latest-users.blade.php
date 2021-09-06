@@ -13,23 +13,15 @@
                             <th scope="col">nationality</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Hamada</td>
-                            <td>23</td>
-                            <td>Egyption</td>
-                        </tr>
-                        <tr>
-                            <td>Hamada</td>
-                            <td>23</td>
-                            <td>Egyption</td>
-                        </tr>
-                        <tr>
-                            <td>Hamada</td>
-                            <td>23</td>
-                            <td>Egyption</td>
-                        </tr>
-                    </tbody>
+                    @foreach ($users as $user)
+                        <tbody>
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->profile->dob }}</td>
+                                <td>{{ $user->profile->nationality->name ?? 'N/A' }}</td>
+                            </tr>
+                        </tbody>
+                    @endforeach
                 </table>
             </div>
 
@@ -41,10 +33,10 @@
                             height="150px" alt="">
                     </div>
                     <div class="col-6 col-md-7">
-                        <p><b>name : </b> Hamada</p>
-                        <p><b>Age : </b> 23</p>
-                        <p><b>From : </b> Egypt</p>
-                        <p><b>Stay in : </b> Egypt</p>
+                        <p><b>name : </b> {{ $users[0]->name }}</p>
+                        <p><b>Age : </b> {{ $users[0]->profile->dob }}</p>
+                        <p><b>From : </b> {{ $users[0]->profile->hometown->name ?? 'N/A' }}</p>
+                        <p><b>Stay in : </b> {{ $users[0]->profile->countryOfResidence->name ?? 'N/A' }}</p>
                     </div>
                 </div>
 
@@ -54,10 +46,10 @@
                             height="150px" alt="">
                     </div>
                     <div class="col-6 col-md-7">
-                        <p><b>name : </b> Hamada</p>
-                        <p><b>Age : </b> 23</p>
-                        <p><b>From : </b> Egypt</p>
-                        <p><b>Stay in : </b> Egypt</p>
+                        <p><b>name : </b> {{ $users[1]->name }}</p>
+                        <p><b>Age : </b> {{ $users[1]->profile->dob }}</p>
+                        <p><b>From : </b> {{ $users[1]->profile->hometown->name ?? 'N/A' }}</p>
+                        <p><b>Stay in : </b> {{ $users[1]->profile->countryOfResidence->name ?? 'N/A' }}</p>
                     </div>
                 </div>
 
