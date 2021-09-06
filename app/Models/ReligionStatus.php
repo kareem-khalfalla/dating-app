@@ -61,6 +61,11 @@ class ReligionStatus extends Model
         return $this->belongsTo(Veil::class);
     }
 
+    public function showStatus(): BelongsTo
+    {
+        return $this->belongsTo(ShowStatus::class);
+    }
+
     public function overdress(): BelongsTo
     {
         return $this->belongsTo(Overdress::class);

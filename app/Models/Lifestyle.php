@@ -27,9 +27,9 @@ class Lifestyle extends Model
         return $this->belongsTo(HalalFood::class);
     }
 
-    public function foods(): BelongsToMany
+    public function food(): BelongsTo
     {
-        return $this->belongsToMany(Food::class);
+        return $this->belongsTo(Food::class);
     }
 
     public function hobbies(): BelongsToMany

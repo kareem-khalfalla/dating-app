@@ -19,6 +19,7 @@ class CreateLifestylesTable extends Migration
             $table->foreignId('smoke_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('alcohol_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('halal_food_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('food_id')->nullable()->constrained('foods')->onDelete('cascade');
             $table->string('books')->nullable();
             $table->string('places')->nullable();
             $table->string('interests')->nullable();

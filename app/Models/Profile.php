@@ -24,6 +24,11 @@ class Profile extends Model
         return $this->belongsTo(Nationality::class);
     }
 
+    public function state(): BelongsTo
+    {
+        return $this->belongsTo(State::class);
+    }
+
     public function residency(): BelongsTo
     {
         return $this->belongsTo(Residency::class);
@@ -49,9 +54,9 @@ class Profile extends Model
         return $this->belongsTo(Relationship::class);
     }
 
-    public function shelter(): BelongsTo
+    public function shelter(): HasOne
     {
-        return $this->belongsTo(Shelter::class);
+        return $this->hasOne(Shelter::class);
     }
 
     public function marriage(): BelongsTo
@@ -69,7 +74,7 @@ class Profile extends Model
         return $this->hasOne(Lifestyle::class);
     }
 
-    public function detailStatus(): HasOne
+    public function detail(): HasOne
     {
         return $this->hasOne(Detail::class);
     }
@@ -96,7 +101,7 @@ class Profile extends Model
 
     public function acceptWifeWorkStatus(): BelongsTo
     {
-        return $this->belongsTo(AcceptWifeWorkStatuses::class);
+        return $this->belongsTo(AcceptWifeWorkStatus::class);
     }
 
     public function acceptWifeStudyStatus(): BelongsTo

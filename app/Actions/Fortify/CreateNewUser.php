@@ -57,10 +57,11 @@ class CreateNewUser implements CreatesNewUsers
 
         
         $user->profile()->create();
+        $user->profile->shelter()->create();
+        $user->profile->detail()->create();
+        $user->profile->lifeStyle()->create();
         $user->profile->socialStatus()->create();
         $user->profile->religionStatus()->create();
-        $user->profile->detailStatus()->create();
-        $user->profile->lifeStyle()->create();
 
         return $user;
     }

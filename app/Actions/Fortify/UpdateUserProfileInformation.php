@@ -136,7 +136,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         }
 
         $user->profile()->update([
-            'gender' => $input['gender'],
             'dob' => $input['dob'],
             'hometown_id' => $input['hometown_id'],
             'country_of_residence_id' => $input['country_of_residence_id'],
@@ -157,6 +156,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'bio' => $input['bio'],
             'competence' => $input['competence'],
             'partner_bio' => $input['partner_bio'],
+            'progress_bar' => $input['progress_bar'],
         ]);
 
         $user->profile->socialStatus->update([
@@ -197,7 +197,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             // 'overdress_id' => $input['overdress_id'],
         ]);
 
-        $user->profile->detailStatus->update([
+        $user->profile->detail->update([
             'body_id' => $input['body_id'],
             'skin_id' => $input['skin_id'],
             'hair_color_id' => $input['hair_color_id'],
@@ -230,6 +230,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'gender' => $input['gender'],
             ])->save();
         }
     }

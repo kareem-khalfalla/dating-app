@@ -15,6 +15,7 @@ class CreateSheltersTable extends Migration
     {
         Schema::create('shelters', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profile_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('shelter_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('shelter_shape_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('shelter_way_id')->nullable()->constrained()->onDelete('cascade');

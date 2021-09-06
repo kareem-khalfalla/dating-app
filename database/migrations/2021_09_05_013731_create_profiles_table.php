@@ -25,7 +25,6 @@ class CreateProfilesTable extends Migration
             $table->foreignId('accept_wife_study_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('nationality_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('residency_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('shelter_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('relocate_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('relationship_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedMediumInteger('hometown_id')->nullable()->constrained()->onDelete('cascade');
@@ -39,6 +38,7 @@ class CreateProfilesTable extends Migration
             $table->text('competence')->nullable();
             $table->date('dob')->nullable();
             $table->string('postal_code', 32)->nullable();
+            $table->string('progress_bar', 5)->nullable()->default('00.00');
             $table->timestamps();
         });
     }
