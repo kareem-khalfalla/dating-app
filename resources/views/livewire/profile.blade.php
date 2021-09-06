@@ -29,51 +29,16 @@
         </ol>
 
         <div class="setting_content p-0">
-
-            <!--==============[ Start change photo]=========================-->
-            
             @include('livewire.inc.change-photo')
-
-            <!--==============[ Start change password]=========================-->
-            
             @include('livewire.inc.change-password')
-
-            <!--==============[ Start change main information]=========================-->
-            
             @include('livewire.inc.main-info')
-
-            <!--==============[ Start change Detailed_information]=========================-->
-            
             @include('livewire.inc.details')
-
-            <!--==============[ Start change Personal statement]=========================-->
-
             @include('livewire.inc.personal')
-
-            <!--==============[ Start change Education and work]=========================-->
-
             @include('livewire.inc.education')
-
-            <!--==============[ Start change Social status]=========================-->
             @include('livewire.inc.social')
-            
-            <!--==============[ Start change Religious_status]=========================-->
-            
             @include('livewire.inc.religion')
-            
-                       
-            <!--==============[ Start change the shape ]=========================-->
-            
             @include('livewire.inc.shape')
-            
-            
-            <!--==============[ Start change their_lifestyle ]=========================-->
-            
             @include('livewire.inc.lifestyle')
-
-
-
-
         </div>
     </div>
 </div>

@@ -24,7 +24,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">the work</label>
             <select wire:model.defer="state.work_status_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">the work</option>
                 @foreach ($workStatuses as $workStatus)
                     <option value="{{ $workStatus->id }}">{{ $workStatus->name }}</option>
                 @endforeach
@@ -32,8 +31,9 @@
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">Monthly income</label>
-            <input wire:model.defer="state.income" placeholder="Monthly income" type="number" class="form-control @error('income') is-invalid @enderror"
-                aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+            <input wire:model.defer="state.income" placeholder="Monthly income" type="number"
+                class="form-control @error('income') is-invalid @enderror" aria-label="Large"
+                aria-describedby="inputGroup-sizing-sm">
             @error('income')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -46,7 +46,6 @@
                 <label class="col-12">Do you accept the wife's work?</label>
                 <select wire:model.defer="state.accept_wife_work_status_id" required="required"
                     class="form-control form-control-lg ">
-                    <option disabled value="">Do you accept the wife's work?</option>
                     @foreach ($acceptWifeWorkStatuses as $acceptence)
                         <option value="{{ $acceptence->id }}">{{ $acceptence->name }}</option>
                     @endforeach
@@ -57,7 +56,6 @@
                 <label class="col-12">Do you accept studying the wife after marriage?</label>
                 <select wire:model.defer="state.accept_wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
-                    <option disabled value=""> Do you accept studying the wife after marriage?</option>
                     @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
                         <option value="{{ $studyAcceptence->id }}">{{ $studyAcceptence->name }}
                         </option>
@@ -71,7 +69,6 @@
                 <label class="col-12">You want the work?</label>
                 <select wire:model.defer="state.wife_work_status_id" required="required"
                     class="form-control form-control-lg ">
-                    <option disabled value=""> You want the work?</option>
                     @foreach ($wifeWorkStatuses as $wifeWorkStatus)
                         <option value="{{ $wifeWorkStatus->id }}">{{ $wifeWorkStatus->name }}</option>
                     @endforeach
@@ -82,7 +79,6 @@
                 <label class="col-12">Do you want to study after marriage?</label>
                 <select wire:model.defer="state.wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
-                    <option disabled value=""> Do you want to study after marriage?</option>
                     @foreach ($wifeStudyStatuses as $wifeStudyStatus)
                         <option value="{{ $wifeStudyStatus->id }}">{{ $wifeStudyStatus->name }}
                         </option>

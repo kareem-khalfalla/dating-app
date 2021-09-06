@@ -7,7 +7,6 @@
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">smoking</label>
             <select wire:model.defer="state.smoke_id" required="required" class="form-control form-control-lg ">
-                <option disabled>smoking</option>
                 @foreach ($smokes as $smoke)
                     <option value="{{ $smoke->id }}">{{ $smoke->name }}</option>
                 @endforeach
@@ -17,7 +16,6 @@
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">Alcohol</label>
             <select wire:model.defer="state.alcohol_id" required="required" class="form-control form-control-lg ">
-                <option disabled>Alcohol</option>
                 @foreach ($alcohols as $alcohol)
                     <option value="{{ $alcohol->id }}">{{ $alcohol->name }}</option>
                 @endforeach
@@ -28,7 +26,6 @@
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">halal food</label>
             <select wire:model.defer="state.halal_food_id" required="required" class="form-control form-control-lg ">
-                <option disabled>halal food</option>
                 @foreach ($halalFoods as $halalFood)
                     <option value="{{ $halalFood->id }}">{{ $halalFood->name }}</option>
                 @endforeach
@@ -37,8 +34,7 @@
 
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">food style</label>
-            <select wire:model.defer="state." required="required" class="form-control form-control-lg ">
-                <option disabled>food style</option>
+            <select wire:model.defer="state.food_id" required="required" class="form-control form-control-lg ">
                 @foreach ($foods as $food)
                     <option value="{{ $food->id }}">{{ $food->name }}</option>
                 @endforeach
@@ -48,7 +44,6 @@
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">Interests</label>
             <select wire:model.defer="state.hobby_id" required="required" class="form-control form-control-lg ">
-                <option disabled>Interests</option>
                 @foreach ($hobbies as $hobby)
                     <option value="{{ $hobby->id }}">{{ $hobby->name }}</option>
                 @endforeach

@@ -14,9 +14,9 @@
         </div>
         <div class="form-group">
             <label class="col-12">A profile of your desired partner</label>
-            <textarea wire:model.defer="state.partner_bio" class="form-control @error('partner_bio') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3" placeholder="A profile of your desired partner"
-                maxlength="200"></textarea>
+            <textarea wire:model.defer="state.partner_bio"
+                class="form-control @error('partner_bio') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3"
+                placeholder="A profile of your desired partner" maxlength="200"></textarea>
             @error('partner_bio')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -26,7 +26,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">The required relationship</label>
             <select wire:model.defer="state.relationship_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">The required relationship</option>
                 @foreach ($relationships as $relationship)
                     <option value="{{ $relationship->id }}">{{ $relationship->name }}</option>
                 @endforeach
@@ -35,7 +34,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Desired method of marriage</label>
             <select wire:model.defer="state.marriage_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">Desired method of marriage</option>
                 @foreach ($marriages as $marriage)
                     <option value="{{ $marriage->id }}">{{ $marriage->name }}</option>
                 @endforeach

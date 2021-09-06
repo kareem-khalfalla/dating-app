@@ -63,7 +63,7 @@
         <!-- => [ Start select box gender ] !-->
         {{-- <div class="input-group input-group-lg mb-3 ">
 
-            <select name="lang" required="required" class="form-control form-control-lg ">
+            <select required="required" class="form-control form-control-lg ">
                 <option value="">language</option>
                 <option value="eng">arabic</option>
                 <option value="arb">English</option>
@@ -76,12 +76,12 @@
         <div class="mt-2 mb-2 pr-2">
             <label class="mr-3"><b>Gender</b></label>
             <label class="radio-inline p-2">
-                <input type="radio" id="male" name="gender" wire:model.defer.defer="state.gender"
+                <input type="radio" id="male" wire:model.defer.defer="state.gender"
                     wire:model.defer.defer="state.gender" id="male" value="male">
                 &nbsp;Male
             </label>
             <label class="radio-inline p-2">
-                <input type="radio" id="female" name="gender" wire:model.defer.defer="state.gender"
+                <input type="radio" id="female" wire:model.defer.defer="state.gender"
                     wire:model.defer.defer="state.gender" id="female" value="female">
                 &nbsp;Female
             </label>

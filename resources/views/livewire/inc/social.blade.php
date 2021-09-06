@@ -7,7 +7,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Marital Status</label>
             <select wire:model.defer="state.marital_status_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">Marital Status</option>
                 @foreach ($maritalStatuses as $maritalStatus)
                     <option value="{{ $maritalStatus->id }}">{{ $maritalStatus->name }}</option>
                 @endforeach
@@ -28,8 +27,8 @@
 
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Do you have children?</label>
-            <select wire:model.defer="state.children_status_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">Do you have children?</option>
+            <select wire:model.defer="state.children_status_id" required="required"
+                class="form-control form-control-lg ">
                 @foreach ($childrenStatuses as $childStatus)
                     <option value="{{ $childStatus->id }}">{{ $childStatus->name }}</option>
                 @endforeach
@@ -63,8 +62,8 @@
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
                 <label for="" class="col-12">Do you want multiplicity?</label>
-                <select wire:model.defer="state.polygamy_status_id" required="required" class="form-control form-control-lg ">
-                    <option disabled value="">Do you want multiplicity?</option>
+                <select wire:model.defer="state.polygamy_status_id" required="required"
+                    class="form-control form-control-lg ">
                     @foreach ($polygamyStatuses as $polygamyStatus)
                         <option value="{{ $polygamyStatus->id }}">{{ $polygamyStatus->name }}</option>
                     @endforeach
@@ -77,7 +76,6 @@
                 <label for="" class="col-12">Do you accept polygamy?</label>
                 <select wire:model.defer="state.wife_polygamy_status_id" required="required"
                     class="form-control form-control-lg ">
-                    <option disabled value="">Do you accept polygamy?</option>
                     @foreach ($wifePolygamyStatuses as $wifePolygamyStatus)
                         <option value="{{ $wifePolygamyStatus->id }}">{{ $wifePolygamyStatus->name }}</option>
                     @endforeach
@@ -89,7 +87,6 @@
             <label for="" class="col-12">desire to have children</label>
             <select wire:model.defer="state.children_desire_status_id" required="required"
                 class="form-control form-control-lg ">
-                <option disabled value="">desire to have children</option>
                 @foreach ($childrenDesireStatuses as $childrenDesireStatus)
                     <option value="{{ $childrenDesireStatus->id }}">{{ $childrenDesireStatus->name }}</option>
                 @endforeach
@@ -99,7 +96,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Current type of housing</label>
             <select wire:model.defer="state.shelter_type_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">Current type of housing</option>
                 @foreach ($shelterTypes as $shelterType)
                     <option value="{{ $shelterType->id }}">{{ $shelterType->name }}</option>
                 @endforeach
@@ -109,7 +105,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">housing form</label>
             <select wire:model.defer="state.shelter_shape_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">housing form</option>
                 @foreach ($shelterShapes as $shelterShape)
                     <option value="{{ $shelterShape->id }}">{{ $shelterShape->name }}</option>
                 @endforeach
@@ -119,7 +114,6 @@
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">Housing method</label>
             <select wire:model.defer="state.shelter_way_id" required="required" class="form-control form-control-lg ">
-                <option disabled value="">Housing method</option>
                 @foreach ($shelterWays as $shelterWay)
                     <option value="{{ $shelterWay->id }}">{{ $shelterWay->name }}</option>
                 @endforeach
