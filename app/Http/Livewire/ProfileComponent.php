@@ -62,7 +62,7 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Profile extends Component
+class ProfileComponent extends Component
 {
     use WithFileUploads;
 
@@ -278,7 +278,7 @@ class Profile extends Component
 
     public function render(): View
     {
-        return view('livewire.profile');
+        return view('livewire.profile-component');
     }
 
     public function updatedSelectedCountry(int $country): void

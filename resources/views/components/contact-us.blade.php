@@ -9,14 +9,7 @@
                     <h3>Send message</h3>
                 </div>
                 <div class="card-body">
-
-                    <form action="">
-                        <input type="text" class="form-control form-lg mb-2" placeholder="Name">
-                        <input type="email" class="form-control form-lg mb-2" placeholder="Email">
-                        <textarea placeholder="Message here..." class="form-control" name="" id="" cols="30"
-                            rows="5"></textarea>
-                        <button class="btn btn-dark btn-block mt-3">Send</button>
-                    </form>
+                    @livewire('contact-us-component')
                 </div>
             </div>
         </div>
