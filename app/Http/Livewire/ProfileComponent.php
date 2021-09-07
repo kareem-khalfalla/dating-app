@@ -440,7 +440,7 @@ class ProfileComponent extends Component
     {
         $count = 0;
 
-        foreach ($this->state as $key => $element) {
+        foreach ($this->state as $element) {
             if ($element == null) {
                 $count++;
             }
