@@ -31,7 +31,6 @@ class MessageRequestNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        dd($this->user->profile->image->url);
         return ['mail', 'database'];
     }
 
