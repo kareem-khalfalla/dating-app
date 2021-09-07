@@ -1,20 +1,20 @@
 <div id="Education_and_work" class="col-lg-11 m-auto pb-4" wire:ignore.self>
-    <h3 class="color_h">Change EducationStatus and work</h3>
+    <h3 class="color_h">{{ __('profiles.Change EducationStatus and work') }}</h3>
     <form wire:submit.prevent="updateInfo" id="captcha_form" method="post" action="#">
         <br>
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">EducationStatus</label>
+            <label class="col-12">{{ __('profiles.EducationStatus') }}</label>
             <select wire:model.defer="state.education_status_id" required="required" class="form-control form-control-lg ">
-                <option value="">EducationStatus</option>
+                <option value="">{{ __('profiles.EducationStatus') }}</option>
                 @foreach ($educationStatuses as $educationStatus)
                     <option value="{{ $educationStatus->id }}">{{ $educationStatus->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">
-            <label class="col-12">competence</label>
+            <label class="col-12">{{ __('profiles.competence') }}</label>
             <textarea wire:model.defer="state.competence" class="form-control @error('competence') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3" placeholder="competence" maxlength="200"></textarea>
+                id="exampleFormControlTextarea1" rows="3" placeholder="{{ __('profiles.competence') }}" maxlength="200"></textarea>
             @error('competence')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -22,7 +22,7 @@
             @enderror
         </div>
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">the work</label>
+            <label class="col-12">{{ __('profiles.the work') }}</label>
             <select wire:model.defer="state.work_status_id" required="required" class="form-control form-control-lg ">
                 @foreach ($workStatuses as $workStatus)
                     <option value="{{ $workStatus->id }}">{{ $workStatus->name }}</option>
@@ -30,7 +30,7 @@
             </select>
         </div>
         <div class="input-group input-group-lg mb-3">
-            <label class="col-12">Monthly income</label>
+            <label class="col-12">{{ __('profiles.Monthly income') }}</label>
             <input wire:model.defer="state.income" placeholder="Monthly income" type="number"
                 class="form-control @error('income') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
@@ -43,7 +43,7 @@
 
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">Do you accept the wife's work?</label>
+                <label class="col-12">{{ __('profiles.Do you accept the wife\'s work?') }}</label>
                 <select wire:model.defer="state.accept_wife_work_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($acceptWifeWorkStatuses as $acceptence)
@@ -53,7 +53,7 @@
             </div>
 
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">Do you accept studying the wife after marriageStatus?</label>
+                <label class="col-12">{{ __('profiles.Do you accept studying the wife after marriageStatus?') }}</label>
                 <select wire:model.defer="state.accept_wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
@@ -66,7 +66,7 @@
 
         @if ($state['gender'] == 'female')
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">You want the work?</label>
+                <label class="col-12">{{ __('profiles.You want the work?') }}</label>
                 <select wire:model.defer="state.wife_work_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($wifeWorkStatuses as $wifeWorkStatus)
@@ -76,7 +76,7 @@
             </div>
 
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">Do you want to study after marriageStatus?</label>
+                <label class="col-12">{{ __('profiles.Do you want to study after marriageStatus?') }}</label>
                 <select wire:model.defer="state.wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($wifeStudyStatuses as $wifeStudyStatus)
@@ -88,7 +88,7 @@
         @endif
 
         <div class="mt-4">
-            <input type="submit" class="btn btn_form_settings btn-block p-2" value="submit">
+            <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('profiles.save') }}">
         </div>
 
     </form>

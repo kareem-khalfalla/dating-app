@@ -1,11 +1,11 @@
 <div id="Social_status" class="col-lg-11 m-auto pb-4" wire:ignore.self>
-    <h3 class="color_h">Change Social status</h3>
+    <h3 class="color_h">{{ __('profiles.Change Social status') }}</h3>
 
     <form wire:submit.prevent="updateInfo" id="captcha_form" method="post" action="#">
         <br>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label for="" class="col-12">Marital Status</label>
+            <label for="" class="col-12">{{ __('profiles.Marital Status') }}</label>
             <select wire:model.defer="state.marital_status_id" required="required" class="form-control form-control-lg ">
                 @foreach ($maritalStatuses as $maritalStatus)
                     <option value="{{ $maritalStatus->id }}">{{ $maritalStatus->name }}</option>
@@ -14,10 +14,10 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-12">Determine the reason for the divorce, if any</label>
+            <label for="" class="col-12">{{ __('profiles.Determine the reason for the divorce, if any') }}</label>
             <textarea wire:model.defer="state.divorced_reason"
                 class="form-control @error('divorced_reason') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" placeholder="Determine the reason for the divorce, if any" maxlength="200"></textarea>
+                rows="3" placeholder="{{ __('profiles.Determine the reason for the divorce, if any') }}" maxlength="200"></textarea>
             @error('divorced_reason')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label for="" class="col-12">Do you have children?</label>
+            <label for="" class="col-12">{{ __('profiles.Do you have children?') }}</label>
             <select wire:model.defer="state.children_status_id" required="required"
                 class="form-control form-control-lg ">
                 @foreach ($childrenStatuses as $childStatus)
@@ -36,8 +36,8 @@
         </div>
 
         <div class="input-group input-group-lg mb-3">
-            <label for="" class="col-12">number of children</label>
-            <input wire:model.defer="state.children_count" placeholder="number of children" min="0" max="9" type="number"
+            <label for="" class="col-12">{{ __('profiles.number of children') }}</label>
+            <input wire:model.defer="state.children_count" placeholder="{{ __('profiles.number of children') }}" min="0" max="9" type="number"
                 class="form-control @error('children_count') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('children_count')
@@ -48,10 +48,10 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-12">Information about children</label>
+            <label for="" class="col-12">{{ __('profiles.Information about children') }}</label>
             <textarea wire:model.defer="state.children_information"
                 class="form-control @error('children_information') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" placeholder="Information about children" maxlength="200"></textarea>
+                rows="3" placeholder="{{ __('profiles.Information about children') }}" maxlength="200"></textarea>
             @error('children_information')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -61,7 +61,7 @@
 
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
-                <label for="" class="col-12">Do you want multiplicity?</label>
+                <label for="" class="col-12">{{ __('profiles.Do you want multiplicity?') }}</label>
                 <select wire:model.defer="state.polygamy_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($polygamyStatuses as $polygamyStatus)
@@ -73,7 +73,7 @@
 
         @if ($state['gender'] == 'female')
             <div class="input-group input-group-lg mb-3 ">
-                <label for="" class="col-12">Do you accept polygamy?</label>
+                <label for="" class="col-12">{{ __('profiles.Do you accept polygamy?') }}</label>
                 <select wire:model.defer="state.wife_polygamy_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($wifePolygamyStatuses as $wifePolygamyStatus)
@@ -84,7 +84,7 @@
         @endif
 
         <div class="input-group input-group-lg mb-3 ">
-            <label for="" class="col-12">desire to have children</label>
+            <label for="" class="col-12">{{ __('profiles.desire to have children') }}</label>
             <select wire:model.defer="state.children_desire_status_id" required="required"
                 class="form-control form-control-lg ">
                 @foreach ($childrenDesireStatuses as $childrenDesireStatus)
@@ -94,7 +94,7 @@
         </div>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label for="" class="col-12">Current type of housing</label>
+            <label for="" class="col-12">{{ __('profiles.Current type of housing') }}</label>
             <select wire:model.defer="state.shelter_type_id" required="required" class="form-control form-control-lg ">
                 @foreach ($shelterTypes as $shelterType)
                     <option value="{{ $shelterType->id }}">{{ $shelterType->name }}</option>
@@ -103,7 +103,7 @@
         </div>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label for="" class="col-12">housing form</label>
+            <label for="" class="col-12">{{ __('profiles.housing form') }}</label>
             <select wire:model.defer="state.shelter_shape_id" required="required" class="form-control form-control-lg ">
                 @foreach ($shelterShapes as $shelterShape)
                     <option value="{{ $shelterShape->id }}">{{ $shelterShape->name }}</option>
@@ -112,7 +112,7 @@
         </div>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label for="" class="col-12">Housing method</label>
+            <label for="" class="col-12">{{ __('profiles.Housing method') }}</label>
             <select wire:model.defer="state.shelter_way_id" required="required" class="form-control form-control-lg ">
                 @foreach ($shelterWays as $shelterWay)
                     <option value="{{ $shelterWay->id }}">{{ $shelterWay->name }}</option>
@@ -121,7 +121,7 @@
         </div>
 
         <div class="mt-4">
-            <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2" value="submit">
+            <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('profiles.save') }}">
         </div>
     </form>
 </div>
