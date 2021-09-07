@@ -11,8 +11,8 @@
                 </div>
                 <div class="box_info_1 col-11 col-md-7 col-lg-9 m-auto">
                     <p class="lead username"><strong>{{ $user->name ?? 'N/A' }}</strong><br></p>
-                    <a href="friends.html">
-                        <button class="btn btn-outline-primary"> <i class="fa fa-users"></i> my Freinds</button>
+                    <a href="{{ route('messageRequest', $user) }}">
+                        <button class="btn btn-outline-primary"> <i class="fa fa-message"></i>message request</button>
                     </a>
                 </div>
                 <div class="card card-body col-12">

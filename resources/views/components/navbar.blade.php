@@ -16,7 +16,7 @@
                                 class="fas fa-lg fa-user p-1"></i>profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('messageRequest', Auth::user()->username) }}"><i
+                        <a class="nav-link hover-bar" href="{{ route('users.notifications', Auth::user()->username) }}"><i
                                 class="fas fa-lg fa-user-plus p-1"></i>requests</a>
                     </li>
 

@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class MessageRequestNotification extends Notification implements ShouldQueue
 {
@@ -30,6 +31,7 @@ class MessageRequestNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
+        dd($this->user->profile->image->url);
         return ['mail', 'database'];
     }
 
@@ -43,7 +45,7 @@ class MessageRequestNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->line("New messages request from {$this->user->name}")
-            ->action('View user profile', url(env('APP_URL') . '/' . $this->user->username))
+            ->action('View user profile', url(env('APP_URL') . '/' . Auth::user()->username))
             ->line('Thank you for using our application!');
     }
 
@@ -51,6 +53,7 @@ class MessageRequestNotification extends Notification implements ShouldQueue
     {
         return [
             'name' => $this->user->name,
+            'image' => $this->user->profile->image->url,
         ];
     }
 

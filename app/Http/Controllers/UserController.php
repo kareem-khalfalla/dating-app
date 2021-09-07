@@ -64,8 +64,6 @@ class UserController extends Controller
 
     public function filter(): View
     {
-        return view('results', [
-            'users' => User::filterByName()->get(),
-        ]);
+        return view('pages.results');
     }
 }

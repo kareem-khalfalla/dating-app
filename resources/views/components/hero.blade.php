@@ -20,9 +20,8 @@
 
             @auth
                 <div class="col-12 col-md-5 col-lg-4 pb-3">
-                    <a href="{{ route('profile', auth()->user()->username) }}"><button class="btn btn-block btn_login"><i
-                                class="fas fa-user"></i>
-                            {{ auth()->user()->name }}</button></a>
+                    <a href="{{ route('users.filter') }}"><button class="btn btn-block btn_login"><i
+                                class="fas fa-search"></i>search</button></a>
                 </div>
             @endauth
 

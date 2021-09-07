@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -53,10 +54,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Profile::class);
     }
 
-    public function scopeFilterByName(Builder $builder): Builder
+    public static function search(string $search): Builder
     {
-        $query = request('query');
-        return $builder->where('name', 'like', "%$query%");
+        return empty($search)
+            ? static::query()
+            : static::query()
+            ->where('id', 'like', "%$search%")
+            ->orWhere('name', 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%");
     }
 
     public function getRouteKeyName(): string

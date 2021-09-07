@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'admin',
-            'email' => 'admin2@mm.com',
-            'username' => 'admin2',
-            'phone' => '3-1222-333',
+            'email' => 'admin@mm.com',
+            'username' => 'superadmin',
+            'phone' => '123-123-1234',
             'password' => bcrypt('secret'),
             'gender' => 'male',
         ]);
@@ -49,9 +49,9 @@ class UserSeeder extends Seeder
         $adminUserProfile->postal_code = '123-45';
         $adminUserProfile->progress_bar = '99.99';
 
-        $adminUserProfile->shelter_type_id = rand(1, 4);
+        $adminUserProfile->shelter_type_id = rand(1, 2);
         $adminUserProfile->shelter_shape_id = rand(1, 4);
-        $adminUserProfile->shelter_way_id = rand(1, 4);
+        $adminUserProfile->shelter_way_id = rand(1, 3);
 
         $adminUserProfile->smoke_status_id = rand(1, 4);
         $adminUserProfile->alcohol_status_id = rand(1, 4);

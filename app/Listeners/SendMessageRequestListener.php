@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Notifications\MessageRequestNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Auth;
 
 class SendMessageRequestListener
 {
@@ -30,6 +29,6 @@ class SendMessageRequestListener
     {
         /** @var \App\Models\User $user */
         $user = $event->user;
-        $user->notify(new MessageRequestNotification(Auth::user()));
+        $user->notify(new MessageRequestNotification($user));
     }
 }

@@ -19,7 +19,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}</td>
+                                    <td>{{ Carbon\Carbon::parse($user->profile->dob)->age ?? 'N/A' }}</td>
                                     <td>{{ $user->profile->nationality->name ?? 'N/A' }}</td>
                                 </tr>
                             </tbody>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-6 col-md-7">
                             <p><b>name : </b> {{ $users[0]->name }}</p>
-                            <p><b>Age : </b> {{ $users[0]->profile->dob ?? 'N/A' }}</p>
+                            <p><b>Age : </b> {{ Carbon\Carbon::parse($users[0]->profile->dob)->age ?? 'N/A' }}</p>
                             <p><b>From : </b> {{ $users[0]->profile->hometown->name ?? 'N/A' }}</p>
                             <p><b>Stay in : </b> {{ $users[0]->profile->countryOfResidence->name ?? 'N/A' }}</p>
                         </div>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-6 col-md-7">
                             <p><b>name : </b> {{ $users[1]->name }}</p>
-                            <p><b>Age : </b> {{ $users[1]->profile->dob ?? 'N/A' }}</p>
+                            <p><b>Age : </b> {{ Carbon\Carbon::parse($users[1]->profile->dob)->age ?? 'N/A' }}</p>
                             <p><b>From : </b> {{ $users[1]->profile->hometown->name ?? 'N/A' }}</p>
                             <p><b>Stay in : </b> {{ $users[1]->profile->countryOfResidence->name ?? 'N/A' }}</p>
                         </div>

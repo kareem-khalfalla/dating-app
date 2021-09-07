@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageRequestEvent;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
 {
@@ -19,5 +21,12 @@ class ProfileController extends Controller
         return view('pages.profiles.edit', [
             'user' => $user,
         ]);
+    }
+
+    public function messageRequest(User $user): RedirectResponse
+    {
+        event(new MessageRequestEvent($user));
+
+        return back();
     }
 }
