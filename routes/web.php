@@ -6,20 +6,14 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
 
-// Route::get('search', function () {
-    //     return view('search');
-    // })->name('search');
-    
-    
-    
-    Route::group(
+Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
         Route::get('results', [UserController::class, 'filter'])->name('users.filter');
         Route::get('settings', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
