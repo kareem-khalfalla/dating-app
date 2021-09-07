@@ -443,7 +443,6 @@ class ProfileComponent extends Component
         foreach ($this->state as $key => $element) {
             if ($element == null) {
                 $count++;
-                dump($key);
             }
         }
 
