@@ -16,8 +16,6 @@ class CreateChildrenStatusesTable extends Migration
         Schema::create('children_statuses', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->unsignedTinyInteger('count')->default(0);
-            $table->text('information')->nullable();
             $table->timestamps();
         });
     }

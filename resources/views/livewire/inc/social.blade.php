@@ -37,10 +37,10 @@
 
         <div class="input-group input-group-lg mb-3">
             <label for="" class="col-12">number of children</label>
-            <input wire:model.defer="state.childrenCount" placeholder="number of children" min="0" max="9" type="number"
-                class="form-control @error('childrenCount') is-invalid @enderror" aria-label="Large"
+            <input wire:model.defer="state.children_count" placeholder="number of children" min="0" max="9" type="number"
+                class="form-control @error('children_count') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
-            @error('childrenCount')
+            @error('children_count')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
                 </div>
@@ -48,11 +48,11 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-12">Marital Status</label>
-            <textarea wire:model.defer="state.childrenInformation"
-                class="form-control @error('childrenInformation') is-invalid @enderror" id="exampleFormControlTextarea1"
+            <label for="" class="col-12">Information about children</label>
+            <textarea wire:model.defer="state.children_information"
+                class="form-control @error('children_information') is-invalid @enderror" id="exampleFormControlTextarea1"
                 rows="3" placeholder="Information about children" maxlength="200"></textarea>
-            @error('childrenInformation')
+            @error('children_information')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
                 </div>

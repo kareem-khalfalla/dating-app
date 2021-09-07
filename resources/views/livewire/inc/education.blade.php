@@ -1,13 +1,13 @@
 <div id="Education_and_work" class="col-lg-11 m-auto pb-4" wire:ignore.self>
-    <h3 class="color_h">Change Education and work</h3>
+    <h3 class="color_h">Change EducationStatus and work</h3>
     <form wire:submit.prevent="updateInfo" id="captcha_form" method="post" action="#">
         <br>
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">Education</label>
-            <select wire:model.defer="state.education_id" required="required" class="form-control form-control-lg ">
-                <option value="">Education</option>
-                @foreach ($educations as $education)
-                    <option value="{{ $education->id }}">{{ $education->name }}</option>
+            <label class="col-12">EducationStatus</label>
+            <select wire:model.defer="state.education_status_id" required="required" class="form-control form-control-lg ">
+                <option value="">EducationStatus</option>
+                @foreach ($educationStatuses as $educationStatus)
+                    <option value="{{ $educationStatus->id }}">{{ $educationStatus->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">Do you accept studying the wife after marriage?</label>
+                <label class="col-12">Do you accept studying the wife after marriageStatus?</label>
                 <select wire:model.defer="state.accept_wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
@@ -76,7 +76,7 @@
             </div>
 
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">Do you want to study after marriage?</label>
+                <label class="col-12">Do you want to study after marriageStatus?</label>
                 <select wire:model.defer="state.wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($wifeStudyStatuses as $wifeStudyStatus)

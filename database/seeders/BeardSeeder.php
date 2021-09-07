@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Beard;
+use App\Models\BeardStatus;
 use Illuminate\Database\Seeder;
 
 class BeardSeeder extends Seeder
@@ -14,15 +14,15 @@ class BeardSeeder extends Seeder
      */
     public function run()
     {
-        $beards = [
+        $beardStatuses = [
             ['name' => ['en' => 'No', 'ar' => 'ﻻ', 'de' => 'Nein']],
             ['name' => ['en' => 'light', 'ar' => 'خفيفة', 'de' => 'hell']],
             ['name' => ['en' => 'heav', 'ar' => 'كثيفة', 'de' => 'schwer']],
             ['name' => ['en' => 'lon', 'ar' => 'طويلة', 'de' => 'lang']],
         ];
 
-        foreach ($beards as $beard) {
-            Beard::create($beard);
+        foreach ($beardStatuses as $beardStatus) {
+            BeardStatus::create($beardStatus);
         }
     }
 }

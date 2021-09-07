@@ -29,7 +29,7 @@
             @enderror
         </div>
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">Country of Residency</label>
+            <label class="col-12">Country of ResidencyStatus</label>
             <select wire:model.defer="state.country_of_residence_id" required="required"
                 class="form-control form-control-lg @error('country_of_residence_id') is-invalid @enderror">
                 @foreach ($countries as $country)
@@ -87,17 +87,17 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Type of accommodation</label>
-            <select wire:model.defer="state.residency_id" class="form-control form-control-lg ">
-                @foreach ($residencies as $residency)
-                    <option value="{{ $residency->id }}">{{ $residency->name }}</option>
+            <select wire:model.defer="state.residency_status_id" class="form-control form-control-lg ">
+                @foreach ($residencyStatuses as $residencyStatus)
+                    <option value="{{ $residencyStatus->id }}">{{ $residencyStatus->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Moving to another place</label>
-            <select wire:model.defer="state.relocate_id" class="form-control form-control-lg ">
-                @foreach ($relocations as $relocate)
-                    <option value="{{ $relocate->id }}">{{ $relocate->name }}</option>
+            <select wire:model.defer="state.relocate_status_id" class="form-control form-control-lg ">
+                @foreach ($relocations as $relocateStatus)
+                    <option value="{{ $relocateStatus->id }}">{{ $relocateStatus->name }}</option>
                 @endforeach
             </select>
         </div>

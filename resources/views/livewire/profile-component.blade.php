@@ -17,7 +17,7 @@
                     <option value="change_main_information">change main information</option>
                     <option value="Detailed_information">Detailed information</option>
                     <option value="Personal_profile">Personal profile</option>
-                    <option value="Education_and_work">Education and work</option>
+                    <option value="Education_and_work">EducationStatus and work</option>
                     <option value="Social_status">Social status</option>
                     <option value="Religious_status">Religious status</option>
                     <option value="the_shape">the shape</option>

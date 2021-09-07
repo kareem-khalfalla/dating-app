@@ -6,18 +6,18 @@
 
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">smoking</label>
-            <select wire:model.defer="state.smoke_id" required="required" class="form-control form-control-lg ">
-                @foreach ($smokes as $smoke)
-                    <option value="{{ $smoke->id }}">{{ $smoke->name }}</option>
+            <select wire:model.defer="state.smoke_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($smokeStatuses as $smokeStatus)
+                    <option value="{{ $smokeStatus->id }}">{{ $smokeStatus->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">Alcohol</label>
-            <select wire:model.defer="state.alcohol_id" required="required" class="form-control form-control-lg ">
-                @foreach ($alcohols as $alcohol)
-                    <option value="{{ $alcohol->id }}">{{ $alcohol->name }}</option>
+            <select wire:model.defer="state.alcohol_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($alcoholStatuses as $alcoholStatus)
+                    <option value="{{ $alcoholStatus->id }}">{{ $alcoholStatus->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -25,17 +25,17 @@
 
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">halal food</label>
-            <select wire:model.defer="state.halal_food_id" required="required" class="form-control form-control-lg ">
-                @foreach ($halalFoods as $halalFood)
-                    <option value="{{ $halalFood->id }}">{{ $halalFood->name }}</option>
+            <select wire:model.defer="state.halal_food_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($halalFoodStatuses as $halalFoodStatuses)
+                    <option value="{{ $halalFoodStatuses->id }}">{{ $halalFoodStatuses->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">food style</label>
-            <select wire:model.defer="state.food_id" required="required" class="form-control form-control-lg ">
-                @foreach ($foods as $food)
+            <select wire:model.defer="state.food_type_id" required="required" class="form-control form-control-lg ">
+                @foreach ($food_types as $food)
                     <option value="{{ $food->id }}">{{ $food->name }}</option>
                 @endforeach
             </select>

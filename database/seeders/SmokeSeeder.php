@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Smoke;
+use App\Models\SmokeStatus;
 use Illuminate\Database\Seeder;
 
 class SmokeSeeder extends Seeder
@@ -14,7 +14,7 @@ class SmokeSeeder extends Seeder
      */
     public function run()
     {
-        $smokes = [
+        $smokeStatuses = [
             ['name' => ['en' => 'Yes', 'ar' => 'نعم', 'de' => 'Jawohl']],
             ['name' => ['en' => 'No', 'ar' => 'ﻵ', 'de' => 'Nein']],
             ['name' => ['en' => 'No, I don\'t like it', 'ar' => 'ﻵ وﻻ اطيفه', 'de' => 'nein und ich mag es nicht']],
@@ -22,8 +22,8 @@ class SmokeSeeder extends Seeder
             ['name' => ['en' => 'Shisha', 'ar' => 'شيشة فقط', 'de' => 'Shisha']],
         ];
 
-        foreach ($smokes as $smoke) {
-            Smoke::create($smoke);
+        foreach ($smokeStatuses as $smokeStatus) {
+            SmokeStatus::create($smokeStatus);
         }
     }
 }

@@ -33,10 +33,10 @@
             </select>
         </div>
         <div class="form-group mb-3 col-md-6">
-            <label for="exampleInputEmail1"> skin colour</label>
-            <select wire:model.defer="state.skin_id" required="required" class="form-control form-control-lg ">
-                @foreach ($skins as $skin)
-                    <option value="{{ $skin->id }}">{{ $skin->name }}</option>
+            <label for="exampleInputEmail1"> skinStatus colour</label>
+            <select wire:model.defer="state.skin_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($skins as $skinStatus)
+                    <option value="{{ $skinStatus->id }}">{{ $skinStatus->name }}</option>
                 @endforeach
             </select>
         </div>

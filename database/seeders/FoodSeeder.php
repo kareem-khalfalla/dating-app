@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Food;
+use App\Models\FoodType;
 use Illuminate\Database\Seeder;
 
 class FoodSeeder extends Seeder
@@ -14,7 +14,7 @@ class FoodSeeder extends Seeder
      */
     public function run()
     {
-        $foods = [
+        $food_types = [
             ['name' => ['en' => 'Arabic', 'ar' => 'عربي', 'de' => 'Arabisch']],
             ['name' => ['en' => 'Western', 'ar' => 'غربي', 'de' => 'Western']],
             ['name' => ['en' => 'Asian', 'ar' => 'اسيوي', 'de' => 'asiatisch']],
@@ -22,8 +22,8 @@ class FoodSeeder extends Seeder
             ['name' => ['en' => 'Hearty meals', 'ar' => 'وجبات دسمه', 'de' => 'deftige Mahlzeiten']],
         ];
 
-        foreach ($foods as $food) {
-            Food::create($food);
+        foreach ($food_types as $food) {
+            FoodType::create($food);
         }
     }
 }

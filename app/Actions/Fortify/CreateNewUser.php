@@ -55,14 +55,9 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        
-        $user->profile()->create();
-        $user->profile->shelter()->create();
-        $user->profile->detail()->create();
-        $user->profile->lifeStyle()->create();
-        $user->profile->socialStatus()->create();
-        $user->profile->religionStatus()->create();
 
+        $user->profile()->create();
+        
         return $user;
     }
 }

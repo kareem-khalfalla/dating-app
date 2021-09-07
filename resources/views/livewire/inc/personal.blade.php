@@ -25,17 +25,17 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">The required relationship</label>
-            <select wire:model.defer="state.relationship_id" required="required" class="form-control form-control-lg ">
+            <select wire:model.defer="state.relationship_status_id" required="required" class="form-control form-control-lg ">
                 @foreach ($relationships as $relationship)
                     <option value="{{ $relationship->id }}">{{ $relationship->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">Desired method of marriage</label>
-            <select wire:model.defer="state.marriage_id" required="required" class="form-control form-control-lg ">
-                @foreach ($marriages as $marriage)
-                    <option value="{{ $marriage->id }}">{{ $marriage->name }}</option>
+            <label class="col-12">Desired method of marriageStatus</label>
+            <select wire:model.defer="state.marriage_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($marriageStatuses as $marriageStatus)
+                    <option value="{{ $marriageStatus->id }}">{{ $marriageStatus->name }}</option>
                 @endforeach
             </select>
         </div>

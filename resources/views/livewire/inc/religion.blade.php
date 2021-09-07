@@ -77,36 +77,36 @@
 
         {{-- <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Reading the Qoran</label>
-            <select wire:model.defer="state.veil_id" required="required" class="form-control form-control-lg ">
-                                @foreach ($veils as $veil)
-                    <option value="{{ $veil->id }}">{{ $veil->name }}</option>
+            <select wire:model.defer="state.veil_status_id" required="required" class="form-control form-control-lg ">
+                                @foreach ($veilStatuses as $veilStatus)
+                    <option value="{{ $veilStatus->id }}">{{ $veilStatus->name }}</option>
                 @endforeach
             </select>
         </div> --}}
 
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">Niqab</label>
-            <select wire:model.defer="state.robe_id" required="required" class="form-control form-control-lg ">
-                @foreach ($robes as $robe)
+            <select wire:model.defer="state.robe_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($robeStatuses as $robe)
                     <option value="{{ $robe->id }}">{{ $robe->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">Beard</label>
-            <select wire:model.defer="state.beard_id" required="required" class="form-control form-control-lg ">
-                @foreach ($beards as $beard)
-                    <option value="{{ $beard->id }}">{{ $beard->name }}</option>
+            <label class="col-12">BeardStatus</label>
+            <select wire:model.defer="state.beard_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($beardStatuses as $beardStatus)
+                    <option value="{{ $beardStatus->id }}">{{ $beardStatus->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">Tafaqah in religion</label>
-            <select wire:model.defer="state.tafaqah_id" required="required" class="form-control form-control-lg ">
-                @foreach ($tafaqahs as $tafaqah)
-                    <option value="{{ $tafaqah->id }}">{{ $tafaqah->name }}</option>
+            <label class="col-12">TafaqahStatus in religion</label>
+            <select wire:model.defer="state.tafaqah_status_id" required="required" class="form-control form-control-lg ">
+                @foreach ($tafaqahStatuses as $tafaqahStatus)
+                    <option value="{{ $tafaqahStatus->id }}">{{ $tafaqahStatus->name }}</option>
                 @endforeach
             </select>
         </div>

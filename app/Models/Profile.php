@@ -30,9 +30,9 @@ class Profile extends Model
         return $this->belongsTo(State::class);
     }
 
-    public function residency(): BelongsTo
+    public function residencyStatus(): BelongsTo
     {
-        return $this->belongsTo(Residency::class);
+        return $this->belongsTo(ResidencyStatus::class);
     }
 
     public function hometown(): BelongsTo
@@ -45,14 +45,14 @@ class Profile extends Model
         return $this->belongsTo(CountryOfResidence::class);
     }
 
-    public function relocate(): BelongsTo
+    public function relocateStatus(): BelongsTo
     {
-        return $this->belongsTo(Relocate::class);
+        return $this->belongsTo(RelocateStatus::class);
     }
 
-    public function relationship(): BelongsTo
+    public function relationshipStatus(): BelongsTo
     {
-        return $this->belongsTo(Relationship::class);
+        return $this->belongsTo(RelationshipStatus::class);
     }
 
     public function shelter(): HasOne
@@ -60,9 +60,9 @@ class Profile extends Model
         return $this->hasOne(Shelter::class);
     }
 
-    public function marriage(): BelongsTo
+    public function marriageStatus(): BelongsTo
     {
-        return $this->belongsTo(Marriage::class);
+        return $this->belongsTo(MarriageStatus::class);
     }
 
     public function workStatus(): BelongsTo
@@ -110,18 +110,197 @@ class Profile extends Model
         return $this->belongsTo(AcceptWifeStudyStatus::class);
     }
 
-    public function education(): BelongsTo
+    public function educationStatus(): BelongsTo
     {
-        return $this->belongsTo(Education::class);
-    }
-
-    public function getDobAttribute($attr): int|string
-    {
-        return Carbon::parse($attr)->age == 0 ? 'N/A' : Carbon::parse($attr)->age;
+        return $this->belongsTo(EducationStatus::class);
     }
 
     public function languages(): BelongsToMany
     {
         return $this->belongsToMany(Language::class);
+    }
+
+    public function smokeStatus(): BelongsTo
+    {
+        return $this->belongsTo(SmokeStatus::class);
+    }
+
+    public function alcoholStatus(): BelongsTo
+    {
+        return $this->belongsTo(AlcoholStatus::class);
+    }
+
+    public function halalFoodStatus(): BelongsTo
+    {
+        return $this->belongsTo(HalalFoodStatus::class);
+    }
+
+    public function foodType(): BelongsTo
+    {
+        return $this->belongsTo(FoodType::class);
+    }
+
+    public function hobbies(): BelongsToMany
+    {
+        return $this->belongsToMany(Hobby::class);
+    }
+
+    public function body(): BelongsTo
+    {
+        return $this->belongsTo(Body::class);
+    }
+
+    public function skinStatus(): BelongsTo
+    {
+        return $this->belongsTo(SkinStatus::class);
+    }
+
+    public function hairColor(): BelongsTo
+    {
+        return $this->belongsTo(HairColor::class);
+    }
+
+    public function hairLength(): BelongsTo
+    {
+        return $this->belongsTo(HairLength::class);
+    }
+
+    public function hairKind(): BelongsTo
+    {
+        return $this->belongsTo(HairKind::class);
+    }
+
+    public function eyeColor(): BelongsTo
+    {
+        return $this->belongsTo(EyeColor::class);
+    }
+
+    public function eyeGlass(): BelongsTo
+    {
+        return $this->belongsTo(EyeGlass::class);
+    }
+
+    public function health(): BelongsTo
+    {
+        return $this->belongsTo(Health::class);
+    }
+
+    public function psychologicalPattern(): BelongsTo
+    {
+        return $this->belongsTo(PsychologicalPattern::class);
+    }
+    public function religion(): BelongsTo
+    {
+        return $this->belongsTo(Religion::class);
+    }
+
+    public function method(): BelongsTo
+    {
+        return $this->belongsTo(Method::class);
+    }
+
+    public function obligation(): BelongsTo
+    {
+        return $this->belongsTo(Obligation::class);
+    }
+
+    public function prayer(): BelongsTo
+    {
+        return $this->belongsTo(Prayer::class);
+    }
+
+    public function alfajrPrayer(): BelongsTo
+    {
+        return $this->belongsTo(AlfajrPrayer::class);
+    }
+
+    public function headdress(): BelongsTo
+    {
+        return $this->belongsTo(Headdress::class);
+    }
+
+    public function fasting(): BelongsTo
+    {
+        return $this->belongsTo(Fasting::class);
+    }
+
+    public function readingQuran(): BelongsTo
+    {
+        return $this->belongsTo(ReadingQuran::class);
+    }
+
+    public function robeStatus(): BelongsTo
+    {
+        return $this->belongsTo(RobeStatus::class);
+    }
+
+    public function veilStatus(): BelongsTo
+    {
+        return $this->belongsTo(VeilStatus::class);
+    }
+
+    public function showStatus(): BelongsTo
+    {
+        return $this->belongsTo(ShowStatus::class);
+    }
+
+    public function overdress(): BelongsTo
+    {
+        return $this->belongsTo(Overdress::class);
+    }
+
+    public function beardStatus(): BelongsTo
+    {
+        return $this->belongsTo(BeardStatus::class);
+    }
+
+    public function tafaqahStatus(): BelongsTo
+    {
+        return $this->belongsTo(TafaqahStatus::class);
+    }
+
+    public function musicStatus(): BelongsTo
+    {
+        return $this->belongsTo(MusicStatus::class);
+    }
+
+    public function friendStatus(): BelongsTo
+    {
+        return $this->belongsTo(FriendStatus::class);
+    }
+
+    public function shelterType(): BelongsTo
+    {
+        return $this->belongsTo(ShelterType::class);
+    }
+
+    public function shelterShape(): BelongsTo
+    {
+        return $this->belongsTo(ShelterShape::class);
+    }
+
+    public function shelterWay(): BelongsTo
+    {
+        return $this->belongsTo(ShelterWay::class);
+    }
+
+    public function maritalStatus(): BelongsTo
+    {
+        return $this->belongsTo(MaritalStatus::class);
+    }
+
+    public function polygamyStatus(): BelongsTo
+    {
+        return $this->belongsTo(PolygamyStatus::class);
+    }
+
+    public function childrenStatus(): BelongsTo
+    {
+        return $this->belongsTo(ChildrenStatus::class);
+    }
+
+    public function childrenDesireStatus(): BelongsTo
+    {
+        return $this->belongsTo(ChildrenDesireStatus::class);
     }
 }

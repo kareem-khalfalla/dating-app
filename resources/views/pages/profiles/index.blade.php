@@ -19,26 +19,35 @@
                     <h4>brief about me</h4>
                     <p class="lead">{{ $user->profile->bio ?? 'N/A' }}</p>
                 </div>
-
-                <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger'}} alert-dismissible fade show col-12" role="alert">
-                    Your personal information is incomplete, you must complete it in order to enjoy all the features.
-                    <strong> <a href="{{ route('profile.edit') }}"> Go to the settings page from here </a></strong>
+                <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
+                    role="alert">
+                    @if ($user->profile->progress_bar == 100)
+                        Your personal information is complete
+                    @else
+                        Your personal information is incomplete, you must complete it in order to enjoy all the
+                        features.
+                        <strong> <a href="{{ route('profile.edit') }}"> Go to the settings page from here
+                            </a></strong>
+                    @endif
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="progress col-12 p-0">
-                    <div class="progress-bar progress-bar-striped bg-{{ $user->profile->progress_bar > 50 ? 'success' : 'warning'}}" role="progressbar" style="width: {{ $user->profile->progress_bar }}%;"
+                    <div class="progress-bar progress-bar-striped bg-{{ $user->profile->progress_bar > 50 ? 'success' : 'warning' }}"
+                        role="progressbar" style="width: {{ $user->profile->progress_bar }}%;"
                         aria-valuenow="{{ $user->profile->progress_bar }}" aria-valuemin="0" aria-valuemax="100">
                         {{ $user->profile->progress_bar }}</div>
                 </div>
 
                 <div class="box_info col-lg-12">
                     <p class="lead hover_padding">
-                        <strong>Email:&nbsp;</strong><span>{{ $user->email ?? 'N/A' }}</span><br></p>
+                        <strong>Email:&nbsp;</strong><span>{{ $user->email ?? 'N/A' }}</span><br>
+                    </p>
                     <p class="lead hover_padding">
-                        <strong>Phone:&nbsp;</strong><span>{{ $user->phone ?? 'N/A' }}</span><br></p>
+                        <strong>Phone:&nbsp;</strong><span>{{ $user->phone ?? 'N/A' }}</span><br>
+                    </p>
                     <p class="lead hover_padding">
                         <strong>gender:&nbsp;</strong><span>{{ $user->gender ?? 'N/A' }}</span><br>
                     </p>
@@ -47,7 +56,7 @@
                         <strong>language:&nbsp;</strong><span>{{ $user->profile->languages()->native()->first()->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Birthday:&nbsp;</strong><span>{{ $user->profile->dob ?? 'N/A' }}</span><br>
+                        <strong>Birthday:&nbsp;</strong><span>{{ $user->profile->dob }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Country of
                             Origin:&nbsp;</strong><span>{{ $user->profile->hometown_id ?? 'N/A' }}</span><br></p>
@@ -64,10 +73,10 @@
                     <p class="lead hover_padding"><strong>Postal
                             code:&nbsp;</strong><span>{{ $user->profile->postal_code ?? 'N/A' }}</span><br></p>
                     <p class="lead hover_padding"><strong>Type of
-                            accommodation:&nbsp;</strong><span>{{ $user->profile->residency->name ?? 'N/A' }}</span><br>
+                            accommodation:&nbsp;</strong><span>{{ $user->profile->residencyStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Moving to another
-                            place:&nbsp;</strong><span>{{ $user->profile->relocate->name ?? 'N/A' }}</span><br>
+                            place:&nbsp;</strong><span>{{ $user->profile->relocateStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     {{-- <p class="lead hover_padding"><strong>Native language:&nbsp;</strong><span>arabic</span><br></p> --}}
                     <p class="lead hover_padding"><strong>second
@@ -79,15 +88,15 @@
                     {{-- <p class="lead hover_padding"><strong>A profile of your desired
                             partner:&nbsp;</strong><span>male</span><br></p> --}}
                     <p class="lead hover_padding"><strong>The required
-                            relationship:&nbsp;</strong><span>{{ $user->profile->relationship->name ?? 'N/A' }}</span><br>
+                            relationship:&nbsp;</strong><span>{{ $user->profile->relationshipStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Desired method of
-                            marriage:&nbsp;</strong><span>{{ $user->profile->marriage->name ?? 'N/A' }}</span><br>
+                            marriageStatus:&nbsp;</strong><span>{{ $user->profile->marriageStatus->name ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>Change Education and work:&nbsp;</strong><span>test</span><br> --}}
+                    {{-- <p class="lead hover_padding"><strong>Change EducationStatus and work:&nbsp;</strong><span>test</span><br> --}}
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Education:&nbsp;</strong><span>{{ $user->profile->education->name ?? 'N/A' }}</span><br>
+                        <strong>EducationStatus:&nbsp;</strong><span>{{ $user->profile->educationStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>competence:&nbsp;</strong><span>{{ $user->profile->competence ?? 'N/A' }}</span><br>
@@ -101,7 +110,7 @@
                                 work?:&nbsp;</strong><span>{{ $user->profile->acceptWifeWorkStatus->name ?? 'N/A' }}</span><br>
                         </p>
                         <p class="lead hover_padding"><strong>Do you accept studying the wife after
-                                marriage?:&nbsp;</strong><span>{{ $user->profile->acceptWifeStudyStatus->name ?? 'N/A' }}</span><br>
+                                marriageStatus?:&nbsp;</strong><span>{{ $user->profile->acceptWifeStudyStatus->name ?? 'N/A' }}</span><br>
                         </p>
                     @endif
                     @if ($user->gender == 'female')
@@ -110,141 +119,141 @@
                         </p>
 
                         <p class="lead hover_padding"><strong>Do you want to study after
-                                marriage?:&nbsp;</strong><span>{{ $user->profile->wifeWorkStatus->name ?? 'N/A' }}</span><br>
+                                marriageStatus?:&nbsp;</strong><span>{{ $user->profile->wifeWorkStatus->name ?? 'N/A' }}</span><br>
                         </p>
                     @endif
                     <p class="lead hover_padding">
-                        <strong>Religious:&nbsp;</strong><span>{{ $user->profile->religionStatus->religion->name ?? 'N/A' }}</span><br>
+                        <strong>Religious:&nbsp;</strong><span>{{ $user->profile->religion->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Method:&nbsp;</strong><span>{{ $user->profile->religionStatus->method->name ?? 'N/A' }}</span><br>
+                        <strong>Method:&nbsp;</strong><span>{{ $user->profile->method->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Commitment:&nbsp;</strong><span>{{ $user->profile->religionStatus->obligation->name ?? 'N/A' }}</span><br>
+                        <strong>Commitment:&nbsp;</strong><span>{{ $user->profile->obligation->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Prayer:&nbsp;</strong><span>{{ $user->profile->religionStatus->prayer->name ?? 'N/A' }}</span><br>
+                        <strong>Prayer:&nbsp;</strong><span>{{ $user->profile->prayer->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Al-fajr
-                            prayer:&nbsp;</strong><span>{{ $user->profile->religionStatus->alfajrPrayer->name ?? 'N/A' }}</span><br>
+                            prayer:&nbsp;</strong><span>{{ $user->profile->alfajrPrayer->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>fasting:&nbsp;</strong><span>{{ $user->profile->religionStatus->fasting->name ?? 'N/A' }}</span><br>
+                        <strong>fasting:&nbsp;</strong><span>{{ $user->profile->fasting->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Reading the
-                            Qoran:&nbsp;</strong><span>{{ $user->profile->religionStatus->readingQuran->name ?? 'N/A' }}</span><br>
+                            Qoran:&nbsp;</strong><span>{{ $user->profile->readingQuran->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Headdress:&nbsp;</strong><span>{{ $user->profile->religionStatus->headdress->name ?? 'N/A' }}</span><br>
+                        <strong>Headdress:&nbsp;</strong><span>{{ $user->profile->headdress->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Jilbab:&nbsp;</strong><span>{{ $user->profile->religionStatus->robe->name ?? 'N/A' }}</span><br>
+                        <strong>Jilbab:&nbsp;</strong><span>{{ $user->profile->robeStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Niqab:&nbsp;</strong><span>{{ $user->profile->religionStatus->robe->name ?? 'N/A' }}</span><br>
+                        <strong>Niqab:&nbsp;</strong><span>{{ $user->profile->veilStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Beard:&nbsp;</strong><span>{{ $user->profile->religionStatus->beard->name ?? 'N/A' }}</span><br>
+                        <strong>BeardStatus:&nbsp;</strong><span>{{ $user->profile->beardStatus->name ?? 'N/A' }}</span><br>
                     </p>
-                    <p class="lead hover_padding"><strong>Tafaqah in
-                            religion:&nbsp;</strong><span>{{ $user->profile->religionStatus->tafaqah->name ?? 'N/A' }}</span><br>
+                    <p class="lead hover_padding"><strong>TafaqahStatus in
+                            religion:&nbsp;</strong><span>{{ $user->profile->tafaqahStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>If you listen to the lessons, who will you listen
-                            to?:&nbsp;</strong><span>{{ $user->profile->religionStatus->lesson_listing ?? 'N/A' }}</span><br>
+                            to?:&nbsp;</strong><span>{{ $user->profile->lesson_listing ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Listening to
-                            music:&nbsp;</strong><span>{{ $user->profile->religionStatus->musicStatus->name ?? 'N/A' }}</span><br>
+                            music:&nbsp;</strong><span>{{ $user->profile->musicStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Movies and
-                            series:&nbsp;</strong><span>{{ $user->profile->religionStatus->showStatus->name ?? 'N/A' }}</span><br>
+                            series:&nbsp;</strong><span>{{ $user->profile->showStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Friends of the opposite
-                            sex:&nbsp;</strong><span>{{ $user->profile->religionStatus->friendStatus->name ?? 'N/A' }}</span><br>
+                            sex:&nbsp;</strong><span>{{ $user->profile->friendStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Marital
-                            Status:&nbsp;</strong><span>{{ $user->profile->socialStatus->maritalStatus->name ?? 'N/A' }}</span><br>
+                            Status:&nbsp;</strong><span>{{ $user->profile->maritalStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Do you have
-                            children?:&nbsp;</strong><span>{{ $user->profile->socialStatus->childrenStatus->name ?? 'N/A' }}</span><br>
+                            children?:&nbsp;</strong><span>{{ $user->profile->childrenStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>number of
-                            children:&nbsp;</strong><span>{{ $user->profile->socialStatus->childrenStatus->count ?? 'N/A' }}</span><br>
+                            children:&nbsp;</strong><span>{{ $user->profile->children_count ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Information about
-                            children:&nbsp;</strong><span>{{ $user->profile->socialStatus->childrenStatus->information ?? 'N/A' }}</span><br>
+                            children:&nbsp;</strong><span>{{ $user->profile->children_information ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Do you want
-                            multiplicity?:&nbsp;</strong><span>{{ $user->profile->socialStatus->polygamyStatus->name ?? 'N/A' }}</span><br>
+                            multiplicity?:&nbsp;</strong><span>{{ $user->profile->polygamyStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     {{-- <p class="lead hover_padding"><strong>Do you accept polygamy?:&nbsp;</strong><span>test</span><br>
                     </p> --}}
                     <p class="lead hover_padding"><strong>desire to have
-                            children:&nbsp;</strong><span>{{ $user->profile->socialStatus->childrenDesireStatus->name ?? 'N/A' }}</span><br>
+                            children:&nbsp;</strong><span>{{ $user->profile->childrenDesireStatus->name ?? 'N/A' }}</span><br>
                     </p>
-                    <p class="lead hover_padding"><strong>Current type of
-                            housing:&nbsp;</strong><span>{{ $user->profile->socialStatus->shelterType->name ?? 'N/A' }}</span><br>
-                    </p>
+                    {{-- <p class="lead hover_padding"><strong>Current type of
+                            housing:&nbsp;</strong><span>{{ $user->profile->shelterType->name ?? 'N/A' }}</span><br>
+                    </p> --}}
                     <p class="lead hover_padding"><strong>housing
-                            form:&nbsp;</strong><span>{{ $user->profile->shelter->shelterShape->name ?? 'N/A' }}</span><br>
+                            form:&nbsp;</strong><span>{{ $user->profile->shelterShape->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Housing
-                            method:&nbsp;</strong><span>{{ $user->profile->shelter->shelterWay->name ?? 'N/A' }}</span><br>
+                            method:&nbsp;</strong><span>{{ $user->profile->shelterWay->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Housing
-                            type:&nbsp;</strong><span>{{ $user->profile->shelter->shelterType->name ?? 'N/A' }}</span><br>
+                            type:&nbsp;</strong><span>{{ $user->profile->shelterType->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Length:&nbsp;</strong><span>{{ $user->profile->detail->height ?? 'N/A' }}</span><br>
+                        <strong>Length:&nbsp;</strong><span>{{ $user->profile->height ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>the
-                            weight:&nbsp;</strong><span>{{ $user->profile->detail->weight ?? 'N/A' }}</span><br></p>
+                            weight:&nbsp;</strong><span>{{ $user->profile->weight ?? 'N/A' }}</span><br></p>
                     <p class="lead hover_padding"><strong>body
-                            type:&nbsp;</strong><span>{{ $user->profile->detail->body->name ?? 'N/A' }}</span><br>
+                            type:&nbsp;</strong><span>{{ $user->profile->body->name ?? 'N/A' }}</span><br>
                     </p>
-                    <p class="lead hover_padding"><strong>skin
-                            colour:&nbsp;</strong><span>{{ $user->profile->detail->skin->name ?? 'N/A' }}</span><br>
-                    </p>
-                    <p class="lead hover_padding"><strong>hair
-                            colour:&nbsp;</strong><span>{{ $user->profile->detail->hairColor->name ?? 'N/A' }}</span><br>
+                    <p class="lead hover_padding"><strong>skinStatus
+                            colour:&nbsp;</strong><span>{{ $user->profile->skinStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>hair
-                            length:&nbsp;</strong><span>{{ $user->profile->detail->hairLength->name ?? 'N/A' }}</span><br>
+                            colour:&nbsp;</strong><span>{{ $user->profile->hairColor->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>hair
-                            type:&nbsp;</strong><span>{{ $user->profile->detail->hairKind->name ?? 'N/A' }}</span><br>
+                            length:&nbsp;</strong><span>{{ $user->profile->hairLength->name ?? 'N/A' }}</span><br>
+                    </p>
+                    <p class="lead hover_padding"><strong>hair
+                            type:&nbsp;</strong><span>{{ $user->profile->hairKind->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Eye
-                            color:&nbsp;</strong><span>{{ $user->profile->detail->eyeColor->name ?? 'N/A' }}</span><br>
+                            color:&nbsp;</strong><span>{{ $user->profile->eyeColor->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>Wearing the
-                            eye:&nbsp;</strong><span>{{ $user->profile->detail->eyeGlass->name ?? 'N/A' }}</span><br>
+                            eye:&nbsp;</strong><span>{{ $user->profile->eyeGlass->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>physical
-                            health:&nbsp;</strong><span>{{ $user->profile->detail->health->name ?? 'N/A' }}</span><br>
+                            health:&nbsp;</strong><span>{{ $user->profile->health->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>psychological
-                            pattern:&nbsp;</strong><span>{{ $user->profile->detail->psychologicalPattern->name ?? 'N/A' }}</span><br>
+                            pattern:&nbsp;</strong><span>{{ $user->profile->psychologicalPattern->name ?? 'N/A' }}</span><br>
                     </p>
                     {{-- <p class="lead hover_padding"><strong>physical health:&nbsp;</strong><span>test</span><br></p> --}}
                     <p class="lead hover_padding"><strong>Clarification on physical
-                            health:&nbsp;</strong><span>{{ $user->profile->detail->clarification ?? 'N/A' }}</span><br>
+                            health:&nbsp;</strong><span>{{ $user->profile->clarification ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>smoking:&nbsp;</strong><span>{{ $user->profile->lifestyle->smoke->name ?? 'N/A' }}</span><br>
+                        <strong>smoking:&nbsp;</strong><span>{{ $user->profile->smokeStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Alcohol:&nbsp;</strong><span>{{ $user->profile->lifestyle->alcohol->name ?? 'N/A' }}</span><br>
+                        <strong>Alcohol:&nbsp;</strong><span>{{ $user->profile->alcoholStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>halal
-                            food:&nbsp;</strong><span>{{ $user->profile->lifestyle->halalFood->name ?? 'N/A' }}</span><br>
+                            food:&nbsp;</strong><span>{{ $user->profile->halalFoodStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>food
-                            style:&nbsp;</strong><span>{{ $user->profile->lifestyle->foods->name ?? 'N/A' }}</span><br>
+                            style:&nbsp;</strong><span>{{ $user->profile->foodType->name ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>Interests:&nbsp;</strong><span>{{ $user->profile->lifestyle->hobbies ?? 'N/A' }}</span><br></p> --}}
-                    {{-- <p class="lead hover_padding"><strong>Favorite books:&nbsp;</strong><span>{{ $user->profile->lifestyle->books ?? 'N/A' }}</span><br></p> --}}
-                    {{-- <p class="lead hover_padding"><strong>favorite places:&nbsp;</strong><span>{{ $user->profile->lifestyle->places ?? 'N/A' }}</span><br></p> --}}
-                    {{-- <p class="lead hover_padding"><strong>Other interests:&nbsp;</strong><span>{{ $user->profile->lifestyle->interests ?? 'N/A' }}</span><br></p> --}}
+                    {{-- <p class="lead hover_padding"><strong>Interests:&nbsp;</strong><span>{{ $user->profile->hobbies ?? 'N/A' }}</span><br></p> --}}
+                    {{-- <p class="lead hover_padding"><strong>Favorite books:&nbsp;</strong><span>{{ $user->profile->books ?? 'N/A' }}</span><br></p> --}}
+                    {{-- <p class="lead hover_padding"><strong>favorite places:&nbsp;</strong><span>{{ $user->profile->places ?? 'N/A' }}</span><br></p> --}}
+                    {{-- <p class="lead hover_padding"><strong>Other interests:&nbsp;</strong><span>{{ $user->profile->interests ?? 'N/A' }}</span><br></p> --}}
 
                 </div>
             </div>

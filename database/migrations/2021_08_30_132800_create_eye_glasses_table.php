@@ -27,6 +27,6 @@ class CreateEyeGlassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eyeglasses');
+        Schema::dropIfExists('eye_glasses');
     }
 }

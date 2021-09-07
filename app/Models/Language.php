@@ -15,7 +15,7 @@ class Language extends Model
 
     public function languagePerfection(): BelongsTo
     {
-        return $this->belongsTo(LanguagePerfection::class);
+        return $this->belongsTo(LanguagePerfectionStatus::class);
     }
 
     public function scopeNative(Builder $query): Builder
