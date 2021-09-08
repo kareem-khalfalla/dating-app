@@ -7,7 +7,7 @@ use App\Models\AcceptWifeWorkStatus;
 use App\Models\AlcoholStatus;
 use App\Models\AlfajrPrayer;
 use App\Models\BeardStatus;
-use App\Models\Body;
+use App\Models\BodyStatus;
 use App\Models\ChildrenDesireStatus;
 use App\Models\ChildrenStatus;
 use App\Models\Country;
@@ -22,13 +22,13 @@ use App\Models\HairKind;
 use App\Models\HairLength;
 use App\Models\HalalFoodStatus;
 use App\Models\Headdress;
-use App\Models\Health;
+use App\Models\HealthStatus;
 use App\Models\Hobby;
 use App\Models\Language;
 use App\Models\LanguagePerfectionStatus;
 use App\Models\MaritalStatus;
 use App\Models\MarriageStatus;
-use App\Models\Method;
+use App\Models\ReligionMethod;
 use App\Models\MusicStatus;
 use App\Models\Nationality;
 use App\Models\Obligation;
@@ -66,69 +66,9 @@ class ProfileComponent extends Component
 {
     use WithFileUploads;
 
-    protected $listeners = [
-        // 
-    ];
-
     public $state = [];
-
-    public $nationalities;
-    public $residencyStatuses;
-    public $relocations;
-    public $languages;
-    public $languagePerfections;
-    public $educationStatuses;
-    public $relationships;
-    public $marriageStatuses;
-    public $workStatuses;
-    public $friendStatuses;
-    public $acceptWifeWorkStatuses;
-    public $acceptWifeStudyStatuses;
-    public $wifeWorkStatuses;
-    public $wifeStudyStatuses;
-    public $maritalStatuses;
-    public $childrenStatuses;
-    public $childrenDesireStatuses;
-    public $polygamyStatuses;
-    public $wifePolygamyStatuses;
-    public $shelterTypes;
-    public $shelterShapes;
-    public $shelterWays;
-    public $fastings;
-    public $tafaqahStatuses;
-    public $religions;
-    public $obligations;
-    public $methods;
-    public $prayers;
-    public $alfajrPrayers;
-    public $readingQurans;
-    public $headdresses;
-    public $veilStatuses;
-    public $robeStatuses;
-    public $beardStatuses;
-    public $musicStatuses;
-    public $showStatuses;
-    public $countries;
     public $selectedCountry;
-    public $countryStates;
-    public $selectedState;
-    public $bodies;
-    public $smokeStatuses;
-    public $alcoholStatuses;
-    public $halalFoodStatuses;
-    public $food_types;
-    public $hobbies;
-    public $skins;
-    public $hairColors;
-    public $hairLengths;
-    public $hairKinds;
-    public $eyeColors;
-    public $eyeGlasses;
-    public $healths;
-    public $psychologicalPatterns;
-
     public $successMessage = '';
-
     public $image;
     public $imageName;
 
@@ -140,59 +80,9 @@ class ProfileComponent extends Component
             'name', 'email', 'username', 'phone'
         ]);
 
-        $this->imageName = auth()->user()->profile->image->url ?? '';
+        $this->imageName = $user->profile->image->url ?? '';
 
-        $this->religions = Religion::all();
-        $this->obligations = Obligation::all();
-        $this->methods = Method::all();
-        $this->prayers = Prayer::all();
-        $this->alfajrPrayers = AlfajrPrayer::all();
-        $this->fastings = Fasting::all();
-        $this->readingQurans = ReadingQuran::all();
-        $this->headdresses = Headdress::all();
-        $this->veilStatuses = VeilStatus::all();
-        $this->robeStatuses = RobeStatus::all();
-        $this->beardStatuses = BeardStatus::all();
-        $this->tafaqahStatuses = TafaqahStatus::all();
-        $this->musicStatuses = MusicStatus::all();
-        $this->showStatuses = ShowStatus::all();
-        $this->countries = Country::all();
-        $this->nationalities = Nationality::all();
-        $this->residencyStatuses = ResidencyStatus::all();
-        $this->relocations = RelocateStatus::all();
-        $this->languages = Language::all();
-        $this->languagePerfections = LanguagePerfectionStatus::all();
-        $this->relationships = RelationshipStatus::all();
-        $this->marriageStatuses = MarriageStatus::all();
-        $this->educationStatuses = EducationStatus::all();
-        $this->workStatuses = WorkStatus::all();
-        $this->friendStatuses = FriendStatus::all();
-        $this->acceptWifeWorkStatuses = AcceptWifeWorkStatus::all();
-        $this->acceptWifeStudyStatuses = AcceptWifeStudyStatus::all();
-        $this->wifeWorkStatuses = WifeWorkStatus::all();
-        $this->wifeStudyStatuses = WifeStudyStatus::all();
-        $this->maritalStatuses = MaritalStatus::all();
-        $this->childrenStatuses = ChildrenStatus::all();
-        $this->childrenDesireStatuses = ChildrenDesireStatus::all();
-        $this->polygamyStatuses = PolygamyStatus::all();
-        $this->wifePolygamyStatuses = WifePolygamyStatus::all();
-        $this->shelterTypes = ShelterType::all();
-        $this->shelterShapes = ShelterShape::all();
-        $this->shelterWays = ShelterWay::all();
-        $this->bodies = Body::all();
-        $this->skins = SkinStatus::all();
-        $this->hairColors = HairColor::all();
-        $this->hairLengths = HairLength::all();
-        $this->hairKinds = HairKind::all();
-        $this->eyeColors = EyeColor::all();
-        $this->eyeGlasses = EyeGlass::all();
-        $this->healths = Health::all();
-        $this->psychologicalPatterns = PsychologicalPattern::all();
-        $this->smokeStatuses = SmokeStatus::all();
-        $this->alcoholStatuses = AlcoholStatus::all();
-        $this->halalFoodStatuses = HalalFoodStatus::all();
-        $this->food_types = FoodType::all();
-        $this->hobbies = Hobby::all();
+
         $this->selectedCountry = $user->profile->hometown_id ?? null;
         $this->selectedState = $user->profile->state_id ?? null;
 
@@ -209,20 +99,18 @@ class ProfileComponent extends Component
         $this->state['competence'] = $user->profile->competence ?? null;
         $this->state['income'] = $user->profile->income ?? null;
         $this->state['lesson_listing'] = $user->profile->lesson_listing ?? null;
-
         $this->state['height'] = $user->profile->height ?? null;
         $this->state['weight'] = $user->profile->weight ?? null;
         $this->state['clarification'] = $user->profile->clarification ?? null;
-        $this->state['body_id'] = $user->profile->body_id ?? null;
+        $this->state['body_status_id'] = $user->profile->body_status_id ?? null;
         $this->state['skin_status_id'] = $user->profile->skin_status_id ?? null;
         $this->state['hair_color_id'] = $user->profile->hair_color_id ?? null;
         $this->state['hair_length_id'] = $user->profile->hair_length_id ?? null;
         $this->state['hair_kind_id'] = $user->profile->hair_kind_id ?? null;
         $this->state['eye_color_id'] = $user->profile->eye_color_id ?? null;
         $this->state['eye_glass_id'] = $user->profile->eye_glass_id ?? null;
-        $this->state['health_id'] = $user->profile->health_id ?? null;
+        $this->state['health_status_id'] = $user->profile->health_status_id ?? null;
         $this->state['psychological_pattern_id'] = $user->profile->psychological_pattern_id ?? null;
-
         $this->state['nationality_id'] = $user->profile->nationality_id ?? null;
         $this->state['relationship_status_id'] = $user->profile->relationship_status_id ?? null;
         $this->state['marriage_status_id'] = $user->profile->marriage_status_id ?? null;
@@ -241,7 +129,7 @@ class ProfileComponent extends Component
         $this->state['shelter_way_id'] = $user->profile->shelterWay->id ?? null;
         $this->state['religion_id'] = $user->profile->religion->id ?? null;
         $this->state['obligation_id'] = $user->profile->obligation_id ?? null;
-        $this->state['method_id'] = $user->profile->method->id ?? null;
+        $this->state['religion_method_id'] = $user->profile->religionMethod->id ?? null;
         $this->state['prayer_id'] = $user->profile->prayer->id ?? null;
         $this->state['alfajr_prayer_id'] = $user->profile->alfajrPrayer->id ?? null;
         $this->state['fasting_id'] = $user->profile->fasting->id ?? null;
@@ -264,7 +152,6 @@ class ProfileComponent extends Component
         $this->state['language_second_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfection->id ?? null;
         $this->state['language_third_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfection->id ?? null;
         $this->state['country_of_residence_id'] = $user->profile->country_of_residence_id;
-
         $this->state['smoke_status_id'] = $user->profile->smoke_status_id ?? null;
         $this->state['alcohol_status_id'] = $user->profile->alcohol_status_id ?? null;
         $this->state['halal_food_status_id'] = $user->profile->halal_food_status_id ?? null;
@@ -272,13 +159,64 @@ class ProfileComponent extends Component
         $this->state['books'] = $user->profile->books ?? null;
         $this->state['places'] = $user->profile->places ?? null;
         $this->state['interests'] = $user->profile->interests ?? null;
-
         $this->state['progress_bar'] = $user->profile->progress_bar;
     }
 
     public function render(): View
     {
-        return view('livewire.profile-component');
+        return view('livewire.profile-component', [
+            'religions' => Religion::all(),
+            'obligations' => Obligation::all(),
+            'methods' => ReligionMethod::all(),
+            'prayers' => Prayer::all(),
+            'alfajrPrayers' => AlfajrPrayer::all(),
+            'fastings' => Fasting::all(),
+            'readingQurans' => ReadingQuran::all(),
+            'headdresses' => Headdress::all(),
+            'veilStatuses' => VeilStatus::all(),
+            'robeStatuses' => RobeStatus::all(),
+            'beardStatuses' => BeardStatus::all(),
+            'tafaqahStatuses' => TafaqahStatus::all(),
+            'musicStatuses' => MusicStatus::all(),
+            'showStatuses' => ShowStatus::all(),
+            'countries' => Country::all(),
+            'nationalities' => Nationality::all(),
+            'residencyStatuses' => ResidencyStatus::all(),
+            'relocations' => RelocateStatus::all(),
+            'languages' => Language::all(),
+            'languagePerfections' => LanguagePerfectionStatus::all(),
+            'relationships' => RelationshipStatus::all(),
+            'marriageStatuses' => MarriageStatus::all(),
+            'educationStatuses' => EducationStatus::all(),
+            'workStatuses' => WorkStatus::all(),
+            'friendStatuses' => FriendStatus::all(),
+            'acceptWifeWorkStatuses' => AcceptWifeWorkStatus::all(),
+            'acceptWifeStudyStatuses' => AcceptWifeStudyStatus::all(),
+            'wifeWorkStatuses' => WifeWorkStatus::all(),
+            'wifeStudyStatuses' => WifeStudyStatus::all(),
+            'maritalStatuses' => MaritalStatus::all(),
+            'childrenStatuses' => ChildrenStatus::all(),
+            'childrenDesireStatuses' => ChildrenDesireStatus::all(),
+            'polygamyStatuses' => PolygamyStatus::all(),
+            'wifePolygamyStatuses' => WifePolygamyStatus::all(),
+            'shelterTypes' => ShelterType::all(),
+            'shelterShapes' => ShelterShape::all(),
+            'shelterWays' => ShelterWay::all(),
+            'bodyStatuses' => BodyStatus::all(),
+            'skins' => SkinStatus::all(),
+            'hairColors' => HairColor::all(),
+            'hairLengths' => HairLength::all(),
+            'hairKinds' => HairKind::all(),
+            'eyeColors' => EyeColor::all(),
+            'eyeGlasses' => EyeGlass::all(),
+            'healthStatuses' => HealthStatus::all(),
+            'psychologicalPatterns' => PsychologicalPattern::all(),
+            'smokeStatuses' => SmokeStatus::all(),
+            'alcoholStatuses' => AlcoholStatus::all(),
+            'halalFoodStatuses' => HalalFoodStatus::all(),
+            'food_types' => FoodType::all(),
+            'hobbies' => Hobby::all(),
+        ]);
     }
 
     public function updatedSelectedCountry(int $country): void
@@ -387,7 +325,7 @@ class ProfileComponent extends Component
             'shelter_way_id' => $this->state['shelter_way_id'] ?? null,
             'religion_id' => $this->state['religion_id'] ?? null,
             'obligation_id' => $this->state['obligation_id'] ?? null,
-            'method_id' => $this->state['method_id'] ?? null,
+            'religion_method_id' => $this->state['religion_method_id'] ?? null,
             'prayer_id' => $this->state['prayer_id'] ?? null,
             'alfajr_prayer_id' => $this->state['alfajr_prayer_id'] ?? null,
             'fasting_id' => $this->state['fasting_id'] ?? null,
@@ -406,14 +344,14 @@ class ProfileComponent extends Component
             'language_second_perfection_id' => $this->state['language_second_perfection_id'] ?? null,
             'language_third_perfection_id' => $this->state['language_third_perfection_id'] ?? null,
 
-            'body_id' => $this->state['body_id'],
+            'body_status_id' => $this->state['body_status_id'],
             'skin_status_id' => $this->state['skin_status_id'],
             'hair_color_id' => $this->state['hair_color_id'],
             'hair_length_id' => $this->state['hair_length_id'],
             'hair_kind_id' => $this->state['hair_kind_id'],
             'eye_color_id' => $this->state['eye_color_id'],
             'eye_glass_id' => $this->state['eye_glass_id'],
-            'health_id' => $this->state['health_id'],
+            'health_status_id' => $this->state['health_status_id'],
             'psychological_pattern_id' => $this->state['psychological_pattern_id'],
             'height' => $this->state['height'],
             'weight' => $this->state['weight'],
