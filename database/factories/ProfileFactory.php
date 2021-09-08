@@ -73,7 +73,7 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::where('fake', 1)->get()->random()->id,
+            'user_id' => User::where('fake', 1)->doesntHave('profile')->first()->id,
             'education_status_id' => EducationStatus::all()->random()->id,
             'work_status_id' => WorkStatus::all()->random()->id,
             'marriage_status_id' => MarriageStatus::all()->random()->id,

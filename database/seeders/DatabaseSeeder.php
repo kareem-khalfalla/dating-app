@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
             // RoleSeeder::class,
         ]);
 
-        User::factory(20)->create();
-        Profile::factory(20)->create();
+        User::factory()->create();
+        Profile::factory()->create();
     }
 }
