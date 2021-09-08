@@ -11,9 +11,33 @@
                 </div>
                 <div class="box_info_1 col-11 col-md-7 col-lg-9 m-auto">
                     <p class="lead username"><strong>{{ $user->name ?? 'N/A' }}</strong><br></p>
-                    <a href="{{ route('messageRequest', $user) }}">
-                        <button class="btn btn-outline-primary"> <i class="fa fa-message"></i>message request</button>
-                    </a>
+                    @if (Auth::user()->id == $user->id)
+                        <a href="{{ route('friends.index') }}">
+                            <button class="btn btn-outline-primary"> <i class="fa fa-users"></i> my additions</button>
+                        </a>
+                    @else
+                        <span class="dropdown">
+                            <button class="btn btn-outline-secondary " type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Block</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_add">show
+                                    additions</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#reportAlert">report</a>
+
+
+                            </div>
+                        </span>
+                        <a href="{{ route('messageRequest', $user) }}">
+                            <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i> send
+                                message</button>
+                        </a>
+                        <button class="btn btn-outline-danger"> <i class="fa fa-user-plus"></i> addition</button>
+                    @endif
                 </div>
                 <div class="card card-body col-12">
                     <h4>brief about me</h4>

@@ -13,4 +13,14 @@ class SiteController extends Controller
             'users' => User::latest()->limit(5)->get()
         ]);
     }
+
+    public function about(): View
+    {
+        return view('about');
+    }
+
+    public function privacy(): View
+    {
+        return view('privacy');
+    }
 }

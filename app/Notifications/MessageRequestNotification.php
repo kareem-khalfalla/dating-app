@@ -43,7 +43,7 @@ class MessageRequestNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line("New messages request from {$this->user->name}")
+            ->line('New messages request from ' . Auth::user()->name)
             ->action('View user profile', url(env('APP_URL') . '/' . Auth::user()->username))
             ->line('Thank you for using our application!');
     }
@@ -51,8 +51,8 @@ class MessageRequestNotification extends Notification implements ShouldQueue
     public function toDatabase(): array
     {
         return [
-            'name' => $this->user->name,
-            'image' => $this->user->profile->image->url,
+            'username' => Auth::user()->username,
+            'image' => Auth::user()->profile->image->url,
         ];
     }
 

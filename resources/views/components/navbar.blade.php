@@ -9,6 +9,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item nav_home">
+                    <a class="nav-link hover-bar" href="{{ route('welcome') }}"><i class="fa fa-home fa-lg p-1"></i>home<span
+                            class="sr-only">(current)</span></a>
+                </li>
                 @auth
 
                     <li class="nav-item">
@@ -16,7 +20,7 @@
                                 class="fas fa-lg fa-user p-1"></i>profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('users.notifications', Auth::user()->username) }}"><i
+                        <a class="nav-link hover-bar" href="{{ route('users.requests') }}"><i
                                 class="fas fa-lg fa-user-plus p-1"></i>requests</a>
                     </li>
 
@@ -48,17 +52,17 @@
                     </li>
 
                     <li class="nav-item nav_login">
-                        <a class="nav-link hover-bar" href="about.html">About</a>
+                        <a class="nav-link hover-bar" href="{{ route('about') }}">About</a>
                     </li>
 
                     <li class="nav-item nav_login">
-                        <a class="nav-link hover-bar" href="privacy-policy.html">Privacy policy</a>
+                        <a class="nav-link hover-bar" href="{{ route('privacy') }}">Privacy policy</a>
                     </li>
                 @endguest
                 <li dir="ltr" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                            class="fa fa-lg fa-language p-1"></i>language
+                            class="fa fa-lg fa-language p-1"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)

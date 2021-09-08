@@ -21,7 +21,6 @@
                 </div>
 
                 <div class="card-body">
-
                     <p class="lead"><b>phone : </b> {{ env('PHONE') }}</p>
                     <p class="lead"><b>Email : </b> {{ env('MAIL_FROM_ADDRESS') }}</p>
 
