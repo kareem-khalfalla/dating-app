@@ -145,9 +145,9 @@ class Profile extends Model
         return $this->belongsToMany(Hobby::class);
     }
 
-    public function body(): BelongsTo
+    public function bodyStatus(): BelongsTo
     {
-        return $this->belongsTo(Body::class);
+        return $this->belongsTo(BodyStatus::class);
     }
 
     public function skinStatus(): BelongsTo
@@ -180,9 +180,9 @@ class Profile extends Model
         return $this->belongsTo(EyeGlass::class);
     }
 
-    public function health(): BelongsTo
+    public function healthStatus(): BelongsTo
     {
-        return $this->belongsTo(Health::class);
+        return $this->belongsTo(HealthStatus::class);
     }
 
     public function psychologicalPattern(): BelongsTo
@@ -194,9 +194,9 @@ class Profile extends Model
         return $this->belongsTo(Religion::class);
     }
 
-    public function method(): BelongsTo
+    public function religionMethod(): BelongsTo
     {
-        return $this->belongsTo(Method::class);
+        return $this->belongsTo(ReligionMethod::class);
     }
 
     public function obligation(): BelongsTo
