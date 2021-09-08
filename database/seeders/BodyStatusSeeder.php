@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Body;
+use App\Models\BodyStatus;
 use Illuminate\Database\Seeder;
 
-class BodySeeder extends Seeder
+class BodyStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class BodySeeder extends Seeder
      */
     public function run()
     {
-        $bodies = [
+        $bodyStatuses = [
             ['name' => ['en' => 'Harmonic', 'ar' => '‫متناسق‬', 'de' => 'harmonisch']],
             ['name' => ['en' => 'Athlete', 'ar' => 'رياضي', 'de' => 'Athlet']],
             ['name' => ['en' => 'prone to obesity', 'ar' => 'مائل الى السمنه', 'de' => 'übergewichtig']],
@@ -24,8 +24,8 @@ class BodySeeder extends Seeder
             ['name' => ['en' => 'Graceful', 'ar' => 'رشيق', 'de' => 'anmutig']],
         ];
 
-        foreach ($bodies as $body) {
-            Body::create($body);
+        foreach ($bodyStatuses as $bodyStatus) {
+            BodyStatus::create($bodyStatus);
         }
     }
 }

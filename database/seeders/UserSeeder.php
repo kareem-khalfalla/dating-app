@@ -61,14 +61,14 @@ class UserSeeder extends Seeder
         $adminUserProfile->places = 'Lorem ipsum dolor sit amet consectetur.';
         $adminUserProfile->interests = 'Lorem ipsum dolor sit amet.';
 
-        $adminUserProfile->body_id = rand(1, 4);
+        $adminUserProfile->body_status_id = rand(1, 4);
         $adminUserProfile->skin_status_id = rand(1, 4);
         $adminUserProfile->hair_color_id = rand(1, 4);
         $adminUserProfile->hair_length_id = rand(1, 4);
         $adminUserProfile->hair_kind_id = rand(1, 4);
         $adminUserProfile->eye_color_id = rand(1, 4);
         $adminUserProfile->eye_glass_id = rand(1, 3);
-        $adminUserProfile->health_id = rand(1, 3);
+        $adminUserProfile->health_status_id = rand(1, 3);
         $adminUserProfile->psychological_pattern_id = rand(1, 4);
         $adminUserProfile->height = rand(166, 188);
         $adminUserProfile->weight = rand(66, 111);
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
 
 
         $adminUserProfile->religion_id = rand(1, 3);
-        $adminUserProfile->method_id = rand(1, 3);
+        $adminUserProfile->religion_method_id = rand(1, 3);
         $adminUserProfile->obligation_id = rand(1, 3);
         $adminUserProfile->prayer_id = rand(1, 3);
         $adminUserProfile->alfajr_prayer_id = rand(1, 3);

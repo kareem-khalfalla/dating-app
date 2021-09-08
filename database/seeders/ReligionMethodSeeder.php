@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Method;
+use App\Models\ReligionMethod;
 use Illuminate\Database\Seeder;
 
-class MethodSeeder extends Seeder
+class ReligionMethodSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,7 +34,7 @@ class MethodSeeder extends Seeder
         ];
 
         foreach ($methods as $method) {
-            Method::create($method);
+            ReligionMethod::create($method);
         }
     }
 }

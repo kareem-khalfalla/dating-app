@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ShelterShapeSeeder::class,
             ShelterWaySeeder::class,
             ReligionSeeder::class,
-            MethodSeeder::class,
+            ReligionMethodSeeder::class,
             ObligationSeeder::class,
             PrayerSeeder::class,
             AlfajrPrayerSeeder::class,
@@ -52,23 +54,26 @@ class DatabaseSeeder extends Seeder
             MusicStatusSeeder::class,
             ShowStatusSeeder::class,
             FriendStatusSeeder::class,
-            BodySeeder::class,
+            BodyStatusSeeder::class,
             SkinStatusSeeder::class,
             HairColorSeeder::class,
             HairLengthSeeder::class,
             HairKindSeeder::class,
             EyeColorSeeder::class,
             EyeGlassSeeder::class,
-            HealthSeeder::class,
+            HealthStatusSeeder::class,
             PsychologicalPatternSeeder::class,
             SmokeSeeder::class,
             AlcoholStatusSeeder::class,
             HalalFoodStatusSeeder::class,
             FoodSeeder::class,
             HobbySeeder::class,
-            // OverdressSeeder::class,
+            OverdressSeeder::class,
             UserSeeder::class,
             // RoleSeeder::class,
         ]);
+
+        User::factory(20)->create();
+        Profile::factory(20)->create();
     }
 }

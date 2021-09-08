@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->timestamp('last_login')->default(now());
             $table->enum('gender', ['male', 'female']);
+            $table->boolean('fake')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

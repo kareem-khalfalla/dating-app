@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Health;
+use App\Models\HealthStatus;
 use Illuminate\Database\Seeder;
 
-class HealthSeeder extends Seeder
+class HealthStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,14 +14,14 @@ class HealthSeeder extends Seeder
      */
     public function run()
     {
-        $healths = [
+        $healthStatuses = [
             ['name' => ['en' => 'Good', 'ar' => 'جيدة', 'de' => 'gut']],
             ['name' => ['en' => 'Some persistent diseases', 'ar' => 'بعض الامراض المستديمه', 'de' => 'Einige hartnäckige Krankheiten']],
             ['name' => ['en' => 'Partial handicap', 'ar' => 'اعاقه جزئيه', 'de' => 'teilweise Behinderung']],
         ];
 
-        foreach ($healths as $health) {
-            Health::create($health);
+        foreach ($healthStatuses as $healthStatus) {
+            HealthStatus::create($healthStatus);
         }
     }
 }

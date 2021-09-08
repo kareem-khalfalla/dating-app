@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBodiesTable extends Migration
+class CreateReligionMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBodiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bodies', function (Blueprint $table) {
+        Schema::create('religion_methods', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateBodiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bodies');
+        Schema::dropIfExists('religion_methods');
     }
 }
