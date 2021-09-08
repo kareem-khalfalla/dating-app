@@ -10,7 +10,7 @@
             <div class="col-12 col-lg-6 pt-2">
                 <div class="card shadow">
                     <div class="card-header">
-                        <h4>All requests [ {{ count($user->unreadNotifications) }} ]</h4>
+                        <h4>{{ __('requests.All requests') }} [ {{ count($user->unreadNotifications) }} ]</h4>
                     </div>
                     <div class="card-body">
 
@@ -21,15 +21,15 @@
                                     <img class="img_user" {{-- src="{{ asset($notification->data['image']) ?? asset('img/avatar.png') }}" --}}
                                         alt="{{ $notification->data['name'] }}">
                                 </a>
-                                <h5 class="col-5">[{{ $notification->created_at }}] from
+                                <h5 class="col-5">[{{ $notification->created_at }}] {{ __('requests.from') }}
                                     <strong>{{ $notification->data['name'] }}</strong>
                                 </h5>
-                                <a href="#"><button class="btn btn-outline-primary">accept</button></a>&nbsp;
+                                <a href="#"><button class="btn btn-outline-primary">{{ __('requests.accept') }}</button></a>&nbsp;
                                 <a href="{{ route('profiles.messageRequestRefused', $user) }}"><button
-                                        class="btn btn-outline-danger">cancel</button></a>
+                                        class="btn btn-outline-danger">{{ __('requests.cancel') }}</button></a>
                             </div>
                         @empty
-                            <p>Empty notifications!</p>
+                            <p>{{ __('requests.Empty notifications') }}!</p>
                         @endforelse
                     </div>
                 </div>

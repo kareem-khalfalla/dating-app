@@ -1,12 +1,12 @@
 <section id="contact">
     <br><br>
     <div class="row contact container col-12 m-auto">
-        <h2 class="text-center col-12 h_2 mb-4">Contact Us</h2>
+        <h2 class="text-center col-12 h_2 mb-4">{{ __('welcome.Contact Us') }}</h2>
 
         <div class="col-12 col-md-6 m-auto pt-3">
             <div class="card">
                 <div class="card-header">
-                    <h3>Send message</h3>
+                    <h3>{{ __('welcome.Send message') }}</h3>
                 </div>
                 <div class="card-body">
                     @livewire('contact-us-component')
@@ -17,12 +17,12 @@
         <div class="col-12 col-md-6 pt-3">
             <div class="card card-contact m-auto">
                 <div class="card-header">
-                    <h3>Or contact with</h3>
+                    <h3>{{ __('welcome.Or contact with') }}</h3>
                 </div>
 
                 <div class="card-body">
-                    <p class="lead"><b>phone : </b> {{ env('PHONE') }}</p>
-                    <p class="lead"><b>Email : </b> {{ env('MAIL_FROM_ADDRESS') }}</p>
+                    <p class="lead"><b>{{ __('welcome.phone') }} : </b> {{ env('PHONE') }}</p>
+                    <p class="lead"><b>{{ __('welcome.Email') }} : </b> {{ env('MAIL_FROM_ADDRESS') }}</p>
 
                     <br><br><br>
                     <!-- Grid container -->

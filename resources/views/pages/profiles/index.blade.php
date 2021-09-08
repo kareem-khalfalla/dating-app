@@ -150,7 +150,7 @@
                         <strong>Religious:&nbsp;</strong><span>{{ $user->profile->religion->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>Method:&nbsp;</strong><span>{{ $user->profile->method->name ?? 'N/A' }}</span><br>
+                        <strong>ReligionMethod:&nbsp;</strong><span>{{ $user->profile->method->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>Commitment:&nbsp;</strong><span>{{ $user->profile->obligation->name ?? 'N/A' }}</span><br>
@@ -253,14 +253,14 @@
                             eye:&nbsp;</strong><span>{{ $user->profile->eyeGlass->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>physical
-                            health:&nbsp;</strong><span>{{ $user->profile->health->name ?? 'N/A' }}</span><br>
+                            healthStatus:&nbsp;</strong><span>{{ $user->profile->healthStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding"><strong>psychological
                             pattern:&nbsp;</strong><span>{{ $user->profile->psychologicalPattern->name ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>physical health:&nbsp;</strong><span>test</span><br></p> --}}
+                    {{-- <p class="lead hover_padding"><strong>physical healthStatus:&nbsp;</strong><span>test</span><br></p> --}}
                     <p class="lead hover_padding"><strong>Clarification on physical
-                            health:&nbsp;</strong><span>{{ $user->profile->clarification ?? 'N/A' }}</span><br>
+                            healthStatus:&nbsp;</strong><span>{{ $user->profile->clarification ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>smoking:&nbsp;</strong><span>{{ $user->profile->smokeStatus->name ?? 'N/A' }}</span><br>

@@ -1,27 +1,27 @@
 <div class="ground">
     <div class="container container-index">
-        <h1>Welcome there</h1>
-        <p class="lead text-white m-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea
-            animi harum molestias,</p>
+        <h1>{{ __('welcome.Welcome there') }}</h1>
+        <p class="lead text-white m-0">{{ __('welcome.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea
+            animi harum molestias,') }}</p>
         <div class="row m-auto justify-content-center">
             @guest
 
                 <div class="col-12 col-md-5 col-lg-4 pb-3">
                     <a href="{{ route('register') }}"><button class="btn btn-block btn_register"> <i
                                 class="fas fa-plus-circle"></i>
-                            register</button></a>
+                            {{ __('welcome.register') }}</button></a>
                 </div>
                 <div class="col-12 col-md-5 col-lg-4 pb-3">
                     <a href="{{ route('login') }}"><button class="btn btn-block btn_login"><i
                                 class="fas fa-paper-plane"></i>
-                            login</button></a>
+                            {{ __('welcome.login') }}</button></a>
                 </div>
             @endguest
 
             @auth
                 <div class="col-12 col-md-5 col-lg-4 pb-3">
                     <a href="{{ route('users.filter') }}"><button class="btn btn-block btn_login"><i
-                                class="fas fa-search"></i>search</button></a>
+                                class="fas fa-search"></i>{{ __('welcome.search') }}</button></a>
                 </div>
             @endauth
 

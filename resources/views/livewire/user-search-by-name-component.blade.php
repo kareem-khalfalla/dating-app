@@ -2,7 +2,7 @@
 
     <div class="card-header">
         <div class="input-group">
-            <input wire:model.debounce.300ms="search" type="text" placeholder="Search..." name=""
+            <input wire:model.debounce.300ms="search" type="text" placeholder="{{ __('requests.Search') }}..." name=""
                 class="form-control search">
             <div class="input-group-prepend">
                 <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
@@ -19,8 +19,8 @@
                         alt="user image" data-toggle="tooltip" data-placement="top" title="show profile">
                 </a>
                 <h5 class="col-6">{{ $user->name }}</h5>
-                <a href="#"><button class="btn btn-outline-success">Add</button></a>&nbsp;
-                <button wire:click="hide" class="btn btn-outline-secondary">Hide</button>
+                <a href="#"><button class="btn btn-outline-success">{{ __('requests.Add') }}</button></a>&nbsp;
+                <button wire:click="hide" class="btn btn-outline-secondary">{{ __('requests.Hide') }}</button>
             </div>
         @endforeach
 

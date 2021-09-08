@@ -1,5 +1,5 @@
 <div id="change_photo" class="col-lg-11 m-auto pb-4" wire:ignore.self>
-    <h3 class="color_h mb-3">{{ __('profiles.Change photo') }}</h3>
+    <h3 class="color_h mb-3">{{ __('settings.Change photo') }}</h3>
     <br>
     <div class="row">
         <figure class="col-md-6">
@@ -12,7 +12,7 @@
             </figure>
         @endif
         <div class="form-group col-md-6 m-auto">
-            <label for="exampleFormControlFile1">{{ __('profiles.choose image') }}</label>
+            <label for="exampleFormControlFile1">{{ __('settings.choose image') }}</label>
             <input type="file" wire:model.defer="image" class="form-control-file @error('image') is-invalid @enderror"
                 id="exampleFormControlFile1" accept="image/*">
             @error('image')
