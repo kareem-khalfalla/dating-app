@@ -4,7 +4,7 @@
             <div class="row m-0">
                 <div class="box_img col-10 col-md-5 col-lg-3">
                     <figure class="figure">
-                        <img src="{{ !is_null($user->profile->image) ? asset('storage/' . $user->profile->image->url) : asset('img/avatar.png') ?? 'N/A' }}"
+                        <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('img/avatar.png') ?? 'N/A' }}"
                             class="figure-img img-fluid rounded" alt="{{ $user->name ?? 'N/A' }}" data-toggle="modal"
                             data-target="#exampleModalCenter">
                     </figure>
@@ -50,7 +50,7 @@
                     @else
                         Your personal information is incomplete, you must complete it in order to enjoy all the
                         features.
-                        <strong> <a href="{{ route('profile.edit') }}"> Go to the settings page from here
+                        <strong> <a href="{{ route('settings') }}"> Go to the settings page from here
                             </a></strong>
                     @endif
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -296,7 +296,7 @@
                     </button>
                 </div>
                 <div class="modal-body p-0 m-0">
-                    <img src="{{ !is_null($user->profile->image) ? asset('storage/' . $user->profile->image->url) : asset('img/avatar.png') ?? 'N/A' }}"
+                    <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('img/avatar.png') ?? 'N/A' }}"
                         class="img-fluid" alt="{{ $user->name }}">
                 </div>
 

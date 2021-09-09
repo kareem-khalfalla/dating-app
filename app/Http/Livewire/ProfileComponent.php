@@ -69,6 +69,8 @@ class ProfileComponent extends Component
     public $state = [];
     public $selectedCountry;
     public $successMessage = '';
+    public $selectedState;
+    public $countryStates;
     public $image;
     public $imageName;
 
@@ -80,7 +82,7 @@ class ProfileComponent extends Component
             'name', 'email', 'username', 'phone'
         ]);
 
-        $this->imageName = $user->profile->image->url ?? '';
+        $this->imageName = $user->avatar;
 
 
         $this->selectedCountry = $user->profile->hometown_id ?? null;
@@ -164,6 +166,7 @@ class ProfileComponent extends Component
 
     public function render(): View
     {
+        
         return view('livewire.profile-component', [
             'religions' => Religion::all(),
             'obligations' => Obligation::all(),
@@ -233,23 +236,20 @@ class ProfileComponent extends Component
             'image' => ['required', 'image', 'max:1024'],
         ]);
 
-        $imageName = $image->store('images/pp');
+        $imageName = $image->store('public/images/users-avatar');
 
-        /** @var \App\Models\Profile $profile */
-        $profile = auth()->user()->profile;
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
 
-        $create = is_null($profile->image);
+        $create = $user->avatar == 'images/users-avatar/default.png';
 
-        if ($create) {
-            $profile->image()->create([
-                'url' => $imageName
-            ]);
-        } else {
-            Storage::delete($profile->image->url);
-            $profile->image()->update([
-                'url' => $imageName
-            ]);
+        if (!$create) {
+            Storage::delete($user->avatar);
         }
+        
+        $user->update([
+            'avatar' => $imageName,
+        ]);
 
         $status = $create ? 'created' : 'updated';
 

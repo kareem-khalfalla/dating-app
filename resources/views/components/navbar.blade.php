@@ -10,7 +10,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item nav_home">
-                    <a class="nav-link hover-bar" href="{{ route('welcome') }}"><i class="fa fa-home fa-lg p-1"></i>{{ __('navbar.home') }}<span
+                    <a class="nav-link hover-bar" href="{{ route('welcome') }}"><i
+                            class="fa fa-home fa-lg p-1"></i>{{ __('navbar.home') }}<span
                             class="sr-only">(current)</span></a>
                 </li>
                 @auth
@@ -20,7 +21,7 @@
                                 class="fas fa-lg fa-user p-1"></i>{{ __('navbar.profile') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('users.requests') }}"><i
+                        <a class="nav-link hover-bar" href="{{ route('requests') }}"><i
                                 class="fas fa-lg fa-user-plus p-1"></i>{{ __('navbar.requests') }}</a>
                     </li>
 
@@ -29,7 +30,7 @@
                                 class="fas fa-lg fa-envelope p-1"></i>{{ __('navbar.Chat') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('profile.edit') }}"><i
+                        <a class="nav-link hover-bar" href="{{ route('settings') }}"><i
                                 class="fas fa-lg fa-cogs p-1"></i>{{ __('navbar.settings') }}</a>
                     </li>
                     <li class="nav-item">
@@ -56,7 +57,8 @@
                     </li>
 
                     <li class="nav-item nav_login">
-                        <a class="nav-link hover-bar" href="{{ route('privacy') }}">{{ __('navbar.Privacy policy') }}</a>
+                        <a class="nav-link hover-bar"
+                            href="{{ route('privacy') }}">{{ __('navbar.Privacy policy') }}</a>
                     </li>
                 @endguest
                 <li dir="ltr" class="nav-item dropdown">

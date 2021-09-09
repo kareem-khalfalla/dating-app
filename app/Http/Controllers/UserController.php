@@ -60,7 +60,7 @@ class UserController extends Controller
         $user = Auth::user();
         $user->unreadNotifications->markAsRead();
 
-        return view('users.requests', [
+        return view('pages.requests', [
             'user' => $user
         ]);
     }

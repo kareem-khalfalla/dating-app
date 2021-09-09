@@ -3,14 +3,9 @@
     <br>
     <div class="row">
         <figure class="col-md-6">
-            <img src="{{ !is_null($image) ? $image->temporaryUrl() : asset('img/avatar.png') }}" alt="..."
-                class="img-thumbnail">
+            <img src="{{ !is_null($image) ? $image->temporaryUrl() : asset('storage/' . $imageName)}}" alt="..." class="img-thumbnail">
         </figure>
-        @if (!empty($imageName))
-            <figure class="col-md-6">
-                <img src="{{ asset('storage/' . $imageName) }}" alt="..." class="img-thumbnail">
-            </figure>
-        @endif
+
         <div class="form-group col-md-6 m-auto">
             <label for="exampleFormControlFile1">{{ __('settings.choose image') }}</label>
             <input type="file" wire:model.defer="image" class="form-control-file @error('image') is-invalid @enderror"
@@ -21,7 +16,8 @@
                 </div>
             @enderror
             <div class="mt-4">
-                <button wire:click="updateOrCreateImage" class="btn btn_form_settings btn-block p-2__">{{ ('save') }}</button>
+                <button wire:click="updateOrCreateImage"
+                    class="btn btn_form_settings btn-block p-2__">{{ 'save' }}</button>
             </div>
         </div>
     </div>

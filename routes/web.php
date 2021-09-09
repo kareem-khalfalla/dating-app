@@ -19,8 +19,8 @@ Route::group(
     function () {
         Route::get('friends', [FriendController::class, 'index'])->name('friends.index');
         Route::get('results', [UserController::class, 'filter'])->name('users.filter');
-        Route::get('settings', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::get('requests', [UserController::class, 'requests'])->name('users.requests');
+        Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
+        Route::get('requests', [UserController::class, 'requests'])->name('requests');
         Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
         Route::get('{user}/message-request', [ProfileController::class, 'messageRequest'])->name('messageRequest');
         Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');

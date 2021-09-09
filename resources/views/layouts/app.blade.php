@@ -1,6 +1,8 @@
-@include('partials.head', ['title' => 'Profile'])
+@include('partials.head', ['title' => ucfirst(\Request::route()->getName())])
 <x-navbar />
 {{ $slot }}
 <br><br>
 @stack('scripts')
-@include('partials.footer')
+@if (!\Route::is('chatify'))
+    @include('partials.footer')
+@endif

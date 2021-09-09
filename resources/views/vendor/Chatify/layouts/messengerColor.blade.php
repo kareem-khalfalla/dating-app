@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
 /* NProgress background */
 #nprogress .bar{
 	background: {{ $messengerColor }} !important;
@@ -70,4 +70,4 @@
 .m-list-active .activeStatus{
     border-color: {{ $messengerColor }} !important;
 }
-</style>
+</style> --}}

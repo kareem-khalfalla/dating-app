@@ -15,7 +15,7 @@
 
             <div class="row box_frind col-12 p-1">
                 <a href="{{ route('profile', $user) }}">
-                    <img class="img_user" src="{{ asset($user->profile->image->url ?? 'img/avatar.png') }}"
+                    <img class="img_user" src="{{ asset($user->avatar) }}"
                         alt="user image" data-toggle="tooltip" data-placement="top" title="show profile">
                 </a>
                 <h5 class="col-6">{{ $user->name }}</h5>

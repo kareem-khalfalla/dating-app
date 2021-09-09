@@ -4,14 +4,12 @@
     <div class="message-card" data-id="{{ $id }}">
         <p>{!! ($message == null && $attachment != null && @$attachment[2] != 'file') ? $attachment[1] : nl2br($message) !!}
             <sub title="{{ $fullTime }}">{{ $time }}</sub>
-            {{-- If attachment is a file --}}
             @if(@$attachment[2] == 'file')
             <a href="{{ route(config('chatify.attachments.download_route_name'),['fileName'=>$attachment[0]]) }}" style="color: #595959;" class="file-download">
                 <span class="fas fa-file"></span> {{$attachment[1]}}</a>
             @endif
         </p>
     </div>
-    {{-- If attachment is an image --}}
     @if(@$attachment[2] == 'image')
     <div>
         <div class="message-card">
