@@ -3,6 +3,6 @@
 {{ $slot }}
 <br><br>
 @stack('scripts')
-@if (!\Route::is('chatify'))
+@if (!\Route::is('chat'))
     @include('partials.footer')
 @endif

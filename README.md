@@ -6,9 +6,9 @@
 `composer require spatie/laravel-translatable`
 > make multi auth
 `composer require spatie/laravel-permission`
-> make chat
-`composer require munafio/chatify`
 > livewire
 `composer require livewire/livewire`
 > toastr
 `composer require yoeunes/toastr`
+> pusher
+`composer require pusher/pusher-php-server`

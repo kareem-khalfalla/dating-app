@@ -26,7 +26,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ url('/chatify') }}"><i
+                        <a class="nav-link hover-bar" href="{{ route('chat') }}"><i
                                 class="fas fa-lg fa-envelope p-1"></i>{{ __('navbar.Chat') }}</a>
                     </li>
                     <li class="nav-item">

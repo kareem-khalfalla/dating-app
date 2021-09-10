@@ -31,7 +31,7 @@
 
                     <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
                         <div class="col-6 col-md-5 p-0 m-0">
-                            <img class="p-0 m-0" style="border: 1px solid #eee;" src="img/avatar.png"
+                            <img class="p-0 m-0" style="border: 1px solid #eee;" src="{{ asset($users[0]->avatar) }}"
                                 width="150px" height="150px" alt="">
                         </div>
                         <div class="col-6 col-md-7">
@@ -44,7 +44,7 @@
 
                     <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
                         <div class="col-6 col-md-5 p-0 m-0">
-                            <img class="p-0 m-0" style="border: 1px solid #eee;" src="img/avatar.png"
+                            <img class="p-0 m-0" style="border: 1px solid #eee;" src="{{ asset($users[1]->avatar) }}"
                                 width="150px" height="150px" alt="">
                         </div>
                         <div class="col-6 col-md-7">
