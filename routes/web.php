@@ -17,6 +17,7 @@ Route::group(
         'middleware' => ['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath',]
     ],
     function () {
+        Route::get('chat', [SiteController::class, 'chat'])->name('chat');
         Route::get('friends', [FriendController::class, 'index'])->name('friends.index');
         Route::get('results', [UserController::class, 'filter'])->name('users.filter');
         Route::get('settings', [ProfileController::class, 'edit'])->name('settings');

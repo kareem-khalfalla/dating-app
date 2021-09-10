@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ $title }}</title>
+    <title>{{ ucfirst(\Request::route()->getName()) }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#1D2625" />
     <meta name="msapplication-navbutton-color" content="#1D2625" />
@@ -19,8 +19,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&#038;display=swap"
         rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
-    @stack('head')
+    @stack('styles')
     @livewireStyles
 </head>
 
 <body>
+    <x-navbar />

@@ -9,18 +9,25 @@ class SiteController extends Controller
 {
     public function welcome(): View
     {
-        return view('welcome', [
+        return view('pages.welcome', [
             'users' => User::latest()->limit(5)->get()
         ]);
     }
 
     public function about(): View
     {
-        return view('about');
+        return view('pages.about');
     }
 
     public function privacy(): View
     {
-        return view('privacy');
+        return view('pages.privacy');
+    }
+
+    public function chat(): View
+    {
+        return view('pages.chat', [
+            'users' => User::all()
+        ]);
     }
 }
