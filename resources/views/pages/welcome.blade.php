@@ -1,4 +1,4 @@
-<x-guest-layout title="Welcome">
+<x-guest-layout>
     <x-hero />
     <x-latest-users :users="$users" />
     <x-contact-us />

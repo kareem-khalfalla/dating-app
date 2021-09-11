@@ -11,7 +11,7 @@ class GuestLayout extends Component
      *
      * @return void
      */
-    public function __construct(public string $title)
+    public function __construct()
     {
         //
     }

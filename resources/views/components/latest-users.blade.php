@@ -35,7 +35,7 @@
                                 width="150px" height="150px" alt="">
                         </div>
                         <div class="col-6 col-md-7">
-                            <p><b>{{ __('welcome.name') }} : </b> {{ $users[0]->name }}</p>
+                            <p><b>{{ __('welcome.Name') }} : </b> {{ $users[0]->name }}</p>
                             <p><b>{{ __('welcome.Age') }} : </b> {{ Carbon\Carbon::parse($users[0]->profile->dob)->age ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.From') }} : </b> {{ $users[0]->profile->hometown->name ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.Stay in') }} : </b> {{ $users[0]->profile->countryOfResidence->name ?? 'N/A' }}</p>
@@ -48,7 +48,7 @@
                                 width="150px" height="150px" alt="">
                         </div>
                         <div class="col-6 col-md-7">
-                            <p><b>{{ __('welcome.name') }} : </b> {{ $users[1]->name }}</p>
+                            <p><b>{{ __('welcome.Name') }} : </b> {{ $users[1]->name }}</p>
                             <p><b>{{ __('welcome.Age') }} : </b> {{ Carbon\Carbon::parse($users[1]->profile->dob)->age ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.From') }} : </b> {{ $users[1]->profile->hometown->name ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.Stay in') }} : </b> {{ $users[1]->profile->countryOfResidence->name ?? 'N/A' }}</p>
