@@ -18,7 +18,7 @@ Route::group(
     ],
     function () {
         Route::get('chat', [SiteController::class, 'chat'])->name('chat');
-        Route::get('friends', [FriendshipController::class, 'index'])->name('friends.index');
+        Route::get('friends', [FriendshipController::class, 'index'])->name('friends');
         Route::get('results', [UserController::class, 'filter'])->name('users.filter');
         Route::get('requests', [UserController::class, 'requests'])->name('requests');
         Route::get('settings', [ProfileController::class, 'edit'])->name('settings');

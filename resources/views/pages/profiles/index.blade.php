@@ -12,7 +12,7 @@
                 <div class="box_info_1 col-11 col-md-7 col-lg-9 m-auto">
                     <p class="lead username"><strong>{{ $user->name ?? 'N/A' }}</strong><br></p>
                     @if (Auth::user()->id == $user->id)
-                        <a href="{{ route('friends.index') }}">
+                        <a href="{{ route('friends') }}">
                             <button class="btn btn-outline-primary"> <i class="fa fa-users"></i> my additions</button>
                         </a>
                     @else
@@ -32,11 +32,14 @@
 
                             </div>
                         </span>
-                        <a href="{{ route('friendRequest', $user) }}">
+                        <a href="{{ route('messageRequest', $user) }}">
                             <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i> send
                                 message</button>
                         </a>
-                        <a href="{{ route('friends') }}"><button class="btn btn-outline-danger"> <i class="fa fa-user-plus"></i> addition</button></a>
+                        @if (!$pending)
+                            <a href="{{ route('friendRequest', $user) }}"><button class=" btn
+                                btn-outline-danger"> <i class="fa fa-user-plus"></i> addition</button></a>
+                        @endif
                     @endif
                 </div>
                 <div class="card card-body col-12">

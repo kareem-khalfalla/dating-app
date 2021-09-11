@@ -7,19 +7,19 @@ use Illuminate\Http\JsonResponse;
 
 trait Friendable
 {
-    public function addFriend(int $to): JsonResponse
+    public function addFriend(int $to): void
     {
-        $friendship = Friendship::create([
+        Friendship::create([
             'from' => $this->id,
             'to' => $to,
-            // 'status' => '',
+            'status' => 2,
         ]);
 
-        if ($friendship) {
-            return response()->json($friendship, 200);
-        }
+        // if ($friendship) {
+        //     return response()->json($friendship, 200);
+        // }
 
-        return response()->json('Failure', 400);
+        // return response()->json('Failure', 400);
     }
 
     public function acceptFriend(int $from): JsonResponse
