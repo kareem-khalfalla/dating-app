@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class FriendsSeeder extends Seeder
+class FriendshipSeeder extends Seeder
 {
     /**
      * Run the database seeds.

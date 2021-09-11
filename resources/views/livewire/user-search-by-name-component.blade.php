@@ -19,7 +19,7 @@
                         alt="user image" data-toggle="tooltip" data-placement="top" title="show profile">
                 </a>
                 <h5 class="col-6">{{ $user->name }}</h5>
-                <a href="#"><button class="btn btn-outline-success">{{ __('requests.Add') }}</button></a>&nbsp;
+                <a href="{{ route('messageRequest', $user) }}"><button class="btn btn-outline-success">{{ __('requests.Add') }}</button></a>&nbsp;
                 <button wire:click="hide" class="btn btn-outline-secondary">{{ __('requests.Hide') }}</button>
             </div>
         @endforeach

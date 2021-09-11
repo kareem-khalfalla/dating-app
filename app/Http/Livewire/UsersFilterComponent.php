@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,9 +18,7 @@ class UsersFilterComponent extends Component
     public function render()
     {
         return view('livewire.users-filter-component', [
-            'users' => User::search($this->search)
-                ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-                ->simplePaginate($this->perPage)
+            'users' => User::notAuthOne()->simplePaginate()
         ]);
     }
 }

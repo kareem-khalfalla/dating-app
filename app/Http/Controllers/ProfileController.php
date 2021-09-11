@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Events\MessageRequestEvent;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -23,10 +25,21 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function messageRequest(User $user): RedirectResponse
+    public function messageRequest(User $user)
     {
-        event(new MessageRequestEvent($user));
+        // event(new MessageRequestEvent($user));
 
-        return back();
+        /** @var \App\Models\User $authUser */
+        // $authUser = Auth::user();
+
+        // return $authUser->addFriend($user->id);
+    }
+
+    public function friendRequest(User $user): JsonResponse
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = Auth::user();
+
+        return $authUser->addFriend($user->id);
     }
 }

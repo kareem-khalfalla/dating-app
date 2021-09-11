@@ -4,7 +4,7 @@
             <div class="row m-0">
                 <div class="box_img col-10 col-md-5 col-lg-3">
                     <figure class="figure">
-                        <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('img/avatar.png') ?? 'N/A' }}"
+                        <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('images/users-avatar/default.png') ?? 'N/A' }}"
                             class="figure-img img-fluid rounded" alt="{{ $user->name ?? 'N/A' }}" data-toggle="modal"
                             data-target="#exampleModalCenter">
                     </figure>
@@ -32,11 +32,11 @@
 
                             </div>
                         </span>
-                        <a href="{{ route('messageRequest', $user) }}">
+                        <a href="{{ route('friendRequest', $user) }}">
                             <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i> send
                                 message</button>
                         </a>
-                        <button class="btn btn-outline-danger"> <i class="fa fa-user-plus"></i> addition</button>
+                        <a href="{{ route('friends') }}"><button class="btn btn-outline-danger"> <i class="fa fa-user-plus"></i> addition</button></a>
                     @endif
                 </div>
                 <div class="card card-body col-12">

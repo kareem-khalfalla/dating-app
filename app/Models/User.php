@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
+use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Friendable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,23 +52,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
+
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
     }
 
-    public static function search(string $search): Builder
+    public function scopeNotAuthOne(Builder $query): Builder
     {
-        return empty($search)
-            ? static::query()
-            : static::query()
-            ->where('id', 'like', "%$search%")
-            ->orWhere('name', 'like', "%$search%")
-            ->orWhere('email', 'like', "%$search%");
-    }
-
-    public function getRouteKeyName(): string
-    {
-        return 'username';
+        return $query->where('id', '!=', Auth::id());
     }
 }

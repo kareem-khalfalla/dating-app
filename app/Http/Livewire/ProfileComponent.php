@@ -166,7 +166,7 @@ class ProfileComponent extends Component
 
     public function render(): View
     {
-        
+
         return view('livewire.profile-component', [
             'religions' => Religion::all(),
             'obligations' => Obligation::all(),
@@ -236,26 +236,23 @@ class ProfileComponent extends Component
             'image' => ['required', 'image', 'max:1024'],
         ]);
 
-        $imageName = $image->store('public/images/users-avatar');
+        $imageName = $image->store('images/users-avatar');
 
         /** @var \App\Models\User $user */
         $user = auth()->user();
 
-        $create = $user->avatar == 'images/users-avatar/default.png';
-
-        if (!$create) {
+        if (!$user->avatar == 'images/users-avatar/default.png') {
             Storage::delete($user->avatar);
         }
-        
+
         $user->update([
             'avatar' => $imageName,
         ]);
 
-        $status = $create ? 'created' : 'updated';
 
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
-            'title' => "Image $status successfully",
+            'title' => "Image updated successfully",
             'timer' => 2000,
             'text' => '',
         ]);
