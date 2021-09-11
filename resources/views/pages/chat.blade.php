@@ -19,7 +19,21 @@
                     </div>
 
                     <div class="card-body contacts_body">
-                        @livewire('chat-list', ['users' => $users])
+                        <ul class="contacts">
+                            <li class="active">
+                                <div class="d-flex bd-highlight">
+                                    <div class="img_cont">
+                                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                            class="rounded-circle user_img">
+                                        <span class="online_icon"></span>
+                                    </div>
+                                    <div class="user_info">
+                                        <span>Khalid</span>
+                                        <p>Kalid is online</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div class="card-footer"></div>
                 </div>
@@ -70,10 +84,21 @@
                                 <img src="img/avatar.png" class="rounded-circle user_img_msg">
                             </div>
                         </div>
-                    @livewire('chat-form')
+                        <div class="card-footer">
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                                </div>
+                                <textarea name="" class="form-control type_msg"
+                                    placeholder="Type your message..."></textarea>
+                                <div class="input-group-append">
+                                    <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 </x-app-layout>
