@@ -26,7 +26,7 @@ class MessageFactory extends Factory
             'from' => User::all()->random()->id,
             'to' => User::all()->random()->id,
             'content' => $this->faker->sentence(),
-            'is_read' => rand(0, 1),
+            'is_seen' => rand(0, 1),
         ];
     }
 }

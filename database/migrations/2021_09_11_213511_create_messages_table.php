@@ -15,10 +15,11 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from')->constrained('users');
-            $table->foreignId('to')->constrained('users');
+            $table->foreignId('from');
+            $table->foreignId('to');
             $table->text('content');
-            $table->boolean('is_read');
+            $table->boolean('is_seen')->default(0);
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

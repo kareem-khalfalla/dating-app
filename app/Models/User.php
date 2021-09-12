@@ -63,9 +63,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Profile::class);
     }
 
-    public function scopeAllExceptAuth(Builder $query): Builder
+    public function scopeAllExceptAuthId(Builder $query): Builder
     {
         return $query->where('id', '!=', Auth::id());
+    }
+
+    public function scopeAllExceptAuthName(Builder $query, string $search): Builder
+    {
+        return $query->where('name', 'like', "%$search%")->where('name', '!=', auth()->user()->name);
     }
 
     public function isOnline(): bool
