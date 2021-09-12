@@ -21,7 +21,7 @@ class UserActivity
         if (auth()->check()) {
             Cache::put('user-online-' . auth()->user()->id, true, now()->addMinute(1));
 
-            User::auth()->first()->update([
+            User::auth()->update([
                 'last_seen' => now()
             ]);
         }
