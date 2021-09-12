@@ -20,19 +20,22 @@
 
                     <div class="card-body contacts_body">
                         <ul class="contacts">
-                            <li class="active">
-                                <div class="d-flex bd-highlight">
-                                    <div class="img_cont">
-                                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                            class="rounded-circle user_img">
-                                        <span class="online_icon"></span>
+                            @foreach ($users as $user)
+
+                                <li class="active">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="{{ asset($user->avatar) }}" class="rounded-circle user_img">
+                                            <span class="online_icon {{ $user->isOnline() ? '' : 'offline' }}"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>{{ $user->name }}</span>
+                                            <p>{{ $user->isOnline() ? 'online' : 'offline' }}</p>
+                                        </div>
                                     </div>
-                                    <div class="user_info">
-                                        <span>Khalid</span>
-                                        <p>Kalid is online</p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
+
                         </ul>
                     </div>
                     <div class="card-footer"></div>
@@ -46,7 +49,7 @@
                             <div class="img_cont">
                                 <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
                                     class="rounded-circle user_img">
-                                <span class="online_icon"></span>
+                                <span class="online_icon {{ $user->isOnline() ? '' : 'offline' }}"></span>
                             </div>
                             <div class="user_info">
                                 <span>Chat with Khalid</span>
@@ -57,9 +60,9 @@
                         <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                         <div class="action_menu">
                             <ul>
-                                <li><i class="fas fa-user-circle"></i> View profile</li>
-                                <li><i class="fas fa-users"></i> Add to close friends</li>
-                                <li><i class="fas fa-plus"></i> Add to group</li>
+                                {{-- <li><a href="{{ route('profile', ) }}"><i class="fas fa-user-circle"></i> View profile</a></li> --}}
+                                {{-- <li><i class="fas fa-users"></i> Add to close friends</li> --}}
+                                {{-- <li><i class="fas fa-plus"></i> Add to group</li> --}}
                                 <li><i class="fas fa-ban"></i> Block</li>
                             </ul>
                         </div>

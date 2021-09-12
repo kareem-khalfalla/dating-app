@@ -18,7 +18,7 @@ class UsersFilterComponent extends Component
     public function render()
     {
         return view('livewire.users-filter-component', [
-            'users' => User::notAuthOne()->simplePaginate()
+            'users' => User::allExceptAuth()->simplePaginate()
         ]);
     }
 }
