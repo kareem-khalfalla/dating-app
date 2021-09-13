@@ -5,17 +5,20 @@ namespace App\Http\Livewire;
 use App\Events\MessageEvent;
 use App\Models\Message;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Pusher\Pusher;
+use Livewire\WithFileUploads;
 
 class ChatMessagesComponent extends Component
 {
+    use WithFileUploads;
+
     public $user;
     public $isOnline;
     public $messages;
     public $messagesCount;
     public $message;
+    public $file;
+    public $fileName;
 
     public $latest;
 
@@ -43,15 +46,39 @@ class ChatMessagesComponent extends Component
         $this->emit('scrollToBottom');
     }
 
+    public function saveFile()
+    {
+        /** @var \Illuminate\Http\UploadedFile $file */
+        $file = $this->file;
+        $fileName = $file->store('images/users-attachments');
+        $this->fileName = $fileName;
+    }
+
     public function addMessage()
     {
+        if ($this->file) {
+            $this->saveFile();
+        }
+
+        if ($this->fileName) {
+            $this->message = $this->fileName;
+        }
+
+        if (!$this->message) {
+            return;
+        }
+
         $message = Message::create([
             'from' => auth()->id(),
             'to' => $this->user['id'],
             'content' => $this->message,
             // 'is_seen' => '',
-            // 'url' => '',
+            'url' => $this->fileName ?? '',
         ]);
+
+        $this->file = null;
+        $this->fileName = null;
+        $this->message = null;
 
         event(new MessageEvent($message));
     }

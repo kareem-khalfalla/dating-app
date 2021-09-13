@@ -32,7 +32,11 @@
                         <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="rounded-circle user_img_msg">
                     </div>
                     <div class="msg_cotainer">
-                        {{ $message['content'] }}
+                        @if ($message['url'])
+                            <img width="200" height="200" src="{{ asset('storage/' . $message['url']) }}">
+                        @else
+                            {{ $message['content'] }}
+                        @endif
                         <span class="msg_time">{{ $message['created_at'] }}</span>
                     </div>
                 </div>
@@ -41,11 +45,12 @@
 
                 <div class="d-flex justify-content-end mb-4">
                     <div class="msg_cotainer_send">
-                        {{ $message['content'] }}
-                        <span class="msg_time_send">{{ $message['created_at'] }}</span>
-                    </div>
-                    <div class="img_cont_msg">
-                        <img src="{{ asset('storage/' . $user['avatar']) }}" class="rounded-circle user_img_msg">
+                        @if ($message['url'])
+                            <img width="200" height="200" src="{{ asset('storage/' . $message['url']) }}">
+                        @else
+                            {{ $message['content'] }}
+                        @endif
+                        <span class="msg_time">{{ $message['created_at'] }}</span>
                     </div>
                 </div>
             @endif
@@ -59,10 +64,18 @@
 
                 <div class="input-group">
                     <div class="input-group-append">
-                        <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                        <span onclick="document.getElementById('file').click()" class="input-group-text attach_btn"><i
+                                class="fas fa-paperclip"></i></span>
                     </div>
+                    <input wire:model="file" id="file" type="file" style="opacity: 0; display: none">
                     <textarea autofocus wire:model.defer="message" id="type_msg" class="form-control type_msg"
                         placeholder="Type your message..."></textarea>
+                    @if (!is_null($file))
+                        <div class="input-group-append">
+                            <img wire:mode="file" style="width: 160px; height: 160px"
+                                src="{{ $file->temporaryUrl() }}">
+                        </div>
+                    @endif
                     <div class="input-group-append">
                         <span wire:click="addMessage" class="input-group-text send_btn"><i
                                 class="fas fa-location-arrow"></i></span>
@@ -95,7 +108,7 @@
                         cancelable: true
                     }));
                     event
-                .preventDefault();
+                        .preventDefault();
                 }
             }
 
