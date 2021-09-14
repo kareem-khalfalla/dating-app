@@ -9,7 +9,7 @@
                     <h3>{{ __('welcome.Send message') }}</h3>
                 </div>
                 <div class="card-body">
-                    @livewire('contact-us-component')
+                    @livewire('contact-us-form-component')
                 </div>
             </div>
         </div>
