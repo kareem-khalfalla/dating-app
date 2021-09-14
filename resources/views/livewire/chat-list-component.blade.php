@@ -16,7 +16,7 @@
                 <li wire:click="$emit('userSelected', {{ $user }})" class="li">
                     <div class="d-flex bd-highlight">
                         <div class="img_cont">
-                            <img src="{{ asset('storage/'.$user->avatar) }}" class="rounded-circle user_img">
+                            <img src="{{ asset($user->avatar) }}" class="rounded-circle user_img">
                             <span class="online_icon {{ $user->isOnline() ? '' : 'offline' }}"></span>
                         </div>
                         <div class="user_info">

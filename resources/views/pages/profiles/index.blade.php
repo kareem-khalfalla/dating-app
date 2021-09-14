@@ -37,8 +37,10 @@
                                 message</button>
                         </a>
                         @if (!$pending)
-                            <a href="{{ route('friendRequest', $user) }}"><button class=" btn
-                                btn-outline-danger"> <i class="fa fa-user-plus"></i> addition</button></a>
+                            <a href="{{ route('friendRequest', $user) }}"><button
+                                    class=" btn
+                                btn-outline-danger"> <i
+                                        class="fa fa-user-plus"></i> addition</button></a>
                         @endif
                     @endif
                 </div>
@@ -299,7 +301,7 @@
                     </button>
                 </div>
                 <div class="modal-body p-0 m-0">
-                    <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('img/avatar.png') ?? 'N/A' }}"
+                    <img src="{{ !is_null($user->avatar) ? asset($user->avatar) : asset('img/avatar.png') ?? 'N/A' }}"
                         class="img-fluid" alt="{{ $user->name }}">
                 </div>
 

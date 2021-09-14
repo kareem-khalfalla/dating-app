@@ -2,7 +2,7 @@
     <div class="card-header msg_head">
         <div class="d-flex bd-highlight">
             <div class="img_cont">
-                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
+                <img src="{{ asset('storage/' . $user['avatar']) }}" class="rounded-circle user_img">
                 <span class="online_icon {{ $isOnline ? '' : 'offline' }}"></span>
             </div>
             <div class="user_info">
@@ -46,7 +46,7 @@
                 <div class="d-flex justify-content-end mb-4">
                     <div class="msg_cotainer_send">
                         @if ($message['url'])
-                            <img width="200" height="200" src="{{ asset('storage/' . $message['url']) }}">
+                            <img width="200" height="200" src="{{ asset($message['url']) }}">
                         @else
                             {{ $message['content'] }}
                         @endif
@@ -89,6 +89,8 @@
 @push('scripts')
 
     <script>
+        // window.livewire_app_url = "{{route('app_route')}}";
+
         window.Echo.channel('messages').listen('MessageEvent', (e) => {
             Livewire.emit('done', e)
         });
@@ -111,7 +113,6 @@
                         .preventDefault();
                 }
             }
-
             document.getElementById("type_msg").addEventListener("keypress", submitOnEnter);
         });
     </script>

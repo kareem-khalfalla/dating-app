@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#1D2625" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="{{ asset('css/app.js') }}"></script>
+    <link src="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/theme/main_h.css') }}">
     <link rel="stylesheet" href="{{ asset('css/theme/responsive.css') }}">
     <!-- Font Awesome Library -->
