@@ -89,8 +89,6 @@
 @push('scripts')
 
     <script>
-        // window.livewire_app_url = "{{route('app_route')}}";
-
         window.Echo.channel('messages').listen('MessageEvent', (e) => {
             Livewire.emit('done', e)
         });

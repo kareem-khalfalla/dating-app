@@ -7,16 +7,16 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath',]
     ],
     function () {
-        Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
         Route::get('about', [SiteController::class, 'about'])->name('about');
         Route::get('privacy', [SiteController::class, 'privacy'])->name('privacy');
-        
+
         Route::group(['middleware' => 'auth'], function () {
             Route::get('chat', [SiteController::class, 'chat'])->name('chat');
             Route::get('friends', [FriendshipController::class, 'index'])->name('friends');
