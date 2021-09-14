@@ -114,6 +114,11 @@
                                 {{ old('gender') ? 'checked' : '' }} value="male">&nbsp;Male</label>
                         <label class="radio-inline p-2"><input type="radio" name="gender"
                                 {{ old('gender') ? 'checked' : '' }} value="female">&nbsp;Female</label>
+                        @error('gender')
+                            <div class="invalid-feedback">
+                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                            </div>
+                        @enderror
                     </div>
                     <div class="mt-2 mb-1 mt-4 ml-3">
                         <button id="register-btn" type="submit" class="btn btn_form_signup btn-block m-auto">Sign

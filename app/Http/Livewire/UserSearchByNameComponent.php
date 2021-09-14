@@ -18,7 +18,7 @@ class UserSearchByNameComponent extends Component
         $pendingRequestsIds = Friendship::pendingRequests()->get()->pluck('to')->toArray();
 
         return view('livewire.user-search-by-name-component', [
-            'users' => User::where('name', 'like', "%{$this->search}%")->whereNotIn('id', $pendingRequestsIds)->simplePaginate(5)
+            'users' => User::allExceptAuthName(search: "%{$this->search}%")->whereNotIn('id', $pendingRequestsIds)->simplePaginate(5)
         ]);
     }
 
