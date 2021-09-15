@@ -8,5 +8,5 @@ return [
     'Empty notifications' => 'Empty notifications',
     'Search' => 'Search',
     'Add' => 'Add',
-    'Hide  ' => 'Hide',
+    'Hide' => 'Hide',
 ];

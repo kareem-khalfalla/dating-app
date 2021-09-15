@@ -110,9 +110,9 @@
                     <!-- => [ Start select box gender ] !-->
                     <div class="mt-2 mb-2 col-md-6 pr-2">
                         <label class="mr-3"><b>Gender</b></label>
-                        <label class="radio-inline p-2"><input type="radio" name="gender"
+                        <label class="radio-inline p-2"><input type="radio" class="@error('password_confirmation') is-invalid @enderror" name="gender"
                                 {{ old('gender') ? 'checked' : '' }} value="male">&nbsp;Male</label>
-                        <label class="radio-inline p-2"><input type="radio" name="gender"
+                        <label class="radio-inline p-2"><input type="radio" class="@error('password_confirmation') is-invalid @enderror" name="gender"
                                 {{ old('gender') ? 'checked' : '' }} value="female">&nbsp;Female</label>
                         @error('gender')
                             <div class="invalid-feedback">

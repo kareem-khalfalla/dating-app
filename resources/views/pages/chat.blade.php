@@ -10,7 +10,9 @@
             </div>
 
             <div class="col-md-8 col-xl-6 chat">
-                @livewire('chat-messages-component', ['user' => $users[0]->toArray()])
+                @if (count($users) > 0)
+                    @livewire('chat-messages-component', ['user' => $users[0]->toArray()])
+                @endif
             </div>
         </div>
 </x-app-layout>

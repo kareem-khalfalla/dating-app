@@ -8,10 +8,15 @@ use Livewire\Component;
 
 class ChatListComponent extends Component
 {
+    protected $listeners = [
+        'receivedMessage',
+    ];
+
     public $users;
+    public $userId;
     public $search = '';
     
-    public function updatedSearch()
+    public function updatedSearch(): void
     {
         $this->users = User::allExceptAuthName($this->search)->get();
     }
@@ -19,5 +24,10 @@ class ChatListComponent extends Component
     public function render(): View
     {
         return view('livewire.chat-list-component');
+    }
+
+    public function receivedMessage(int $id): void
+    {
+        $this->userId = $id;
     }
 }

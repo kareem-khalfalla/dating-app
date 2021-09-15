@@ -24,7 +24,7 @@ class ChatMessagesComponent extends Component
 
     protected $listeners = [
         'userSelected',
-        'echo:messages,MessageEvent' => 'done',
+        'echo:messages,MessageEvent' => 'received',
     ];
 
     public function mount()
@@ -37,16 +37,16 @@ class ChatMessagesComponent extends Component
         return view('livewire.chat-messages-component');
     }
 
-    public function userSelected($user)
+    public function userSelected(array $user): void
     {
         $this->user = $user;
         $this->isOnline = User::find($this->user['id'])->isOnline();
         $this->messages = Message::betweenTwoUsers($this->user['id'])->get()->toArray();
-        $this->messagesCount = Message::betweenTwoUsers($this->user['id'])->get()->count() * 2;
+        $this->messagesCount = Message::betweenTwoUsers($this->user['id'])->get()->count();
         $this->emit('scrollToBottom');
     }
 
-    public function saveFile()
+    public function saveFile(): void
     {
         /** @var \Illuminate\Http\UploadedFile $file */
         $file = $this->file;
@@ -54,7 +54,7 @@ class ChatMessagesComponent extends Component
         $this->fileName = $fileName;
     }
 
-    public function addMessage()
+    public function addMessage(): void
     {
         if ($this->file) {
             $this->saveFile();
@@ -83,13 +83,21 @@ class ChatMessagesComponent extends Component
         event(new MessageEvent($message));
     }
 
-    public function done($data)
+    public function received($data): void
     {
         $messageArr = $data['message'];
 
         $this->messages[] = $messageArr;
 
+        $user = $messageArr['from'] == auth()->id()
+            ? User::find($messageArr['to'])->toArray()
+            : User::find($messageArr['from'])->toArray();
+
+        $this->userSelected($user);
+
         $this->emit('scrollToBottom');
+
+        $this->emit('receivedMessage', $user['id']);
 
         $this->message = '';
     }

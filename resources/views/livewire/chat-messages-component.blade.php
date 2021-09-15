@@ -58,39 +58,37 @@
             <p>Say HI!</p>
         @endforelse
 
-
-        <div class="card-footer">
-            <form wire:submit.prevent="addMessage">
-
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <span onclick="document.getElementById('file').click()" class="input-group-text attach_btn"><i
-                                class="fas fa-paperclip"></i></span>
-                    </div>
-                    <input wire:model="file" id="file" type="file" style="opacity: 0; display: none">
-                    <textarea autofocus wire:model.defer="message" id="type_msg" class="form-control type_msg"
-                        placeholder="Type your message..."></textarea>
-                    @if (!is_null($file))
-                        <div class="input-group-append">
-                            <img wire:mode="file" style="width: 160px; height: 160px"
-                                src="{{ $file->temporaryUrl() }}">
-                        </div>
-                    @endif
-                    <div class="input-group-append">
-                        <span wire:click="addMessage" class="input-group-text send_btn"><i
-                                class="fas fa-location-arrow"></i></span>
-                    </div>
-            </form>
-        </div>
     </div>
-</div>
+
+    <div class="card-footer">
+        <form wire:submit.prevent="addMessage">
+
+            <div class="input-group">
+                <div class="input-group-append">
+                    <span onclick="document.getElementById('file').click()" class="input-group-text attach_btn"><i
+                            class="fas fa-paperclip"></i></span>
+                </div>
+                <input wire:model="file" id="file" type="file" style="opacity: 0; display: none">
+                <textarea autofocus wire:model.defer="message" id="type_msg" class="form-control type_msg"
+                    placeholder="Type your message..."></textarea>
+                @if (!is_null($file))
+                    <div class="input-group-append">
+                        <img wire:mode="file" style="width: 160px; height: 160px" src="{{ $file->temporaryUrl() }}">
+                    </div>
+                @endif
+                <div class="input-group-append">
+                    <span wire:click="addMessage" class="input-group-text send_btn"><i
+                            class="fas fa-location-arrow"></i></span>
+                </div>
+        </form>
+    </div>
 </div>
 
 @push('scripts')
 
     <script>
         window.Echo.channel('messages').listen('MessageEvent', (e) => {
-            Livewire.emit('done', e)
+            Livewire.emit('received', e)
         });
 
         document.addEventListener('DOMContentLoaded', (event) => {
