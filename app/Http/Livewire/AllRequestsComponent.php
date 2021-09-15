@@ -11,7 +11,7 @@ class AllRequestsComponent extends Component
     public function render(): View
     {
         return view('livewire.all-requests-component', [
-            'requests' => Friendship::where('status', 0)->where('to', auth()->id())->get()
+            'requests' => Friendship::where('status', 2)->where('to', auth()->id())->get()
         ]);
     }
 

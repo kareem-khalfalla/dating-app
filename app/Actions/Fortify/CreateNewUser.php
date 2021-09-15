@@ -57,7 +57,7 @@ class CreateNewUser implements CreatesNewUsers
 
 
         $user->profile()->create();
-        
+
         return $user;
     }
 }

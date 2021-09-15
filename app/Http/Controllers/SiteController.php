@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 
@@ -27,7 +28,8 @@ class SiteController extends Controller
     public function chat(): View
     {
         return view('pages.chat', [
-            'users' => User::AllExceptAuthId()->get()
+
+            'users' => User::allExceptAuthId()->orderByMessages()->get()
         ]);
     }
 }
