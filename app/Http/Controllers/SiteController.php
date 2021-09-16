@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 
