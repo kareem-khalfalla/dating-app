@@ -31,27 +31,33 @@
 
                     <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
                         <div class="col-6 col-md-5 p-0 m-0">
-                            <img class="p-0 m-0" style="border: 1px solid #eee;" src="{{ asset($users[0]->avatar) }}"
-                                width="150px" height="150px" alt="">
+                            <img class="p-0 m-0" style="border: 1px solid #eee;"
+                                src="{{ asset('storage/' . $users[0]->avatar) }}" width="150px" height="150px" alt="">
                         </div>
                         <div class="col-6 col-md-7">
                             <p><b>{{ __('welcome.Name') }} : </b> {{ $users[0]->name }}</p>
-                            <p><b>{{ __('welcome.Age') }} : </b> {{ Carbon\Carbon::parse($users[0]->profile->dob)->age ?? 'N/A' }}</p>
-                            <p><b>{{ __('welcome.From') }} : </b> {{ $users[0]->profile->hometown->name ?? 'N/A' }}</p>
-                            <p><b>{{ __('welcome.Stay in') }} : </b> {{ $users[0]->profile->countryOfResidence->name ?? 'N/A' }}</p>
+                            <p><b>{{ __('welcome.Age') }} : </b>
+                                {{ Carbon\Carbon::parse($users[0]->profile->dob)->age ?? 'N/A' }}</p>
+                            <p><b>{{ __('welcome.From') }} : </b>
+                                {{ $users[0]->profile->hometown->name ?? 'N/A' }}</p>
+                            <p><b>{{ __('welcome.Stay in') }} : </b>
+                                {{ $users[0]->profile->countryOfResidence->name ?? 'N/A' }}</p>
                         </div>
                     </div>
 
                     <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
                         <div class="col-6 col-md-5 p-0 m-0">
-                            <img class="p-0 m-0" style="border: 1px solid #eee;" src="{{ asset($users[1]->avatar) }}"
-                                width="150px" height="150px" alt="">
+                            <img class="p-0 m-0" style="border: 1px solid #eee;"
+                                src="{{ asset('storage/' . $users[1]->avatar) }}" width="150px" height="150px" alt="">
                         </div>
                         <div class="col-6 col-md-7">
                             <p><b>{{ __('welcome.Name') }} : </b> {{ $users[1]->name }}</p>
-                            <p><b>{{ __('welcome.Age') }} : </b> {{ Carbon\Carbon::parse($users[1]->profile->dob)->age ?? 'N/A' }}</p>
-                            <p><b>{{ __('welcome.From') }} : </b> {{ $users[1]->profile->hometown->name ?? 'N/A' }}</p>
-                            <p><b>{{ __('welcome.Stay in') }} : </b> {{ $users[1]->profile->countryOfResidence->name ?? 'N/A' }}</p>
+                            <p><b>{{ __('welcome.Age') }} : </b>
+                                {{ Carbon\Carbon::parse($users[1]->profile->dob)->age ?? 'N/A' }}</p>
+                            <p><b>{{ __('welcome.From') }} : </b>
+                                {{ $users[1]->profile->hometown->name ?? 'N/A' }}</p>
+                            <p><b>{{ __('welcome.Stay in') }} : </b>
+                                {{ $users[1]->profile->countryOfResidence->name ?? 'N/A' }}</p>
                         </div>
                     </div>
 
