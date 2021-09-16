@@ -27,8 +27,6 @@ class SiteController extends Controller
 
     public function chat(): View
     {
-        return view('pages.chat', [
-            'users' => User::allExceptAuthId()->get()
-        ]);
+        return view('pages.chat');
     }
 }
