@@ -60,7 +60,7 @@
                                 profile</a></li>
                         {{-- <li><i class="fas fa-users"></i> Add to close friends</li> --}}
                         {{-- <li><i class="fas fa-plus"></i> Add to group</li> --}}
-                        <li><i class="fas fa-ban"></i> Block</li>
+                        <li wire:click.prevent="block({{ $selectedUser['id'] }})"><i class="fas fa-ban"></i> Block</li>
                     </ul>
                 </div>
             </div>

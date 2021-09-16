@@ -128,4 +128,11 @@ class ChatComponent extends Component
 
         $this->message = '';
     }
+
+    public function block(int $id): void
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+        $authUser->blockFriend(User::find($id));
+    }
 }
