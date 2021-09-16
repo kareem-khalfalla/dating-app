@@ -1,18 +1,54 @@
 <x-app-layout>
+
     @push('styles')
         <link rel="stylesheet" href="{{ asset('css/theme/chat-style.css') }}">
     @endpush
+
     <div class="container-fluid h-100 pt-5">
-        <div class="row justify-content-center h-100">
 
-            <div class="col-md-4 col-xl-3 chat">
-                @livewire('chat-list-component', ['users' => $users])
-            </div>
+        @livewire('chat-component')
 
-            <div class="col-md-8 col-xl-6 chat">
-                @if (count($users) > 0)
-                    @livewire('chat-messages-component', ['user' => $users[0]->toArray()])
-                @endif
-            </div>
-        </div>
+    </div>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('.active').click();
+
+                Echo.channel('messages').listen('MessageEvent', (e) => {
+                    Livewire.emit('received', e)
+                });
+
+                livewire.on('scrollToBottom', () => {
+                    $('#type_msg').focus();
+                    $('.msg_card_body').animate({
+                        scrollTop: $('.msg_card_body')[0].scrollHeight
+                    }, 'slow');
+                });
+
+                $("#type_msg").on("keypress", (e) => {
+                    if (event.which === 13) {
+                        event.target.form.dispatchEvent(new Event("submit", {
+                            cancelable: true
+                        }));
+                        event.preventDefault();
+                    }
+                });
+
+                $('.msg_card_body').scroll(() => {
+                    let getTop = $('.msg_card_body')[0].scrollTop;
+
+                    if (getTop == 0) {
+                        Livewire.emit('loadMore');
+                        $('.msg_card_body')[0].scrollTop += 10;
+                    }
+                });
+
+                //     livewire.on('load', (data) => {
+                //         console.log('im here loaded');
+                //         console.log(data);
+                //     });
+            });
+        </script>
+    @endpush
 </x-app-layout>
