@@ -22,7 +22,7 @@ class Message extends Model
         return Carbon::parse($attr)->diffForHumans();
     }
 
-    public function scopeLatestToAuthId(Builder $query): Builder
+    public function scopeToAuthId(Builder $query): Builder
     {
         return $query->where('to', auth()->id());
     }

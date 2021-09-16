@@ -28,7 +28,7 @@ class LogSuccessfulLogin implements ShouldQueue
     {
         /** @var \App\Models\User $user */
         $user = $event->user;
-        $user->last_seen = now();
+        $user->last_seen_at = now();
         $user->save();
     }
 }

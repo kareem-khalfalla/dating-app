@@ -22,7 +22,7 @@ class UserActivity
             Cache::put('user-online-' . auth()->user()->id, true, now()->addMinute(1));
 
             User::auth()->update([
-                'last_seen' => now()
+                'last_seen_at' => now()
             ]);
         }
 
