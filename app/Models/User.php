@@ -6,6 +6,9 @@ use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,7 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'username',
         'gender',
-        'last_seen',
+        'last_seen_at',
+        'last_message_at',
         'avatar',
     ];
 
@@ -71,6 +75,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeAllExceptAuthName(Builder $query, string $search): Builder
     {
         return $query->where('name', 'like', "%$search%")->where('name', '!=', auth()->user()->name);
+    }
+
+    public function scopeOrderByLastMsg(Builder $query): Builder
+    {
+        return $query->latest('last_message_at');
     }
 
     public function isOnline(): bool
