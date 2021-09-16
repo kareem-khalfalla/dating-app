@@ -15,8 +15,8 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from');
-            $table->foreignId('to');
+            $table->unsignedBigInteger('from');
+            $table->unsignedBigInteger('to');
             $table->text('content');
             $table->boolean('is_seen')->default(0);
             $table->string('url')->nullable();
