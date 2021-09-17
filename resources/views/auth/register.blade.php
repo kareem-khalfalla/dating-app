@@ -6,7 +6,7 @@
                 @csrf
                 <div id="regAlert"></div>
                 <div class="row">
-                    <div class="input-group input-group-lg mb-3 col-md-6">
+                    <div class="input-group input-group-lg mb-3 col-md-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user"></i></span>
                         </div>
@@ -19,7 +19,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-6">
+                    <div class="input-group input-group-lg mb-3 col-md-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i
                                     class="fa fa-user-circle"></i></span>
@@ -33,7 +33,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-6">
+                    <div class="input-group input-group-lg mb-3 col-md-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i
                                     class="fa fa-envelope"></i></span>
@@ -49,10 +49,10 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-6">
+
+                    <div class="input-group input-group-lg mb-3 col-md-12">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-phone"
-                                    aria-hidden="true"></i></span>
+                            <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-phone"></i></span>
                         </div>
                         <input name="phone" value="{{ old('phone') }}" placeholder="phone" type="tel"
                             class="form-control @error('phone') is-invalid @enderror" aria-label="Large"
@@ -64,7 +64,9 @@
                         @enderror
                     </div>
 
-                    <div class="input-group input-group-lg mb-3 col-md-6">
+
+
+                    <div class="input-group input-group-lg mb-3 col-md-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
                                     aria-hidden="true"></i></span>
@@ -78,7 +80,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-6">
+                    <div class="input-group input-group-lg mb-3 col-md-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
                                     aria-hidden="true"></i></span>
@@ -95,25 +97,13 @@
                     <!-- => End input cofirm password  !-->
 
 
-                    <!-- => [ Start select box gender ] !-->
-                    {{-- <div class="input-group input-group-lg mb-3 col-md-6">
-
-                        <select name="lang" class="form-control form-control-lg ">
-                            <option value="">language</option>
-                            <option value="eng">arabic</option>
-                            <option value="arb">English</option>
-                            <option value="alm">German</option>
-                        </select>
-                    </div> --}}
-                    <!-- => [ End select box gender ] !-->
-
-                    <!-- => [ Start select box gender ] !-->
                     <div class="mt-2 mb-2 col-md-6 pr-2">
                         <label class="mr-3"><b>Gender</b></label>
-                        <label class="radio-inline p-2"><input type="radio" class="@error('password_confirmation') is-invalid @enderror" name="gender"
+                        <label class="radio-inline p-2 @error('gender') is-invalid @enderror"><input type="radio" name="gender"
                                 {{ old('gender') ? 'checked' : '' }} value="male">&nbsp;Male</label>
-                        <label class="radio-inline p-2"><input type="radio" class="@error('password_confirmation') is-invalid @enderror" name="gender"
+                        <label class="radio-inline p-2 @error('gender') is-invalid @enderror"><input type="radio" name="gender"
                                 {{ old('gender') ? 'checked' : '' }} value="female">&nbsp;Female</label>
+
                         @error('gender')
                             <div class="invalid-feedback">
                                 <small id="passError" class="text-danger col-12">{{ $message }}</small>
