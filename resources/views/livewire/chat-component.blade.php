@@ -60,48 +60,35 @@
                                 profile</a></li>
                         {{-- <li><i class="fas fa-users"></i> Add to close friends</li> --}}
                         {{-- <li><i class="fas fa-plus"></i> Add to group</li> --}}
-                        <li wire:click.prevent="block({{ $selectedUser['id'] }})"><i class="fas fa-ban"></i> Block</li>
+                        <li wire:click.prevent="block({{ $selectedUser['id'] }})"><i class="fas fa-ban"></i>
+                            Block</li>
                     </ul>
                 </div>
             </div>
 
             <div class="card-body msg_card_body">
+                @forelse ($messages as $message)
+                    <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 2 ? 'last_record' : '' }}"
+                        class="d-flex justify-content-{{ $message['from'] == Auth::id() ? 'start' : 'end' }} mb-4">
+                        @if ($message['from'] == Auth::id())
 
-                @forelse (array_reverse($messages) as $message)
-                    @if ($message['from'] == Auth::id())
-
-                        <div class="d-flex justify-content-start mb-4">
                             <div class="img_cont_msg">
                                 <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
                                     class="rounded-circle user_img_msg">
                             </div>
-                            <div class="msg_cotainer">
-                                @if ($message['url'])
-                                    <img width="200" height="200" src="{{ asset('storage/' . $message['url']) }}">
-                                @else
-                                    {{ $message['content'] }}
-                                @endif
-                                <span class="msg_time">{{ $message['created_at'] }}</span>
-                            </div>
+                        @endif
+                        <div class="{{ $message['from'] == Auth::id() ? 'msg_cotainer' : 'msg_cotainer_send' }}">
+                            @if ($message['url'])
+                                <img width="200" height="200" src="{{ asset('storage/' . $message['url']) }}">
+                            @else
+                                {{ $message['content'] }}
+                            @endif
+                            <span class="msg_time">{{ $message['created_at'] }}</span>
                         </div>
-                    @endif
-                    @if ($message['from'] == $selectedUser['id'])
-
-                        <div class="d-flex justify-content-end mb-4">
-                            <div class="msg_cotainer_send">
-                                @if ($message['url'])
-                                    <img width="200" height="200" src="{{ asset('storage/' . $message['url']) }}">
-                                @else
-                                    {{ $message['content'] }}
-                                @endif
-                                <span class="msg_time">{{ $message['created_at'] }}</span>
-                            </div>
-                        </div>
-                    @endif
+                    </div>
                 @empty
                     <p>Say HI!</p>
                 @endforelse
-
             </div>
 
             <div class="card-footer">
@@ -129,3 +116,26 @@
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        livewire.on('load', () => {
+            const lastRecord = document.getElementById('last_record');
+            const options = {
+                root: null,
+                threshold: 1,
+                rootMargin: '0px'
+            }
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        @this.loadMore();
+                    }
+                });
+            });
+            if (lastRecord) {
+                observer.observe(lastRecord);
+            }
+        });
+    </script>
+@endpush

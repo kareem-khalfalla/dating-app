@@ -22,10 +22,12 @@ class MessageFactory extends Factory
      */
     public function definition()
     {
+        static $number = 1;
+
         return [
             'from' => User::all()->random()->id,
             'to' => User::all()->random()->id,
-            'content' => $this->faker->sentence(),
+            'content' => $number++,
             'is_seen' => rand(0, 1),
         ];
     }

@@ -24,6 +24,7 @@
                     $('.msg_card_body').animate({
                         scrollTop: $('.msg_card_body')[0].scrollHeight
                     }, 'slow');
+                    livewire.emit('load');
                 });
 
                 $("#type_msg").on("keypress", (e) => {
@@ -34,20 +35,6 @@
                         event.preventDefault();
                     }
                 });
-
-                $('.msg_card_body').scroll(() => {
-                    let getTop = $('.msg_card_body')[0].scrollTop;
-
-                    if (getTop == 0) {
-                        Livewire.emit('loadMore');
-                        $('.msg_card_body')[0].scrollTop += 10;
-                    }
-                });
-
-                //     livewire.on('load', (data) => {
-                //         console.log('im here loaded');
-                //         console.log(data);
-                //     });
             });
         </script>
     @endpush

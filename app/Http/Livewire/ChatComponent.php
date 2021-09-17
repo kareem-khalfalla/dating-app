@@ -49,7 +49,7 @@ class ChatComponent extends Component
     {
         $this->selectedUser = $user;
         $this->isOnline = User::find($this->selectedUser['id'])->isOnline();
-        $this->messages = Message::betweenTwoUsers($this->selectedUser['id'])->latest()->limit($this->loadAmount)->get()->toArray();
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->latest()->limit($this->loadAmount)->get()->toArray());
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'])->count();
         $this->emit('scrollToBottom');
     }
@@ -58,7 +58,6 @@ class ChatComponent extends Component
     {
         $this->loadAmount += 10;
         $this->messages = Message::betweenTwoUsers($this->selectedUser['id'])->limit($this->loadAmount)->get()->toArray();
-        $this->emit('load', $this->loadAmount); // testing
     }
 
     public function saveFile(): void
@@ -91,15 +90,19 @@ class ChatComponent extends Component
             'url' => $this->fileName ?? '',
         ]);
 
+        $this->message = null;
+        $this->file = null;
+        $this->fileName = null;
+
         User::find($message->from)->update([
             'last_message_at' => now()
         ]);
 
-        $this->users = User::allExceptAuthId($this->search)->orderByLastMsg()->get();
+        User::find($message->to)->update([
+            'last_message_at' => now()
+        ]);
 
-        $this->message = null;
-        $this->file = null;
-        $this->fileName = null;
+        $this->users = User::allExceptAuthId($this->search)->orderByLastMsg()->get();
 
         $this->emit('userReceivedMsg', [
             'user' => User::find($message->from)->toArray()
