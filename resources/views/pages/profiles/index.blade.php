@@ -35,7 +35,10 @@
                             <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i> send
                                 message</button>
                         </a>
-                        @if (!in_array($user->id,Auth::user()->getPendingFriendships()->pluck('recipient_id')->toArray()))
+                        @if (!in_array(
+        $user->id,
+        Auth::user()->getPendingFriendships()->pluck('recipient_id')->toArray(),
+    ))
                             <a href="{{ route('friendRequest', $user) }}"><button
                                     class=" btn
                                 btn-outline-danger"> <i
@@ -47,27 +50,30 @@
                     <h4>brief about me</h4>
                     <p class="lead">{{ $user->profile->bio ?? 'N/A' }}</p>
                 </div>
-                <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
-                    role="alert">
-                    @if ($user->profile->progress_bar == 100)
-                        Your personal information is complete
-                    @else
-                        Your personal information is incomplete, you must complete it in order to enjoy all the
-                        features.
-                        <strong> <a href="{{ route('settings') }}"> Go to the settings page from here
-                            </a></strong>
-                    @endif
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                @if (request()->route('user')->username == Auth::user()->username)
 
-                <div class="progress col-12 p-0">
-                    <div class="progress-bar progress-bar-striped bg-{{ $user->profile->progress_bar > 50 ? 'success' : 'warning' }}"
-                        role="progressbar" style="width: {{ $user->profile->progress_bar }}%;"
-                        aria-valuenow="{{ $user->profile->progress_bar }}" aria-valuemin="0" aria-valuemax="100">
-                        {{ $user->profile->progress_bar }}</div>
-                </div>
+                    <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
+                        role="alert">
+                        @if ($user->profile->progress_bar == 100)
+                            Your personal information is complete
+                        @else
+                            Your personal information is incomplete, you must complete it in order to enjoy all the
+                            features.
+                            <strong> <a href="{{ route('settings') }}"> Go to the settings page from here
+                                </a></strong>
+                        @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="progress col-12 p-0">
+                        <div class="progress-bar progress-bar-striped bg-{{ $user->profile->progress_bar > 50 ? 'success' : 'warning' }}"
+                            role="progressbar" style="width: {{ $user->profile->progress_bar }}%;"
+                            aria-valuenow="{{ $user->profile->progress_bar }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ $user->profile->progress_bar }}</div>
+                    </div>
+                @endif
 
                 <div class="box_info col-lg-12">
                     <p class="lead hover_padding">
