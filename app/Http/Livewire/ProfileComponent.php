@@ -166,7 +166,6 @@ class ProfileComponent extends Component
 
     public function render(): View
     {
-
         return view('livewire.profile-component', [
             'religions' => Religion::all(),
             'obligations' => Obligation::all(),
