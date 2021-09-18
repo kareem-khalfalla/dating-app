@@ -9,23 +9,24 @@
             </div>
         </div>
     </div>
-
     <div class="card-body">
         @forelse ($users as $user)
 
             <div class="row box_frind col-12 p-1">
                 <a href="{{ route('profile', $user) }}">
-                    <img class="img_user" src="{{ asset($user->avatar) }}"
-                        alt="user image" data-toggle="tooltip" data-placement="top" title="show profile">
+                    <img class="img_user" src="{{ asset('storage/' . $user->avatar) }}" alt="user image"
+                        data-toggle="tooltip" data-placement="top" title="show profile">
                 </a>
                 <h5 class="col-6">{{ $user->name }}</h5>
-                <a href="{{ route('friendRequest', $user) }}"><button class="btn btn-outline-success">{{ __('requests.Add') }}</button></a>&nbsp;
-                <button wire:click="hide" class="btn btn-outline-secondary">{{ __('requests.Hide') }}</button>
+                <button wire:click.prevent="add({{ $user }})"
+                    class="btn btn-outline-success">{{ __('requests.Add') }}</button>
+                &nbsp;
+                <button class="btn btn-outline-secondary" onclick="hide()" id="hide">{{ __('requests.Hide') }}</button>
             </div>
-            @empty
+        @empty
             <p>Empty members!</p>
         @endforelse
 
-        {{ $users->links() }}
+        {{-- {{ $users->links() }} --}}
     </div>
 </div>

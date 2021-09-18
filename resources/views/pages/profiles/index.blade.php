@@ -12,7 +12,7 @@
                 <div class="box_info_1 col-11 col-md-7 col-lg-9 m-auto">
                     <p class="lead username"><strong>{{ $user->name ?? 'N/A' }}</strong><br></p>
                     @if (Auth::user()->id == $user->id)
-                        <a href="{{ route('friends') }}">
+                        <a href="{{ route('friends', Auth::user()) }}">
                             <button class="btn btn-outline-primary"> <i class="fa fa-users"></i> my additions</button>
                         </a>
                     @else
@@ -23,20 +23,19 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Block</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_add">show
+                                @if (!$user->isBlockedBy(Auth::user()))
+                                    <a class="dropdown-item" href="{{ route('profile.block', $user) }}">Block</a>
+                                @endif
+                                <a class="dropdown-item" href="{{ route('friends', $user) }}">show
                                     additions</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#reportAlert">report</a>
-
-
+                                <a class="dropdown-item" href="{{ route('profile.report', $user) }}">report</a>
                             </div>
                         </span>
                         <a href="{{ route('messageRequest', $user) }}">
                             <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i> send
                                 message</button>
                         </a>
-                        @if (!$pending)
+                        @if (!in_array($user->id,Auth::user()->getPendingFriendships()->pluck('recipient_id')->toArray()))
                             <a href="{{ route('friendRequest', $user) }}"><button
                                     class=" btn
                                 btn-outline-danger"> <i

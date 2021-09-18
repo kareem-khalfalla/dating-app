@@ -10,20 +10,25 @@
 
                     <div class="row box_frind col-md-6 p-1">
                         <a href="{{ route('profile', $friend) }}">
-                            <img class="img_user" src="{{ asset($friend->avatar) }}" alt="user image"
-                                data-toggle="tooltip" data-placement="top" title="show profile">
+                            <img class="img_user" src="{{ asset('storage/' . $friend->avatar) }}"
+                                alt="user image" data-toggle="tooltip" data-placement="top" title="show profile">
                         </a>
                         <h5 class="col-7">{{ $friend->name }}</h5>
-                        <span class="dropdown pl-2">
-                            <button class="btn btn-outline-secondary p-1 pr-2 pl-2" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Delete</a>
-                                <a class="dropdown-item" href="/">block</a>
-                            </div>
-                        </span>
+                        @if(request()->route('user')->username == Auth::user()->username)
+
+                            <span class="dropdown pl-2">
+                                <button class="btn btn-outline-secondary p-1 pr-2 pl-2" type="button"
+                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('profile.remove', $friend) }}">Delete</a>
+                                    <a class="dropdown-item" href="{{ route('profile.block', $friend) }}">block</a>
+                                </div>
+                            </span>
+                        @endif
+
                     </div>
                 @empty
                     <p>Empty friends!</p>
