@@ -9,17 +9,18 @@ use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
 {
-    public ?User $authUser = null;
-
-    public function __construct()
-    {
-        $this->authUser = auth()->user();
-    }
-
     public function index(User $user): View
     {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $isPending = in_array($user->id, $authUser->getPendingFriendships()->pluck('recipient_id')->toArray());
+        $isFriend = $authUser->isFriendWith($user);
+
         return view('pages.profiles.index', [
-            'user' => $user
+            'user' => $user,
+            'isPending' => $isPending,
+            'isFriend' => $isFriend,
         ]);
     }
 
@@ -49,19 +50,28 @@ class ProfileController extends Controller
 
     public function remove(User $user): RedirectResponse
     {
-        $this->authUser->unfriend($user);
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->unfriend($user);
         return back();
     }
 
     public function block(User $user): RedirectResponse
     {
-        $this->authUser->blockFriend($user);
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->blockFriend($user);
         return back();
     }
 
     public function friendRequest(User $user): RedirectResponse
     {
-        $this->authUser->befriend(User::find($user['id']));
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->befriend(User::find($user['id']));
         return back();
     }
 
