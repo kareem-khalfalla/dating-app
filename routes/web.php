@@ -19,11 +19,14 @@ Route::group(
 
         Route::group(['middleware' => 'auth'], function () {
             Route::get('chat', [SiteController::class, 'chat'])->name('chat');
-            Route::get('friends', [FriendshipController::class, 'index'])->name('friends');
             Route::get('results', [UserController::class, 'filter'])->name('users.filter');
             Route::get('requests', [UserController::class, 'requests'])->name('requests');
             Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
             Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
+            Route::get('{user}/friends', [ProfileController::class, 'friends'])->name('friends');
+            Route::get('{user}/remove', [ProfileController::class, 'remove'])->name('profile.remove');
+            Route::get('{user}/block', [ProfileController::class, 'block'])->name('profile.block');
+            Route::get('{user}/report', [ProfileController::class, 'report'])->name('profile.report');
             Route::get('{user}/friend-request', [ProfileController::class, 'friendRequest'])->name('friendRequest');
             Route::get('{user}/message-request', [ProfileController::class, 'messageRequest'])->name('messageRequest');
             Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');
