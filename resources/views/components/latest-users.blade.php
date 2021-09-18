@@ -1,7 +1,7 @@
 <section id="latest users" class="bg-white">
     <br>
     <div class="container-fluid">
-        @if (isset($users->profiles) && count($users) > 1)
+        @if (isset($users) && count($users) > 1)
 
             <div class="row">
 
