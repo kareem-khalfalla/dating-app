@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Events\MessageRequestEvent;
-use App\Models\Friendship;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    public ?User $authUser = null;
+
+    public function __construct()
+    {
+        $this->authUser = auth()->user();
+    }
+
     public function index(User $user): View
     {
-        $from = Friendship::all()->pluck('from')->toArray();
-        $to = Friendship::all()->pluck('to')->toArray();
-
         return view('pages.profiles.index', [
-            'user' => $user,
-            'pending' => in_array($user->id, $to) && in_array(auth()->id(), $from)
+            'user' => $user
         ]);
     }
 
@@ -40,12 +40,36 @@ class ProfileController extends Controller
         // return $authUser->addFriend($user->id);
     }
 
+    public function friends(User $user): View
+    {
+        return view('pages.friends', [
+            'friends' => $user->getFriends()
+        ]);
+    }
+
+    public function remove(User $user): RedirectResponse
+    {
+        $this->authUser->unfriend($user);
+        return back();
+    }
+
+    public function block(User $user): RedirectResponse
+    {
+        $this->authUser->blockFriend($user);
+        return back();
+    }
+
     public function friendRequest(User $user): RedirectResponse
     {
-        /** @var \App\Models\User $authUser */
-        $authUser = Auth::user();
+        $this->authUser->befriend(User::find($user['id']));
+        return back();
+    }
 
-        $authUser->addFriend($user->id);
+    public function report(User $user): RedirectResponse
+    {
+        $user->update([
+            'report_count' => $user->report_count++
+        ]);
 
         return back();
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Friendship;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -10,15 +10,27 @@ class AllRequestsComponent extends Component
 {
     public function render(): View
     {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
         return view('livewire.all-requests-component', [
-            'requests' => Friendship::where('status', 2)->where('to', auth()->id())->get()
+            'requests' => $authUser->getFriendRequests()
         ]);
     }
 
-    public function acceptFriend(int $from): void
+    public function accept(int $id): void
     {
-        Friendship::where('from', $from)->where('to', auth()->id())->first()->update([
-            'status' => 1
-        ]);
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->acceptFriendRequest(User::find($id));
+    }
+
+    public function deny(int $id): void
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->denyFriendRequest(User::find($id));
     }
 }

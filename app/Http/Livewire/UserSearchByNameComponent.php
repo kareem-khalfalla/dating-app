@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Friendship;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,17 +13,24 @@ class UserSearchByNameComponent extends Component
 
     public $search = '';
 
-    public function render()
+    public function render(): View
     {
-        $pendingRequestsIds = Friendship::pendingRequests()->get()->pluck('to')->toArray();
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
 
+        $pendingIds = $authUser->getPendingFriendships()->pluck('sender_id');
+        
         return view('livewire.user-search-by-name-component', [
-            'users' => User::allExceptAuthName(search: "%{$this->search}%")->whereNotIn('id', $pendingRequestsIds)->simplePaginate(5)
+            'users' => User::allExceptAuthName($this->search)->allExceptAuthId()->get()
+                ->diff(User::findMany($pendingIds))
+                ->diff($authUser->getFriends())
         ]);
     }
 
-    public function hide()
+    public function add(array $user): void
     {
-        dd('fire...');
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+        $authUser->befriend(User::find($user['id']));
     }
 }
