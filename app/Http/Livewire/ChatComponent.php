@@ -49,15 +49,18 @@ class ChatComponent extends Component
     {
         $this->selectedUser = $user;
         $this->isOnline = User::find($this->selectedUser['id'])->isOnline();
-        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->latest()->limit($this->loadAmount)->get()->toArray());
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit(10)->latest()->get()->toArray());
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'])->count();
         $this->emit('scrollToBottom');
     }
 
     public function loadMore()
     {
-        $this->loadAmount += 10;
-        $this->messages = Message::betweenTwoUsers($this->selectedUser['id'])->limit($this->loadAmount)->get()->toArray();
+        if ($this->loadAmount <= count($this->messages)) {
+            $this->loadAmount += 10;
+        }
+
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit($this->loadAmount)->latest()->get()->toArray());
     }
 
     public function saveFile(): void
