@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Profile;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -72,8 +70,5 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             // RoleSeeder::class,
         ]);
-
-        User::factory()->create();
-        Profile::factory()->create();
     }
 }
