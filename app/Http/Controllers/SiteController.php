@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactUsRequest;
+use App\Models\ContactUs;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
@@ -27,5 +30,12 @@ class SiteController extends Controller
     public function chat(): View
     {
         return view('pages.chat');
+    }
+
+    public function contactStore(ContactUsRequest $request)
+    {
+        ContactUs::create($request->validated());
+
+        return back()->withSuccess('Your message was sent');
     }
 }

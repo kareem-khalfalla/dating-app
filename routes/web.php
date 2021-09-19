@@ -7,15 +7,16 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath',]
     ],
     function () {
+        Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
         Route::get('about', [SiteController::class, 'about'])->name('about');
         Route::get('privacy', [SiteController::class, 'privacy'])->name('privacy');
+        Route::post('contact-us', [SiteController::class, 'contactStore'])->name('contactStore');
 
         Route::group(['middleware' => 'auth'], function () {
             Route::get('chat', [SiteController::class, 'chat'])->name('chat');
@@ -27,6 +28,7 @@ Route::group(
             Route::get('{user}/remove', [ProfileController::class, 'remove'])->name('profile.remove');
             Route::get('{user}/block', [ProfileController::class, 'block'])->name('profile.block');
             Route::get('{user}/report', [ProfileController::class, 'report'])->name('profile.report');
+            Route::post('{user}/report', [ProfileController::class, 'reportStore'])->name('profile.reportStore');
             Route::get('{user}/friend-request', [ProfileController::class, 'friendRequest'])->name('friendRequest');
             Route::get('{user}/message-request', [ProfileController::class, 'messageRequest'])->name('messageRequest');
             Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');

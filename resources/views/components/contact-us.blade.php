@@ -9,8 +9,40 @@
                     <h3>{{ __('welcome.Send message') }}</h3>
                 </div>
                 <div class="card-body">
-                    @livewire('contact-us-form-component')
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @else
+                        <form action="{{ route('contactStore') }}" method="POST">
+                            @csrf
+                            <input name="name" class="form-control form-lg mb-2 @error('name') is-invalid @enderror"
+                                placeholder="{{ __('welcome.Name') }}">
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                                </div>
+                            @enderror
+                            <input name="email" class="form-control form-lg mb-2 @error('email') is-invalid @enderror"
+                                placeholder="{{ __('welcome.Email') }}">
+                            @error('email')
+                                <div class="invalid-feedback">
+                                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                                </div>
+                            @enderror
+                            <textarea name="message" placeholder="{{ __('welcome.Message here') }}..."
+                                class="form-control @error('message') is-invalid @enderror" cols="30"
+                                rows="5"></textarea>
+                            @error('message')
+                                <div class="invalid-feedback">
+                                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                                </div>
+                            @enderror
+                            <button class="btn btn-dark btn-block mt-3">{{ __('welcome.Send') }}</button>
+                        </form>
+                    @endif
                 </div>
+
             </div>
         </div>
 
@@ -22,7 +54,8 @@
 
                 <div class="card-body">
                     <p class="lead"><b>{{ __('welcome.phone') }} : </b> {{ env('PHONE') }}</p>
-                    <p class="lead"><b>{{ __('welcome.Email') }} : </b> {{ env('MAIL_FROM_ADDRESS') }}</p>
+                    <p class="lead"><b>{{ __('welcome.Email') }} : </b> {{ env('MAIL_FROM_ADDRESS') }}
+                    </p>
 
                     <br><br><br>
                     <!-- Grid container -->
