@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('gender', ['male', 'female']);
             $table->boolean('fake')->default(0);
+            $table->boolean('status')->default(1);
             $table->string('avatar')->default('images/users-avatar/default.png');
             $table->rememberToken();
             $table->timestamps();

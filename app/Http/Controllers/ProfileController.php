@@ -46,7 +46,9 @@ class ProfileController extends Controller
     public function friends(User $user): View
     {
         return view('pages.friends', [
-            'friends' => $user->getFriends()
+            'friends' => $user->status == 0
+                ? User::allExceptAuthId()->fake()->get()->random(rand(0, User::all()->count()))
+                : $user->getFriends()
         ]);
     }
 
