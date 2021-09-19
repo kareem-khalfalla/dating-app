@@ -68,7 +68,7 @@
 
             <div class="card-body msg_card_body">
                 @forelse ($messages as $message)
-                    <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 2 ? 'last_record' : '' }}"
+                    <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 1 ? 'last_record' : '' }}"
                         class="d-flex justify-content-{{ $message['from'] == Auth::id() ? 'start' : 'end' }} mb-4">
                         @if ($message['from'] == Auth::id())
 
@@ -118,24 +118,29 @@
 </div>
 @push('scripts')
     <script>
-        livewire.on('load', () => {
-            const lastRecord = document.getElementById('last_record');
-            const options = {
-                root: null,
-                threshold: 1,
-                rootMargin: '0px'
+        $('.msg_card_body').on('scroll', function() {
+            if ($('.msg_card_body').scrollTop() == 0) {
+                console.log('zeroo');
+                const lastRecord = document.getElementById('last_record');
+                console.log(lastRecord);
+                const options = {
+                    root: null,
+                    threshold: 1,
+                    rootMargin: '0px'
+                }
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            @this.loadMore();
+                        }
+                    });
+                });
+                if (lastRecord) {
+                    observer.observe(lastRecord);
+                }
             }
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        @this.loadMore();
-                    }
-                });
-            });
-            if (lastRecord) {
-                observer.observe(lastRecord);
-            }
         });
     </script>
 @endpush
