@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Events\MessageRequestEvent;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -75,12 +77,25 @@ class ProfileController extends Controller
         return back();
     }
 
-    public function report(User $user): RedirectResponse
+    public function report(User $user): View
     {
-        $user->update([
-            'report_count' => $user->report_count++
+        return view('pages.profiles.report', [
+            'user' => $user
+        ]);
+    }
+
+    public function reportStore(Request $request, User $user): RedirectResponse
+    {
+        $request->validate([
+            'reason' => ['required', 'string', 'max:1000']
         ]);
 
-        return back();
+        Report::create([
+            'sender_id' => auth()->id(),
+            'recipient_id' => $user->id,
+            'reason' => $request->reason,
+        ]);
+
+        return back()->withSuccess('You reported this user');
     }
 }

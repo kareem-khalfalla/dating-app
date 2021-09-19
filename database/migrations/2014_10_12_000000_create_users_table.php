@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->boolean('fake')->default(0);
             $table->string('avatar')->default('images/users-avatar/default.png');
-            $table->unsignedSmallInteger('report_count')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
