@@ -5,19 +5,15 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class UserSearchByNameComponent extends Component
 {
-    use WithPagination;
-
     public $search = '';
 
     public function render(): View
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
-
 
         $pendingIds = $authUser->getPendingFriendships()->pluck('recipient_id');
 
