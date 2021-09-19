@@ -29,7 +29,7 @@ class ChatComponent extends Component
     public $messages;
     public $message;
     public $messagesCount;
-    public $loadAmount = 10;
+    public $loadAmount = 5;
     public $file;
     public $fileName;
 
@@ -49,7 +49,7 @@ class ChatComponent extends Component
     {
         $this->selectedUser = $user;
         $this->isOnline = User::find($this->selectedUser['id'])->isOnline();
-        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit(10)->latest()->get()->toArray());
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit(5)->latest()->get()->toArray());
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'])->count();
         $this->emit('scrollToBottom');
     }
@@ -57,7 +57,7 @@ class ChatComponent extends Component
     public function loadMore()
     {
         if ($this->loadAmount <= count($this->messages)) {
-            $this->loadAmount += 10;
+            $this->loadAmount += 5;
         }
 
         $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit($this->loadAmount)->latest()->get()->toArray());
