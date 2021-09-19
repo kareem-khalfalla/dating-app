@@ -17,26 +17,26 @@
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Country of Origin') }}</label>
             <select wire:model="selectedCountry" required="required"
-                class="form-control form-control-lg @error('hometown_id') is-invalid @enderror">
+                class="form-control form-control-lg @error('hometown') is-invalid @enderror">
                 @foreach ($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
-            @error('hometown_id')
+            @error('hometown')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
         </div>
         <div class="input-group input-group-lg mb-3 ">
-            <label class="col-12">{{ __('settings.Country of ResidencyStatus') }}</label>
-            <select wire:model.defer="state.country_of_residence_id" required="required"
-                class="form-control form-control-lg @error('country_of_residence_id') is-invalid @enderror">
+            <label class="col-12">{{ __('settings.Country of Residence') }}</label>
+            <select wire:model.defer="state.country_residence" required="required"
+                class="form-control form-control-lg @error('country_residence') is-invalid @enderror">
                 @foreach ($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
-            @error('country_of_residence_id')
+            @error('country_residence')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -75,8 +75,8 @@
             @endif
             <div class="input-group input-group-lg mb-3 col-6">
                 <label class="col-12">{{ __('settings.Postal code') }}</label>
-                <input wire:model.defer="state.postal_code" placeholder="{{ __('settings.Postal code') }}" type="text"
-                    class="form-control @error('postal_code') is-invalid @enderror" aria-label="Large"
+                <input wire:model.defer="state.postal_code" placeholder="{{ __('settings.Postal code') }}"
+                    type="text" class="form-control @error('postal_code') is-invalid @enderror" aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm">
                 @error('postal_code')
                     <div class="invalid-feedback">

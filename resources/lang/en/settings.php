@@ -19,7 +19,7 @@ return [
     'Birthday'                                              => 'Birthday',
     'Birthday'                                              => 'Birthday',
     'Country of Origin'                                     => 'Country of Origin',
-    'Country of ResidencyStatus'                            => 'Country of ResidencyStatus',
+    'Country of Residence'                                  => 'Country of Residence',
     'Nationality'                                           => 'Nationality',
     'City'                                                  => 'City',
     'Postal code'                                           => 'Postal code',

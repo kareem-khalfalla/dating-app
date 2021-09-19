@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -35,14 +34,9 @@ class Profile extends Model
         return $this->belongsTo(ResidencyStatus::class);
     }
 
-    public function hometown(): BelongsTo
+    public function countries()
     {
-        return $this->belongsTo(Hometown::class);
-    }
-
-    public function countryOfResidence(): BelongsTo
-    {
-        return $this->belongsTo(CountryOfResidence::class);
+        return $this->belongsToMany(Country::class)->withPivot('is_hometown');
     }
 
     public function relocateStatus(): BelongsTo

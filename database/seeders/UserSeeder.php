@@ -65,6 +65,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::factory()->create();
+        $hometown = Country::all()->random();
+        $residence = Country::all()->random();
         $languageNative = Language::all()->random();
         $languageSecond = Language::all()->random();
         $languageThird = Language::all()->random();
@@ -86,6 +88,10 @@ class UserSeeder extends Seeder
         $adminUserProfile->languages()->attach($languageNative);
         $adminUserProfile->languages()->attach($languageSecond);
         $adminUserProfile->languages()->attach($languageThird);
+        $adminUserProfile->countries()->attach($hometown);
+        $adminUserProfile->countries()->attach($residence);
+        $adminUserProfile->countries->find($residence->id)->pivot->is_hometown = 0;
+        $adminUserProfile->countries->find($residence->id)->pivot->save();
         $adminUserProfile->education_status_id = EducationStatus::all()->random()->id;
         $adminUserProfile->work_status_id = WorkStatus::all()->random()->id;
         $adminUserProfile->marriage_status_id = MarriageStatus::all()->random()->id;
@@ -97,8 +103,6 @@ class UserSeeder extends Seeder
         $adminUserProfile->residency_status_id = ResidencyStatus::all()->random()->id;
         $adminUserProfile->relocate_status_id = RelocateStatus::all()->random()->id;
         $adminUserProfile->relationship_status_id = RelationshipStatus::all()->random()->id;
-        $adminUserProfile->hometown_id = Country::all()->random()->id;
-        $adminUserProfile->country_of_residence_id = Country::all()->random()->id;
         $adminUserProfile->state_id = State::all()->random()->id;
         $adminUserProfile->specialization = 'Computers';
         $adminUserProfile->income = rand(999, 9999);

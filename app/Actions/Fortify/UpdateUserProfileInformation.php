@@ -58,8 +58,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'music_status_id'             => ['nullable', 'numeric'],
             'show_status_id'              => ['nullable', 'numeric'],
             'friend_status_id'            => ['nullable', 'numeric'],
-            'hometown_id'                 => ['nullable', 'numeric'],
-            'country_of_residence_id'     => ['nullable', 'numeric'],
+            'country_hometown'            => ['nullable', 'numeric'],
+            'country_residence'           => ['nullable', 'numeric'],
             'residency_status_id'         => ['nullable', 'numeric'],
             'relocate_status_id'          => ['nullable', 'numeric'],
             'nationality_id'              => ['nullable', 'numeric'],
@@ -86,10 +86,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'hair_kind_id'                => ['nullable', 'numeric'],
             'eye_color_id'                => ['nullable', 'numeric'],
             'eye_glass_id'                => ['nullable', 'numeric'],
-            'health_status_id'                   => ['nullable', 'numeric'],
+            'health_status_id'            => ['nullable', 'numeric'],
             'psychological_pattern_id'    => ['nullable', 'numeric'],
             'state_id'                    => ['nullable', 'numeric'],
             'language_*'                  => ['nullable', 'numeric'],
+            'country_*'                   => ['nullable', 'numeric'],
 
             'email' => [
                 'nullable',
@@ -103,6 +104,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $arr = Arr::only($input, [
             'language_native', 'language_second', 'language_third',
         ]);
+
+        /** @var \App\Models\Profile $profile */
+        $profile = $user->profile;
 
         foreach ($arr as $key => $value) {
             if (is_null($value)) {
@@ -119,27 +123,35 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                         'order' => 3
                     ]);
                 }
-                $user->profile->languages()->syncWithoutDetaching($input[$key]);
+                $profile->languages()->syncWithoutDetaching($input[$key]);
             }
         }
 
 
         if (isset($input['language_second_perfection_id'])) {
             $user->profile->languages()->second()->first()->update([
-                'language_perfection_id' => $input['language_second_perfection_id']
+                'language_perfection_status_id' => $input['language_second_perfection_id']
             ]);
         }
 
         if (isset($input['language_third_perfection_id'])) {
             $user->profile->languages()->second()->first()->update([
-                'language_perfection_id' => $input['language_third_perfection_id']
+                'language_perfection_status_id' => $input['language_third_perfection_id']
             ]);
         }
 
-        $user->profile()->update([
+
+        $countriesIds = [
+            $input['country_hometown'],
+            $input['country_residence'],
+        ];
+                
+        $profile->countries()->sync($countriesIds);
+        $profile->countries->find($countriesIds[1])->pivot->is_hometown = 0;
+        $profile->countries->find($countriesIds[1])->pivot->save();
+
+        $profile->update([
             'dob'                         => $input['dob'],
-            'hometown_id'                 => $input['hometown_id'],
-            'country_of_residence_id'     => $input['country_of_residence_id'],
             'residency_status_id'         => $input['residency_status_id'],
             'relocate_status_id'          => $input['relocate_status_id'],
             'nationality_id'              => $input['nationality_id'],

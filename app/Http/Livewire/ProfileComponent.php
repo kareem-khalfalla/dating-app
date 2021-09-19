@@ -84,8 +84,8 @@ class ProfileComponent extends Component
 
         $this->imageName = $user->avatar;
 
+        $this->selectedCountry = $user->profile->countries()->hometown()->first()->id ?? null;
 
-        $this->selectedCountry = $user->profile->hometown_id ?? null;
         $this->selectedState = $user->profile->state_id ?? null;
 
         $this->countryStates = !is_null($this->selectedCountry)
@@ -148,12 +148,12 @@ class ProfileComponent extends Component
         $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id ?? null;
         $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id ?? null;
         $this->state['wife_study_status_id'] = $user->profile->wife_study_status_id ?? null;
+        $this->state['country_residence'] = $user->profile->countries()->residence()->first()->id ?? null;
         $this->state['language_native'] = $user->profile->languages()->native()->first()->id ?? null;
         $this->state['language_second'] = $user->profile->languages()->second()->first()->id ?? null;
         $this->state['language_third'] = $user->profile->languages()->third()->first()->id ?? null;
         $this->state['language_second_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfectionStatus->id ?? null;
         $this->state['language_third_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfectionStatus->id ?? null;
-        $this->state['country_of_residence_id'] = $user->profile->country_of_residence_id;
         $this->state['smoke_status_id'] = $user->profile->smoke_status_id ?? null;
         $this->state['alcohol_status_id'] = $user->profile->alcohol_status_id ?? null;
         $this->state['halal_food_status_id'] = $user->profile->halal_food_status_id ?? null;
@@ -296,9 +296,7 @@ class ProfileComponent extends Component
             'lesson_listing' => $this->state['lesson_listing'] ?? null,
             'height' => $this->state['height'] ?? null,
             'weight' => $this->state['weight'] ?? null,
-            'hometown_id' => $this->selectedCountry ?? null,
             'state_id' => $this->selectedState ?? null,
-            'country_of_residence_id' => $this->state['country_of_residence_id'] ?? null,
             'nationality_id' => $this->state['nationality_id'] ?? null,
             'residency_status_id' => $this->state['residency_status_id'] ?? null,
             'relocate_status_id' => $this->state['relocate_status_id'] ?? null,
@@ -334,6 +332,9 @@ class ProfileComponent extends Component
             'music_status_id' => $this->state['music_status_id'] ?? null,
             'show_status_id' => $this->state['show_status_id'] ?? null,
             'friend_status_id' => $this->state['friend_status_id'] ?? null,
+            
+            'country_hometown' => $this->selectedCountry ?? null,
+            'country_residence' => $this->state['country_residence'] ?? null,
             'language_native' => $this->state['language_native'] ?? null,
             'language_second' => $this->state['language_second'] ?? null,
             'language_third' => $this->state['language_third'] ?? null,

@@ -39,9 +39,9 @@
                             <p><b>{{ __('welcome.Age') }} : </b>
                                 {{ Carbon\Carbon::parse($users[0]->profile->dob)->age ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.From') }} : </b>
-                                {{ $users[0]->profile->hometown->name ?? 'N/A' }}</p>
+                                {{ $users[0]->profile->countries()->hometown()->first()->name ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.Stay in') }} : </b>
-                                {{ $users[0]->profile->countryOfResidence->name ?? 'N/A' }}</p>
+                                {{ $users[0]->profile->countries()->residence()->first()->name ?? 'N/A' }}</p>
                         </div>
                     </div>
 
@@ -55,9 +55,9 @@
                             <p><b>{{ __('welcome.Age') }} : </b>
                                 {{ Carbon\Carbon::parse($users[1]->profile->dob)->age ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.From') }} : </b>
-                                {{ $users[1]->profile->hometown->name ?? 'N/A' }}</p>
+                                {{ $users[1]->profile->countries()->hometown()->first()->name ?? 'N/A' }}</p>
                             <p><b>{{ __('welcome.Stay in') }} : </b>
-                                {{ $users[1]->profile->countryOfResidence->name ?? 'N/A' }}</p>
+                                {{ $users[1]->profile->countries()->residence()->first()->name ?? 'N/A' }}</p>
                         </div>
                     </div>
 

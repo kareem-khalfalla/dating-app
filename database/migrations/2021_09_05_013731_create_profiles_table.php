@@ -64,8 +64,6 @@ class CreateProfilesTable extends Migration
             $table->foreignId('music_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('friend_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('show_status_id')->nullable()->constrained()->onDelete('cascade');
-            $table->unsignedMediumInteger('hometown_id')->nullable()->constrained()->onDelete('cascade');
-            $table->unsignedMediumInteger('country_of_residence_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedMediumInteger('state_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedTinyInteger('children_count')->default(0);
             $table->string('postal_code', 32)->nullable();
