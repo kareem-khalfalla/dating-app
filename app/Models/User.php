@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Hootlex\Friendships\Traits\Friendable;
+use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
