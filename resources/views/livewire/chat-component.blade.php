@@ -120,9 +120,7 @@
     <script>
         $('.msg_card_body').on('scroll', function() {
             if ($('.msg_card_body').scrollTop() == 0) {
-                console.log('zeroo');
                 const lastRecord = document.getElementById('last_record');
-                console.log(lastRecord);
                 const options = {
                     root: null,
                     threshold: 1,
