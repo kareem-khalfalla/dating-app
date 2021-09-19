@@ -15,7 +15,8 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sender_id')->constrained('users');
+            $table->foreignId('recipient_id')->constrained('users');
             $table->text('reason');
             $table->timestamps();
         });
