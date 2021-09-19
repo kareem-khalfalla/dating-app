@@ -56,7 +56,7 @@
                     <h4>{{ __('profile.brief about me') }}</h4>
                     <p class="lead">{{ $user->profile->bio ?? 'N/A' }}</p>
                 </div>
-                @if (request()->route('user')->username == Auth::user()->username)
+                @if (request()->route('user')->username == Auth::user()->username && $user->profile->progress_bar < 99.99)
 
                     <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
                         role="alert">
@@ -123,7 +123,7 @@
                     </p>
                     {{-- <p class="lead hover_padding"><strong>Native language:&nbsp;</strong><span>arabic</span><br></p> --}}
                     <p class="lead hover_padding">
-                        <strong>s{{ __('profile.econd language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->second()->first()->name ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.second language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->second()->first()->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.third language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->third()->first()->name ?? 'N/A' }}</span><br>
@@ -256,7 +256,7 @@
                         <strong>{{ __('profile.the weight') }}:&nbsp;</strong><span>{{ $user->profile->weight ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.body type') }}:&nbsp;</strong><span>{{ $user->profile->body->name ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.body type') }}:&nbsp;</strong><span>{{ $user->profile->bodyStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.skinStatus colour') }}:&nbsp;</strong><span>{{ $user->profile->skinStatus->name ?? 'N/A' }}</span><br>
