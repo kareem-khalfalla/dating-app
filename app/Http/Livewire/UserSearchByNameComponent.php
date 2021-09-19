@@ -5,9 +5,14 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class UserSearchByNameComponent extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     public $search = '';
 
     public function render(): View
@@ -15,12 +20,12 @@ class UserSearchByNameComponent extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
-        $pendingIds = $authUser->getPendingFriendships()->pluck('recipient_id');
+        $pendingIds = $authUser->getPendingFriendships()->pluck('sender_id');
 
         return view('livewire.user-search-by-name-component', [
             'users' => User::allExceptAuthName($this->search)->allExceptAuthId()->get()
                 ->diff(User::findMany($pendingIds))
-                ->diff($authUser->getFriends())
+                ->diff($authUser->getFriends())->paginate(6)
         ]);
     }
 

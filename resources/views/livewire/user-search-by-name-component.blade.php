@@ -21,12 +21,12 @@
                 <button wire:click.prevent="add({{ $user->id }})"
                     class="btn btn-outline-success">{{ __('requests.Add') }}</button>
                 &nbsp;
-                <button class="btn btn-outline-secondary" onclick="hide()" id="hide">{{ __('requests.Hide') }}</button>
+                <button class="btn btn-outline-secondary" onclick="hide()"
+                    id="hide">{{ __('requests.Hide') }}</button>
             </div>
         @empty
             <p>Empty members!</p>
         @endforelse
-
-        {{-- {{ $users->links() }} --}}
+        {{ $users->links() }}
     </div>
 </div>
