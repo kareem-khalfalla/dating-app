@@ -13,7 +13,7 @@ class Language extends Model
         return $this->belongsToMany(Profile::class);
     }
 
-    public function languagePerfection(): BelongsTo
+    public function languagePerfectionStatus(): BelongsTo
     {
         return $this->belongsTo(LanguagePerfectionStatus::class);
     }

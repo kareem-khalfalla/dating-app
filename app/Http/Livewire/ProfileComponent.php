@@ -151,8 +151,8 @@ class ProfileComponent extends Component
         $this->state['language_native'] = $user->profile->languages()->native()->first()->id ?? null;
         $this->state['language_second'] = $user->profile->languages()->second()->first()->id ?? null;
         $this->state['language_third'] = $user->profile->languages()->third()->first()->id ?? null;
-        $this->state['language_second_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfection->id ?? null;
-        $this->state['language_third_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfection->id ?? null;
+        $this->state['language_second_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfectionStatus->id ?? null;
+        $this->state['language_third_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfectionStatus->id ?? null;
         $this->state['country_of_residence_id'] = $user->profile->country_of_residence_id;
         $this->state['smoke_status_id'] = $user->profile->smoke_status_id ?? null;
         $this->state['alcohol_status_id'] = $user->profile->alcohol_status_id ?? null;
