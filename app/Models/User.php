@@ -6,6 +6,7 @@ use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'username',
         'gender',
+        'fake',
+        'status',
         'last_seen_at',
         'last_message_at',
         'avatar',
@@ -64,6 +67,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Profile::class);
     }
 
+    public function reports(): HasMany
+    {
+        return $this->hasMany(Report::class, 'recipient_id');
+    }
+
     public function scopeAllExceptAuthId(Builder $query): Builder
     {
         return $query->where('id', '!=', Auth::id());
@@ -87,5 +95,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeAuth(Builder $query): Builder
     {
         return $query->where('id', auth()->id());
+    }
+
+    public function scopeFake(Builder $query): Builder
+    {
+        return $query->where('fake', 1);
     }
 }
