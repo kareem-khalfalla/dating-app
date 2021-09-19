@@ -25,7 +25,7 @@ return [
     'Postal code' => 'Postal code',
     'Type of accommodation' => 'Type of accommodation',
     'Moving to another place' => 'Moving to another place',
-    'econd language' => 'econd language',
+    'second language' => 'second language',
     'third language' => 'third language',
     'The required relationship' => 'The required relationship',
     'Desired method of marriageStatus' => 'Desired method of marriageStatus',
