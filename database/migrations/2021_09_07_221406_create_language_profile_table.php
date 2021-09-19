@@ -14,8 +14,8 @@ class CreateLanguageProfileTable extends Migration
     public function up()
     {
         Schema::create('language_profile', function (Blueprint $table) {
-            $table->foreignId('language_id');
-            $table->foreignId('profile_id');
+            $table->foreignId('language_id')->constrained()->onDelete('cascade');
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
         });
     }
 
