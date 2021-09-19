@@ -33,6 +33,7 @@
                             cancelable: true
                         }));
                         event.preventDefault();
+                        $("#type_msg").val('')
                     }
                 });
             });
