@@ -6,14 +6,13 @@ use App\Http\Requests\ContactUsRequest;
 use App\Models\ContactUs;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
     public function welcome(): View
     {
         return view('pages.welcome', [
-            'users' => User::latest()->limit(5)->get()
+            'users' => User::latest()->limit(10)->get()
         ]);
     }
 
