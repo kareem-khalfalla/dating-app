@@ -34,10 +34,12 @@
                                     href="{{ route('profile.report', $user) }}">{{ __('profile.report') }}</a>
                             </div>
                         </span>
-                        <a href="{{ route('chat') }}">
-                            <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i>
-                                {{ __('profile.send message') }}</button>
-                        </a>
+                        @if ($isFriend)
+                            <a href="{{ route('chat') }}">
+                                <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i>
+                                    {{ __('profile.send message') }}</button>
+                            </a>
+                        @endif
                         @if (!$isPending && !$isFriend)
                             <a href="{{ route('friendRequest', $user) }}"><button
                                     class=" btn

@@ -33,9 +33,9 @@ class ChatComponent extends Component
     public $file;
     public $fileName;
 
-    public function mount()
+    public function mount(): void
     {
-        $this->users = User::allExceptAuthId()->orderByLastMsg()->get();
+        $this->users = User::allAuthFriendsByLastMsg()->get();
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
 
@@ -54,7 +54,7 @@ class ChatComponent extends Component
 
     public function updatedSearch(): void
     {
-        $this->users = User::allExceptAuthName($this->search)->get();
+        $this->users = User::allAuthFriendsByLastMsg($this->search)->get();
     }
 
     public function userSelected(array $user): void
@@ -66,7 +66,7 @@ class ChatComponent extends Component
         $this->emit('scrollToBottom');
     }
 
-    public function loadMore()
+    public function loadMore(): void
     {
         if ($this->loadAmount <= count($this->messages)) {
             $this->loadAmount += 5;
@@ -117,7 +117,7 @@ class ChatComponent extends Component
             'last_message_at' => now()
         ]);
 
-        $this->users = User::allExceptAuthId($this->search)->orderByLastMsg()->get();
+        $this->users = User::allAuthFriendsByLastMsg()->get();
 
         $this->emit('userReceivedMsg', [
             'user' => User::find($message->from)->toArray()
@@ -140,7 +140,7 @@ class ChatComponent extends Component
 
         $this->emit('scrollToBottom');
 
-        $this->users = User::allExceptAuthId($this->search)->orderByLastMsg()->get();
+        $this->users = User::allAuthFriendsByLastMsg()->get();
 
         $this->selectedUser = $user;
 

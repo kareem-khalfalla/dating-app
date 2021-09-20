@@ -5,6 +5,7 @@ namespace App\Traits;
 use Hootlex\Friendships\Models\Friendship;
 use Hootlex\Friendships\Status;
 use Hootlex\Friendships\Traits\Friendable as TraitsFriendable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
 
@@ -132,10 +133,9 @@ trait Friendable
      * @param int $perPage Number
      * @param string $groupSlug
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getFriends($perPage = 0, $groupSlug = '')
+    public function getFriends($perPage = 0, $groupSlug = ''): Builder
     {
-        return $this->getOrPaginate($this->getFriendsQueryBuilder($groupSlug), $perPage);
+        return $this->getFriendsQueryBuilder($groupSlug);
     }
 }
