@@ -70,6 +70,15 @@ class ProfileController extends Controller
         return back();
     }
 
+    public function unblock(User $user): RedirectResponse
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->unblockFriend($user);
+        return back();
+    }
+
     public function friendRequest(User $user): RedirectResponse
     {
         /** @var \App\Models\User $authUser */

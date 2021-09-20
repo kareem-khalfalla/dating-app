@@ -8,6 +8,7 @@ return [
     'send message' => 'send message',
     'addition' => 'addition',
     'remove request' => 'remove request',
+    'remove block' => 'remove block',
     'delete friend' => 'delete friend',
     'brief about me' => 'brief about me',
     'Your personal information is complete' => 'Your personal information is complete',

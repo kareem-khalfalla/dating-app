@@ -40,17 +40,29 @@
                                     {{ __('profile.send message') }}</button>
                             </a>
                         @endif
-                        @if (!$isPending && !$isFriend)
+                        @if (!$isPending && !$isFriend && !$user->isBlockedBy(Auth::user()))
                             <a href="{{ route('friendRequest', $user) }}"><button
                                     class=" btn
                                 btn-outline-danger"> <i
                                         class="fa fa-user-plus"></i> {{ __('profile.addition') }}</button></a>
-                        @else
+                        @elseif($isPending)
                             <a href="{{ route('profile.remove', $user) }}"><button
                                     class=" btn
                                         btn-outline-warning"> <i
                                         class="fa fa-user-trash"></i>
-                                    {{ $isPending ? __('profile.remove request') : __('profile.delete friend') }}</button></a>
+                                    {{ __('profile.remove request') }}</button></a>
+                        @elseif($isFriend)
+                            <a href="{{ route('profile.remove', $user) }}"><button
+                                    class=" btn
+                                                btn-outline-warning"> <i
+                                        class="fa fa-user-trash"></i>
+                                    {{ __('profile.delete friend') }}</button></a>
+                        @else
+                            <a href="{{ route('profile.unblock', $user) }}"><button
+                                    class=" btn
+                                btn-outline-warning"> <i
+                                        class="fa fa-user-trash"></i>
+                                    {{ __('profile.remove block') }}</button></a>
                         @endif
                     @endif
                 </div>

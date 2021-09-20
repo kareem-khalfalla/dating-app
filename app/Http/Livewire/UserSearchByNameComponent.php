@@ -22,7 +22,10 @@ class UserSearchByNameComponent extends Component
 
         $pendingSenderIds = $authUser->getPendingFriendships()->pluck('sender_id');
         $pendingRecipientIds = $authUser->getPendingFriendships()->pluck('recipient_id');
-        $allPendingIds = $pendingSenderIds->merge($pendingRecipientIds);
+        $blockedRecipientIds = $authUser->getBlockedFriendships()->pluck('recipient_id');
+        $allPendingIds = $pendingSenderIds
+            ->merge($pendingRecipientIds)
+            ->merge($blockedRecipientIds);
 
         return view('livewire.user-search-by-name-component', [
             'users' => User::allExceptAuthName($this->search)->allExceptAuthId()->get()

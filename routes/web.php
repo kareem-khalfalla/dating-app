@@ -27,6 +27,7 @@ Route::group(
             Route::get('{user}/friends', [ProfileController::class, 'friends'])->name('friends');
             Route::get('{user}/remove', [ProfileController::class, 'remove'])->name('profile.remove');
             Route::get('{user}/block', [ProfileController::class, 'block'])->name('profile.block');
+            Route::get('{user}/unblock', [ProfileController::class, 'unblock'])->name('profile.unblock');
             Route::get('{user}/report', [ProfileController::class, 'report'])->name('profile.report');
             Route::post('{user}/report', [ProfileController::class, 'reportStore'])->name('profile.reportStore');
             Route::get('{user}/friend-request', [ProfileController::class, 'friendRequest'])->name('friendRequest');
