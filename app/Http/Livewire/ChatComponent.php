@@ -38,6 +38,18 @@ class ChatComponent extends Component
         $this->users = User::allExceptAuthId($this->search)->orderByLastMsg()->get();
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
+
+        /** @var \Illuminate\Routing\Router $router */
+        $router = app('router');
+        /** @var \Illuminate\Http\Request $request */
+        $request = app('request');
+        if (
+            $router->getRoutes()->match($request->create(url()->previous()))->getName() == 'profile'
+            && $router->getRoutes()->match($request->create(url()->previous()))->user !== auth()->user()->username
+        ) {
+            $username = $router->getRoutes()->match($request->create(url()->previous()))->user;
+            $this->selectedUser = $this->users->where('username', $username)->first()->toArray();
+        }
     }
 
     public function updatedSearch(): void

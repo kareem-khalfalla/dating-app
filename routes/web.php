@@ -30,7 +30,6 @@ Route::group(
             Route::get('{user}/report', [ProfileController::class, 'report'])->name('profile.report');
             Route::post('{user}/report', [ProfileController::class, 'reportStore'])->name('profile.reportStore');
             Route::get('{user}/friend-request', [ProfileController::class, 'friendRequest'])->name('friendRequest');
-            Route::get('{user}/message-request', [ProfileController::class, 'messageRequest'])->name('messageRequest');
             Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');
         });
     }

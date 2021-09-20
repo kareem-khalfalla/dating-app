@@ -34,7 +34,7 @@
                                     href="{{ route('profile.report', $user) }}">{{ __('profile.report') }}</a>
                             </div>
                         </span>
-                        <a href="{{ route('messageRequest', $user) }}">
+                        <a href="{{ route('chat') }}">
                             <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i>
                                 {{ __('profile.send message') }}</button>
                         </a>
