@@ -109,8 +109,8 @@ class UserSeeder extends Seeder
         $adminUserProfile->bio = 'Lorem ipsum dolor sit amet consectetur.';
         $adminUserProfile->partner_bio = 'Lorem, ipsum dolor sit amet consectetur adipisicing.';
         $adminUserProfile->competence = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.';
-        $adminUserProfile->dob = '1995-01-14';
-        $adminUserProfile->postal_code = '123-45';
+        $adminUserProfile->dob = rand(1980, 2001) . '-' . rand(1, 12) . '-' . rand(1, 30);
+        $adminUserProfile->postal_code = rand(11111, 99999). '-'. rand(1111, 9999);
         $adminUserProfile->progress_bar = '99.99';
         $adminUserProfile->shelter_type_id = ShelterType::all()->random()->id;
         $adminUserProfile->shelter_shape_id = ShelterShape::all()->random()->id;
