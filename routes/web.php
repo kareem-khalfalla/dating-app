@@ -19,7 +19,7 @@ Route::group(
         Route::post('contact-us', [SiteController::class, 'contactStore'])->name('contactStore');
 
         Route::group(['middleware' => 'auth'], function () {
-            Route::get('chat', [SiteController::class, 'chat'])->name('chat');
+            Route::get('chat', [SiteController::class, 'chat'])->name('chat')->middleware('verifyFriendsCount');
             Route::get('results', [UserController::class, 'filter'])->name('users.filter');
             Route::get('requests', [UserController::class, 'requests'])->name('requests');
             Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
