@@ -15,10 +15,10 @@
 
     @push('scripts')
         <script>
-            function hide(){
-                let el = document.getElementById('hide');
-                el.parentElement.remove();
-            }
+            // function hide(){
+            //     let el = document.getElementById('hide');
+            //     el.parentElement.remove();
+            // }
         </script>
     @endpush
 </x-app-layout>
