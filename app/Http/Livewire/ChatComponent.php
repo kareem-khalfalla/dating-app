@@ -35,7 +35,7 @@ class ChatComponent extends Component
 
     public function mount()
     {
-        $this->users = User::allExceptAuthId($this->search)->orderByLastMsg()->get();
+        $this->users = User::allExceptAuthId()->orderByLastMsg()->get();
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
 
@@ -54,7 +54,7 @@ class ChatComponent extends Component
 
     public function updatedSearch(): void
     {
-        // $this->users = User::allExceptAuthName($this->search)->get();
+        $this->users = User::allExceptAuthName($this->search)->get();
     }
 
     public function userSelected(array $user): void
