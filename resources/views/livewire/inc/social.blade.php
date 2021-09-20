@@ -6,24 +6,28 @@
 
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">{{ __('settings.Marital Status') }}</label>
-            <select wire:model.defer="state.marital_status_id" required="required" class="form-control form-control-lg ">
+            <select wire:model="state.marital_status_id" required="required" class="form-control form-control-lg ">
                 @foreach ($maritalStatuses as $maritalStatus)
                     <option value="{{ $maritalStatus->id }}">{{ $maritalStatus->name }}</option>
                 @endforeach
             </select>
         </div>
+        @if ($state['marital_status_id'] == 4)
 
-        <div class="form-group">
-            <label for="" class="col-12">{{ __('settings.Determine the reason for the divorce, if any') }}</label>
-            <textarea wire:model.defer="state.divorced_reason"
-                class="form-control @error('divorced_reason') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" placeholder="{{ __('settings.Determine the reason for the divorce, if any') }}" maxlength="200"></textarea>
-            @error('divorced_reason')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
-        </div>
+            <div class="form-group">
+                <label for=""
+                    class="col-12">{{ __('settings.Determine the reason for the divorce, if any') }}</label>
+                <textarea wire:model.defer="state.divorced_reason"
+                    class="form-control @error('divorced_reason') is-invalid @enderror" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="{{ __('settings.Determine the reason for the divorce, if any') }}"
+                    maxlength="200"></textarea>
+                @error('divorced_reason')
+                    <div class="invalid-feedback">
+                        <small id="passError" class="text-danger col-12">{{ $message }}</small>
+                    </div>
+                @enderror
+            </div>
+        @endif
 
         <div class="input-group input-group-lg mb-3 ">
             <label for="" class="col-12">{{ __('settings.Do you have children?') }}</label>
@@ -37,9 +41,9 @@
 
         <div class="input-group input-group-lg mb-3">
             <label for="" class="col-12">{{ __('settings.number of children') }}</label>
-            <input wire:model.defer="state.children_count" placeholder="{{ __('settings.number of children') }}" min="0" max="9" type="number"
-                class="form-control @error('children_count') is-invalid @enderror" aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm">
+            <input wire:model.defer="state.children_count" placeholder="{{ __('settings.number of children') }}"
+                min="0" max="9" type="number" class="form-control @error('children_count') is-invalid @enderror"
+                aria-label="Large" aria-describedby="inputGroup-sizing-sm">
             @error('children_count')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -50,8 +54,9 @@
         <div class="form-group">
             <label for="" class="col-12">{{ __('settings.Information about children') }}</label>
             <textarea wire:model.defer="state.children_information"
-                class="form-control @error('children_information') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" placeholder="{{ __('settings.Information about children') }}" maxlength="200"></textarea>
+                class="form-control @error('children_information') is-invalid @enderror"
+                id="exampleFormControlTextarea1" rows="3"
+                placeholder="{{ __('settings.Information about children') }}" maxlength="200"></textarea>
             @error('children_information')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -61,7 +66,7 @@
 
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
-                <label for="" class="col-12">{{ __('settings.Do you want multiplicity?') }}</label>
+                <label for="" class="col-12">{{ __('settings.Do you want polygamy?') }}</label>
                 <select wire:model.defer="state.polygamy_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($polygamyStatuses as $polygamyStatus)
@@ -121,7 +126,8 @@
         </div>
 
         <div class="mt-4">
-            <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">
+            <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2"
+                value="{{ __('settings.save') }}">
         </div>
     </form>
 </div>
