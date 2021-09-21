@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\SelectBoxesComposer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (!Collection::hasMacro('paginate')) {
-
             Collection::macro(
                 'paginate',
                 function ($perPage = 15, $page = null, $options = []) {
@@ -43,5 +44,10 @@ class AppServiceProvider extends ServiceProvider
                 }
             );
         }
+
+        View::composer([
+            'livewire.profile-component',
+            'livewire.users-filter-component',
+        ], SelectBoxesComposer::class);
     }
 }
