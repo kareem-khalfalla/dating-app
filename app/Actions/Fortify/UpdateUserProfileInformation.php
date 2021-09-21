@@ -89,6 +89,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'health_status_id'            => ['nullable', 'numeric'],
             'psychological_pattern_id'    => ['nullable', 'numeric'],
             'state_id'                    => ['nullable', 'numeric'],
+            'hobby_id'                    => ['nullable', 'numeric'],
             'language_*'                  => ['nullable', 'numeric'],
             'country_*'                   => ['nullable', 'numeric'],
 
@@ -129,15 +130,19 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
 
         if (isset($input['language_second_perfection_id'])) {
-            $user->profile->languages()->second()->first()->update([
+            $profile->languages()->second()->first()->update([
                 'language_perfection_status_id' => $input['language_second_perfection_id']
             ]);
         }
 
         if (isset($input['language_third_perfection_id'])) {
-            $user->profile->languages()->second()->first()->update([
+            $profile->languages()->second()->first()->update([
                 'language_perfection_status_id' => $input['language_third_perfection_id']
             ]);
+        }
+
+        if (isset($input['hobby_id'])){
+            $profile->hobbies()->sync($input['hobby_id']);
         }
 
 
