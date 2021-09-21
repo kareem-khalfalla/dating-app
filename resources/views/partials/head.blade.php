@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&#038;display=swap"
         rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    @stack('head')
     @stack('styles')
     @livewireStyles
 </head>
