@@ -20,7 +20,7 @@
 
             {{-- @auth
                 <div class="col-12 col-md-5 col-lg-4 pb-3">
-                    <a href="{{ route('users.filter') }}"><button class="btn btn-block btn_login"><i
+                    <a href="{{ route('results') }}"><button class="btn btn-block btn_login"><i
                                 class="fas fa-search"></i>{{ __('welcome.search') }}</button></a>
                 </div>
             @endauth --}}
