@@ -2,58 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\AcceptWifeStudyStatus;
-use App\Models\AcceptWifeWorkStatus;
-use App\Models\AlcoholStatus;
-use App\Models\AlfajrPrayer;
-use App\Models\BeardStatus;
-use App\Models\BodyStatus;
-use App\Models\ChildrenDesireStatus;
-use App\Models\ChildrenStatus;
-use App\Models\Country;
-use App\Models\EducationStatus;
-use App\Models\EyeColor;
-use App\Models\EyeGlass;
-use App\Models\Fasting;
-use App\Models\FoodType;
-use App\Models\FriendStatus;
-use App\Models\HairColor;
-use App\Models\HairKind;
-use App\Models\HairLength;
-use App\Models\HalalFoodStatus;
-use App\Models\Headdress;
-use App\Models\HealthStatus;
-use App\Models\Hobby;
-use App\Models\Language;
-use App\Models\LanguagePerfectionStatus;
-use App\Models\MaritalStatus;
-use App\Models\MarriageStatus;
-use App\Models\ReligionMethod;
-use App\Models\MusicStatus;
-use App\Models\Nationality;
-use App\Models\Obligation;
-use App\Models\PolygamyStatus;
-use App\Models\Prayer;
-use App\Models\PsychologicalPattern;
-use App\Models\ReadingQuran;
-use App\Models\RelationshipStatus;
-use App\Models\Religion;
-use App\Models\RelocateStatus;
-use App\Models\ResidencyStatus;
-use App\Models\RobeStatus;
-use App\Models\ShelterShape;
-use App\Models\ShelterType;
-use App\Models\ShelterWay;
-use App\Models\ShowStatus;
-use App\Models\SkinStatus;
-use App\Models\SmokeStatus;
 use App\Models\State;
-use App\Models\TafaqahStatus;
-use App\Models\VeilStatus;
-use App\Models\WifePolygamyStatus;
-use App\Models\WifeStudyStatus;
-use App\Models\WifeWorkStatus;
-use App\Models\WorkStatus;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
@@ -148,6 +97,7 @@ class ProfileComponent extends Component
         $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id ?? null;
         $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id ?? null;
         $this->state['wife_study_status_id'] = $user->profile->wife_study_status_id ?? null;
+        $this->state['hobby_id'] = $user->profile->hobbies()->id ?? null;
         $this->state['country_residence'] = $user->profile->countries()->residence()->first()->id ?? null;
         $this->state['language_native'] = $user->profile->languages()->native()->first()->id ?? null;
         $this->state['language_second'] = $user->profile->languages()->second()->first()->id ?? null;
@@ -166,59 +116,7 @@ class ProfileComponent extends Component
 
     public function render(): View
     {
-        return view('livewire.profile-component', [
-            'religions' => Religion::all(),
-            'obligations' => Obligation::all(),
-            'methods' => ReligionMethod::all(),
-            'prayers' => Prayer::all(),
-            'alfajrPrayers' => AlfajrPrayer::all(),
-            'fastings' => Fasting::all(),
-            'readingQurans' => ReadingQuran::all(),
-            'headdresses' => Headdress::all(),
-            'veilStatuses' => VeilStatus::all(),
-            'robeStatuses' => RobeStatus::all(),
-            'beardStatuses' => BeardStatus::all(),
-            'tafaqahStatuses' => TafaqahStatus::all(),
-            'musicStatuses' => MusicStatus::all(),
-            'showStatuses' => ShowStatus::all(),
-            'countries' => Country::all(),
-            'nationalities' => Nationality::all(),
-            'residencyStatuses' => ResidencyStatus::all(),
-            'relocations' => RelocateStatus::all(),
-            'languages' => Language::all(),
-            'languagePerfections' => LanguagePerfectionStatus::all(),
-            'relationships' => RelationshipStatus::all(),
-            'marriageStatuses' => MarriageStatus::all(),
-            'educationStatuses' => EducationStatus::all(),
-            'workStatuses' => WorkStatus::all(),
-            'friendStatuses' => FriendStatus::all(),
-            'acceptWifeWorkStatuses' => AcceptWifeWorkStatus::all(),
-            'acceptWifeStudyStatuses' => AcceptWifeStudyStatus::all(),
-            'wifeWorkStatuses' => WifeWorkStatus::all(),
-            'wifeStudyStatuses' => WifeStudyStatus::all(),
-            'maritalStatuses' => MaritalStatus::all(),
-            'childrenStatuses' => ChildrenStatus::all(),
-            'childrenDesireStatuses' => ChildrenDesireStatus::all(),
-            'polygamyStatuses' => PolygamyStatus::all(),
-            'wifePolygamyStatuses' => WifePolygamyStatus::all(),
-            'shelterTypes' => ShelterType::all(),
-            'shelterShapes' => ShelterShape::all(),
-            'shelterWays' => ShelterWay::all(),
-            'bodyStatuses' => BodyStatus::all(),
-            'skins' => SkinStatus::all(),
-            'hairColors' => HairColor::all(),
-            'hairLengths' => HairLength::all(),
-            'hairKinds' => HairKind::all(),
-            'eyeColors' => EyeColor::all(),
-            'eyeGlasses' => EyeGlass::all(),
-            'healthStatuses' => HealthStatus::all(),
-            'psychologicalPatterns' => PsychologicalPattern::all(),
-            'smokeStatuses' => SmokeStatus::all(),
-            'alcoholStatuses' => AlcoholStatus::all(),
-            'halalFoodStatuses' => HalalFoodStatus::all(),
-            'food_types' => FoodType::all(),
-            'hobbies' => Hobby::all(),
-        ]);
+        return view('livewire.profile-component');
     }
 
     public function updatedSelectedCountry(int $country): void
@@ -340,6 +238,7 @@ class ProfileComponent extends Component
             'language_third' => $this->state['language_third'] ?? null,
             'language_second_perfection_id' => $this->state['language_second_perfection_id'] ?? null,
             'language_third_perfection_id' => $this->state['language_third_perfection_id'] ?? null,
+            'hobby_id' => $this->state['hobby_id'] ?? null,
 
             'body_status_id' => $this->state['body_status_id'],
             'skin_status_id' => $this->state['skin_status_id'],
