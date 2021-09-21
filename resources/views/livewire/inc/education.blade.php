@@ -4,7 +4,8 @@
         <br>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.EducationStatus') }}</label>
-            <select wire:model.defer="state.education_status_id" required="required" class="form-control form-control-lg ">
+            <select wire:model.defer="state.education_status_id" required="required"
+                class="form-control form-control-lg ">
                 <option value="">{{ __('settings.EducationStatus') }}</option>
                 @foreach ($educationStatuses as $educationStatus)
                     <option value="{{ $educationStatus->id }}">{{ $educationStatus->name }}</option>
@@ -14,7 +15,8 @@
         <div class="form-group">
             <label class="col-12">{{ __('settings.competence') }}</label>
             <textarea wire:model.defer="state.competence" class="form-control @error('competence') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3" placeholder="{{ __('settings.competence') }}" maxlength="200"></textarea>
+                id="exampleFormControlTextarea1" rows="3" placeholder="{{ __('settings.competence') }}"
+                maxlength="200"></textarea>
             @error('competence')
                 <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
@@ -53,7 +55,8 @@
             </div>
 
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">{{ __('settings.Do you accept studying the wife after marriageStatus?') }}</label>
+                <label
+                    class="col-12">{{ __('settings.Do you accept studying the wife after marriageStatus?') }}</label>
                 <select wire:model.defer="state.accept_wife_study_status_id" required="required"
                     class="form-control form-control-lg ">
                     @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
@@ -62,9 +65,7 @@
                     @endforeach
                 </select>
             </div>
-        @endif
-
-        @if ($state['gender'] == 'female')
+        @else
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.You want the work?') }}</label>
                 <select wire:model.defer="state.wife_work_status_id" required="required"
