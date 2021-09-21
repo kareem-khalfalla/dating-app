@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\FriendshipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
@@ -20,7 +19,7 @@ Route::group(
 
         Route::group(['middleware' => 'auth'], function () {
             Route::get('chat', [SiteController::class, 'chat'])->name('chat')->middleware('verifyFriendsCount');
-            Route::get('results', [UserController::class, 'filter'])->name('users.filter');
+            Route::get('results', [UserController::class, 'filter'])->name('results');
             Route::get('requests', [UserController::class, 'requests'])->name('requests');
             Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
             Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
