@@ -1,0 +1,114 @@
+<?php
+
+namespace App\Http\View\Composers;
+
+use Illuminate\View\View;
+use App\Models\AcceptWifeStudyStatus;
+use App\Models\AcceptWifeWorkStatus;
+use App\Models\AlcoholStatus;
+use App\Models\AlfajrPrayer;
+use App\Models\BeardStatus;
+use App\Models\BodyStatus;
+use App\Models\ChildrenDesireStatus;
+use App\Models\ChildrenStatus;
+use App\Models\Country;
+use App\Models\EducationStatus;
+use App\Models\EyeColor;
+use App\Models\EyeGlass;
+use App\Models\Fasting;
+use App\Models\FoodType;
+use App\Models\FriendStatus;
+use App\Models\HairColor;
+use App\Models\HairKind;
+use App\Models\HairLength;
+use App\Models\HalalFoodStatus;
+use App\Models\Headdress;
+use App\Models\HealthStatus;
+use App\Models\Hobby;
+use App\Models\Language;
+use App\Models\LanguagePerfectionStatus;
+use App\Models\MaritalStatus;
+use App\Models\MarriageStatus;
+use App\Models\ReligionMethod;
+use App\Models\MusicStatus;
+use App\Models\Nationality;
+use App\Models\Obligation;
+use App\Models\PolygamyStatus;
+use App\Models\Prayer;
+use App\Models\PsychologicalPattern;
+use App\Models\ReadingQuran;
+use App\Models\RelationshipStatus;
+use App\Models\Religion;
+use App\Models\RelocateStatus;
+use App\Models\ResidencyStatus;
+use App\Models\RobeStatus;
+use App\Models\ShelterShape;
+use App\Models\ShelterType;
+use App\Models\ShelterWay;
+use App\Models\ShowStatus;
+use App\Models\SkinStatus;
+use App\Models\SmokeStatus;
+use App\Models\TafaqahStatus;
+use App\Models\VeilStatus;
+use App\Models\WifePolygamyStatus;
+use App\Models\WifeStudyStatus;
+use App\Models\WifeWorkStatus;
+use App\Models\WorkStatus;
+
+class SelectBoxesComposer
+{
+    public function compose(View $view): void
+    {
+        $view->with('religions', Religion::all());
+        $view->with('obligations', Obligation::all());
+        $view->with('methods', ReligionMethod::all());
+        $view->with('prayers', Prayer::all());
+        $view->with('alfajrPrayers', AlfajrPrayer::all());
+        $view->with('fastings', Fasting::all());
+        $view->with('readingQurans', ReadingQuran::all());
+        $view->with('headdresses', Headdress::all());
+        $view->with('veilStatuses', VeilStatus::all());
+        $view->with('robeStatuses', RobeStatus::all());
+        $view->with('beardStatuses', BeardStatus::all());
+        $view->with('tafaqahStatuses', TafaqahStatus::all());
+        $view->with('musicStatuses', MusicStatus::all());
+        $view->with('showStatuses', ShowStatus::all());
+        $view->with('countries', Country::all());
+        $view->with('nationalities', Nationality::all());
+        $view->with('residencyStatuses', ResidencyStatus::all());
+        $view->with('relocations', RelocateStatus::all());
+        $view->with('languages', Language::all());
+        $view->with('languagePerfections', LanguagePerfectionStatus::all());
+        $view->with('relationships', RelationshipStatus::all());
+        $view->with('marriageStatuses', MarriageStatus::all());
+        $view->with('educationStatuses', EducationStatus::all());
+        $view->with('workStatuses', WorkStatus::all());
+        $view->with('friendStatuses', FriendStatus::all());
+        $view->with('acceptWifeWorkStatuses', AcceptWifeWorkStatus::all());
+        $view->with('acceptWifeStudyStatuses', AcceptWifeStudyStatus::all());
+        $view->with('wifeWorkStatuses', WifeWorkStatus::all());
+        $view->with('wifeStudyStatuses', WifeStudyStatus::all());
+        $view->with('maritalStatuses', MaritalStatus::all());
+        $view->with('childrenStatuses', ChildrenStatus::all());
+        $view->with('childrenDesireStatuses', ChildrenDesireStatus::all());
+        $view->with('polygamyStatuses', PolygamyStatus::all());
+        $view->with('wifePolygamyStatuses', WifePolygamyStatus::all());
+        $view->with('shelterTypes', ShelterType::all());
+        $view->with('shelterShapes', ShelterShape::all());
+        $view->with('shelterWays', ShelterWay::all());
+        $view->with('bodyStatuses', BodyStatus::all());
+        $view->with('skins', SkinStatus::all());
+        $view->with('hairColors', HairColor::all());
+        $view->with('hairLengths', HairLength::all());
+        $view->with('hairKinds', HairKind::all());
+        $view->with('eyeColors', EyeColor::all());
+        $view->with('eyeGlasses', EyeGlass::all());
+        $view->with('healthStatuses', HealthStatus::all());
+        $view->with('psychologicalPatterns', PsychologicalPattern::all());
+        $view->with('smokeStatuses', SmokeStatus::all());
+        $view->with('alcoholStatuses', AlcoholStatus::all());
+        $view->with('halalFoodStatuses', HalalFoodStatus::all());
+        $view->with('food_types', FoodType::all());
+        $view->with('hobbies', Hobby::all());
+    }
+}
