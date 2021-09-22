@@ -20,7 +20,7 @@ class VerifyFriendsCount
         $authUser = auth()->user();
 
         if ($authUser->getFriendsCount() == 0) {
-            return back()->withError('Sadlly, you don\'t have friends to chatting with.');
+            return redirect()->route('welcome')->withError('Sadlly, you don\'t have friends to chat with.');
         }
         return $next($request);
     }
