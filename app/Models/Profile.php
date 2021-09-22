@@ -528,32 +528,18 @@ class Profile extends Model
         return $query->whereIn('marriage_status_id', $marriageStatuses);
     }
 
-    public function scopeThirdLanguagesPerfection(Builder $query, array $thirdLanguagesPerfection): Builder
+    public function scopeThirdLanguages(Builder $query, array $thirdLanguages, array $thirdLanguagesPerfection): Builder
     {
-        return $query->whereHas('languages', function ($query) use ($thirdLanguagesPerfection) {
-            $query->whereIn('language_perfection_status_id', $thirdLanguagesPerfection);
+        return $query->with('languages', function ($lang) use ($thirdLanguages, $thirdLanguagesPerfection) {
+            $lang->whereIn('id', $thirdLanguages)->where('order', 2)->whereIn('language_perfection_status_id', $thirdLanguagesPerfection);
         });
     }
 
-    public function scopeThirdLanguages(Builder $query, array $thirdLanguages): Builder
+    public function scopeSecondLanguages(Builder $query, array $secondLanguages, array $secondLanguagesPerfection): Builder
     {
-        return $query->with('languages', function ($lang) {
-            $lang->where('order', 3)->get();
-        })->whereIn('id', $thirdLanguages);
-    }
-
-    public function scopeSecondLanguagesPerfection(Builder $query, array $secondLanguagesPerfection): Builder
-    {
-        return $query->whereHas('languages', function ($query) use ($secondLanguagesPerfection) {
-            $query->whereIn('language_perfection_status_id', $secondLanguagesPerfection);
+        return $query->with('languages', function ($lang) use ($secondLanguages, $secondLanguagesPerfection) {
+            $lang->whereIn('id', $secondLanguages)->where('order', 2)->whereIn('language_perfection_status_id', $secondLanguagesPerfection);
         });
-    }
-
-    public function scopeSecondLanguages(Builder $query, array $secondLanguages): Builder
-    {
-        return $query->with('languages', function ($lang) {
-            $lang->where('order', 2)->get();
-        })->whereIn('id', $secondLanguages);
     }
 
     public function scopeNativeLanguages(Builder $query, array $nativeLanguages): Builder
