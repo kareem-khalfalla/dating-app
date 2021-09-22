@@ -9,7 +9,7 @@
             @endif
 
             <div class="col-12 col-lg-6 pt-2">
-                @livewire('user-search-by-name-component')
+                @livewire('user-search-by-name-component', ['usersResults' => session('usersResults')])
             </div>
         </div>
     </div>

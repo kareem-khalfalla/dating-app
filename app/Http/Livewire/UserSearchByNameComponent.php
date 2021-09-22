@@ -15,8 +15,14 @@ class UserSearchByNameComponent extends Component
 
     public $search = '';
 
+    public $usersResults;
+
     public function render(): View
     {
+        if ($this->usersResults == null) {
+            $this->usersResults = collect();
+        }
+
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
@@ -28,7 +34,8 @@ class UserSearchByNameComponent extends Component
             ->merge($blockedRecipientIds);
 
         return view('livewire.user-search-by-name-component', [
-            'users' => User::allExceptAuthName($this->search)->allExceptAuthId()->get()
+            'users' => User::allExceptAuthName($this->search)->get()
+                ->merge($this->usersResults)
                 ->diff(User::findMany($allPendingIds))
                 ->diff($authUser->getFriends()->get())->paginate(6)
         ]);

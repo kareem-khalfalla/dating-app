@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -37,6 +38,16 @@ class Profile extends Model
     public function countries()
     {
         return $this->belongsToMany(Country::class)->withPivot('is_hometown');
+    }
+
+    public function scopeCountriesOfResidences(Builder $query, array $countriesOfResidences): Builder
+    {
+        return $query->whereRelation('countries', 'is_hometown', 0)->whereIn('id', $countriesOfResidences);
+    }
+
+    public function scopeCountriesHome(Builder $query, array $countries): Builder
+    {
+        return $query->whereRelation('countries', 'is_hometown', 1)->whereIn('id', $countries);
     }
 
     public function relocateStatus(): BelongsTo
@@ -134,9 +145,21 @@ class Profile extends Model
         return $this->belongsTo(FoodType::class);
     }
 
+    public function scopeFoodTypes(Builder $query, array $foodTypes): Builder
+    {
+        return $query->whereIn('food_type_id', $foodTypes);
+    }
+
     public function hobbies(): BelongsToMany
     {
         return $this->belongsToMany(Hobby::class);
+    }
+
+    public function scopeAllHobbies(Builder $query, array $hobbies): Builder
+    {
+        return $query->whereHas('hobbies', function ($query) use ($hobbies) {
+            $query->whereIn('id', $hobbies);
+        });
     }
 
     public function bodyStatus(): BelongsTo
@@ -296,5 +319,402 @@ class Profile extends Model
     public function childrenDesireStatus(): BelongsTo
     {
         return $this->belongsTo(ChildrenDesireStatus::class);
+    }
+
+    public function scopeNationalities(Builder $query, array $nationalities): Builder
+    {
+        return $query->whereIn('nationality_id', $nationalities);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     */
+
+    public function scopeHalalFoodStatuses(Builder $query, array $halalFoodStatuses): Builder
+    {
+        return $query->whereIn('halal_food_status_id', $halalFoodStatuses);
+    }
+
+    public function scopeAlcoholStatuses(Builder $query, array $alcoholStatuses): Builder
+    {
+        return $query->whereIn('alcohol_status_id', $alcoholStatuses);
+    }
+
+    public function scopeSmokeStatuses(Builder $query, array $smokeStatuses): Builder
+    {
+        return $query->whereIn('smoke_status_id', $smokeStatuses);
+    }
+
+    public function scopePsychologicalPatterns(Builder $query, array $psychologicalPatterns): Builder
+    {
+        return $query->whereIn('psychological_pattern_id', $psychologicalPatterns);
+    }
+
+    public function scopeHealthStatuses(Builder $query, array $healthStatuses): Builder
+    {
+        return $query->whereIn('health_status_id', $healthStatuses);
+    }
+
+    public function scopeEyeGlasses(Builder $query, array $eyeGlasses): Builder
+    {
+        return $query->whereIn('eye_glass_id', $eyeGlasses);
+    }
+
+    public function scopeEyeColors(Builder $query, array $eyeColors): Builder
+    {
+        return $query->whereIn('eye_color_id', $eyeColors);
+    }
+
+    public function scopeHairKinds(Builder $query, array $hairKinds): Builder
+    {
+        return $query->whereIn('hair_kind_id', $hairKinds);
+    }
+
+    public function scopeHairLengths(Builder $query, array $hairLengths): Builder
+    {
+        return $query->whereIn('hair_length_id', $hairLengths);
+    }
+
+    public function scopeHairColors(Builder $query, array $hairColors): Builder
+    {
+        return $query->whereIn('hair_color_id', $hairColors);
+    }
+
+    public function scopeSkinStatuses(Builder $query, array $skinStatuses): Builder
+    {
+        return $query->whereIn('skin_status_id', $skinStatuses);
+    }
+
+    public function scopeBodyStatuses(Builder $query, array $bodyStatuses): Builder
+    {
+        return $query->whereIn('body_status_id', $bodyStatuses);
+    }
+
+    public function scopeShelterWays(Builder $query, array $shelterWays): Builder
+    {
+        return $query->whereIn('shelter_way_id', $shelterWays);
+    }
+
+    public function scopeShelterShapes(Builder $query, array $shelterShapes): Builder
+    {
+        return $query->whereIn('shelter_shape_id', $shelterShapes);
+    }
+
+    public function scopeShelterTypes(Builder $query, array $shelterTypes): Builder
+    {
+        return $query->whereIn('shelter_type_id', $shelterTypes);
+    }
+
+    public function scopeChildrenDesireStatuses(Builder $query, array $childrenDesireStatuses): Builder
+    {
+        return $query->whereIn('children_desire_status_id', $childrenDesireStatuses);
+    }
+
+    public function scopePolygamyStatuses(Builder $query, array $polygamyStatuses): Builder
+    {
+        return $query->whereIn('polygamy_status_id', $polygamyStatuses);
+    }
+
+    public function scopeChildrenStatuses(Builder $query, array $childrenStatuses): Builder
+    {
+        return $query->whereIn('children_status_id', $childrenStatuses);
+    }
+
+    public function scopeFriendStatuses(Builder $query, array $friendStatuses): Builder
+    {
+        return $query->whereIn('friend_status_id', $friendStatuses);
+    }
+
+    public function scopeShowStatuses(Builder $query, array $showStatuses): Builder
+    {
+        return $query->whereIn('show_status_id', $showStatuses);
+    }
+
+    public function scopeMusicStatuses(Builder $query, array $musicStatuses): Builder
+    {
+        return $query->whereIn('music_status_id', $musicStatuses);
+    }
+
+    public function scopeTafaqahStatuses(Builder $query, array $tafaqahStatuses): Builder
+    {
+        return $query->whereIn('tafaqah_status_id', $tafaqahStatuses);
+    }
+
+    public function scopeRobeStatuses(Builder $query, array $robeStatuses): Builder
+    {
+        return $query->whereIn('robe_status_id', $robeStatuses);
+    }
+
+    public function scopeHeaddresses(Builder $query, array $headdresses): Builder
+    {
+        return $query->whereIn('headdress_id', $headdresses);
+    }
+
+    public function scopeReadingQurans(Builder $query, array $readingQurans): Builder
+    {
+        return $query->whereIn('reading_quran_id', $readingQurans);
+    }
+
+    public function scopeFastings(Builder $query, array $fastings): Builder
+    {
+        return $query->whereIn('fasting_id', $fastings);
+    }
+
+    public function scopeAlfajrPrayers(Builder $query, array $alfajrPrayers): Builder
+    {
+        return $query->whereIn('alfajr_prayer_id', $alfajrPrayers);
+    }
+
+    public function scopePrayers(Builder $query, array $prayers): Builder
+    {
+        return $query->whereIn('prayer_id', $prayers);
+    }
+
+    public function scopeObligations(Builder $query, array $obligations): Builder
+    {
+        return $query->whereIn('obligation_id', $obligations);
+    }
+
+    public function scopeReligionMethods(Builder $query, array $religionMethods): Builder
+    {
+        return $query->whereIn('religion_method_id', $religionMethods);
+    }
+
+    public function scopeReligions(Builder $query, array $religions): Builder
+    {
+        return $query->whereIn('religion_id', $religions);
+    }
+
+    public function scopeAcceptWifeStudyStatuses(Builder $query, array $acceptWifeStudyStatuses): Builder
+    {
+        return $query->whereIn('accept_wife_study_status_id', $acceptWifeStudyStatuses);
+    }
+
+    public function scopeAcceptWifeWorkStatuses(Builder $query, array $acceptWifeWorkStatuses): Builder
+    {
+        return $query->whereIn('accept_wife_work_status_id', $acceptWifeWorkStatuses);
+    }
+
+    public function scopeWorkStatuses(Builder $query, array $workStatuses): Builder
+    {
+        return $query->whereIn('work_status_id', $workStatuses);
+    }
+
+    public function scopeEducationStatuses(Builder $query, array $educationStatuses): Builder
+    {
+        return $query->whereIn('education_status_id', $educationStatuses);
+    }
+
+    public function scopeMarriageStatuses(Builder $query, array $marriageStatuses): Builder
+    {
+        return $query->whereIn('marriage_status_id', $marriageStatuses);
+    }
+
+    public function scopeThirdLanguagesPerfection(Builder $query, array $thirdLanguagesPerfection): Builder
+    {
+        return $query->whereHas('languages', function ($query) use ($thirdLanguagesPerfection) {
+            $query->whereIn('language_perfection_status_id', $thirdLanguagesPerfection);
+        });
+    }
+
+    public function scopeThirdLanguages(Builder $query, array $thirdLanguages): Builder
+    {
+        return $query->with('languages', function ($lang) {
+            $lang->where('order', 3)->get();
+        })->whereIn('id', $thirdLanguages);
+    }
+
+    public function scopeSecondLanguagesPerfection(Builder $query, array $secondLanguagesPerfection): Builder
+    {
+        return $query->whereHas('languages', function ($query) use ($secondLanguagesPerfection) {
+            $query->whereIn('language_perfection_status_id', $secondLanguagesPerfection);
+        });
+    }
+
+    public function scopeSecondLanguages(Builder $query, array $secondLanguages): Builder
+    {
+        return $query->with('languages', function ($lang) {
+            $lang->where('order', 2)->get();
+        })->whereIn('id', $secondLanguages);
+    }
+
+    public function scopeNativeLanguages(Builder $query, array $nativeLanguages): Builder
+    {
+        return $query->whereHas('languages', function ($query) use ($nativeLanguages) {
+            $query->whereIn('id', $nativeLanguages);
+        });
+    }
+
+    public function scopeRelationshipStatuses(Builder $query, array $relationshipStatuses): Builder
+    {
+        return $query->whereIn('relationship_status_id', $relationshipStatuses);
+    }
+
+    public function scopeRelocateStatuses(Builder $query, array $relocateStatuses): Builder
+    {
+        return $query->whereIn('relocate_status_id', $relocateStatuses);
+    }
+
+    public function scopeMaritalStatuses(Builder $query, array $maritalStatuses): Builder
+    {
+        return $query->whereIn('marital_status_id', $maritalStatuses);
+    }
+
+    public function scopeIncomes(Builder $query, int $id): Builder
+    {
+        switch ($id) {
+            case 1:
+                return $query->whereBetween('income', [0, 1000]);
+                break;
+            case 2:
+                return $query->whereBetween('income', [1000, 2000]);
+                break;
+            case 3:
+                return $query->whereBetween('income', [2000, 3000]);
+                break;
+            case 4:
+                return $query->whereBetween('income', [3000, 4000]);
+                break;
+            case 5:
+                return $query->whereBetween('income', [4000, 5000]);
+                break;
+            case 6:
+                return $query->whereBetween('income', [5000, 6000]);
+                break;
+            case 7:
+                return $query->whereBetween('income', [6000, 7000]);
+                break;
+            case 8:
+                return $query->whereBetween('income', [7000, 8000]);
+                break;
+            case 9:
+                return $query->whereBetween('income', [8000, 9000]);
+                break;
+            case 10:
+                return $query->whereBetween('income', [9000, 10000]);
+                break;
+            default:
+                return $query->whereBetween('income', [10000, 100000]);
+                break;
+        }
+    }
+
+    public function scopeNumberOfChildren(Builder $query, int $id): Builder
+    {
+        switch ($id) {
+            case 1:
+                return $query->where('children_count', 0);
+                break;
+
+            case 2:
+                return $query->whereBetween('children_count', [1, 3]);
+                break;
+
+            case 3:
+                return $query->whereBetween('children_count', [3, 6]);
+                break;
+
+            case 4:
+                return $query->whereBetween('children_count', [6, 9]);
+                break;
+
+            case 5:
+                return $query->whereBetween('children_count', [9, 12]);
+                break;
+
+            default:
+                return $query->whereBetween('children_count', [12, 20]);
+                break;
+        }
+    }
+
+    public function scopeWeights(Builder $query, int $id): Builder
+    {
+        switch ($id) {
+            case 1:
+                return $query->whereBetween('weight', [0, 50]);
+                break;
+            case 2:
+                return $query->whereBetween('weight', [50, 60]);
+                break;
+            case 3:
+                return $query->whereBetween('weight', [60, 70]);
+                break;
+            case 4:
+                return $query->whereBetween('weight', [70, 80]);
+                break;
+            case 5:
+                return $query->whereBetween('weight', [80, 90]);
+                break;
+            case 6:
+                return $query->whereBetween('weight', [90, 100]);
+                break;
+            case 7:
+                return $query->whereBetween('weight', [100, 110]);
+                break;
+            case 8:
+                return $query->whereBetween('weight', [110, 120]);
+                break;
+            case 9:
+                return $query->whereBetween('weight', [120, 130]);
+                break;
+            case 10:
+                return $query->whereBetween('weight', [130, 140]);
+                break;
+            case 11:
+                return $query->whereBetween('weight', [140, 150]);
+                break;
+            case 12:
+                return $query->whereBetween('weight', [150, 160]);
+                break;
+            case 13:
+                return $query->whereBetween('weight', [160, 170]);
+                break;
+            case 14:
+                return $query->whereBetween('weight', [170, 180]);
+                break;
+            default:
+                return $query->whereBetween('weight', [180, 220]);
+                break;
+        }
+    }
+
+    public function scopeLengths(Builder $query, int $id): Builder
+    {
+        switch ($id) {
+            case 1:
+                return $query->whereBetween('height', [120, 140]);
+                break;
+            case 2:
+                return $query->whereBetween('height', [140, 160]);
+                break;
+            case 3:
+                return $query->whereBetween('height', [160, 180]);
+                break;
+            case 4:
+                return $query->whereBetween('height', [180, 200]);
+                break;
+            default:
+                return $query->whereBetween('height', [200, 220]);
+                break;
+        }
     }
 }
