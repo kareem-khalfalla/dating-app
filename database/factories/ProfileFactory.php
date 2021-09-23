@@ -38,7 +38,7 @@ use App\Models\ReadingQuran;
 use App\Models\RelationshipStatus;
 use App\Models\Religion;
 use App\Models\RelocateStatus;
-use App\Models\ResidencyStatus;
+use App\Models\ResidenceStatus;
 use App\Models\RobeStatus;
 use App\Models\ShelterShape;
 use App\Models\ShelterType;
@@ -83,7 +83,7 @@ class ProfileFactory extends Factory
             'accept_wife_work_status_id' => AcceptWifeWorkStatus::all()->random()->id,
             'accept_wife_study_status_id' => AcceptWifeStudyStatus::all()->random()->id,
             'nationality_id' => Nationality::all()->random()->id,
-            'residency_status_id' => ResidencyStatus::all()->random()->id,
+            'residence_status_id' => ResidenceStatus::all()->random()->id,
             'relocate_status_id' => RelocateStatus::all()->random()->id,
             'relationship_status_id' => RelationshipStatus::all()->random()->id,
             'body_status_id' => BodyStatus::all()->random()->id,
