@@ -64,6 +64,9 @@ class CreateProfilesTable extends Migration
             $table->foreignId('music_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('friend_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('show_status_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('language_native_id')->nullable()->constrained('languages')->onDelete('cascade');
+            $table->foreignId('language_second_id')->nullable()->constrained('languages')->onDelete('cascade');
+            $table->foreignId('language_third_id')->nullable()->constrained('languages')->onDelete('cascade');
             $table->unsignedMediumInteger('state_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedMediumInteger('country_of_origin_id')->nullable();
             $table->unsignedMediumInteger('country_of_residence_id')->nullable();

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLanguagesTable extends Migration
+class CreateLanguagePerfectionStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('language_perfection_statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('language_perfection_status_id')->nullable()->constrained('language_perfection_statuses')->onDelete('cascade');
-            $table->string('code', 2);
             $table->text('name');
-            $table->string('nativeName');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('languages');
+        Schema::dropIfExists('language_perfection_statuses');
     }
 }
