@@ -107,22 +107,17 @@
                         <strong>{{ __('profile.gender') }}:&nbsp;</strong><span>{{ $user->gender ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->native()->first()->name ?? 'N/A' }}</span><br>
-                    </p>
-                    <p class="lead hover_padding">
                         <strong>{{ __('profile.Birthday') }}:&nbsp;</strong><span>{{ $user->profile->dob }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        @dump($user->profile->countryOfOrigin)
-                        <strong>{{ __('profile.Country of Origin') }}:&nbsp;</strong><span>{{ $user->profile->countryOfOrigin->translations ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Country of Origin') }}:&nbsp;</strong><span>{{ $user->profile->countryOfResidence ? $user->profile->countryOfResidence->getCountryLocale() : 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Country of residence') }}:&nbsp;</strong><span>{{ $user->profile->countryOfResidence->translations ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Country of residence') }}:&nbsp;</strong><span>{{ $user->profile->countryOfOrigin ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Nationality') }}:&nbsp;</strong><span>{{ $user->profile->nationality->name ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>Boycott:&nbsp;</strong><span>male</span><br></p> --}}
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.City') }}:&nbsp;</strong><span>{{ $user->profile->state->name ?? 'N/A' }}</span><br>
                     </p>
@@ -130,20 +125,20 @@
                         <strong>{{ __('profile.Postal code') }}:&nbsp;</strong><span>{{ $user->profile->postal_code ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Type of accommodation') }}:&nbsp;</strong><span>{{ $user->profile->residencyStatus->name ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Type of accommodation') }}:&nbsp;</strong><span>{{ $user->profile->residenceStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Moving to another place') }}:&nbsp;</strong><span>{{ $user->profile->relocateStatus->name ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>Native language:&nbsp;</strong><span>arabic</span><br></p> --}}
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.second language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->second()->first()->name ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Native language') }}:&nbsp;</strong>{{ $user->profile->languageNative->name }}<span></span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.third language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->third()->first()->name ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Second Language') }}:&nbsp;</strong>{{ $user->profile->languageSecond->name }}<span></span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>A profile of your desired
-                            partner:&nbsp;</strong><span>male</span><br></p> --}}
+                    <p class="lead hover_padding">
+                        <strong>{{ __('profile.Third Language') }}:&nbsp;</strong>{{ $user->profile->languageThird->name }}<span></span><br>
+                    </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.The required relationship') }}:&nbsp;</strong><span>{{ $user->profile->relationshipStatus->name ?? 'N/A' }}</span><br>
                     </p>
