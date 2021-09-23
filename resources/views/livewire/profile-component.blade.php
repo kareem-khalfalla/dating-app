@@ -1,71 +1,36 @@
-<div class="container container_settings col-sm-10 col-md-11 col-lg-10 p-1 pt-4 pb-1 mb-4">
-    @if (!empty($successMessage))
-        <div class="alert alert-success" id="success-alert" role="alert">
-            <button class="close" data-dismiss="alert">x</button>
-            {{ $successMessage }}
+<div class="shadow m-0 bg-white pb-4">
+
+    <ol class="breadcrumb mb-4">
+        <h1 class="pb-md-3 color_h col-md-5">{{ __('settings.settings') }}</h1>
+        <div class="col-md-7">
+            <label for="choose_settings">{{ __('settings.Choose One') }}</label>
+            <select id="choose_settings" class="select_one form-control form-control-lg mt-0">
+                <option value="change_photo">{{ __('settings.change photo') }}</option>
+                <option value="change_password">{{ __('settings.change password') }}</option>
+                <option value="change_main_information">{{ __('settings.change main information') }}</option>
+                <option value="Detailed_information">{{ __('settings.Detailed information') }}</option>
+                <option value="Personal_profile">{{ __('settings.Personal profile') }}</option>
+                <option value="Education_and_work">{{ __('settings.EducationStatus and work') }}</option>
+                <option value="Social_status">{{ __('settings.Social status') }}</option>
+                <option value="Religious_status">{{ __('settings.Religious status') }}</option>
+                <option value="the_shape">{{ __('settings.the shape') }}</option>
+                <option value="their_lifestyle">{{ __('settings.their lifestyle') }}</option>
+            </select>
+
         </div>
-    @endif
-    <div class="shadow m-0 bg-white pb-4">
 
-        <ol class="breadcrumb mb-4">
-            <h1 class="pb-md-3 color_h col-md-5">settings</h1>
-            <div class="col-md-7">
-                <label for="choose_settings">Choose One</label>
-                <select id="choose_settings" class="select_one form-control form-control-lg mt-0">
-                    <option value="change_photo">change photo</option>
-                    <option value="change_password">change password</option>
-                    <option value="change_main_information">change main information</option>
-                    <option value="Detailed_information">Detailed information</option>
-                    <option value="Personal_profile">Personal profile</option>
-                    <option value="Education_and_work">EducationStatus and work</option>
-                    <option value="Social_status">Social status</option>
-                    <option value="Religious_status">Religious status</option>
-                    <option value="the_shape">the shape</option>
-                    <option value="their_lifestyle">their lifestyle</option>
-                </select>
+    </ol>
 
-            </div>
-
-        </ol>
-
-        <div class="setting_content p-0">
-            @include('livewire.inc.change-photo')
-            @include('livewire.inc.change-password')
-            @include('livewire.inc.main-info')
-            @include('livewire.inc.details')
-            @include('livewire.inc.personal')
-            @include('livewire.inc.education')
-            @include('livewire.inc.social')
-            @include('livewire.inc.religion')
-            @include('livewire.inc.shape')
-            @include('livewire.inc.lifestyle')
-        </div>
+    <div class="setting_content p-0">
+        @include('livewire.inc.change-photo')
+        @include('livewire.inc.change-password')
+        @include('livewire.inc.main-info')
+        @include('livewire.inc.details')
+        @include('livewire.inc.personal')
+        @include('livewire.inc.education')
+        @include('livewire.inc.social')
+        @include('livewire.inc.religion')
+        @include('livewire.inc.shape')
+        @include('livewire.inc.lifestyle')
     </div>
 </div>
-@push('scripts')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        addEventListener('swal:modal', event => {
-            swal({
-                title: event.detail.title,
-                text: event.detail.text,
-                timer: event.detail.timer,
-                icon: event.detail.type,
-            });
-        })
-
-        addEventListener('swal:confirm', event => {
-            swal({
-                title: event.detail.title,
-                text: event.detail.text,
-                icon: event.detail.type,
-                buttons: true,
-                dangerMode: true
-            }).then((willDelete) => {
-                if (willDelete) {
-                    window.livewire.emit('delete', event.detail.id);
-                }
-            });
-        })
-    </script>
-@endpush

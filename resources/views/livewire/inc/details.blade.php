@@ -16,13 +16,16 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Country of Origin') }}</label>
-            <select wire:model="selectedCountry" required="required"
-                class="form-control form-control-lg @error('hometown') is-invalid @enderror">
+            <select wire:model="selectedCountry"
+                class="form-control form-control-lg @error('selectedCountry') is-invalid @enderror">
+                <option value="">---</option>
                 @foreach ($countries as $country)
-                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    <option value="{{ $country->id }}">
+                        {{ $country->translations[app()->getLocale() == 'ar' ? 'fa' : app()->getLocale()] ?? $country->name }}
+                    </option>
                 @endforeach
             </select>
-            @error('hometown')
+            @error('selectedCountry')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -30,10 +33,13 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Country of Residence') }}</label>
-            <select wire:model.defer="state.country_residence" required="required"
+            <select wire:model.defer="state.country_residence"
                 class="form-control form-control-lg @error('country_residence') is-invalid @enderror">
+                <option value="" selected>---</option>
                 @foreach ($countries as $country)
-                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    <option value="{{ $country->id }}">
+                        {{ $country->translations[app()->getLocale() == 'ar' ? 'fa' : app()->getLocale()] ?? $country->name }}
+                    </option>
                 @endforeach
             </select>
             @error('country_residence')
@@ -44,8 +50,9 @@
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">{{ __('settings.Nationality') }}</label>
-            <select wire:model.defer="state.nationality_id" required="required"
+            <select wire:model.defer="state.nationality_id"
                 class="form-control form-control-lg @error('nationality_id') is-invalid @enderror">
+                <option value="" selected>---</option>
                 @foreach ($nationalities as $nationality)
                     <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
                 @endforeach
@@ -60,7 +67,7 @@
             @if ($selectedCountry)
                 <div class="input-group input-group-lg mb-3 col-6">
                     <label class="col-12">{{ __('settings.City') }}</label>
-                    <select wire:model="selectedState" required="required"
+                    <select wire:model="selectedState"
                         class="form-control form-control-lg @error('state_id') is-invalid @enderror">
                         @foreach ($countryStates as $countryState)
                             <option value="{{ $countryState->id }}">{{ $countryState->name }}</option>
