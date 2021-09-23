@@ -161,11 +161,11 @@ return [
         'postal_code'          => 'Postal code',
         'residence_status_id'  => 'Residence',
         'relocate_status_id'   => 'Relocate',
-        'native_language_id'   => 'Mother tongue',
-        'second_language_id'   => 'the second language',
-        'third_language_id'    => 'third language',
-        'second_language_perfection_id' => 'second language quality',
-        'third_language_perfection_id' => 'The quality of the third language',
+        'language_native_id'   => 'Mother tongue',
+        'language_second_id'   => 'the second language',
+        'language_third_id'    => 'third language',
+        'language_second_perfection_id' => 'second language quality',
+        'language_third_perfection_id' => 'The quality of the third language',
     ],
 
 ];
