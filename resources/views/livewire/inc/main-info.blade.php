@@ -1,6 +1,6 @@
 <div id="change_main_information" class="col-lg-11 m-auto pb-4" wire:ignore.self>
-    <h3 class="color_h">Change main information</h3>
-    <form wire:submit.prevent="updateInfo" id="captcha_form" method="post" action="#">
+    <h3 class="color_h">{{ __('settings.Change main information') }}</h3>
+    <form wire:submit.prevent="updateUserInfo" id="captcha_form" method="post" action="#">
         <br>
         <div class="input-group input-group-lg mb-3 mt-3">
             <div class="input-group-prepend">

@@ -12,7 +12,7 @@
                 @endforeach
             </select>
         </div>
-        @if ($state['marital_status_id'] == 4)
+        @if (isset($state['marital_status_id']) && $state['marital_status_id'] == 4)
 
             <div class="form-group">
                 <label for=""

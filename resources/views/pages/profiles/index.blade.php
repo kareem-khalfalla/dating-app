@@ -106,7 +106,6 @@
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.gender') }}:&nbsp;</strong><span>{{ $user->gender ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>country:&nbsp;</strong><span></span><br></p> --}}
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.language') }}:&nbsp;</strong><span>{{ $user->profile->languages()->native()->first()->name ?? 'N/A' }}</span><br>
                     </p>
@@ -114,10 +113,11 @@
                         <strong>{{ __('profile.Birthday') }}:&nbsp;</strong><span>{{ $user->profile->dob }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Country of Origin') }}:&nbsp;</strong><span>{{ $user->profile->countries()->hometown()->first()->name ?? 'N/A' }}</span><br>
+                        @dump($user->profile->countryOfOrigin)
+                        <strong>{{ __('profile.Country of Origin') }}:&nbsp;</strong><span>{{ $user->profile->countryOfOrigin->translations ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Country of residence') }}:&nbsp;</strong><span>{{ $user->profile->countries()->residence()->first()->name ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Country of residence') }}:&nbsp;</strong><span>{{ $user->profile->countryOfResidence->translations ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Nationality') }}:&nbsp;</strong><span>{{ $user->profile->nationality->name ?? 'N/A' }}</span><br>
