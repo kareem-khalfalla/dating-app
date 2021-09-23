@@ -1,7 +1,7 @@
 <x-guest-layout title="Login">
     <div class="container container_form col-12 col-sm-8 col-md-7 col-lg-5 pt-5">
         <div class="card card-body shadow">
-            <h1>Login</h1>
+            <h1>{{ __('login.Login') }}</h1>
             <form id="login-form" class="signup col-12 m-auto" method="post" action="{{ route('login') }}">
                 @csrf
                 <div id="logAlert"></div>
@@ -9,7 +9,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-email"></i></span>
                     </div>
-                    <input required name="email" value="{{ old('email') }}" placeholder="email" type="email"
+                    <input required name="email" value="{{ old('email') }}" placeholder="{{ __('login.email') }}" type="email"
                         class="form-control @error('email') is-invalid @enderror" aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm">
                     @error('email')
@@ -23,7 +23,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
                                 aria-hidden="true"></i></span>
                     </div>
-                    <input required name="password" placeholder="password" type="password"
+                    <input required name="password" placeholder="{{ __('login.password') }}" type="password"
                         class="form-control @error('password') is-invalid @enderror" aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm">
                     @error('password')
@@ -34,15 +34,15 @@
                 </div>
                 <div class="mt-4">
                     <input name="login" id="login-btn" type="submit" class="btn btn_form_login btn-block p-2"
-                        value="login">
+                        value="{{ __('login.login') }}">
                 </div>
                 <br>
-                <div>Forgot password?
-                    <a href="{{ route('password.request') }}"><strong>reset now</strong></a>
+                <div>{{ __('login.Forgot password?') }}
+                    <a href="{{ route('password.request') }}"><strong>{{ __('login.reset now') }}</strong></a>
                 </div>
                 <br>
-                <div>don't have account?
-                    <a href="{{ route('register') }}"><strong>create a new account now</strong></a>
+                <div>{{ __('login.don\'t have account?') }}
+                    <a href="{{ route('register') }}"><strong>{{ __('login.create a new account now') }}</strong></a>
                 </div>
             </form>
         </div>

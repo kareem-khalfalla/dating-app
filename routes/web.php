@@ -12,6 +12,8 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath',]
     ],
     function () {
+        Route::group([ 'namespace' => 'Laravel\Fortify\Http\Controllers', ], function () { require(base_path('vendor/laravel/fortify/routes/routes.php')); });
+
         Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
         Route::get('about', [SiteController::class, 'about'])->name('about');
         Route::get('privacy', [SiteController::class, 'privacy'])->name('privacy');
@@ -32,5 +34,6 @@ Route::group(
             Route::get('{user}/friend-request', [ProfileController::class, 'friendRequest'])->name('friendRequest');
             Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');
         });
+
     }
 );
