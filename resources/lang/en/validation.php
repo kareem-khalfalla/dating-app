@@ -152,6 +152,20 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'dob'                  => 'Date of birth',
+        'selectedCountry'      => 'Country of origin',
+        'selectedState'        => 'States',
+        'country_of_residence' => 'Country of residence',
+        'nationality_id'       => 'Nationality',
+        'postal_code'          => 'Postal code',
+        'residence_status_id'  => 'Residence',
+        'relocate_status_id'   => 'Relocate',
+        'native_language_id'   => 'Mother tongue',
+        'second_language_id'   => 'the second language',
+        'third_language_id'    => 'third language',
+        'second_language_perfection_id' => 'second language quality',
+        'third_language_perfection_id' => 'The quality of the third language',
+    ],
 
 ];
