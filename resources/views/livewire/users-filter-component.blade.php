@@ -10,7 +10,7 @@
                         <div class="input-group input-group-lg mb-3 col-lg-6">
                             <select wire:model.defer="state.residenceStatuses"
                                 class="form-control form-control-lg selectpicker" multiple title="Type of accommodation">
-                                @foreach ($residencyStatuses as $residencyStatus)
+                                @foreach ($residenceStatuses as $residencyStatus)
                                     <option value="{{ $residencyStatus->id }}">{{ $residencyStatus->name }}</option>
                                 @endforeach
                             </select>
@@ -472,7 +472,7 @@
                         <div class="form-group mb-3 col-md-6">
                             <label for="">Length</label>
                             <select wire:model.defer="state.height_from_to_id" class="form-control form-control-lg">
-                                <option disabled selected>Length</option>
+                                <option>Length</option>
                                 <option value="1">from 120 to 140 cm</option>
                                 <option value="2">from 140 to 160 cm</option>
                                 <option value="3">from 160 to 180 cm</option>
@@ -483,7 +483,7 @@
                         <div class="form-group mb-3 col-md-6">
                             <label for="">the weight </label>
                             <select wire:model.defer="state.weight_from_to_id" class="form-control form-control-lg">
-                                <option disabled selected>the weight </option>
+                                <option>the weight </option>
                                 <option value="1">less than that </option>
                                 <option value="2">from 50 to 60 kg</option>
                                 <option value="3">from 60 to 70 kg</option>
@@ -516,7 +516,7 @@
                         <div class="form-group mb-3 col-md-6">
                             <label for="">Monthly income </label>
                             <select wire:model.defer="state.income_from_to_id" class="form-control form-control-lg">
-                                <option disabled selected>Monthly income </option>
+                                <option>Monthly income </option>
                                 <option value="1">less than that </option>
                                 <option value="2">from 1000 $ to 2000$</option>
                                 <option value="3">from 2000 $ to 3000$</option>
