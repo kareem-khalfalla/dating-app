@@ -40,7 +40,7 @@ use App\Models\ReadingQuran;
 use App\Models\RelationshipStatus;
 use App\Models\Religion;
 use App\Models\RelocateStatus;
-use App\Models\ResidencyStatus;
+use App\Models\ResidenceStatus;
 use App\Models\RobeStatus;
 use App\Models\ShelterShape;
 use App\Models\ShelterType;
@@ -75,7 +75,7 @@ class SelectBoxesComposer
         $view->with('showStatuses', ShowStatus::all());
         $view->with('countries', Country::all());
         $view->with('nationalities', Nationality::all());
-        $view->with('residencyStatuses', ResidencyStatus::all());
+        $view->with('residenceStatuses', ResidenceStatus::all());
         $view->with('relocations', RelocateStatus::all());
         $view->with('languages', Language::all());
         $view->with('languagePerfections', LanguagePerfectionStatus::all());
