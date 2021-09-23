@@ -21,4 +21,9 @@ class Country extends Model
     {
         return $query->where('is_hometown', 0);
     }
+
+    public function getTranslationsAttribute(string $attr): array
+    {
+        return json_decode($attr, true);
+    }
 }
