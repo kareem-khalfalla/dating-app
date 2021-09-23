@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             StateSeeder::class,
             NationalitySeeder::class,
-            ResidencyStatusSeeder::class,
+            ResidenceStatusSeeder::class,
             RelocateStatusSeeder::class,
             LanguageSeeder::class,
             LanguagePerfectionStatusSeeder::class,
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             FoodSeeder::class,
             HobbySeeder::class,
             OverdressSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
             // RoleSeeder::class,
         ]);
     }
