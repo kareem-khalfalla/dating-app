@@ -25,7 +25,7 @@ class CreateProfilesTable extends Migration
             $table->foreignId('accept_wife_work_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('accept_wife_study_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('nationality_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('residency_status_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('residence_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('relocate_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('relationship_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('body_status_id')->nullable()->constrained()->onDelete('cascade');
@@ -65,6 +65,8 @@ class CreateProfilesTable extends Migration
             $table->foreignId('friend_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('show_status_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedMediumInteger('state_id')->nullable()->constrained()->onDelete('cascade');
+            $table->unsignedMediumInteger('country_of_origin_id')->nullable();
+            $table->unsignedMediumInteger('country_of_residence_id')->nullable();
             $table->unsignedTinyInteger('children_count')->default(0);
             $table->string('postal_code', 32)->nullable();
             $table->string('progress_bar', 5)->nullable()->default('00.00');
@@ -85,6 +87,10 @@ class CreateProfilesTable extends Migration
             $table->text('lesson_listing')->nullable();
             $table->timestamps();
             // $table->unsignedMediumInteger('city_id')->nullable()->constrained()->onDelete('cascade');
+
+
+            $table->foreign('country_of_origin_id')->references('id')->on('country')->onDelete('cascade');
+            $table->foreign('country_of_residence_id')->references('id')->on('country')->onDelete('cascade');
         });
     }
 
