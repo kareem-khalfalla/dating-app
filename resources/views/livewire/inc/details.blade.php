@@ -1,6 +1,5 @@
 <div id="Detailed_information" class="col-lg-11 m-auto pb-4" wire:ignore.self>
     <h3 class="color_h">{{ __('settings.Change detailed information') }}</h3>
-
     <form wire:submit.prevent="updateDetails" id="captcha_form" method="post" action="#">
         <br>
         <div class="input-group input-group-lg mb-3 mt-3">
@@ -35,7 +34,6 @@
             <label class="col-12">{{ __('settings.Country of Residence') }}</label>
             <select wire:model="state.country_of_residence_id"
                 class="form-control form-control-lg @error('country_of_residence') is-invalid @enderror">
-                <option>---</option>
                 <option>---</option>
                 @foreach ($countries as $country)
                     <option value="{{ $country->id }}">
@@ -127,14 +125,14 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Native language') }}</label>
-            <select wire:model.defer="state.native_language_id"
-                class="form-control form-control-lg @error('native_language_id') is-invalid @enderror">
+            <select wire:model.defer="state.language_native_id"
+                class="form-control form-control-lg @error('language_native_id') is-invalid @enderror">
                 <option>---</option>
                 @foreach ($languages as $language)
                     <option value="{{ $language->id }}">{{ $language->name }}</option>
                 @endforeach
             </select>
-            @error('native_language_id')
+            @error('language_native_id')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -143,30 +141,30 @@
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">{{ __('settings.second language') }}</label>
-                <select wire:model="state.second_language_id"
-                    class="form-control form-control-lg @error('second_language_id') is-invalid @enderror">
+                <select wire:model="state.language_second_id"
+                    class="form-control form-control-lg @error('language_second_id') is-invalid @enderror">
                     <option>---</option>
                     @foreach ($languages as $language)
                         <option value="{{ $language->id }}">{{ $language->name }}</option>
                     @endforeach
                 </select>
-                @error('second_language_id')
+                @error('language_second_id')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
-            @if (isset($state['second_language_id']))
+            @if (isset($state['language_second_id']))
                 <div class="input-group input-group-lg mb-3 col-5">
                     <label class="col-12">{{ __('settings.level') }}</label>
-                    <select wire:model.defer="state.second_language_perfection_id"
-                        class="form-control form-control-lg @error('second_language_perfection_id') is-invalid @enderror">
+                    <select wire:model.defer="state.language_second_perfection_id"
+                        class="form-control form-control-lg @error('language_second_perfection_id') is-invalid @enderror">
                         <option>---</option>
                         @foreach ($languagePerfections as $langPerfection)
                             <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
                         @endforeach
                     </select>
-                    @error('second_language_perfection_id')
+                    @error('language_second_perfection_id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -178,30 +176,30 @@
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">{{ __('settings.third language') }}</label>
-                <select wire:model="state.third_language_id"
-                    class="form-control form-control-lg @error('third_language_id') is-invalid @enderror">
+                <select wire:model="state.language_third_id"
+                    class="form-control form-control-lg @error('language_third_id') is-invalid @enderror">
                     <option>---</option>
                     @foreach ($languages as $language)
                         <option value="{{ $language->id }}">{{ $language->name }}</option>
                     @endforeach
                 </select>
-                @error('third_language_id')
+                @error('language_third_id')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
-            @if (isset($state['third_language_id']))
+            @if (isset($state['language_third_id']))
                 <div class="input-group input-group-lg mb-3 col-5">
                     <label class="col-12">{{ __('settings.level') }}</label>
-                    <select wire:model.defer="state.third_language_perfection_id"
-                        class="form-control form-control-lg @error('third_language_perfection_id') is-invalid @enderror">
+                    <select wire:model.defer="state.language_third_perfection_id"
+                        class="form-control form-control-lg @error('language_third_perfection_id') is-invalid @enderror">
                         <option>---</option>
                         @foreach ($languagePerfections as $langPerfection)
                             <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
                         @endforeach
                     </select>
-                    @error('third_language_perfection_id')
+                    @error('language_third_perfection_id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
