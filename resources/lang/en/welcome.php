@@ -2,7 +2,7 @@
 
 return [
     'Welcome there' => 'Welcome there',
-    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea',
+    'page description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea',
     'register' => 'register',
     'login' => 'login',
     'search' => 'search',

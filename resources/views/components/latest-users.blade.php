@@ -17,7 +17,8 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}</td>
+                                    <td>{{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}
+                                    </td>
                                     <td>{{ $user->profile->nationality->name ?? 'N/A' }}</td>
                                 </tr>
                             </tbody>
@@ -38,9 +39,12 @@
                                     {{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}
                                 </p>
                                 <p><b>{{ __('welcome.From') }} : </b>
-                                    {{ $user->profile->countries()->hometown()->first()->name ?? 'N/A' }}</p>
+
+                                    {{ $user->profile->countries()->hometown()->first()->translations[app()->getLocale() == 'ar' ? 'fa' : app()->getLocale()] }}
+                                </p>
                                 <p><b>{{ __('welcome.Stay in') }} : </b>
-                                    {{ $user->profile->countries()->residence()->first()->name ?? 'N/A' }}</p>
+                                    {{ $user->profile->countries()->residence()->first()->translations[app()->getLocale() == 'ar' ? 'fa' : app()->getLocale()] }}
+                                </p>
                             </div>
                         </div>
                     @endforeach

@@ -2,8 +2,7 @@
     <div class="container container-index">
         <h1>{{ __('welcome.Welcome there') }}</h1>
         <p class="lead text-white m-0">
-            {{ __('welcome.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea
-            animi harum molestias,') }}
+            {{ __('welcome.page description') }}
         </p>
         <div class="row m-auto justify-content-center">
             @guest
