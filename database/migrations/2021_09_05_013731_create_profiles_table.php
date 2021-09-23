@@ -89,8 +89,8 @@ class CreateProfilesTable extends Migration
             // $table->unsignedMediumInteger('city_id')->nullable()->constrained()->onDelete('cascade');
 
 
-            $table->foreign('country_of_origin_id')->references('id')->on('country')->onDelete('cascade');
-            $table->foreign('country_of_residence_id')->references('id')->on('country')->onDelete('cascade');
+            $table->foreign('country_of_origin_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('country_of_residence_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 
