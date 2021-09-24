@@ -77,8 +77,7 @@
                         @if ($user->profile->progress_bar == 100)
                             {{ __('profile.Your personal information is complete') }}
                         @else
-                            {{ __('profile.Your personal information is incomplete, you must complete it in order to enjoy all the
-                            features.') }}
+                            {{ __('profile.Your personal information is incomplete, you must complete it in order to enjoy all the features.') }}
                             <strong> <a href="{{ route('settings') }}">
                                     {{ __('profile.Go to the settings page from here') }}
                                 </a></strong>
@@ -107,13 +106,13 @@
                         <strong>{{ __('profile.gender') }}:&nbsp;</strong><span>{{ $user->gender ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Birthday') }}:&nbsp;</strong><span>{{ $user->profile->dob }}</span><br>
+                        <strong>{{ __('profile.Birthday') }}:&nbsp;</strong><span>{{ $user->profile->dob ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Country of Origin') }}:&nbsp;</strong><span>{{ $user->profile->countryOfResidence ? $user->profile->countryOfResidence->getCountryLocale() : 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Country of Origin') }}:&nbsp;</strong><span>{{ $user->profile->countryOfResidence ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Country of residence') }}:&nbsp;</strong><span>{{ $user->profile->countryOfOrigin ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}</span><br>
+                        <strong>{{ __('profile.Country of residence') }}:&nbsp;</strong><span>{{ $user->profile->countryOfOrigin ? $user->profile->countryOfResidence->getCountryLocale() : 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Nationality') }}:&nbsp;</strong><span>{{ $user->profile->nationality->name ?? 'N/A' }}</span><br>
@@ -131,13 +130,13 @@
                         <strong>{{ __('profile.Moving to another place') }}:&nbsp;</strong><span>{{ $user->profile->relocateStatus->name ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Native language') }}:&nbsp;</strong>{{ $user->profile->languageNative->name }}<span></span><br>
+                        <strong>{{ __('profile.Native language') }}:&nbsp;</strong>{{ $user->profile->languageNative->name ?? 'N/A' }}<span></span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Second Language') }}:&nbsp;</strong>{{ $user->profile->languageSecond->name }}<span></span><br>
+                        <strong>{{ __('profile.Second Language') }}:&nbsp;</strong>{{ $user->profile->languageSecond->name ?? 'N/A' }}<span></span><br>
                     </p>
                     <p class="lead hover_padding">
-                        <strong>{{ __('profile.Third Language') }}:&nbsp;</strong>{{ $user->profile->languageThird->name }}<span></span><br>
+                        <strong>{{ __('profile.Third Language') }}:&nbsp;</strong>{{ $user->profile->languageThird->name ?? 'N/A' }}<span></span><br>
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.The required relationship') }}:&nbsp;</strong><span>{{ $user->profile->relationshipStatus->name ?? 'N/A' }}</span><br>
@@ -145,7 +144,6 @@
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Desired method of marriageStatus') }}:&nbsp;</strong><span>{{ $user->profile->marriageStatus->name ?? 'N/A' }}</span><br>
                     </p>
-                    {{-- <p class="lead hover_padding"><strong>Change EducationStatus and work:&nbsp;</strong><span>test</span><br> --}}
                     </p>
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.EducationStatus') }}:&nbsp;</strong><span>{{ $user->profile->educationStatus->name ?? 'N/A' }}</span><br>
@@ -161,12 +159,13 @@
                     </p>
                     @if ($user->gender == 'male')
                         <p class="lead hover_padding">
-                            <strong>{{ __('profile.Do you accept the wife\'s
-                                work?') }}:&nbsp;</strong><span>{{ $user->profile->acceptWifeWorkStatus->name ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.Do you accept the wife\'s work?') }}:&nbsp;</strong><span>{{ $user->profile->acceptWifeWorkStatus->name ?? 'N/A' }}</span><br>
                         </p>
                         <p class="lead hover_padding">
-                            <strong>{{ __('profile.Do you accept studying the wife after
-                                marriageStatus?') }}:&nbsp;</strong><span>{{ $user->profile->acceptWifeStudyStatus->name ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.Do you accept studying the wife after marriageStatus?') }}:&nbsp;</strong><span>{{ $user->profile->acceptWifeStudyStatus->name ?? 'N/A' }}</span><br>
+                        </p>
+                        <p class="lead hover_padding">
+                            <strong>{{ __('profile.Do you want multiplicity?') }}:&nbsp;</strong><span>{{ $user->profile->polygamyStatus->name ?? 'N/A' }}</span><br>
                         </p>
                     @endif
                     @if ($user->gender == 'female')
@@ -199,18 +198,23 @@
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Reading the Qoran') }}:&nbsp;</strong><span>{{ $user->profile->readingQuran->name ?? 'N/A' }}</span><br>
                     </p>
-                    <p class="lead hover_padding">
-                        <strong>{{ __('profile.Headdress') }}:&nbsp;</strong><span>{{ $user->profile->headdress->name ?? 'N/A' }}</span><br>
-                    </p>
-                    <p class="lead hover_padding">
-                        <strong>{{ __('profile.Jilbab') }}:&nbsp;</strong><span>{{ $user->profile->robeStatus->name ?? 'N/A' }}</span><br>
-                    </p>
-                    <p class="lead hover_padding">
-                        <strong>{{ __('profile.Niqab') }}:&nbsp;</strong><span>{{ $user->profile->veilStatus->name ?? 'N/A' }}</span><br>
-                    </p>
-                    <p class="lead hover_padding">
-                        <strong>{{ __('profile.BeardStatus') }}:&nbsp;</strong><span>{{ $user->profile->beardStatus->name ?? 'N/A' }}</span><br>
-                    </p>
+                    @if ($user->gender == 'female')
+
+                        <p class="lead hover_padding">
+                            <strong>{{ __('profile.Headdress') }}:&nbsp;</strong><span>{{ $user->profile->headdress->name ?? 'N/A' }}</span><br>
+                        </p>
+                        <p class="lead hover_padding">
+                            <strong>{{ __('profile.Jilbab') }}:&nbsp;</strong><span>{{ $user->profile->robeStatus->name ?? 'N/A' }}</span><br>
+                        </p>
+                        <p class="lead hover_padding">
+                            <strong>{{ __('profile.Niqab') }}:&nbsp;</strong><span>{{ $user->profile->veilStatus->name ?? 'N/A' }}</span><br>
+                        </p>
+                    @else
+
+                        <p class="lead hover_padding">
+                            <strong>{{ __('profile.BeardStatus') }}:&nbsp;</strong><span>{{ $user->profile->beardStatus->name ?? 'N/A' }}</span><br>
+                        </p>
+                    @endif
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.TafaqahStatus in religion') }}:&nbsp;</strong><span>{{ $user->profile->tafaqahStatus->name ?? 'N/A' }}</span><br>
                     </p>
@@ -238,11 +242,6 @@
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.Information about children') }}:&nbsp;</strong><span>{{ $user->profile->children_information ?? 'N/A' }}</span><br>
                     </p>
-                    <p class="lead hover_padding">
-                        <strong>{{ __('profile.Do you want multiplicity?') }}:&nbsp;</strong><span>{{ $user->profile->polygamyStatus->name ?? 'N/A' }}</span><br>
-                    </p>
-                    {{-- <p class="lead hover_padding"><strong>Do you accept polygamy?:&nbsp;</strong><span>test</span><br>
-                    </p> --}}
                     <p class="lead hover_padding">
                         <strong>{{ __('profile.desire to have children') }}:&nbsp;</strong><span>{{ $user->profile->childrenDesireStatus->name ?? 'N/A' }}</span><br>
                     </p>

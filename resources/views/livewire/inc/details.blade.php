@@ -33,7 +33,7 @@
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Country of Residence') }}</label>
             <select wire:model="state.country_of_residence_id"
-                class="form-control form-control-lg @error('country_of_residence') is-invalid @enderror">
+                class="form-control form-control-lg @error('country_of_residence_id') is-invalid @enderror">
                 <option>---</option>
                 @foreach ($countries as $country)
                     <option value="{{ $country->id }}">
@@ -41,7 +41,7 @@
                     </option>
                 @endforeach
             </select>
-            @error('country_of_residence')
+            @error('country_of_residence_id')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -51,7 +51,6 @@
             <label class="col-12">{{ __('settings.Nationality') }}</label>
             <select wire:model.defer="state.nationality_id"
                 class="form-control form-control-lg @error('nationality_id') is-invalid @enderror">
-                <option>---</option>
                 <option>---</option>
                 @foreach ($nationalities as $nationality)
                     <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
@@ -171,7 +170,6 @@
                     @enderror
                 </div>
             @endif
-
         </div>
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
@@ -206,7 +204,6 @@
                     @enderror
                 </div>
             @endif
-
         </div>
         <div class="mt-4">
             <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">

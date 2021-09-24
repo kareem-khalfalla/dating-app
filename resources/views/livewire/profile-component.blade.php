@@ -1,5 +1,4 @@
 <div class="shadow m-0 bg-white pb-4">
-
     <ol class="breadcrumb mb-4">
         <h1 class="pb-md-3 color_h col-md-5">{{ __('settings.settings') }}</h1>
         <div class="col-md-7">
