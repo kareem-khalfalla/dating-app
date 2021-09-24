@@ -62,6 +62,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'username';
     }
 
+    public function scopeSwapGender(BUilder $query): Builder
+    {
+        return $query->where('gender', '!=', auth()->user()->gender);
+    }
+
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
