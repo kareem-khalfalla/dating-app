@@ -2,10 +2,19 @@
 
 namespace App\Http\Livewire;
 
+use App\Actions\Fortify\UpdateUserProfileDetailInformation;
+use App\Actions\Fortify\UpdateUserProfileEducationInformation;
+use App\Actions\Fortify\UpdateUserProfileLifestyleInformation;
+use App\Actions\Fortify\UpdateUserProfilePersonalInformation;
+use App\Actions\Fortify\UpdateUserProfileReligionInformation;
+use App\Actions\Fortify\UpdateUserProfileShapeInformation;
+use App\Actions\Fortify\UpdateUserProfileSocialInformation;
 use App\Models\State;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 use Livewire\Component;
@@ -33,7 +42,7 @@ class ProfileComponent extends Component
 
         $this->imageName = $user->avatar;
 
-        $this->selectedCountry = $user->profile->countries()->hometown()->first()->id ?? null;
+        $this->selectedCountry = $user->profile->countryOfOrigin->id ?? null;
 
         $this->selectedState = $user->profile->state_id ?? null;
 
@@ -42,17 +51,64 @@ class ProfileComponent extends Component
             : collect();
 
         $this->state['gender'] = $user->gender;
+
         $this->state['dob'] = $user->profile->dob ?? null;
         $this->state['postal_code'] = $user->profile->postal_code ?? null;
+        $this->state['nationality_id'] = $user->profile->nationality_id ?? null;
+        $this->state['residence_status_id'] = $user->profile->residence_status_id ?? null;
+        $this->state['relocate_status_id'] = $user->profile->relocate_status_id ?? null;
+        $this->state['country_of_residence_id'] = $user->profile->countryOfResidence->id ?? null;
+        // 
+        $this->state['language_native_id'] = $user->profile->languageNative->id ?? null;
+        $this->state['language_second_id'] = $user->profile->languageSecond->id ?? null;
+        $this->state['language_third_id'] = $user->profile->languageThird->id ?? null;
+        $this->state['language_second_perfection_id'] = $user->profile->languageSecond->language_perfection_status_id ?? null;
+        $this->state['language_third_perfection_id'] = $user->profile->languageThird->language_perfection_status_id ?? null;
+
         $this->state['bio'] = $user->profile->bio ?? null;
         $this->state['partner_bio'] = $user->profile->partner_bio ?? null;
-        $this->state['divorced_reason'] = $user->profile->divorced_reason ?? null;
+        $this->state['relationship_status_id'] = $user->profile->relationship_status_id ?? null;
+        $this->state['marriage_status_id'] = $user->profile->marriage_status_id ?? null;
+        // 
+        $this->state['education_status_id'] = $user->profile->education_status_id ?? null;
         $this->state['competence'] = $user->profile->competence ?? null;
+        $this->state['work_status_id'] = $user->profile->work_status_id ?? null;
         $this->state['income'] = $user->profile->income ?? null;
+        $this->state['accept_wife_work_status_id'] = $user->profile->accept_wife_work_status_id ?? null;
+        $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id ?? null;
+        $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id ?? null;
+        $this->state['wife_study_status_id'] = $user->profile->wife_study_status_id ?? null;
+        $this->state['marital_status_id'] = $user->profile->marital_status_id ?? null;
+        $this->state['divorced_reason'] = $user->profile->divorced_reason ?? null;
+        $this->state['children_status_id'] = $user->profile->children_status_id ?? null;
+        $this->state['children_desire_status_id'] = $user->profile->children_desire_status_id ?? null;
+        $this->state['children_count'] = $user->profile->children_count ?? null;
+        $this->state['children_information'] = $user->profile->children_information ?? null;
+        $this->state['polygamy_status_id'] = $user->profile->polygamy_status_id ?? null;
+        $this->state['wife_polygamy_status_id'] = $user->profile->wife_polygamy_status_id ?? null;
+        $this->state['shelter_type_id'] = $user->profile->shelter_type_id ?? null;
+        $this->state['shelter_shape_id'] = $user->profile->shelter_shape_id ?? null;
+        $this->state['shelter_way_id'] = $user->profile->shelter_way_id ?? null;
+        // 
+        $this->state['religion_id'] = $user->profile->religion_id ?? null;
+        $this->state['religion_method_id'] = $user->profile->religion_method_id ?? null;
+        $this->state['obligation_id'] = $user->profile->obligation_id ?? null;
+        $this->state['prayer_id'] = $user->profile->prayer_id ?? null;
+        $this->state['alfajr_prayer_id'] = $user->profile->alfajr_prayer_id ?? null;
+        $this->state['fasting_id'] = $user->profile->fasting_id ?? null;
+        $this->state['reading_quran_id'] = $user->profile->reading_quran_id ?? null;
+        $this->state['beard_status_id'] = $user->profile->beard_status_id ?? null;
+        $this->state['robe_status_id'] = $user->profile->robe_status_id ?? null;
+        $this->state['veil_status_id'] = $user->profile->veil_status_id ?? null;
+        $this->state['headdress_id'] = $user->profile->headdress_id ?? null;
+        $this->state['tafaqah_status_id'] = $user->profile->tafaqah_status_id ?? null;
         $this->state['lesson_listing'] = $user->profile->lesson_listing ?? null;
+        $this->state['music_status_id'] = $user->profile->music_status_id ?? null;
+        $this->state['show_status_id'] = $user->profile->show_status_id ?? null;
+        $this->state['friend_status_id'] = $user->profile->friend_status_id ?? null;
+        //
         $this->state['height'] = $user->profile->height ?? null;
         $this->state['weight'] = $user->profile->weight ?? null;
-        $this->state['clarification'] = $user->profile->clarification ?? null;
         $this->state['body_status_id'] = $user->profile->body_status_id ?? null;
         $this->state['skin_status_id'] = $user->profile->skin_status_id ?? null;
         $this->state['hair_color_id'] = $user->profile->hair_color_id ?? null;
@@ -62,56 +118,17 @@ class ProfileComponent extends Component
         $this->state['eye_glass_id'] = $user->profile->eye_glass_id ?? null;
         $this->state['health_status_id'] = $user->profile->health_status_id ?? null;
         $this->state['psychological_pattern_id'] = $user->profile->psychological_pattern_id ?? null;
-        $this->state['nationality_id'] = $user->profile->nationality_id ?? null;
-        $this->state['relationship_status_id'] = $user->profile->relationship_status_id ?? null;
-        $this->state['marriage_status_id'] = $user->profile->marriage_status_id ?? null;
-        $this->state['residency_status_id'] = $user->profile->residency_status_id ?? null;
-        $this->state['relocate_status_id'] = $user->profile->relocate_status_id ?? null;
-        $this->state['education_status_id'] = $user->profile->education_status_id ?? null;
-        $this->state['work_status_id'] = $user->profile->work_status_id ?? null;
-        $this->state['marital_status_id'] = $user->profile->maritalStatus->id ?? null;
-        $this->state['children_status_id'] = $user->profile->childrenStatus->id ?? null;
-        $this->state['children_desire_status_id'] = $user->profile->childrenDesireStatus->id ?? null;
-        $this->state['children_count'] = $user->profile->children_count ?? null;
-        $this->state['children_information'] = $user->profile->children_information ?? null;
-        $this->state['polygamy_status_id'] = $user->profile->polygamyStatus->id ?? null;
-        $this->state['shelter_type_id'] = $user->profile->shelterType->id ?? null;
-        $this->state['shelter_shape_id'] = $user->profile->shelterShape->id ?? null;
-        $this->state['shelter_way_id'] = $user->profile->shelterWay->id ?? null;
-        $this->state['religion_id'] = $user->profile->religion->id ?? null;
-        $this->state['obligation_id'] = $user->profile->obligation_id ?? null;
-        $this->state['religion_method_id'] = $user->profile->religionMethod->id ?? null;
-        $this->state['prayer_id'] = $user->profile->prayer->id ?? null;
-        $this->state['alfajr_prayer_id'] = $user->profile->alfajrPrayer->id ?? null;
-        $this->state['fasting_id'] = $user->profile->fasting->id ?? null;
-        $this->state['reading_quran_id'] = $user->profile->reading_quran_id ?? null;
-        $this->state['headdress_id'] = $user->profile->headdress->id ?? null;
-        $this->state['veil_status_id'] = $user->profile->veilStatus->id ?? null;
-        $this->state['robe_status_id'] = $user->profile->robe_status_id ?? null;
-        $this->state['beard_status_id'] = $user->profile->beardStatus->id ?? null;
-        $this->state['tafaqah_status_id'] = $user->profile->tafaqahStatus->id ?? null;
-        $this->state['music_status_id'] = $user->profile->musicStatus->id ?? null;
-        $this->state['show_status_id'] = $user->profile->showStatus->id ?? null;
-        $this->state['friend_status_id'] = $user->profile->friendStatus->id ?? null;
-        $this->state['accept_wife_work_status_id'] = $user->profile->accept_wife_work_status_id ?? null;
-        $this->state['accept_wife_study_status_id'] = $user->profile->accept_wife_study_status_id ?? null;
-        $this->state['wife_work_status_id'] = $user->profile->wife_work_status_id ?? null;
-        $this->state['wife_study_status_id'] = $user->profile->wife_study_status_id ?? null;
-        $this->state['hobby_id'] = $user->profile->hobbies()->id ?? null;
-        $this->state['country_residence'] = $user->profile->countries()->residence()->first()->id ?? null;
-        $this->state['language_native'] = $user->profile->languages()->native()->first()->id ?? null;
-        $this->state['language_second'] = $user->profile->languages()->second()->first()->id ?? null;
-        $this->state['language_third'] = $user->profile->languages()->third()->first()->id ?? null;
-        $this->state['language_second_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfectionStatus->id ?? null;
-        $this->state['language_third_perfection_id'] = $user->profile->languages()->second()->first()->languagePerfectionStatus->id ?? null;
+        $this->state['clarification'] = $user->profile->clarification ?? null;
+        // 
         $this->state['smoke_status_id'] = $user->profile->smoke_status_id ?? null;
         $this->state['alcohol_status_id'] = $user->profile->alcohol_status_id ?? null;
         $this->state['halal_food_status_id'] = $user->profile->halal_food_status_id ?? null;
         $this->state['food_type_id'] = $user->profile->food_type_id ?? null;
+        // TODO: it acts like one to many relationship till we make it multiple hobbies or not.
+        $this->state['hobby_id'] = $user->profile->hobbies->first()->id ?? null;
+        $this->state['interests'] = $user->profile->interests ?? null;
         $this->state['books'] = $user->profile->books ?? null;
         $this->state['places'] = $user->profile->places ?? null;
-        $this->state['interests'] = $user->profile->interests ?? null;
-        $this->state['progress_bar'] = $user->profile->progress_bar;
     }
 
     public function render(): View
@@ -119,8 +136,16 @@ class ProfileComponent extends Component
         return view('livewire.profile-component');
     }
 
-    public function updatedSelectedCountry(int $country): void
+    public function updated()
     {
+        auth()->user()->profile->update([
+            'progress_bar' => $this->progressBar()
+        ]);
+    }
+
+    public function updatedSelectedCountry($country): void
+    {
+        $this->selectedState = null;
         $this->countryStates = State::where('country_id', $country)->get();
     }
 
@@ -146,13 +171,7 @@ class ProfileComponent extends Component
             'avatar' => $imageName,
         ]);
 
-
-        $this->dispatchBrowserEvent('swal:modal', [
-            'type' => 'success',
-            'title' => "Image updated successfully",
-            'timer' => 2000,
-            'text' => '',
-        ]);
+        $this->success('Image');
     }
 
     public function updatePassword(UpdatesUserPasswords $updatesUserPasswords): void
@@ -166,80 +185,128 @@ class ProfileComponent extends Component
             $this->state[$key] = '';
         }
 
-        $this->dispatchBrowserEvent('swal:modal', [
-            'type' => 'success',
-            'title' => "Password updated successfully",
-            'timer' => 2000,
-            'text' => '',
-        ]);
+        $this->success('Password');
     }
 
-    public function updateInfo(UpdatesUserProfileInformation $updatesUserProfileInformation): void
+    public function updateUserInfo(UpdatesUserProfileInformation $updatesUserProfileInformation): void
     {
         $updatesUserProfileInformation->update(auth()->user(), [
-            'name' => $this->state['name'],
+            'name'     => $this->state['name'],
             'username' => $this->state['username'],
-            'phone' => $this->state['phone'],
-            'email' => $this->state['email'],
-            'postal_code' => $this->state['postal_code'] ?? null,
-            'progress_bar' => $this->progressBar(),
+            'phone'    => $this->state['phone'],
+            'email'    => $this->state['email'],
+            'gender'   => $this->state['gender'],
+        ]);
 
-            'gender' => $this->state['gender'] ?? null,
-            'dob' => $this->state['dob'] ?? null,
-            'bio' => $this->state['bio'] ?? null,
-            'divorced_reason' => $this->state['divorced_reason'] ?? null,
-            'income' => $this->state['income'] ?? null,
-            'competence' => $this->state['competence'] ?? null,
-            'partner_bio' => $this->state['partner_bio'] ?? null,
-            'lesson_listing' => $this->state['lesson_listing'] ?? null,
-            'height' => $this->state['height'] ?? null,
-            'weight' => $this->state['weight'] ?? null,
-            'state_id' => $this->selectedState ?? null,
-            'nationality_id' => $this->state['nationality_id'] ?? null,
-            'residency_status_id' => $this->state['residency_status_id'] ?? null,
-            'relocate_status_id' => $this->state['relocate_status_id'] ?? null,
-            'relationship_status_id' => $this->state['relationship_status_id'] ?? null,
-            'marriage_status_id' => $this->state['marriage_status_id'] ?? null,
-            'education_status_id' => $this->state['education_status_id'] ?? null,
-            'work_status_id' => $this->state['work_status_id'] ?? null,
-            'accept_wife_work_status_id' => $this->state['accept_wife_work_status_id'] ?? null,
-            'accept_wife_study_status_id' => $this->state['accept_wife_study_status_id'] ?? null,
-            'wife_work_status_id' => $this->state['wife_work_status_id'] ?? null,
-            'wife_study_status_id' => $this->state['wife_study_status_id'] ?? null,
-            'marital_status_id' => $this->state['marital_status_id'] ?? null,
-            'children_status_id' => $this->state['children_status_id'] ?? null,
-            'children_desire_status_id' => $this->state['children_desire_status_id'] ?? null,
-            'children_count' => $this->state['children_count'] ?? null,
-            'children_information' => $this->state['children_information'] ?? null,
-            'polygamy_status_id' => $this->state['polygamy_status_id'] ?? null,
-            'shelter_type_id' => $this->state['shelter_type_id'] ?? null,
-            'shelter_shape_id' => $this->state['shelter_shape_id'] ?? null,
-            'shelter_way_id' => $this->state['shelter_way_id'] ?? null,
-            'religion_id' => $this->state['religion_id'] ?? null,
-            'obligation_id' => $this->state['obligation_id'] ?? null,
-            'religion_method_id' => $this->state['religion_method_id'] ?? null,
-            'prayer_id' => $this->state['prayer_id'] ?? null,
-            'alfajr_prayer_id' => $this->state['alfajr_prayer_id'] ?? null,
-            'fasting_id' => $this->state['fasting_id'] ?? null,
-            'reading_quran_id' => $this->state['reading_quran_id'] ?? null,
-            'headdress_id' => $this->state['headdress_id'] ?? null,
-            'veil_status_id' => $this->state['veil_status_id'] ?? null,
-            'robe_status_id' => $this->state['robe_status_id'] ?? null,
-            'beard_status_id' => $this->state['beard_status_id'] ?? null,
-            'tafaqah_status_id' => $this->state['tafaqah_status_id'] ?? null,
-            'music_status_id' => $this->state['music_status_id'] ?? null,
-            'show_status_id' => $this->state['show_status_id'] ?? null,
-            'friend_status_id' => $this->state['friend_status_id'] ?? null,
-            
-            'country_hometown' => $this->selectedCountry ?? null,
-            'country_residence' => $this->state['country_residence'] ?? null,
-            'language_native' => $this->state['language_native'] ?? null,
-            'language_second' => $this->state['language_second'] ?? null,
-            'language_third' => $this->state['language_third'] ?? null,
+        $this->success('Main Information');
+    }
+
+    public function updateDetails(UpdateUserProfileDetailInformation $updatesUserProfileInformation): void
+    {
+        $this->validate([
+            'selectedCountry' => ['required', 'integer'],
+            'selectedState' => [Rule::requiredIf(function () {
+                return (int) $this->selectedCountry !== 0;
+            })],
+        ], [
+            '*.integer' => 'The :attribute is required'
+        ]);
+
+        $updatesUserProfileInformation->update(auth()->user(), [
+            'dob' => $this->state['dob'],
+            'country_of_origin_id' => $this->selectedCountry,
+            'state_id' => $this->selectedState,
+            'country_of_residence_id' => $this->state['country_of_residence_id'],
+            'nationality_id' => $this->state['nationality_id'],
+            'postal_code' => $this->state['postal_code'],
+            'residence_status_id' => $this->state['residence_status_id'],
+            'relocate_status_id' => $this->state['relocate_status_id'],
+            'language_native_id' => $this->state['language_native_id'],
+            'language_second_id' => $this->state['language_second_id'],
+            'language_third_id' => $this->state['language_third_id'],
             'language_second_perfection_id' => $this->state['language_second_perfection_id'] ?? null,
             'language_third_perfection_id' => $this->state['language_third_perfection_id'] ?? null,
-            'hobby_id' => $this->state['hobby_id'] ?? null,
+        ]);
 
+        $this->success('Details Information');
+    }
+
+    public function updatePersonalInfo(UpdateUserProfilePersonalInformation $updateUserProfilePersonalInfo): void
+    {
+        $updateUserProfilePersonalInfo->update(auth()->user(), [
+            'bio' => $this->state['bio'] ?? null,
+            'partner_bio' => $this->state['partner_bio'] ?? null,
+            'relationship_status_id' => $this->state['relationship_status_id'] ?? null,
+            'marriage_status_id' => $this->state['marriage_status_id'] ?? null,
+        ]);
+
+        $this->success('Personal Information');
+    }
+
+    public function updateEducation(UpdateUserProfileEducationInformation $updateUserProfileEducationInformation): void
+    {
+        $updateUserProfileEducationInformation->update(auth()->user(), [
+            'education_status_id' => $this->state['education_status_id'],
+            'competence' => $this->state['competence'],
+            'work_status_id' => $this->state['work_status_id'],
+            'income' => $this->state['income'],
+            'accept_wife_work_status_id' => $this->state['accept_wife_work_status_id'],
+            'accept_wife_study_status_id' => $this->state['accept_wife_study_status_id'],
+            'wife_work_status_id' => $this->state['wife_work_status_id'],
+            'wife_study_status_id' => $this->state['wife_study_status_id'],
+        ]);
+
+        $this->success('Education and Work');
+    }
+
+    public function updateSocialInfo(UpdateUserProfileSocialInformation $updateUserProfileSocialInformation): void
+    {
+        $updateUserProfileSocialInformation->update(auth()->user(), [
+            'marital_status_id' => $this->state['marital_status_id'],
+            'divorced_reason' => $this->state['divorced_reason'],
+            'children_status_id' => $this->state['children_status_id'],
+            'children_count' => $this->state['children_count'],
+            'children_desire_status_id' => $this->state['children_desire_status_id'],
+            'children_information' => $this->state['children_information'],
+            'polygamy_status_id' => $this->state['polygamy_status_id'],
+            'wife_polygamy_status_id' => $this->state['wife_polygamy_status_id'],
+            'shelter_type_id' => $this->state['shelter_type_id'],
+            'shelter_shape_id' => $this->state['shelter_shape_id'],
+            'shelter_way_id' => $this->state['shelter_way_id'],
+        ]);
+
+        $this->success('Socail Information');
+    }
+
+    public function updateReligionInfo(UpdateUserProfileReligionInformation $updateUserProfileReligionInformation): void
+    {
+        $updateUserProfileReligionInformation->update(auth()->user(), [
+            'religion_id' => $this->state['religion_id'],
+            'religion_method_id' => $this->state['religion_method_id'],
+            'obligation_id' => $this->state['obligation_id'],
+            'prayer_id' => $this->state['prayer_id'],
+            'alfajr_prayer_id' => $this->state['alfajr_prayer_id'],
+            'fasting_id' => $this->state['fasting_id'],
+            'reading_quran_id' => $this->state['reading_quran_id'],
+            'beard_status_id' => $this->state['beard_status_id'],
+            'robe_status_id' => $this->state['robe_status_id'],
+            'headdress_id' => $this->state['headdress_id'],
+            'veil_status_id' => $this->state['veil_status_id'],
+            'tafaqah_status_id' => $this->state['tafaqah_status_id'],
+            'lesson_listing' => $this->state['lesson_listing'],
+            'music_status_id' => $this->state['music_status_id'],
+            'show_status_id' => $this->state['show_status_id'],
+            'friend_status_id' => $this->state['friend_status_id'],
+        ]);
+
+        $this->success('Religion Information');
+    }
+
+    public function updateShapeInfo(UpdateUserProfileShapeInformation $updateUserProfileShapeInformation): void
+    {
+        $updateUserProfileShapeInformation->update(auth()->user(), [
+            'height' => $this->state['height'] ?? null,
+            'weight' => $this->state['weight'] ?? null,
             'body_status_id' => $this->state['body_status_id'],
             'skin_status_id' => $this->state['skin_status_id'],
             'hair_color_id' => $this->state['hair_color_id'],
@@ -249,22 +316,33 @@ class ProfileComponent extends Component
             'eye_glass_id' => $this->state['eye_glass_id'],
             'health_status_id' => $this->state['health_status_id'],
             'psychological_pattern_id' => $this->state['psychological_pattern_id'],
-            'height' => $this->state['height'],
-            'weight' => $this->state['weight'],
             'clarification' => $this->state['clarification'],
+        ]);
 
+        $this->success('Shape Information');
+    }
+
+    public function updateLifestyleInfo(UpdateUserProfileLifestyleInformation $updateUserProfileLifestyleInformation): void
+    {
+        $updateUserProfileLifestyleInformation->update(auth()->user(), [
             'smoke_status_id' => $this->state['smoke_status_id'],
             'alcohol_status_id' => $this->state['alcohol_status_id'],
             'halal_food_status_id' => $this->state['halal_food_status_id'],
             'food_type_id' => $this->state['food_type_id'],
+            'hobby_id' => $this->state['hobby_id'] ?? null,
+            'interests' => $this->state['interests'],
             'books' => $this->state['books'],
             'places' => $this->state['places'],
-            'interests' => $this->state['interests'],
         ]);
 
+        $this->success('Lifestyle Information');
+    }
+
+    public function success(string $updatedForm = 'Information'): void
+    {
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
-            'title' => "Information updated successfully",
+            'title' => __("alerts.$updatedForm updated successfully"),
             'timer' => 2000,
             'text' => '',
         ]);
@@ -272,7 +350,7 @@ class ProfileComponent extends Component
 
     public function progressBar(): int|float
     {
-        $count = 0;
+        $count = -16;
 
         foreach ($this->state as $element) {
             if ($element == null) {
