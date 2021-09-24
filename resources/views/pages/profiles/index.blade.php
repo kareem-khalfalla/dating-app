@@ -74,7 +74,7 @@
 
                     <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
                         role="alert">
-                        @if ($user->profile->progress_bar == 100)
+                        @if ($user->profile->progress_bar > 99)
                             {{ __('profile.Your personal information is complete') }}
                         @else
                             {{ __('profile.Your personal information is incomplete, you must complete it in order to enjoy all the features.') }}
