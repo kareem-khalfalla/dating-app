@@ -138,8 +138,12 @@ class ProfileComponent extends Component
 
     public function updated()
     {
+        $progress = $this->progressBar();
+
         auth()->user()->profile->update([
-            'progress_bar' => $this->progressBar()
+            'progress_bar' => $progress > 100
+            ? 100
+            : $progress
         ]);
     }
 
@@ -350,7 +354,7 @@ class ProfileComponent extends Component
 
     public function progressBar(): int|float
     {
-        $count = -16;
+        $count = -7;
 
         foreach ($this->state as $element) {
             if ($element == null) {
