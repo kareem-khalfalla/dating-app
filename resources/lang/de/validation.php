@@ -173,5 +173,13 @@ return [
         'language_third_id'     => 'dritte Sprache',
         'language_second_perfection_id' => 'Zweitsprachqualität',
         'language_third_perfection_id' => 'Die Qualität der dritten Sprache',
+        'education_status_id'           => 'Ausbildung',
+        'competence'                    => 'Kompetenz',
+        'work_status_id'                => 'Arbeit',
+        'income'                        => 'Einkommen',
+        'accept_wife_work_status_id'    => 'Frau Arbeit annehmen',
+        'accept_wife_study_status_id'   => 'akzeptiere Frau Studieren',
+        'wife_work_status_id'           => 'Frau Arbeit',
+        'wife_study_status_id'          => 'Frau studieren',
     ],
 ];

@@ -20,8 +20,8 @@ class SkinStatusSeeder extends Seeder
             ['name' => ['en' => 'light', 'ar' => 'فاتح', 'de' => 'hell']],
             ['name' => ['en' => 'tan', 'ar' => 'مائل الى السمره', 'de' => 'bräunen']],
             ['name' => ['en' => 'wheat', 'ar' => 'فاتح', 'de' => 'Weizen']],
-            ['name' => ['en' => 'dark', 'ar' => 'فاتح', 'de' => 'dunkel']],
-            ['name' => ['en' => 'very dark', 'ar' => 'فاتح', 'de' => 'sehr dunkel']],
+            ['name' => ['en' => 'dark', 'ar' => 'غامق', 'de' => 'dunkel']],
+            ['name' => ['en' => 'very dark', 'ar' => 'غامق جدا', 'de' => 'sehr dunkel']],
         ];
 
         foreach ($skins as $skinStatus) {

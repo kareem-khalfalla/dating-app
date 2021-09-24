@@ -79,6 +79,7 @@ return [
     'Reading the Qoran'                                     => 'Reading the Qoran',
     'Headdress'                                             => 'Headdress',
     'Niqab'                                                 => 'Niqab',
+    'Veil'                                                  => 'Veil',
     'BeardStatus'                                           => 'BeardStatus',
     'TafaqahStatus in religion'                             => 'TafaqahStatus in religion',
     'If you listen to the lessons, who will you listen to?' => 'If you listen to the lessons, who will you listen to?',

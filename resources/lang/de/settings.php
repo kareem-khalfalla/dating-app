@@ -79,6 +79,7 @@ return [
     'Reading the Qoran'                                     => 'Den Koran lesen',
     'Headdress'                                             => 'Kopfschmuck',
     'Niqab'                                                 => 'Niqab',
+    'Veil'                                                  => 'Veil',
     'BeardStatus'                                           => 'Bartstatus',
     'TafaqahStatus in religion'                             => 'TafaqahStatus in der Religion',
     'If you listen to the lessons, who will you listen to?' => 'Wenn Sie sich die Lektionen anhören, wem werden Sie zuhören?',
