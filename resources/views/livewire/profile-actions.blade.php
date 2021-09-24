@@ -30,23 +30,23 @@
             </a>
         @endif
         @if (!$isPending && !$isFriend && !$user->isBlockedBy(Auth::user()))
-            <a href="{{ route('friendRequest', $user) }}"><button class=" btn
+            <a wire:click.prevent="addFriend({{ $user->id }})"><button class=" btn
             btn-outline-danger"> <i
                         class="fa fa-user-plus"></i> {{ __('profile.addition') }}</button></a>
         @elseif($isPending)
-            <a href="{{ route('profile.remove', $user) }}"><button
+            <a wire:click.prevent="deleteUser({{ $user->id }})"><button
                     class=" btn
-                    btn-outline-warning"> <i class="fa fa-user-trash"></i>
+                    btn-outline-danger"> <i class="fa fa-user-trash"></i>
                     {{ __('profile.remove request') }}</button></a>
         @elseif($isFriend)
-            <a href="{{ route('profile.remove', $user) }}"><button
+            <a wire:click.prevent="deleteUser({{ $user->id }})"><button
                     class=" btn
-                            btn-outline-warning"> <i class="fa fa-user-trash"></i>
+                            btn-outline-danger"> <i class="fa fa-user-trash"></i>
                     {{ __('profile.delete friend') }}</button></a>
         @else
             <a wire:click.prevent="unblockUser({{ $user->id }})"><button
                     class=" btn
-            btn-outline-warning"> <i class="fa fa-user-trash"></i>
+            btn-outline-danger"> <i class="fa fa-user-trash"></i>
                     {{ __('profile.remove block') }}</button></a>
         @endif
     @endif
@@ -108,26 +108,9 @@
 
                                 <a href="#"><button class="btn btn-outline-success">Addition</button></a>&nbsp;
                             @else
-                                <a wire:click.prevent="deleteUser({{ $user->id }})"><button
+                                <a wire:click.prevent="deleteUser({{ $friend->id }})"><button
                                         class="btn btn-outline-danger">Delete</button></a>&nbsp;
                             @endif
-
-                            {{-- @if (request()->route('user')->username == Auth::user()->username)
-
-                                <span class="dropdown pl-2">
-                                    <button class="btn btn-outline-secondary p-1 pr-2 pl-2" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item"
-                                            href="{{ route('profile.remove', $friend) }}">Delete</a>
-                                        <a class="dropdown-item"
-                                            href="{{ route('profile.block', $friend) }}">block</a>
-                                    </div>
-                                </span>
-                            @endif --}}
 
                         </div>
                     @empty
