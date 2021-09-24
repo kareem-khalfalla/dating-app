@@ -9,17 +9,27 @@ use Livewire\Component;
 
 class ProfileActions extends Component
 {
-    public $user;
+    public User $user;
     public $isPending;
     public $isFriend;
     public $report;
 
     public function render(): View
     {
+        $pendingIds = array_merge(
+            $this->user->getPendingFriendships()->pluck('recipient_id')->toArray(),
+            $this->user->getPendingFriendships()->pluck('sender_id')->toArray(),
+        );
+        $getUniqueFromIds = array_unique($pendingIds);
+        $authId = auth()->id();
+        $allIdsExceptAuthId = array_diff($getUniqueFromIds, [$authId]);
+
         return view('livewire.profile-actions', [
             'friends' => $this->user->status == 0
                 ? User::allExceptAuthId()->fake()->get()->random(rand(0, User::all()->count()))
-                : $this->user->getFriends()->allExceptAuthId()->paginate(6)
+                : $this->user->getFriends()->allExceptAuthId()->paginate(6),
+
+                'pendingUsers' => User::whereIn('id', $allIdsExceptAuthId)->get()
         ]);
     }
 
