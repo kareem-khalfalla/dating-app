@@ -17,5 +17,5 @@ return [
     'User unblocked successfully'                => 'تم إلغاء حظر المستخدم بنجاح',
     'User deleted successfully'                  => 'تم حذف المستخدم بنجاح',
     'User Add request sent successfully'         => 'تم إرسال طلب إضافة المستخدم بنجاح',
-
+    'Your message was sent'                      => 'تم إرسال رسالتك بنجاح',
 ];

@@ -17,4 +17,5 @@ return [
     'User unblocked successfully'                => 'Benutzer erfolgreich entsperrt',
     'User deleted successfully'                  => 'Benutzer erfolgreich gelöscht',
     'User Add request sent successfully'         => 'Anfrage zum Hinzufügen von Benutzern erfolgreich gesendet',
+    'Your message was sent'                      => 'Ihre Nachricht wurde verschickt',
 ];

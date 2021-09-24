@@ -35,6 +35,6 @@ class SiteController extends Controller
     {
         ContactUs::create($request->validated());
 
-        return back()->withSuccess('Your message was sent');
+        return redirect()->route('welcome')->withSuccess(__('alerts.Your message was sent'));
     }
 }
