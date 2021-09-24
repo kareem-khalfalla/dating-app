@@ -1,6 +1,6 @@
 <div class="card shadow">
     <div class="card-header">
-        <h4>All requests [ {{ count($requests) }} ]</h4>
+        <h4>{{ __('requests.All requests') }} [ {{ count($requests) }} ]</h4>
     </div>
     <div class="card-body">
         @forelse ($requests as $request)
@@ -16,12 +16,12 @@
                     {{ $user->name }}
                 </h5>
                 <a wire:click.prevent="accept({{ $request->sender_id }})"><button
-                        class="btn btn-outline-primary">accept</button></a>&nbsp;
+                        class="btn btn-outline-primary">{{ __('requests.accept') }}</button></a>&nbsp;
                 <a wire:click.prevent="deny({{ $request->sender_id }})"><button
-                        class="btn btn-outline-danger">cancel</button></a>
+                        class="btn btn-outline-danger">{{ __('requests.cancel') }}</button></a>
             </div>
         @empty
-            <p>No requests!</p>
+            <p>{{ __('requests.No requests') }}!</p>
         @endforelse
     </div>
 </div>

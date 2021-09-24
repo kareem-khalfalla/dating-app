@@ -2,11 +2,13 @@
 
 return [
     'my additions' => 'my additions',
+    'Addition' => 'Addition',
+    'Delete' => 'Delete',
+    'Empty friends' => 'Empty friends',
     'Block' => 'Block',
     'show additions' => 'show additions',
     'report' => 'report',
     'send message' => 'send message',
-    'addition' => 'addition',
     'remove request' => 'remove request',
     'remove block' => 'remove block',
     'delete friend' => 'delete friend',

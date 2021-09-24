@@ -168,6 +168,8 @@ return [
         'language_second_perfection_id' => 'second language quality',
         'language_third_perfection_id'  => 'The quality of the third language',
         // personal
+        'bio'                           => 'bio',
+        'partner_bio'                   => 'partner bio',
         'relationship_status_id'        => 'Relationship status',
         'marriage_status_id'            => 'Marriage status',
         // education

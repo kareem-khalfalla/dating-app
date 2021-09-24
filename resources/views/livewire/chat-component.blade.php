@@ -5,7 +5,7 @@
 
             <div class="card-header">
                 <div class="input-group">
-                    <input wire:model="search" type="text" placeholder="Search..." name="" class="form-control search">
+                    <input wire:model="search" type="text" placeholder="{{ __('chat.Search') }}..." name="" class="form-control search">
                     <div class="input-group-prepend">
                         <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
                     </div>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="user_info">
                                     <span>{{ $user->name }}</span>
-                                    <p>{{ $user->isOnline() ? 'online' : 'offline' }}</p>
+                                    <p>{{ $user->isOnline() ? __('chat.online') : __('chat.offline') }}</p>
                                 </div>
                             </div>
                         </li>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="user_info">
                         <span>{{ $selectedUser['name'] }}</span>
-                        <p>{{ $messagesCount }} Messages</p>
+                        <p>{{ $messagesCount }} {{ __('chat.Messages') }}</p>
                     </div>
 
                 </div>
@@ -56,12 +56,12 @@
                     <ul>
                         <li><a href="{{ route('profile', $selectedUser['username']) }}"><i
                                     class="fas fa-user-circle"></i>
-                                View
-                                profile</a></li>
+                                {{ __('chat.View') }}
+                                {{ __('chat.profile') }}</a></li>
                         {{-- <li><i class="fas fa-users"></i> Add to close friends</li> --}}
                         {{-- <li><i class="fas fa-plus"></i> Add to group</li> --}}
                         <li wire:click.prevent="block({{ $selectedUser['id'] }})"><i class="fas fa-ban"></i>
-                            Block</li>
+                            {{ __('chat.Block') }}</li>
                     </ul>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 @empty
-                    <p>Say HI!</p>
+                    <p>{{ __('chat.Say HI') }}!</p>
                 @endforelse
             </div>
 
@@ -100,7 +100,7 @@
                         </div>
                         <input wire:model="file" id="file" type="file" style="opacity: 0; display: none">
                         <textarea autofocus wire:model.defer="message" id="type_msg" class="form-control type_msg"
-                            placeholder="Type your message..."></textarea>
+                            placeholder="{{ __('chat.Type your message') }}..."></textarea>
                         @if (!is_null($file))
                             <div class="input-group-append">
                                 <img wire:mode="file" style="width: 160px; height: 160px"

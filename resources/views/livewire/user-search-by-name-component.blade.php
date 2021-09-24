@@ -1,5 +1,4 @@
 <div class="card shadow">
-
     <div class="card-header">
         <div class="input-group">
             <input wire:model.debounce.300ms="search" type="text" placeholder="{{ __('requests.Search') }}..." name=""
@@ -25,7 +24,7 @@
                     id="hide">{{ __('requests.Hide') }}</button> --}}
             </div>
         @empty
-            <p>Empty members!</p>
+            <p>{{ __('requests.Empty members') }}!</p>
         @endforelse
         {{ $users->links() }}
     </div>

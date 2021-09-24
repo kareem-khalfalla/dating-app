@@ -1,11 +1,7 @@
 <div>
     @if (Auth::user()->id == $user->id)
-        <a href="#">
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_add">
-                <button class="btn btn-outline-primary"> <i class="fa fa-users"></i>
-                    my additions</button>
-            </a>
-
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_add">
+            <button class="btn btn-outline-primary"> <i class="fa fa-users"></i>{{ __('profile.my additions') }}</button>
         </a>
     @else
         <span class="dropdown">
@@ -19,8 +15,8 @@
                     <a class="dropdown-item"
                         wire:click.prevent="blockUser({{ $user->id }})">{{ __('profile.Block') }}</a>
                 @endif
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_add">show additions</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reportAlert">report</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_add">{{ __('profile.show additions') }}</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reportAlert">{{ __('profile.report') }}</a>
             </div>
         </span>
         @if ($isFriend)
@@ -31,8 +27,8 @@
         @endif
         @if (!$isPending && !$isFriend && !$user->isBlockedBy(Auth::user()))
             <a wire:click.prevent="addFriend({{ $user->id }})"><button class=" btn
-            btn-outline-danger"> <i
-                        class="fa fa-user-plus"></i> {{ __('profile.addition') }}</button></a>
+            btn-outline-danger">
+                    <i class="fa fa-user-plus"></i> {{ __('profile.Addition') }}</button></a>
         @elseif($isPending)
             <a wire:click.prevent="deleteUser({{ $user->id }})"><button
                     class=" btn
@@ -88,7 +84,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">additions [ {{ count($friends) }} ]</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ __('profile.additions') }} [ {{ count($friends) }} ]</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -106,15 +102,15 @@
                             <h5 class="col-6">{{ $friend->name }}</h5>
                             @if (!$friend->isFriendWith(Auth::user()))
 
-                                <a href="#"><button class="btn btn-outline-success">Addition</button></a>&nbsp;
+                                <a href="#"><button class="btn btn-outline-success">{{ __('profile.Addition') }}</button></a>&nbsp;
                             @else
                                 <a wire:click.prevent="deleteUser({{ $friend->id }})"><button
-                                        class="btn btn-outline-danger">Delete</button></a>&nbsp;
+                                        class="btn btn-outline-danger">{{ __('profile.Delete') }}</button></a>&nbsp;
                             @endif
 
                         </div>
                     @empty
-                        <p>Empty friends!</p>
+                        <p>{{ __('profile.Empty friends') }}!</p>
                     @endforelse
                 </div>
             </div>

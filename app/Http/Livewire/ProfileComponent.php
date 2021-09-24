@@ -136,7 +136,7 @@ class ProfileComponent extends Component
         return view('livewire.profile-component');
     }
 
-    public function updated()
+    public function updated(): void
     {
         $progress = $this->progressBar();
 
