@@ -12,4 +12,10 @@ return [
     'Religion Information updated successfully'  => 'تم تعديل معلومات دينية بنجاح',
     'Shape Information updated successfully'     => 'تم تعديل معلومات الشكل بنجاح',
     'Lifestyle Information updated successfully' => 'تم تعديل معلومات أسلوب الحياة بنجاح',
+    'User reported successfully'                 => 'أبلغ المستخدم بنجاح',
+    'User blocked successfully'                  => 'تم حظر المستخدم بنجاح',
+    'User unblocked successfully'                => 'تم إلغاء حظر المستخدم بنجاح',
+    'User deleted successfully'                  => 'تم حذف المستخدم بنجاح',
+    'User Add request sent successfully'         => 'تم إرسال طلب إضافة المستخدم بنجاح',
+
 ];

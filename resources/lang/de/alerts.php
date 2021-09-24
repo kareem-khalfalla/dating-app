@@ -12,4 +12,9 @@ return [
     'Religion Information updated successfully'  => 'Religionsinformationen erfolgreich aktualisiert',
     'Shape Information updated successfully'     => 'Forminformationen erfolgreich aktualisiert',
     'Lifestyle Information updated successfully' => 'Lifestyle-Informationen erfolgreich aktualisiert',
+    'User reported successfully'                 => 'Benutzer erfolgreich gemeldet',
+    'User blocked successfully'                  => 'Benutzer erfolgreich blockiert',
+    'User unblocked successfully'                => 'Benutzer erfolgreich entsperrt',
+    'User deleted successfully'                  => 'Benutzer erfolgreich gelöscht',
+    'User Add request sent successfully'         => 'Anfrage zum Hinzufügen von Benutzern erfolgreich gesendet',
 ];

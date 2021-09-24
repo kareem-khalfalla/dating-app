@@ -12,4 +12,9 @@ return [
     'Religion Information updated successfully'  => 'Religion Information updated successfully',
     'Shape Information updated successfully'     => 'Shape Information updated successfully',
     'Lifestyle Information updated successfully' => 'Lifestyle Information updated successfully',
-];
+    'User reported successfully'                 => 'User reported successfully',
+    'User blocked successfully'                  => 'User blocked successfully',
+    'User unblocked successfully'                => 'User unblocked successfully',
+    'User deleted successfully'                  => 'User deleted successfully',
+    'User Add request sent successfully'         => 'User Add request sent successfully',
+];  
