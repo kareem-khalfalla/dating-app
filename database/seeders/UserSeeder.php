@@ -38,7 +38,7 @@ use App\Models\RelationshipStatus;
 use App\Models\Religion;
 use App\Models\ReligionMethod;
 use App\Models\RelocateStatus;
-use App\Models\ResidencyStatus;
+use App\Models\ResidenceStatus;
 use App\Models\RobeStatus;
 use App\Models\ShelterShape;
 use App\Models\ShelterType;
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::factory()->create();
-        $hometown = Country::all()->random();
+        $origin = Country::all()->random();
         $residence = Country::all()->random();
         $languageNative = Language::all()->random();
         $languageSecond = Language::all()->random();
@@ -85,12 +85,7 @@ class UserSeeder extends Seeder
 
         /** @var \App\Models\Profile $adminUserProfile */
         $adminUserProfile = $user->profile()->create();
-        $adminUserProfile->languages()->attach($languageNative);
-        $adminUserProfile->languages()->attach($languageSecond);
-        $adminUserProfile->languages()->attach($languageThird);
-        $adminUserProfile->countries()->attach($hometown);
-        $adminUserProfile->countries()->attach($residence);
-        $adminUserProfile->countries->find($residence->id)->pivot->is_hometown = 0;
+        $adminUserProfile->countries->find($residence->id)->pivot->is_origin = 0;
         $adminUserProfile->countries->find($residence->id)->pivot->save();
         $adminUserProfile->education_status_id = EducationStatus::all()->random()->id;
         $adminUserProfile->work_status_id = WorkStatus::all()->random()->id;
@@ -100,7 +95,7 @@ class UserSeeder extends Seeder
         $adminUserProfile->accept_wife_work_status_id = AcceptWifeWorkStatus::all()->random()->id;
         $adminUserProfile->accept_wife_study_status_id = AcceptWifeStudyStatus::all()->random()->id;
         $adminUserProfile->nationality_id = Nationality::all()->random()->id;
-        $adminUserProfile->residency_status_id = ResidencyStatus::all()->random()->id;
+        $adminUserProfile->residence_status_id = ResidenceStatus::all()->random()->id;
         $adminUserProfile->relocate_status_id = RelocateStatus::all()->random()->id;
         $adminUserProfile->relationship_status_id = RelationshipStatus::all()->random()->id;
         $adminUserProfile->state_id = State::all()->random()->id;
