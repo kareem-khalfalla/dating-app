@@ -50,7 +50,7 @@
                             </select>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-5">
-                            <select wire:model.defer="state.secondLanguagesPerfection"
+                            <select wire:model.defer="state.secondLanguagesPerfections"
                                 class="form-control form-control-lg selectpicker" multiple title="level">
                                 @foreach ($languagePerfections as $langPerfection)
                                     <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
@@ -67,7 +67,7 @@
                                 </select>
                             </div>
                             <div class="input-group input-group-lg mb-3 col-5">
-                                <select wire:model.defer="state.thirdLanguagesPerfection"
+                                <select wire:model.defer="state.thirdLanguagesPerfections"
                                     class="form-control form-control-lg selectpicker" multiple title="level">
                                     @foreach ($languagePerfections as $langPerfection)
                                         <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}
@@ -445,7 +445,7 @@
                             </select>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.countries"
+                            <select wire:model.defer="state.countriesOfOrigin"
                                 class="form-control form-control-lg selectpicker" multiple title="Countries">
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}">{{ $country->name }}</option>

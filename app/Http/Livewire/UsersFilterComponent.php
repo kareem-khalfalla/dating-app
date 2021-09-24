@@ -10,9 +10,9 @@ class UsersFilterComponent extends Component
     public $state = [
         'smokeStatuses' => [],
         'secondLanguages' => [],
-        'secondLanguagesPerfection' => [],
+        'secondLanguagesPerfections' => [],
         'thirdLanguages' => [],
-        'thirdLanguagesPerfection' => [],
+        'thirdLanguagesPerfections' => [],
         'nativeLanguages' => [],
         'alcoholStatuses' => [],
         'halalFoodStatuses' => [],
@@ -55,7 +55,7 @@ class UsersFilterComponent extends Component
         'foodTypes' => [],
         'hobbies' => [],
         'countriesOfResidences' => [],
-        'countries' => [],
+        'countriesOfOrigin' => [],
         'nationalities' => [],
         'height_from_to_id' => 1,
         'weight_from_to_id' => 1,
@@ -75,11 +75,11 @@ class UsersFilterComponent extends Component
             Profile::smokeStatuses($this->state['smokeStatuses'])
                 ->secondLanguages(
                     $this->state['secondLanguages'],
-                    $this->state['secondLanguagesPerfection']
+                    $this->state['secondLanguagesPerfections']
                 )
                 ->thirdLanguages(
                     $this->state['thirdLanguages'],
-                    $this->state['thirdLanguagesPerfection']
+                    $this->state['thirdLanguagesPerfections']
                 )
                 ->lengths($this->state['height_from_to_id'])
                 ->weights($this->state['weight_from_to_id'])
@@ -127,7 +127,7 @@ class UsersFilterComponent extends Component
                 ->foodTypes($this->state['foodTypes'])
                 ->allHobbies($this->state['hobbies'])
                 ->countriesOfResidences($this->state['countriesOfResidences'])
-                ->countriesHome($this->state['countries'])
+                ->countriesOfOrigin($this->state['countriesOfOrigin'])
                 ->nationalities($this->state['nationalities'])
                 ->get()
         );

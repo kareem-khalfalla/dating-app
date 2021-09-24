@@ -15,6 +15,16 @@ class Profile extends Model
         return $this->belongsTo(Country::class, 'country_of_residence_id');
     }
 
+    public function scopeCountriesOfResidences(Builder $query, array $countries): Builder
+    {
+        return $query->whereIn('country_of_residence_id', $countries);
+    }
+
+    public function scopecountriesOfOrigin(Builder $query, array $countries): Builder
+    {
+        return $query->whereIn('country_of_origin_id', $countries);
+    }
+
     public function countryOfOrigin(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country_of_origin_id');
@@ -23,6 +33,25 @@ class Profile extends Model
     public function languageNative(): BelongsTo
     {
         return $this->belongsTo(Language::class, 'language_native_id');
+    }
+
+    public function scopeNativeLanguages(Builder $query, array $languages): Builder
+    {
+        return $query->whereIn('language_native_id', $languages);
+    }
+
+    public function scopeSecondLanguages(Builder $query, array $languages, array $perfections): Builder
+    {
+        return $query->with('languageSecond', function ($query) use ($perfections) {
+            $query->whereIn('language_perfection_status_id', $perfections);
+        })->whereIn('language_second_id', $languages);
+    }
+    
+    public function scopeThirdLanguages(Builder $query, array $languages, array $perfections): Builder
+    {
+        return $query->with('languageThird', function ($query) use ($perfections) {
+            $query->whereIn('language_perfection_status_id', $perfections);
+        })->whereIn('language_third_id', $languages);
     }
 
     public function languageSecond(): BelongsTo
