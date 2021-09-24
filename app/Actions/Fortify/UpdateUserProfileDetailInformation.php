@@ -18,25 +18,23 @@ class UpdateUserProfileDetailInformation implements UpdatesUserProfileInformatio
     {
         Validator::make($input, [
             'dob' => ['required', 'date'],
-            'country_of_residence_id' => ['required', 'numeric'],
-            'nationality_id' => ['required', 'numeric'],
+            'country_of_residence_id' => ['required', 'integer'],
+            // 'state_id' => ['required', 'integer'],
+            'nationality_id' => ['required', 'integer'],
             'postal_code' => ['required', 'string'],
-            'residence_status_id' => ['required', 'numeric'],
-            'relocate_status_id' => ['required', 'numeric'],
-            'language_native_id' => ['required', 'numeric'],
-            'language_second_id' => ['required', 'numeric'],
-            'language_third_id' => ['required', 'numeric'],
-            'language_second_perfection_id' => ['required_with:language_second_id', 'numeric'],
-            'language_third_perfection_id' => ['required_with:language_third_id', 'numeric'],
+            'residence_status_id' => ['required', 'integer'],
+            'relocate_status_id' => ['required', 'integer'],
+            'language_native_id' => ['required', 'integer'],
+            'language_second_id' => ['required', 'integer'],
+            'language_third_id' => ['required', 'integer'],
+            'language_second_perfection_id' => ['required_with:language_second_id', 'integer'],
+            'language_third_perfection_id' => ['required_with:language_third_id', 'integer'],
+        ], [
+            '*.integer' => 'The :attribute is required'
         ])->validate();
 
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
-
-
-        if (isset($input['hobby_id'])) {
-            $profile->hobbies()->sync($input['hobby_id']);
-        }
 
         $profile->update([
             'dob'                         => $input['dob'],
