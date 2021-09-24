@@ -11,60 +11,11 @@
                 </div>
                 <div class="box_info_1 col-11 col-md-7 col-lg-9 m-auto">
                     <p class="lead username"><strong>{{ $user->name ?? 'N/A' }}</strong><br></p>
-                    @if (Auth::user()->id == $user->id)
-                        <a href="{{ route('friends', Auth::user()) }}">
-                            <button class="btn btn-outline-primary"> <i class="fa fa-users"></i>
-                                {{ __('profile.my additions') }}</button>
-                        </a>
-                    @else
-                        <span class="dropdown">
-                            <button class="btn btn-outline-secondary " type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                @if (!$user->isBlockedBy(Auth::user()))
-                                    <a class="dropdown-item"
-                                        href="{{ route('profile.block', $user) }}">{{ __('profile.Block') }}</a>
-                                @endif
-                                <a class="dropdown-item"
-                                    href="{{ route('friends', $user) }}">{{ __('profile.show additions') }}</a>
-                                <a class="dropdown-item"
-                                    href="{{ route('profile.report', $user) }}">{{ __('profile.report') }}</a>
-                            </div>
-                        </span>
-                        @if ($isFriend)
-                            <a href="{{ route('chat') }}">
-                                <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i>
-                                    {{ __('profile.send message') }}</button>
-                            </a>
-                        @endif
-                        @if (!$isPending && !$isFriend && !$user->isBlockedBy(Auth::user()))
-                            <a href="{{ route('friendRequest', $user) }}"><button
-                                    class=" btn
-                                btn-outline-danger"> <i
-                                        class="fa fa-user-plus"></i> {{ __('profile.addition') }}</button></a>
-                        @elseif($isPending)
-                            <a href="{{ route('profile.remove', $user) }}"><button
-                                    class=" btn
-                                        btn-outline-warning"> <i
-                                        class="fa fa-user-trash"></i>
-                                    {{ __('profile.remove request') }}</button></a>
-                        @elseif($isFriend)
-                            <a href="{{ route('profile.remove', $user) }}"><button
-                                    class=" btn
-                                                btn-outline-warning"> <i
-                                        class="fa fa-user-trash"></i>
-                                    {{ __('profile.delete friend') }}</button></a>
-                        @else
-                            <a href="{{ route('profile.unblock', $user) }}"><button
-                                    class=" btn
-                                btn-outline-warning"> <i
-                                        class="fa fa-user-trash"></i>
-                                    {{ __('profile.remove block') }}</button></a>
-                        @endif
-                    @endif
+                    @livewire('profile-actions', [
+                    'user' => $user,
+                    'isPending' => $isPending,
+                    'isFriend' => $isFriend,
+                    ])
                 </div>
                 <div class="card card-body col-12">
                     <h4>{{ __('profile.brief about me') }}</h4>
@@ -318,7 +269,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    {{-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -334,5 +285,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
+
+
 </x-app-layout>

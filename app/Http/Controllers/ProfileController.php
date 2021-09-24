@@ -43,42 +43,6 @@ class ProfileController extends Controller
         // return $authUser->addFriend($user->id);
     }
 
-    public function friends(User $user): View
-    {
-        return view('pages.friends', [
-            'friends' => $user->status == 0
-                ? User::allExceptAuthId()->fake()->get()->random(rand(0, User::all()->count()))
-                : $user->getFriends()->paginate(6)
-        ]);
-    }
-
-    public function remove(User $user): RedirectResponse
-    {
-        /** @var \App\Models\User $authUser */
-        $authUser = auth()->user();
-
-        $authUser->unfriend($user);
-        return back();
-    }
-
-    public function block(User $user): RedirectResponse
-    {
-        /** @var \App\Models\User $authUser */
-        $authUser = auth()->user();
-
-        $authUser->blockFriend($user);
-        return back();
-    }
-
-    public function unblock(User $user): RedirectResponse
-    {
-        /** @var \App\Models\User $authUser */
-        $authUser = auth()->user();
-
-        $authUser->unblockFriend($user);
-        return back();
-    }
-
     public function friendRequest(User $user): RedirectResponse
     {
         /** @var \App\Models\User $authUser */
@@ -86,27 +50,5 @@ class ProfileController extends Controller
 
         $authUser->befriend(User::find($user['id']));
         return back();
-    }
-
-    public function report(User $user): View
-    {
-        return view('pages.profiles.report', [
-            'user' => $user
-        ]);
-    }
-
-    public function reportStore(Request $request, User $user): RedirectResponse
-    {
-        $request->validate([
-            'reason' => ['required', 'string', 'max:1000']
-        ]);
-
-        Report::create([
-            'sender_id' => auth()->id(),
-            'recipient_id' => $user->id,
-            'reason' => $request->reason,
-        ]);
-
-        return back()->withSuccess('You reported this user');
     }
 }
