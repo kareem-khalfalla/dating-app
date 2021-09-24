@@ -72,7 +72,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedMediumInteger('country_of_residence_id')->nullable();
             $table->unsignedTinyInteger('children_count')->default(0);
             $table->string('postal_code', 32)->nullable();
-            $table->string('progress_bar', 5)->nullable()->default('00.00');
+            $table->string('progress_bar', 5)->nullable()->default('08.00');
             $table->string('specialization')->nullable();
             $table->string('books')->nullable();
             $table->string('places')->nullable();
