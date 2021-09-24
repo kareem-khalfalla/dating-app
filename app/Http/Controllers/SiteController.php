@@ -31,6 +31,11 @@ class SiteController extends Controller
         return view('pages.chat');
     }
 
+    public function notFound(): View
+    {
+        return view('pages.not_found');
+    }
+
     public function contactStore(ContactUsRequest $request)
     {
         ContactUs::create($request->validated());
