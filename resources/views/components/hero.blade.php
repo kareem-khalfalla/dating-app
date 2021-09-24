@@ -18,14 +18,6 @@
                             {{ __('welcome.login') }}</button></a>
                 </div>
             @endguest
-
-            {{-- @auth
-                <div class="col-12 col-md-5 col-lg-4 pb-3">
-                    <a href="{{ route('results') }}"><button class="btn btn-block btn_login"><i
-                                class="fas fa-search"></i>{{ __('welcome.search') }}</button></a>
-                </div>
-            @endauth --}}
-
         </div>
     </div>
 </div>
@@ -33,8 +25,3 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path fill="#1D2625" fill-opacity="1" d="M0,32L1440,192L1440,0L0,0Z"></path>
 </svg>
-@if (session('error'))
-    <div style="padding-bottom: 4rem" class="alert alert-danger">
-        <p class="text-danger text-center mt-4">{{ session('error') }}</p>
-    </div>
-@endif
