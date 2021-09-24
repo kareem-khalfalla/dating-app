@@ -25,10 +25,6 @@ Route::group(
             Route::get('requests', [UserController::class, 'requests'])->name('requests');
             Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
             Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
-            Route::get('{user}/remove', [ProfileController::class, 'remove'])->name('profile.remove');
-            Route::get('{user}/friend-request', [ProfileController::class, 'friendRequest'])->name('friendRequest');
-            Route::get('{user}/message-request-refused', [ProfileController::class, 'messageRequestRefused'])->name('profiles.messageRequestRefused');
         });
-
     }
 );
