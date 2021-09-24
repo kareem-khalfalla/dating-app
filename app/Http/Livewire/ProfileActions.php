@@ -48,7 +48,7 @@ class ProfileActions extends Component
         $authUser = auth()->user();
 
         $authUser->blockFriend(User::find($id));
-        
+
         $this->dispatchBrowserEvent('hide-form');
 
         $this->success('blocked');
@@ -71,11 +71,23 @@ class ProfileActions extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
-        dd($authUser->unfriend(User::find($id)));
+        $authUser->unfriend(User::find($id));
 
         $this->dispatchBrowserEvent('hide-form');
 
         $this->success('deleted');
+    }
+
+    public function addFriend($id): void
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->befriend(User::find($id));
+
+        $this->dispatchBrowserEvent('hide-form');
+
+        $this->success('request sent');
     }
 
     public function success(string $status = ''): void
