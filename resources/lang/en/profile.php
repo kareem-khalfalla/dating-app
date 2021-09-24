@@ -2,7 +2,9 @@
 
 return [
     'my additions' => 'my additions',
+    'sent additions' => 'sent additions',
     'Addition' => 'Addition',
+    'Additions' => 'Additions',
     'Delete' => 'Delete',
     'Empty friends' => 'Empty friends',
     'Block' => 'Block',

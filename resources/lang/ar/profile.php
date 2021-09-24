@@ -2,7 +2,9 @@
 
 return [
     'my additions' => 'إضافاتي',
+    'sent additions' => 'الاضافات المرسلة',
     'Addition' => 'إضافة',
+    'Additions' => 'ألاضافات',
     'Delete' => 'حذف',
     'Empty friends' => 'أصدقاء فارغين',
     'Block' => 'حاجز',
