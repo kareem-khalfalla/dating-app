@@ -10,6 +10,31 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Profile extends Model
 {
+    public function countryOfResidence(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country_of_residence_id');
+    }
+
+    public function countryOfOrigin(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country_of_origin_id');
+    }
+
+    public function languageNative(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'language_native_id');
+    }
+
+    public function languageSecond(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'language_second_id');
+    }
+
+    public function languageThird(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'language_third_id');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -30,24 +55,9 @@ class Profile extends Model
         return $this->belongsTo(State::class);
     }
 
-    public function residencyStatus(): BelongsTo
+    public function residenceStatus(): BelongsTo
     {
-        return $this->belongsTo(ResidencyStatus::class);
-    }
-
-    public function countries()
-    {
-        return $this->belongsToMany(Country::class)->withPivot('is_hometown');
-    }
-
-    public function scopeCountriesOfResidences(Builder $query, array $countriesOfResidences): Builder
-    {
-        return $query->whereRelation('countries', 'is_hometown', 0)->whereIn('id', $countriesOfResidences);
-    }
-
-    public function scopeCountriesHome(Builder $query, array $countries): Builder
-    {
-        return $query->whereRelation('countries', 'is_hometown', 1)->whereIn('id', $countries);
+        return $this->belongsTo(ResidenceStatus::class);
     }
 
     public function relocateStatus(): BelongsTo
@@ -118,11 +128,6 @@ class Profile extends Model
     public function educationStatus(): BelongsTo
     {
         return $this->belongsTo(EducationStatus::class);
-    }
-
-    public function languages(): BelongsToMany
-    {
-        return $this->belongsToMany(Language::class);
     }
 
     public function smokeStatus(): BelongsTo
@@ -526,27 +531,6 @@ class Profile extends Model
     public function scopeMarriageStatuses(Builder $query, array $marriageStatuses): Builder
     {
         return $query->whereIn('marriage_status_id', $marriageStatuses);
-    }
-
-    public function scopeThirdLanguages(Builder $query, array $thirdLanguages, array $thirdLanguagesPerfection): Builder
-    {
-        return $query->with('languages', function ($lang) use ($thirdLanguages, $thirdLanguagesPerfection) {
-            $lang->whereIn('id', $thirdLanguages)->where('order', 2)->whereIn('language_perfection_status_id', $thirdLanguagesPerfection);
-        });
-    }
-
-    public function scopeSecondLanguages(Builder $query, array $secondLanguages, array $secondLanguagesPerfection): Builder
-    {
-        return $query->with('languages', function ($lang) use ($secondLanguages, $secondLanguagesPerfection) {
-            $lang->whereIn('id', $secondLanguages)->where('order', 2)->whereIn('language_perfection_status_id', $secondLanguagesPerfection);
-        });
-    }
-
-    public function scopeNativeLanguages(Builder $query, array $nativeLanguages): Builder
-    {
-        return $query->whereHas('languages', function ($query) use ($nativeLanguages) {
-            $query->whereIn('id', $nativeLanguages);
-        });
     }
 
     public function scopeRelationshipStatuses(Builder $query, array $relationshipStatuses): Builder
