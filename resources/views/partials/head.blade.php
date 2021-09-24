@@ -13,9 +13,10 @@
     <link src="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/theme/main_h.css') }}">
     <link rel="stylesheet" href="{{ asset('css/theme/responsive.css') }}">
-    <!-- Font Awesome Library -->
     <link rel="stylesheet" href="{{ asset('css/theme/all.min.css') }}" />
-    <!-- Google Fonts -->
+    @if (app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('css/theme/rtl.css') }}" />
+    @endif
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&#038;display=swap"
         rel="stylesheet" />
