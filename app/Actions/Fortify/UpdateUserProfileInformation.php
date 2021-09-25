@@ -33,12 +33,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
         ])->validate();
 
-        $user->update([
-            'name' => $input['name'],
-            'username' => Str::slug($input['username']),
-            'email' => $input['email'],
-            'gender' => $input['gender'],
-            'phone' => $input['phone'],
-        ]);
+        $input['username'] = Str::slug($input['username']);
+
+        $user->update($input);
     }
 }

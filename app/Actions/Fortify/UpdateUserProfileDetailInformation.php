@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
@@ -36,19 +37,10 @@ class UpdateUserProfileDetailInformation implements UpdatesUserProfileInformatio
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'dob'                         => $input['dob'],
-            'nationality_id'              => $input['nationality_id'],
-            'postal_code'                 => $input['postal_code'],
-            'residence_status_id'         => $input['residence_status_id'],
-            'relocate_status_id'          => $input['relocate_status_id'],
-            'state_id'                    => $input['state_id'],
-            'country_of_origin_id'        => $input['country_of_origin_id'],
-            'country_of_residence_id'     => $input['country_of_residence_id'],
-            'language_native_id'          => $input['language_native_id'],
-            'language_second_id'          => $input['language_second_id'],
-            'language_third_id'           => $input['language_third_id'],
-        ]);
+        $profile->update(Arr::except($input, [
+            'language_second_perfection_id',
+            'language_third_perfection_id',
+        ]));
 
         $profile->languageSecond->update([
             'language_perfection_status_id' => $input['language_second_perfection_id'],

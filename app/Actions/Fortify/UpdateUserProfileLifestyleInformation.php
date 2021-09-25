@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
@@ -33,15 +34,7 @@ class UpdateUserProfileLifestyleInformation implements UpdatesUserProfileInforma
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'smoke_status_id' => $input['smoke_status_id'],
-            'alcohol_status_id' => $input['alcohol_status_id'],
-            'halal_food_status_id' => $input['halal_food_status_id'],
-            'food_type_id' => $input['food_type_id'],
-            'interests' => $input['interests'],
-            'books' => $input['books'],
-            'places' => $input['places'],
-        ]);
+        $profile->update(Arr::except($input, 'hobby_id'));
 
         $profile->hobbies()->sync($input['hobby_id']);
     }

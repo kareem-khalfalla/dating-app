@@ -49,23 +49,6 @@ class UpdateUserProfileReligionInformation implements UpdatesUserProfileInformat
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'religion_id' => $input['religion_id'],
-            'religion_method_id' => $input['religion_method_id'],
-            'obligation_id' => $input['obligation_id'],
-            'prayer_id' => $input['prayer_id'],
-            'alfajr_prayer_id' => $input['alfajr_prayer_id'],
-            'fasting_id' => $input['fasting_id'],
-            'reading_quran_id' => $input['reading_quran_id'],
-            'beard_status_id' => $input['beard_status_id'],
-            'tafaqah_status_id' => $input['tafaqah_status_id'],
-            'lesson_listing' => $input['lesson_listing'],
-            'music_status_id' => $input['music_status_id'],
-            'show_status_id' => $input['show_status_id'],
-            'friend_status_id' => $input['friend_status_id'],
-            'robe_status_id' => $input['robe_status_id'],
-            'veil_status_id' => $input['veil_status_id'],
-            'headdress_id' => $input['headdress_id'],
-        ]);
+        $profile->update($input);
     }
 }

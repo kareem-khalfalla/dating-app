@@ -37,19 +37,6 @@ class UpdateUserProfileShapeInformation implements UpdatesUserProfileInformation
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'height' => $input['height'],
-            'weight' => $input['weight'],
-            'body_status_id' => $input['body_status_id'],
-            'skin_status_id' => $input['skin_status_id'],
-            'hair_color_id' => $input['hair_color_id'],
-            'hair_length_id' => $input['hair_length_id'],
-            'hair_kind_id' => $input['hair_kind_id'],
-            'eye_color_id' => $input['eye_color_id'],
-            'eye_glass_id' => $input['eye_glass_id'],
-            'health_status_id' => $input['health_status_id'],
-            'psychological_pattern_id' => $input['psychological_pattern_id'],
-            'clarification' => $input['clarification'],
-        ]);
+        $profile->update($input);
     }
 }

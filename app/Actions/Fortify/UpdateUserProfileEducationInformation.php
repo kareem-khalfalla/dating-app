@@ -41,15 +41,6 @@ class UpdateUserProfileEducationInformation implements UpdatesUserProfileInforma
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'education_status_id' => $input['education_status_id'],
-            'competence' => $input['competence'],
-            'work_status_id' => $input['work_status_id'],
-            'income' => $input['income'],
-            'accept_wife_work_status_id' => $input['accept_wife_work_status_id'],
-            'accept_wife_study_status_id' => $input['accept_wife_study_status_id'],
-            'wife_work_status_id' => $input['wife_work_status_id'],
-            'wife_study_status_id' => $input['wife_study_status_id'],
-        ]);
+        $profile->update($input);
     }
 }

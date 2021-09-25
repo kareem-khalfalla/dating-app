@@ -42,18 +42,6 @@ class UpdateUserProfileSocialInformation implements UpdatesUserProfileInformatio
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'marital_status_id' => $input['marital_status_id'],
-            'divorced_reason' => $input['divorced_reason'],
-            'children_status_id' => $input['children_status_id'],
-            'children_count' => $input['children_count'],
-            'children_desire_status_id' => $input['children_desire_status_id'],
-            'children_information' => $input['children_information'],
-            'polygamy_status_id' => $input['polygamy_status_id'],
-            'wife_polygamy_status_id' => $input['wife_polygamy_status_id'],
-            'shelter_type_id' => $input['shelter_type_id'],
-            'shelter_shape_id' => $input['shelter_shape_id'],
-            'shelter_way_id' => $input['shelter_way_id'],
-        ]);
+        $profile->update($input);
     }
 }

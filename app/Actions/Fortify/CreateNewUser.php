@@ -46,16 +46,11 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        /** @var \App\Models\User $user */
-        $user = User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'username' => Str::slug($input['username']),
-            'phone' => $input['phone'],
-            'gender' => $input['gender'],
-            'password' => Hash::make($input['password']),
-        ]);
+        $input['username'] = Str::slug($input['username']);
+        $input['password'] = Hash::make($input['password']);
 
+        /** @var \App\Models\User $user */
+        $user = User::create($input);
 
         $user->profile()->create();
 

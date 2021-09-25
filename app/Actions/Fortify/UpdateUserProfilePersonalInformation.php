@@ -30,11 +30,6 @@ class UpdateUserProfilePersonalInformation implements UpdatesUserProfileInformat
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update([
-            'bio' => $input['bio'],
-            'partner_bio' => $input['partner_bio'],
-            'relationship_status_id' => $input['relationship_status_id'],
-            'marriage_status_id' => $input['marriage_status_id'],
-        ]);
+        $profile->update($input);
     }
 }
