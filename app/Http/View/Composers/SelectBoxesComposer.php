@@ -61,7 +61,7 @@ class SelectBoxesComposer
     {
         $view->with('religions', Religion::all());
         $view->with('obligations', Obligation::all());
-        $view->with('methods', ReligionMethod::all());
+        $view->with('religionMethods', ReligionMethod::all());
         $view->with('prayers', Prayer::all());
         $view->with('alfajrPrayers', AlfajrPrayer::all());
         $view->with('fastings', Fasting::all());
@@ -97,7 +97,7 @@ class SelectBoxesComposer
         $view->with('shelterShapes', ShelterShape::all());
         $view->with('shelterWays', ShelterWay::all());
         $view->with('bodyStatuses', BodyStatus::all());
-        $view->with('skins', SkinStatus::all());
+        $view->with('skinStatuses', SkinStatus::all());
         $view->with('hairColors', HairColor::all());
         $view->with('hairLengths', HairLength::all());
         $view->with('hairKinds', HairKind::all());
@@ -108,7 +108,7 @@ class SelectBoxesComposer
         $view->with('smokeStatuses', SmokeStatus::all());
         $view->with('alcoholStatuses', AlcoholStatus::all());
         $view->with('halalFoodStatuses', HalalFoodStatus::all());
-        $view->with('food_types', FoodType::all());
+        $view->with('foodTypes', FoodType::all());
         $view->with('hobbies', Hobby::all());
     }
 }
