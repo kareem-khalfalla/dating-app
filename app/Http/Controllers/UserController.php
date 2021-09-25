@@ -60,7 +60,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function filter(): View
+    public function results(): View
     {
         return view('pages.results');
     }
