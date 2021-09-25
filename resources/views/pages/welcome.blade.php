@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-hero />
-    <x-latest-users :users="$users" />
-    <x-contact-us />
+    @include('partials.hero')
+    @include('partials.latest-users', ['users' => $users])
+    @include('partials.contact-us')
 </x-guest-layout>

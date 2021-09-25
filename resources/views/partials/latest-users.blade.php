@@ -1,5 +1,4 @@
 <section id="latest users" class="bg-white">
-    <br>
     <div class="container-fluid">
         @if (isset($users) && count($users) > 1)
             <div class="row">
@@ -28,7 +27,6 @@
                 <div class="row col-12 col-md-7 col-lg-8 pl-3 latest_user2 mb-4">
                     @foreach ($users->take(6) as $user)
                         <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
-
                             <div class="col-6 col-md-5 p-0 m-0">
                                 <img class="p-0 m-0" style="border: 1px solid #eee;"
                                     src="{{ asset('storage/' . $user->avatar) }}" width="150px" height="150px" alt="">
@@ -47,10 +45,8 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         @endif
     </div>
-    <br>
 </section>

@@ -27,4 +27,4 @@
 </head>
 
 <body>
-    <x-navbar />
+    @include('partials.navbar')
