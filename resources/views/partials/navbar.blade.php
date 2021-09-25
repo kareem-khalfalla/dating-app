@@ -11,10 +11,9 @@
             <ul class="navbar-nav ml-auto">
                 @auth
                     <li class="nav-item nav_home">
-                        <a class="nav-link hover-bar" href="{{ route('results') }}"><i
-                                class="fas fa-search"></i><span class="sr-only">(current)</span></a>
+                        <a class="nav-link hover-bar" href="{{ route('results') }}"><i class="fas fa-search"></i><span
+                                class="sr-only">(current)</span></a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('profile', Auth::user()->username) }}"><i
                                 class="fas fa-lg fa-user p-1"></i>{{ __('navbar.profile') }}</a>
@@ -23,7 +22,6 @@
                         <a class="nav-link hover-bar" href="{{ route('requests') }}"><i
                                 class="fas fa-lg fa-user-plus p-1"></i>{{ __('navbar.requests') }}</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('chat') }}"><i
                                 class="fas fa-lg fa-envelope p-1"></i>{{ __('navbar.Chat') }}</a>
@@ -41,6 +39,10 @@
                     </li>
                 @endauth
                 @guest
+                    <li class="nav-item nav_home">
+                        <a class="nav-link hover-bar" href="{{ route('welcome') }}"><i class="fas fa-home"></i><span
+                                class="sr-only">(current)</span>{{ __('navbar.home') }}</a>
+                    </li>
                     <li class="nav-item nav_signup">
                         <a class="nav-link hover-bar" href="{{ route('register') }}"><i
                                 class="fa fa-user-plus fa-lg p-1"></i>{{ __('navbar.signup') }}</a>
