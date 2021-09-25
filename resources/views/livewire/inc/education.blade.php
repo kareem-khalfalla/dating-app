@@ -4,18 +4,8 @@
         <br>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.EducationStatus') }}</label>
-            <select wire:model.defer="state.education_status_id"
-                class="form-control form-control-lg @error('education_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($educationStatuses as $educationStatus)
-                    <option value="{{ $educationStatus->id }}">{{ $educationStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('education_status_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.education_status_id" :data="$educationStatuses"
+                :error="'education_status_id'" />
         </div>
         <div class="form-group">
             <label class="col-12">{{ __('settings.competence') }}</label>
@@ -30,18 +20,7 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.the work') }}</label>
-            <select wire:model.defer="state.work_status_id"
-                class="form-control form-control-lg @error('work_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($workStatuses as $workStatus)
-                    <option value="{{ $workStatus->id }}">{{ $workStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('work_status_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.work_status_id" :data="$workStatuses" :error="'work_status_id'" />
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">{{ __('settings.Monthly income') }}</label>
@@ -54,72 +33,28 @@
                 </div>
             @enderror
         </div>
-
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you accept the wife\'s work?') }}</label>
-                <select wire:model.defer="state.accept_wife_work_status_id"
-                    class="form-control form-control-lg @error('accept_wife_work_status_id') is-invalid @enderror">
-                    <option>---</option>
-                    @foreach ($acceptWifeWorkStatuses as $acceptence)
-                        <option value="{{ $acceptence->id }}">{{ $acceptence->name }}</option>
-                    @endforeach
-                </select>
-                @error('accept_wife_work_status_id')
-                    <div class="invalid-feedback">
-                        <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                    </div>
-                @enderror
+                <x-selectbox wire:model.defer="state.accept_wife_work_status_id" :data="$acceptWifeWorkStatuses"
+                    :error="'accept_wife_work_status_id'" />
             </div>
-
             <div class="input-group input-group-lg mb-3 ">
                 <label
                     class="col-12">{{ __('settings.Do you accept studying the wife after marriageStatus?') }}</label>
-                <select wire:model.defer="state.accept_wife_study_status_id"
-                    class="form-control form-control-lg @error('accept_wife_study_status_id') is-invalid @enderror">
-                    <option>---</option>
-                    @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
-                        <option value="{{ $studyAcceptence->id }}">{{ $studyAcceptence->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('accept_wife_study_status_id')
-                    <div class="invalid-feedback">
-                        <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                    </div>
-                @enderror
+                <x-selectbox wire:model.defer="state.accept_wife_study_status_id" :data="$acceptWifeStudyStatuses"
+                    :error="'accept_wife_study_status_id'" />
             </div>
         @else
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.You want the work?') }}</label>
-                <select wire:model.defer="state.wife_work_status_id"
-                    class="form-control form-control-lg @error('wife_work_status_id') is-invalid @enderror">
-                    <option>---</option>
-                    @foreach ($wifeWorkStatuses as $wifeWorkStatus)
-                        <option value="{{ $wifeWorkStatus->id }}">{{ $wifeWorkStatus->name }}</option>
-                    @endforeach
-                </select>
-                @error('wife_work_status_id')
-                    <div class="invalid-feedback">
-                        <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                    </div>
-                @enderror
+                <x-selectbox wire:model.defer="state.wife_work_status_id" :data="$wifeWorkStatuses"
+                    :error="'wife_work_status_id'" />
             </div>
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you want to study after marriageStatus?') }}</label>
-                <select wire:model.defer="state.wife_study_status_id"
-                    class="form-control form-control-lg @error('wife_study_status_id') is-invalid @enderror">
-                    <option>---</option>
-                    @foreach ($wifeStudyStatuses as $wifeStudyStatus)
-                        <option value="{{ $wifeStudyStatus->id }}">{{ $wifeStudyStatus->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('wife_study_status_id')
-                    <div class="invalid-feedback">
-                        <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                    </div>
-                @enderror
+                <x-selectbox wire:model.defer="state.wife_study_status_id" :data="$wifeStudyStatuses"
+                    :error="'wife_study_status_id'" />
             </div>
         @endif
         <div class="mt-4">

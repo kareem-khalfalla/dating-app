@@ -8,467 +8,225 @@
                     <br>
                     <div class="row">
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.residenceStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="Type of accommodation">
-                                @foreach ($residenceStatuses as $residencyStatus)
-                                    <option value="{{ $residencyStatus->id }}">{{ $residencyStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.residenceStatuses" :data="$residenceStatuses"
+                                title="Type of accommodation" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3  col-lg-6">
-
-                            <select wire:model.defer="state.relocateStatuses"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="Moving to another place">
-                                @foreach ($relocations as $relocateStatus)
-                                    <option value="{{ $relocateStatus->id }}">{{ $relocateStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.relocations" :data="$relocations"
+                                title="Moving to another place" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.relationshipStatuses" multiple
-                                class="form-control form-control-lg selectpicker">
-                                @foreach ($relationships as $relationship)
-                                    <option value="{{ $relationship->id }}">{{ $relationship->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.relationships" :data="$relationships"
+                                title="Relationships" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3  col-lg-6">
-                            <select wire:model.defer="state.nativeLanguages"
-                                class="form-control form-control-lg selectpicker" multiple title="Native language">
-                                @foreach ($languages as $language)
-                                    <option value="{{ $language->id }}">{{ $language->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.languages" :data="$languages" title="Native language"
+                                multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3  col-lg-6">
-                            <select wire:model.defer="state.secondLanguages"
-                                class="form-control form-control-lg selectpicker" multiple title="Second language">
-                                @foreach ($languages as $language)
-                                    <option value="{{ $language->id }}">{{ $language->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.languages" :data="$languages" title="Second language"
+                                multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-5">
-                            <select wire:model.defer="state.secondLanguagesPerfections"
-                                class="form-control form-control-lg selectpicker" multiple title="level">
-                                @foreach ($languagePerfections as $langPerfection)
-                                    <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.languagePerfections" :data="$languagePerfections"
+                                title="Level" multiple />
                         </div>
-                        <div class="form-row col-12">
-                            <div class="input-group input-group-lg mb-3 col-7">
-                                <select wire:model.defer="state.thirdLanguages"
-                                    class="form-control form-control-lg selectpicker" multiple title="Second language">
-                                    @foreach ($languages as $language)
-                                        <option value="{{ $language->id }}">{{ $language->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-5">
-                                <select wire:model.defer="state.thirdLanguagesPerfections"
-                                    class="form-control form-control-lg selectpicker" multiple title="level">
-                                    @foreach ($languagePerfections as $langPerfection)
-                                        <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="input-group input-group-lg mb-3 col-7">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.languages" :data="$languages" title="Second language"
+                                multiple />
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-5">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.languagePerfections" :data="$languagePerfections"
+                                title="Level" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.marriageStatuses"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="Desired method of marriage">
-                                @foreach ($marriageStatuses as $marriageStatus)
-                                    <option value="{{ $marriageStatus->id }}">{{ $marriageStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.marriageStatuses" :data="$marriageStatuses"
+                                title="Desired method of marriage" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.educationStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="Education">
-                                @foreach ($educationStatuses as $educationStatus)
-                                    <option value="{{ $educationStatus->id }}">{{ $educationStatus->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.educationStatuses" :data="$educationStatuses"
+                                title="Education" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.workStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="the work">
-                                @foreach ($workStatuses as $workStatus)
-                                    <option value="{{ $workStatus->id }}">{{ $workStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.workStatuses" :data="$workStatuses" title="The work"
+                                multiple />
                         </div>
                         @if (Auth::user()->gender == 'male')
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.acceptWifeWorkStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple
-                                    title="Do you accept the wife's work?">
-                                    @foreach ($acceptWifeWorkStatuses as $acceptence)
-                                        <option value="{{ $acceptence->id }}">{{ $acceptence->name }}</option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeWorkStatuses"
+                                    :data="$acceptWifeWorkStatuses" title="Do you accept the wife's work?" multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.acceptWifeStudyStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple
-                                    title=" Do you accept studying the wife after marriage?">
-                                    @foreach ($acceptWifeStudyStatuses as $studyAcceptence)
-                                        <option value="{{ $studyAcceptence->id }}">{{ $studyAcceptence->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeStudyStatuses"
+                                    :data="$acceptWifeStudyStatuses"
+                                    title="Do you accept studying the wife after marriage?" multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.headdresses"
-                                    class="form-control form-control-lg selectpicker" multiple title="Headdress">
-                                    @foreach ($headdresses as $headdress)
-                                        <option value="{{ $headdress->id }}">{{ $headdress->name }}</option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.headdresses" :data="$headdresses"
+                                    title="Headdress" multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.robeStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple title="Jilbab">
-                                    @foreach ($robeStatuses as $robe)
-                                        <option value="{{ $robe->id }}">{{ $robe->name }}</option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.robeStatuses" :data="$robeStatuses" title="Jilbab"
+                                    multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.polygamyStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple
-                                    title="Do you want multiplicity?">
-                                    @foreach ($polygamyStatuses as $polygamyStatus)
-                                        <option value="{{ $polygamyStatus->id }}">{{ $polygamyStatus->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.polygamyStatuses" :data="$polygamyStatuses"
+                                    title="Do you want multiplicity?" multiple />
                             </div>
                         @else
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.wifeWorkStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple
-                                    title="You want the work?">
-                                    @foreach ($wifeWorkStatuses as $wifeWorkStatus)
-                                        <option value="{{ $wifeWorkStatus->id }}">{{ $wifeWorkStatus->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.wifeWorkStatuses" :data="$wifeWorkStatuses"
+                                    title="You want the work?" multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.WifeStudyStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple
-                                    title="Do you want to study after marriage?">
-                                    @foreach ($wifeStudyStatuses as $wifeStudyStatus)
-                                        <option value="{{ $wifeStudyStatus->id }}">{{ $wifeStudyStatus->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.wifeStudyStatuses" :data="$wifeStudyStatuses"
+                                    title="Do you want to study after marriage?" multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.beardStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple title="Beard">
-                                    @foreach ($beardStatuses as $beardStatus)
-                                        <option value="{{ $beardStatus->id }}">{{ $beardStatus->name }}</option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.beardStatuses" :data="$beardStatuses"
+                                    title="Beard" multiple />
                             </div>
                             <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <select wire:model.defer="state.wifePolygamyStatuses"
-                                    class="form-control form-control-lg selectpicker" multiple
-                                    title="Do you accept polygamy?">
-                                    @foreach ($wifePolygamyStatuses as $wifePolygamyStatus)
-                                        <option value="{{ $wifePolygamyStatus->id }}">
-                                            {{ $wifePolygamyStatus->name }}</option>
-                                    @endforeach
-                                </select>
+                                <x-selectbox class="selectpicker" wire:model.defer="state.wifePolygamyStatuses"
+                                    :data="$wifePolygamyStatuses" title="Do you accept polygamy?" multiple />
                             </div>
                         @endif
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.religions" class="form-control form-control-lg selectpicker"
-                                multiple title="Religious">
-                                @foreach ($religions as $religion)
-                                    <option value="{{ $religion->id }}">{{ $religion->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.religions" :data="$religions" title="Religious"
+                                multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.religionMethods"
-                                class="form-control form-control-lg selectpicker" multiple title="Method">
-                                @foreach ($methods as $method)
-                                    <option value="{{ $method->id }}">{{ $method->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.religionMethods" :data="$religionMethods"
+                                title="Method" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.obligations"
-                                class="form-control form-control-lg selectpicker" multiple title="Commitment">
-                                @foreach ($obligations as $obligation)
-                                    <option value="{{ $obligation->id }}">{{ $obligation->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.obligations" :data="$obligations" title="Commitment"
+                                multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.prayers" class="form-control form-control-lg selectpicker"
-                                multiple title="Prayer">
-                                @foreach ($prayers as $prayer)
-                                    <option value="{{ $prayer->id }}">{{ $prayer->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.prayers" :data="$prayers" title="Prayer" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.alfajrPrayers"
-                                class="form-control form-control-lg selectpicker" multiple title="fasting">
-                                @foreach ($alfajrPrayers as $alfajrPrayer)
-                                    <option value="{{ $alfajrPrayer->id }}">{{ $alfajrPrayer->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.alfajrPrayers" :data="$alfajrPrayers" title="fasting"
+                                multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.fastings" class="form-control form-control-lg selectpicker"
-                                multiple title="fasting">
-                                @foreach ($fastings as $fasting)
-                                    <option value="{{ $fasting->id }}">{{ $fasting->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.fastings" :data="$fastings" title="Fasting"
+                                multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.readingQurans"
-                                class="form-control form-control-lg selectpicker" multiple title="Reading the Qoran">
-                                @foreach ($readingQurans as $readingQuran)
-                                    <option value="{{ $readingQuran->id }}">{{ $readingQuran->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.readingQurans" :data="$readingQurans"
+                                title="Reading the Qoran" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.tafaqahStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="Tafaqah in religion">
-                                @foreach ($tafaqahStatuses as $tafaqahStatus)
-                                    <option value="{{ $tafaqahStatus->id }}">{{ $tafaqahStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.tafaqahStatuses" :data="$tafaqahStatuses"
+                                title="Tafaqah in religion" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.musicStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="Listening to music">
-                                @foreach ($musicStatuses as $musicStatus)
-                                    <option value="{{ $musicStatus->id }}">{{ $musicStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.musicStatuses" :data="$musicStatuses"
+                                title="Listening to music" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.showStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="Movies and series">
-                                @foreach ($showStatuses as $showStatus)
-                                    <option value="{{ $showStatus->id }}">{{ $showStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.showStatuses" :data="$showStatuses"
+                                title="Movies and series" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.friendStatuses"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="Friends of the opposite sex">
-                                @foreach ($friendStatuses as $friendStatus)
-                                    <option value="{{ $friendStatus->id }}">{{ $friendStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.friendStatuses" :data="$friendStatuses"
+                                title="Friends of the opposite sex" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model="state.maritalStatuses" class="form-control form-control-lg selectpicker"
-                                multiple title="Marital Status">
-                                @foreach ($maritalStatuses as $maritalStatus)
-                                    <option value="{{ $maritalStatus->id }}">{{ $maritalStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.maritalStatuses" :data="$maritalStatuses"
+                                title="Marital Status" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.childrenStatuses"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="Do you have children?">
-                                @foreach ($childrenStatuses as $childStatus)
-                                    <option value="{{ $childStatus->id }}">{{ $childStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.childrenStatuses" :data="$childrenStatuses"
+                                title="Do you have children?" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.childrenDesireStatuses"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="desire to have children">
-                                @foreach ($childrenDesireStatuses as $childrenDesireStatus)
-                                    <option value="{{ $childrenDesireStatus->id }}">
-                                        {{ $childrenDesireStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.childrenDesireStatuses"
+                                :data="$childrenDesireStatuses" title="Desire to have children" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.shelterTypes"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="Current type of housing">
-                                @foreach ($shelterTypes as $shelterType)
-                                    <option value="{{ $shelterType->id }}">{{ $shelterType->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterTypes" :data="$shelterTypes"
+                                title="Current type of housing" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.shelterShapes"
-                                class="form-control form-control-lg selectpicker" multiple title="Housing method">
-                                @foreach ($shelterShapes as $shelterShape)
-                                    <option value="{{ $shelterShape->id }}">{{ $shelterShape->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterShapes" :data="$shelterShapes"
+                                title="Housing method" multiple />
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <select wire:model.defer="state.shelterWays"
-                                class="form-control form-control-lg selectpicker" multiple title="housing form">
-                                @foreach ($shelterWays as $shelterWay)
-                                    <option value="{{ $shelterWay->id }}">{{ $shelterWay->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterWays" :data="$shelterWays" title="Housing form"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.bodyStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="body type">
-                                @foreach ($bodyStatuses as $bodyStatus)
-                                    <option value="{{ $bodyStatus->id }}">{{ $bodyStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.bodyStatuses" :data="$bodyStatuses" title="Body type"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.skinStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="skin colour">
-                                @foreach ($skins as $skinStatus)
-                                    <option value="{{ $skinStatus->id }}">{{ $skinStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.skinStatuses" :data="$skinStatuses"
+                                title="Skin colour" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.hairColors"
-                                class="form-control form-control-lg selectpicker" multiple title="hair colour">
-                                @foreach ($hairColors as $hairColor)
-                                    <option value="{{ $hairColor->id }}">{{ $hairColor->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hairColors" :data="$hairColors" title="Hair colour"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.hairLengths"
-                                class="form-control form-control-lg selectpicker" multiple title="hair length">
-                                @foreach ($hairLengths as $hairLength)
-                                    <option value="{{ $hairLength->id }}">{{ $hairLength->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hairLengths" :data="$hairLengths" title="Hair length"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.hairKinds" class="form-control form-control-lg selectpicker"
-                                multiple title="hair type">
-                                @foreach ($hairKinds as $hairKind)
-                                    <option value="{{ $hairKind->id }}">{{ $hairKind->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hairKinds" :data="$hairKinds" title="Hair type"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.eyeColors" class="form-control form-control-lg selectpicker"
-                                multiple title="Eye color">
-                                @foreach ($eyeColors as $eyeColor)
-                                    <option value="{{ $eyeColor->id }}">{{ $eyeColor->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.eyeColors" :data="$eyeColors" title="Eye color"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.eyeGlasses"
-                                class="form-control form-control-lg selectpicker" multiple title="Wearing the eye">
-                                @foreach ($eyeGlasses as $eyeGlass)
-                                    <option value="{{ $eyeGlass->id }}">{{ $eyeGlass->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.eyeGlasses" :data="$eyeGlasses"
+                                title="Wearing the eye" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.healthStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="physical health">
-                                @foreach ($healthStatuses as $healthStatus)
-                                    <option value="{{ $healthStatus->id }}">{{ $healthStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.healthStatuses" :data="$healthStatuses"
+                                title="Physical health" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.psychologicalPatterns"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="psychological pattern">
-                                @foreach ($psychologicalPatterns as $psychologicalPattern)
-                                    <option value="{{ $psychologicalPattern->id }}">
-                                        {{ $psychologicalPattern->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.psychologicalPatterns" :data="$psychologicalPatterns"
+                                title="Psychological pattern" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.smokeStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="smoking">
-                                @foreach ($smokeStatuses as $smokeStatus)
-                                    <option value="{{ $smokeStatus->id }}">{{ $smokeStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.smokeStatuses" :data="$smokeStatuses" title="Smoking"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.alcoholStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="Alcohol">
-                                @foreach ($alcoholStatuses as $alcoholStatus)
-                                    <option value="{{ $alcoholStatus->id }}">{{ $alcoholStatus->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.alcoholStatuses" :data="$alcoholStatuses"
+                                title="Alcohol" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.halalFoodStatuses"
-                                class="form-control form-control-lg selectpicker" multiple title="halal food">
-                                @foreach ($halalFoodStatuses as $halalFoodStatuses)
-                                    <option value="{{ $halalFoodStatuses->id }}">{{ $halalFoodStatuses->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.halalFoodStatuses" :data="$halalFoodStatuses"
+                                title="Halal style" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.foodTypes"
-                                class="form-control form-control-lg selectpicker" multiple title="food style">
-                                @foreach ($food_types as $food)
-                                    <option value="{{ $food->id }}">{{ $food->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.foodTypes" :data="$foodTypes" title="Food style"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.hobbies" class="form-control form-control-lg selectpicker"
-                                multiple title="Interests">
-                                @foreach ($hobbies as $hobby)
-                                    <option value="{{ $hobby->id }}">{{ $hobby->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hobbies" :data="$hobbies" title="Interests"
+                                multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.countriesOfOrigin"
-                                class="form-control form-control-lg selectpicker" multiple title="Countries">
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.countriesOfOrigin" :data="$countries"
+                                title="Countries of origin" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.countriesOfResidences"
-                                class="form-control form-control-lg selectpicker" multiple
-                                title="Countries of residences">
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.countriesOfResidences" :data="$countries"
+                                title="Countries of residences" multiple />
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <select wire:model.defer="state.nationalities"
-                                class="form-control form-control-lg selectpicker" multiple title="Nationalities">
-                                @foreach ($nationalities as $nationality)
-                                    <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
-                                @endforeach
-                            </select>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.nationalities" :data="$nationalities"
+                                title="Nationalities" multiple />
                         </div>
+
                         <div class="form-group mb-3 col-md-6">
                             <label for="">Length</label>
                             <select wire:model.defer="state.height_from_to_id" class="form-control form-control-lg">
@@ -530,6 +288,7 @@
                                 <option value="11">more than that</option>
                             </select>
                         </div>
+
                         <div class="m-4 col-12">
                             <button class="btn btn-dark">submit</button>
                         </div>

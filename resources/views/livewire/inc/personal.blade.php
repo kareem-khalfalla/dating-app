@@ -26,33 +26,13 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.The required relationship') }}</label>
-            <select wire:model.defer="state.relationship_status_id" required="required"
-                class="form-control form-control-lg @error('relationship_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($relationships as $relationship)
-                    <option value="{{ $relationship->id }}">{{ $relationship->name }}</option>
-                @endforeach
-            </select>
-            @error('relationship_status_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.relationship_status_id" :data="$relationships"
+                :error="'relationship_status_id'" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Desired method of marriageStatus') }}</label>
-            <select wire:model.defer="state.marriage_status_id" required="required"
-                class="form-control form-control-lg @error('marriage_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($marriageStatuses as $marriageStatus)
-                    <option value="{{ $marriageStatus->id }}">{{ $marriageStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('marriage_status_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.marriage_status_id" :data="$marriageStatuses"
+                :error="'marriage_status_id'" />
         </div>
         <div class="mt-4">
             <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">

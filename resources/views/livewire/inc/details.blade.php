@@ -49,35 +49,14 @@
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">{{ __('settings.Nationality') }}</label>
-            <select wire:model.defer="state.nationality_id"
-                class="form-control form-control-lg @error('nationality_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($nationalities as $nationality)
-                    <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
-                @endforeach
-            </select>
-            @error('nationality_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.nationality_id" :data="$nationalities" :error="'nationality_id'" />
         </div>
+
         <div class="form-row">
             @if ($selectedCountry)
                 <div class="input-group input-group-lg mb-3 col-6">
                     <label class="col-12">{{ __('settings.City') }}</label>
-                    <select wire:model="selectedState"
-                        class="form-control form-control-lg @error('selectedState') is-invalid @enderror">
-                        <option>---</option>
-                        @foreach ($countryStates as $countryState)
-                            <option value="{{ $countryState->id }}">{{ $countryState->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('selectedState')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                    <x-selectbox wire:model="selectedState" :data="$countryStates" :error="'selectedState'" />
                 </div>
             @endif
             <div class="input-group input-group-lg mb-3 col-6">
@@ -94,114 +73,43 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Type of accommodation') }}</label>
-            <select wire:model.defer="state.residence_status_id"
-                class="form-control form-control-lg @error('residence_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($residenceStatuses as $residencyStatus)
-                    <option value="{{ $residencyStatus->id }}">{{ $residencyStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('residence_status_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.residence_status_id" :data="$residenceStatuses"
+                :error="'residence_status_id'" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Moving to another place') }}</label>
-            <select wire:model.defer="state.relocate_status_id"
-                class="form-control form-control-lg @error('relocate_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($relocations as $relocateStatus)
-                    <option value="{{ $relocateStatus->id }}">{{ $relocateStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('relocate_status_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.relocate_status_id" :data="$relocations"
+                :error="'relocate_status_id'" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Native language') }}</label>
-            <select wire:model.defer="state.language_native_id"
-                class="form-control form-control-lg @error('language_native_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($languages as $language)
-                    <option value="{{ $language->id }}">{{ $language->name }}</option>
-                @endforeach
-            </select>
-            @error('language_native_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.language_native_id" :data="$languages" :error="'language_native_id'" />
         </div>
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">{{ __('settings.second language') }}</label>
-                <select wire:model="state.language_second_id"
-                    class="form-control form-control-lg @error('language_second_id') is-invalid @enderror">
-                    <option>---</option>
-                    @foreach ($languages as $language)
-                        <option value="{{ $language->id }}">{{ $language->name }}</option>
-                    @endforeach
-                </select>
-                @error('language_second_id')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <x-selectbox wire:model.defer="state.language_second_id" :data="$languages"
+                    :error="'language_second_id'" />
             </div>
             @if (isset($state['language_second_id']))
                 <div class="input-group input-group-lg mb-3 col-5">
                     <label class="col-12">{{ __('settings.level') }}</label>
-                    <select wire:model.defer="state.language_second_perfection_id"
-                        class="form-control form-control-lg @error('language_second_perfection_id') is-invalid @enderror">
-                        <option>---</option>
-                        @foreach ($languagePerfections as $langPerfection)
-                            <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('language_second_perfection_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                    <x-selectbox wire:model.defer="state.language_second_perfection_id" :data="$languagePerfections"
+                        :error="'language_second_perfection_id'" />
                 </div>
             @endif
         </div>
         <div class="form-row">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">{{ __('settings.third language') }}</label>
-                <select wire:model="state.language_third_id"
-                    class="form-control form-control-lg @error('language_third_id') is-invalid @enderror">
-                    <option>---</option>
-                    @foreach ($languages as $language)
-                        <option value="{{ $language->id }}">{{ $language->name }}</option>
-                    @endforeach
-                </select>
-                @error('language_third_id')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <x-selectbox wire:model.defer="state.language_third_id" :data="$languages"
+                    :error="'language_third_id'" />
             </div>
             @if (isset($state['language_third_id']))
                 <div class="input-group input-group-lg mb-3 col-5">
                     <label class="col-12">{{ __('settings.level') }}</label>
-                    <select wire:model.defer="state.language_third_perfection_id"
-                        class="form-control form-control-lg @error('language_third_perfection_id') is-invalid @enderror">
-                        <option>---</option>
-                        @foreach ($languagePerfections as $langPerfection)
-                            <option value="{{ $langPerfection->id }}">{{ $langPerfection->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('language_third_perfection_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                    <x-selectbox wire:model.defer="state.language_third_perfection_id" :data="$languagePerfections"
+                        :error="'language_third_perfection_id'" />
                 </div>
             @endif
         </div>

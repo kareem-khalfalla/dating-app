@@ -4,78 +4,25 @@
         <br>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.smoking') }}</label>
-            <select wire:model.defer="state.smoke_status_id" required="required"
-                class="form-control form-control-lg @error('smoke_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($smokeStatuses as $smokeStatus)
-                    <option value="{{ $smokeStatus->id }}">{{ $smokeStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('smoke_status_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.smoke_status_id" :data="$smokeStatuses" :error="'smoke_status_id'" />
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Alcohol') }}</label>
-            <select wire:model.defer="state.alcohol_status_id" required="required"
-                class="form-control form-control-lg @error('alcohol_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($alcoholStatuses as $alcoholStatus)
-                    <option value="{{ $alcoholStatus->id }}">{{ $alcoholStatus->name }}</option>
-                @endforeach
-            </select>
-            @error('alcohol_status_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.alcohol_status_id" :data="$alcoholStatuses"
+                :error="'alcohol_status_id'" />
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.halal food') }}</label>
-            <select wire:model.defer="state.halal_food_status_id" required="required"
-                class="form-control form-control-lg @error('halal_food_status_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($halalFoodStatuses as $halalFoodStatuses)
-                    <option value="{{ $halalFoodStatuses->id }}">{{ $halalFoodStatuses->name }}</option>
-                @endforeach
-            </select>
-            @error('halal_food_status_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.halal_food_status_id" :data="$halalFoodStatuses"
+                :error="'halal_food_status_id'" />
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.food style') }}</label>
-            <select wire:model.defer="state.food_type_id" required="required"
-                class="form-control form-control-lg @error('food_type_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($food_types as $food)
-                    <option value="{{ $food->id }}">{{ $food->name }}</option>
-                @endforeach
-            </select>
-            @error('food_type_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.food_type_id" :data="$foodTypes" :error="'food_type_id'" />
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Interests') }}</label>
-            <select wire:model.defer="state.hobby_id" required="required"
-                class="form-control form-control-lg @error('hobby_id') is-invalid @enderror">
-                <option>---</option>
-                @foreach ($hobbies as $hobby)
-                    <option value="{{ $hobby->id }}">{{ $hobby->name }}</option>
-                @endforeach
-            </select>
-            @error('hobby_id')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-selectbox wire:model.defer="state.hobby_id" :data="$hobbies" :error="'hobby_id'" />
         </div>
         <div class="form-group  mb-3 col-md-6">
             <label for="exampleFormControlTextarea1">{{ __('settings.Favorite books') }}</label>
