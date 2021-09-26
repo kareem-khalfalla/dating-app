@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -46,14 +47,23 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        $input['username'] = Str::slug($input['username']);
-        $input['password'] = Hash::make($input['password']);
+        try {
+            DB::beginTransaction();
 
-        /** @var \App\Models\User $user */
-        $user = User::create($input);
+            $input['username'] = Str::slug($input['username']);
+            $input['password'] = Hash::make($input['password']);
 
-        $user->profile()->create();
+            /** @var \App\Models\User $user */
+            $user = User::create($input);
 
-        return $user;
+            $user->profile()->create();
+
+            DB::commit();
+
+            return $user;
+        } catch (\Throwable $th) {
+            //throw $th;
+            DB::rollBack();
+        }
     }
 }
