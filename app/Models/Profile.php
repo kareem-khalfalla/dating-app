@@ -20,9 +20,14 @@ class Profile extends Model
         return $query->whereIn('country_of_residence_id', $countries);
     }
 
-    public function scopecountriesOfOrigin(Builder $query, array $countries): Builder
+    public function scopeCountriesOfOrigin(Builder $query, array $countries): Builder
     {
         return $query->whereIn('country_of_origin_id', $countries);
+    }
+
+    public function scopeResidenceStatuses(Builder $query, array $residenceStatuses): Builder
+    {
+        return $query->whereIn('residence_status_id', $residenceStatuses);
     }
 
     public function countryOfOrigin(): BelongsTo
@@ -359,28 +364,6 @@ class Profile extends Model
     {
         return $query->whereIn('nationality_id', $nationalities);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-     */
 
     public function scopeHalalFoodStatuses(Builder $query, array $halalFoodStatuses): Builder
     {
