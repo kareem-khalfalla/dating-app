@@ -12,7 +12,10 @@ class SiteController extends Controller
     public function welcome(): View
     {
         return view('pages.welcome', [
-            'users' => User::latest()->limit(10)->get()
+            'users' => User::with('profile.nationality')
+                ->with('profile.countryOfResidence')
+                ->with('profile.countryOfOrigin')
+                ->latest()->limit(10)->get()
         ]);
     }
 

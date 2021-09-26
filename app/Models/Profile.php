@@ -14,7 +14,7 @@ class Profile extends Model
     {
         return $this->belongsTo(Country::class, 'country_of_residence_id');
     }
-
+    
     public function scopeCountriesOfResidences(Builder $query, array $countries): Builder
     {
         return $query->whereIn('country_of_residence_id', $countries);
