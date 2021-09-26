@@ -1,13 +1,13 @@
 <x-guest-layout title="Login">
     <div class="container container_form col-12 col-sm-8 col-md-7 col-lg-5 pt-5">
         <div class="card card-body shadow">
-            <h1>{{ __('login.Login') }}</h1>
+            <h1 class="h_2">{{ __('login.Login') }}</h1>
             <form id="login-form" class="signup col-12 m-auto" method="post" action="{{ route('login') }}">
                 @csrf
                 <div id="logAlert"></div>
                 <div class="input-group input-group-lg mb-3 mt-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-email"></i></span>
+                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-envelope"></i></span>
                     </div>
                     <input required name="email" value="{{ old('email') }}" placeholder="{{ __('login.email') }}" type="email"
                         class="form-control @error('email') is-invalid @enderror" aria-label="Large"

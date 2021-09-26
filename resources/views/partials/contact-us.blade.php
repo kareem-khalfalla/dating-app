@@ -36,7 +36,7 @@
                                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
                                 </div>
                             @enderror
-                            <button class="btn btn-dark btn-block mt-3">{{ __('welcome.Send') }}</button>
+                            <button class="btn h_btn5 btn-block mt-3">{{ __('welcome.Send') }}</button>
                         </form>
                     @endif
                 </div>

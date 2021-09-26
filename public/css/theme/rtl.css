@@ -1,128 +1,139 @@
-.row{
-    direction: rtl !important;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&display=swap');
 
-  .latest_user2{
+body {
+    font-family: 'Cairo', sans-serif;
+}
+
+.row {
+    direction: rtl !important;
+}
+
+.latest_user2 {
     border: none;
     border-right: 3px solid var(--color-4);
     padding-left: 0px;
     padding-right: 5%;
 }
 
-.latest_user1{
+.latest_user1 {
     padding-left: 5%;
 }
 
-p,h1, h2, h3, h4{
-  direction: rtl;
+p,
+h1,
+h2,
+h3,
+h4 {
+    direction: rtl;
 }
 
 .card-header {
     text-align: center !important;
 }
 
-.card{
+.card {
     text-align: right !important;
 }
-.navbar-nav{
+
+.navbar-nav {
     direction: rtl !important;
     text-align: right !important;
 }
 
-.navbar-nav .dropdown-menu{
+.navbar-nav .dropdown-menu {
     direction: rtl !important;
     text-align: center !important;
-} 
+}
 
-.input-group{
+.input-group {
     direction: rtl;
     text-align: right;
     border-radius: 0px !important;
 
 }
 
-.input-group input{
+.input-group input {
     direction: rtl;
     text-align: right;
     border-radius: 5px 0px 0px 5px !important;
 }
 
-.input-group-text{
+.input-group-text {
     border-radius: 0px 5px 5px 0px !important;
 }
 
 
-.search_box .input-group input{
+.search_box .input-group input {
     direction: rtl;
     text-align: right;
-   
+
     border-radius: 0px 5px 5px 0px !important;
 }
 
-.search_box .search_btn{
+.search_box .search_btn {
     border-radius: 5px 0px 0px 5px !important;
 }
 
 
-.box_info_1{
+.box_info_1 {
     text-align: right;
 }
 
-.alert{
+.alert {
     text-align: center;
     direction: rtl;
 }
 
-.alert button{
+.alert button {
     float: left;
 }
 
-.box_frind h5{
+.box_frind h5 {
     text-align: right;
 }
 
-.modal{
+.modal {
     text-align: right;
     direction: rtl;
 }
 
-.modal-header{
+.modal-header {
     position: relative;
 }
 
-.modal .close{
+.modal .close {
     position: absolute;
     left: 0px;
     top: 20px;
 }
 
-.container_settings{
+.container_settings {
     direction: rtl;
     text-align: right;
 }
 
-.user_info{
+.user_info {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 0px;
     margin-right: 15px;
-    }
+}
 
-.msg_cotainer_send{
+.msg_cotainer_send {
     margin-left: 10px;
 }
 
-.msg_cotainer{
+.msg_cotainer {
     margin-right: 10px;
 }
 
-.msg_head{
+.msg_head {
     direction: rtl;
     text-align: right;
 
 }
 
-#action_menu_btn{
+#action_menu_btn {
     position: absolute;
     left: 10px;
     top: 10px;
@@ -130,35 +141,35 @@ p,h1, h2, h3, h4{
     color: white;
     cursor: pointer;
     font-size: 20px;
-   
-    }
-    
-    .action_menu{
+
+}
+
+.action_menu {
     z-index: 1;
     position: absolute;
     padding: 15px 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 15px;
     top: 40px;
     left: 15px;
     right: 60%;
     display: none;
-    }
-    
-    .action_menu ul{
+}
+
+.action_menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    }
+}
 
-    .action_menu ul li{
+.action_menu ul li {
     width: 100%;
     padding: 10px 15px;
     margin-bottom: 5px;
-    }
-    
-    .action_menu ul li i{
+}
+
+.action_menu ul li i {
     padding-right: 10px;
-    
-    }
+
+}

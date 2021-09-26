@@ -1,9 +1,9 @@
 <div>
     @if (Auth::user()->id == $user->id)
-        <div class="d-flex justify-content-between">
-            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modal_add"> <i
+        <div class="row">
+            <button class="btn btn-outline-primary m-1" data-toggle="modal" data-target="#modal_add"> <i
                     class="fa fa-users mr-2"></i>{{ __('profile.my additions') }}</button>
-            <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#modal_sent"> <i
+            <button class="btn btn-outline-secondary m-1" data-toggle="modal" data-target="#modal_sent"> <i
                     class="fa fa-users mr-2"></i>{{ __('profile.sent additions') }}</button>
         </div>
     @else
@@ -13,7 +13,7 @@
                 <i class="fas fa-ellipsis-v"></i>
             </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                 @if (!$user->isBlockedBy(Auth::user()))
                     <a class="dropdown-item"
                         wire:click.prevent="blockUser({{ $user->id }})">{{ __('profile.Block') }}</a>

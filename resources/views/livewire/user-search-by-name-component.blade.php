@@ -1,5 +1,5 @@
 <div class="card shadow">
-    <div class="card-header">
+    <div class="card-header search_box">
         <div class="input-group">
             <input wire:model.debounce.300ms="search" type="text" placeholder="{{ __('requests.Search') }}..." name=""
                 class="form-control search">
@@ -26,6 +26,11 @@
         @empty
             <p>{{ __('requests.Empty members') }}!</p>
         @endforelse
-        {{ $users->links() }}
+        
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center">
+            {{ $users->links() }}
+        </div>
     </div>
 </div>

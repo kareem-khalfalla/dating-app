@@ -1,15 +1,13 @@
 <x-guest-layout title="Forgot password">
-
-
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
-                <div class="container">
+                <div class="container mt-4 pt-4">
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Password Recovery</h3>
+                                    <h3 class="text-center h_3 text-primary">Password Recovery</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="small mb-3 text-muted">Enter your email address and we will send you a

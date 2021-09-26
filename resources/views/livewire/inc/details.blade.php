@@ -2,6 +2,8 @@
     <h3 class="color_h">{{ __('settings.Change detailed information') }}</h3>
     <form wire:submit.prevent="updateDetails" id="captcha_form" method="post" action="#">
         <br>
+        <div class="row">
+
         <div class="input-group input-group-lg mb-3 mt-3">
             <label class="col-12">{{ __('settings.Birthday') }}</label>
             <input wire:model.defer="state.dob" placeholder="{{ __('settings.Birthday') }}" type="date"
@@ -47,19 +49,20 @@
                 </div>
             @enderror
         </div>
-        <div class="input-group input-group-lg mb-3">
+    </div>
+        <div class="input-group input-group-lg mb-3 col-md-6">
             <label class="col-12">{{ __('settings.Nationality') }}</label>
             <x-selectbox wire:model.defer="state.nationality_id" :data="$nationalities" :error="'nationality_id'" />
         </div>
 
-        <div class="form-row">
+        <div class="form-row col-12">
             @if ($selectedCountry)
-                <div class="input-group input-group-lg mb-3 col-6">
+                <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.City') }}</label>
                     <x-selectbox wire:model="selectedState" :data="$countryStates" :error="'selectedState'" />
                 </div>
             @endif
-            <div class="input-group input-group-lg mb-3 col-6">
+            <div class="input-group input-group-lg mb-3 col-md-6">
                 <label class="col-12">{{ __('settings.Postal code') }}</label>
                 <input wire:model.defer="state.postal_code" placeholder="{{ __('settings.Postal code') }}"
                     type="text" class="form-control @error('postal_code') is-invalid @enderror" aria-label="Large"
@@ -71,21 +74,21 @@
                 @enderror
             </div>
         </div>
-        <div class="input-group input-group-lg mb-3 ">
+        <div class="input-group input-group-lg mb-3 col-md-6">
             <label class="col-12">{{ __('settings.Type of accommodation') }}</label>
             <x-selectbox wire:model.defer="state.residence_status_id" :data="$residenceStatuses"
                 :error="'residence_status_id'" />
         </div>
-        <div class="input-group input-group-lg mb-3 ">
+        <div class="input-group input-group-lg mb-3 col-md-6">
             <label class="col-12">{{ __('settings.Moving to another place') }}</label>
             <x-selectbox wire:model.defer="state.relocate_status_id" :data="$relocations"
                 :error="'relocate_status_id'" />
         </div>
-        <div class="input-group input-group-lg mb-3 ">
+        <div class="input-group input-group-lg mb-3 col-md-6">
             <label class="col-12">{{ __('settings.Native language') }}</label>
             <x-selectbox wire:model.defer="state.language_native_id" :data="$languages" :error="'language_native_id'" />
         </div>
-        <div class="form-row">
+        <div class="form-row col-12">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">{{ __('settings.second language') }}</label>
                 <x-selectbox wire:model.defer="state.language_second_id" :data="$languages"
@@ -99,7 +102,7 @@
                 </div>
             @endif
         </div>
-        <div class="form-row">
+        <div class="form-row col-12">
             <div class="input-group input-group-lg mb-3 col-7">
                 <label class="col-12">{{ __('settings.third language') }}</label>
                 <x-selectbox wire:model.defer="state.language_third_id" :data="$languages"

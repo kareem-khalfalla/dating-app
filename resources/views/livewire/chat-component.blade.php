@@ -3,7 +3,7 @@
     <div class="col-md-4 col-xl-3 chat">
         <div class="card mb-sm-3 mb-md-0 contacts_card">
 
-            <div class="card-header">
+            <div class="card-header search_box">
                 <div class="input-group">
                     <input wire:model="search" type="text" placeholder="{{ __('chat.Search') }}..." name="" class="form-control search">
                     <div class="input-group-prepend">
