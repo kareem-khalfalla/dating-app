@@ -119,6 +119,20 @@ trait Friendable
     }
 
     /**
+     * @param Model $recipient
+     *
+     * @return mixed
+     */
+    public function unblockFriend(Model $recipient)
+    {
+        $deleted = $this->findFriendship($recipient)->whereSender($this)->delete();
+
+        Event::dispatch('friendships.unblocked', [$this, $recipient]);
+      
+        return $deleted;
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Collection|Friendship[]
      */
     public function getFriendRequests()
