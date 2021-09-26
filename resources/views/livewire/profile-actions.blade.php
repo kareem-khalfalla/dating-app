@@ -165,6 +165,7 @@
         $(document).ready(function() {
             addEventListener('hide-form', event => {
                 $('#modal_add').modal('hide');
+                $('#modal_sent').modal('hide');
                 $('#reportAlert').modal('hide');
             });
         });
