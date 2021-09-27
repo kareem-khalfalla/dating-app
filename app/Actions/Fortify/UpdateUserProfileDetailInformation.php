@@ -2,8 +2,8 @@
 
 namespace App\Actions\Fortify;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileDetailInformation implements UpdatesUserProfileInformation
@@ -20,34 +20,43 @@ class UpdateUserProfileDetailInformation implements UpdatesUserProfileInformatio
         Validator::make($input, [
             'dob' => ['required', 'date'],
             'country_of_residence_id' => ['required', 'integer'],
-            // 'state_id' => ['required', 'integer'],
             'nationality_id' => ['required', 'integer'],
             'postal_code' => ['required', 'string'],
-            'residence_status_id' => ['required', 'integer'],
-            'relocate_status_id' => ['required', 'integer'],
-            'language_native_id' => ['required', 'integer'],
-            'language_second_id' => ['required', 'integer'],
-            'language_third_id' => ['required', 'integer'],
-            'language_second_perfection_id' => ['required_with:language_second_id', 'integer'],
-            'language_third_perfection_id' => ['required_with:language_third_id', 'integer'],
+            'residence_status' => ['required', 'string', Rule::in([
+                'Citizen', 'Resident', 'Visitor', 'Student',
+            ])],
+            'relocate_status' => ['required', 'string', Rule::in([
+                'Accept',
+                'Refuse',
+                'Accept due to nearby city',
+                'Accept due to be inside my origin',
+                'Accept due to nearby country',
+            ])],
+            'native_language_id' => ['required', 'integer'],
+            'second_language_id' => ['required', 'integer'],
+            'third_language_id' => ['required', 'integer'],
+            'second_language_perfection' => [
+                'required_with:second_language_id', 'string', Rule::in($this->perfection())
+            ],
+            'third_language_perfection' => [
+                'required_with:third_language_id', Rule::in($this->perfection())
+            ],
         ], [
-            '*.integer' => 'The :attribute is required'
+            '*.integer' => 'The :attribute is required.'
         ])->validate();
 
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile;
 
-        $profile->update(Arr::except($input, [
-            'language_second_perfection_id',
-            'language_third_perfection_id',
-        ]));
+        $profile->update($input);
+    }
 
-        $profile->languageSecond->update([
-            'language_perfection_status_id' => $input['language_second_perfection_id'],
-        ]);
-
-        $profile->languageThird->update([
-            'language_perfection_status_id' => $input['language_third_perfection_id'],
-        ]);
+    private function perfection(): array
+    {
+        return [
+            'High',
+            'Good',
+            'Bad',
+        ];
     }
 }
