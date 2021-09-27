@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Profile extends Model
 {
+    protected $casts = [
+        'hobbies' => 'array'
+    ];
+
     public function countryOfResidence(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country_of_residence_id');
     }
-    
+
     public function scopeCountriesOfResidences(Builder $query, array $countries): Builder
     {
         return $query->whereIn('country_of_residence_id', $countries);
@@ -27,7 +29,7 @@ class Profile extends Model
 
     public function scopeResidenceStatuses(Builder $query, array $residenceStatuses): Builder
     {
-        return $query->whereIn('residence_status_id', $residenceStatuses);
+        return $query->whereIn('residence_status', $residenceStatuses);
     }
 
     public function countryOfOrigin(): BelongsTo
@@ -35,48 +37,43 @@ class Profile extends Model
         return $this->belongsTo(Country::class, 'country_of_origin_id');
     }
 
-    public function languageNative(): BelongsTo
+    public function nativeLanguage(): BelongsTo
     {
-        return $this->belongsTo(Language::class, 'language_native_id');
+        return $this->belongsTo(Language::class, 'native_language_id');
+    }
+
+    public function secondLanguage(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'second_language_id');
+    }
+
+    public function thirdLanguage(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'third_language_id');
     }
 
     public function scopeNativeLanguages(Builder $query, array $languages): Builder
     {
-        return $query->whereIn('language_native_id', $languages);
+        return $query->whereIn('native_language_id', $languages);
     }
 
     public function scopeSecondLanguages(Builder $query, array $languages, array $perfections): Builder
     {
-        return $query->with('languageSecond', function ($query) use ($perfections) {
-            $query->whereIn('language_perfection_status_id', $perfections);
-        })->whereIn('language_second_id', $languages);
+        return $query->with('secondLanguage')
+            ->whereIn('second_language_id', $languages)
+            ->whereIn('second_language_perfection', $perfections);
     }
-    
+
     public function scopeThirdLanguages(Builder $query, array $languages, array $perfections): Builder
     {
-        return $query->with('languageThird', function ($query) use ($perfections) {
-            $query->whereIn('language_perfection_status_id', $perfections);
-        })->whereIn('language_third_id', $languages);
-    }
-
-    public function languageSecond(): BelongsTo
-    {
-        return $this->belongsTo(Language::class, 'language_second_id');
-    }
-
-    public function languageThird(): BelongsTo
-    {
-        return $this->belongsTo(Language::class, 'language_third_id');
+        return $query->with('thirdLanguage')
+            ->whereIn('third_language_id', $languages)
+            ->whereIn('third_language_perfection', $perfections);
     }
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function image(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function nationality(): BelongsTo
@@ -89,104 +86,9 @@ class Profile extends Model
         return $this->belongsTo(State::class);
     }
 
-    public function residenceStatus(): BelongsTo
-    {
-        return $this->belongsTo(ResidenceStatus::class);
-    }
-
-    public function relocateStatus(): BelongsTo
-    {
-        return $this->belongsTo(RelocateStatus::class);
-    }
-
-    public function relationshipStatus(): BelongsTo
-    {
-        return $this->belongsTo(RelationshipStatus::class);
-    }
-
-    public function shelter(): HasOne
-    {
-        return $this->hasOne(Shelter::class);
-    }
-
-    public function marriageStatus(): BelongsTo
-    {
-        return $this->belongsTo(MarriageStatus::class);
-    }
-
-    public function workStatus(): BelongsTo
-    {
-        return $this->belongsTo(WorkStatus::class);
-    }
-
-    public function lifestyle(): HasOne
-    {
-        return $this->hasOne(Lifestyle::class);
-    }
-
-    public function detail(): HasOne
-    {
-        return $this->hasOne(Detail::class);
-    }
-
-    public function socialStatus(): HasOne
-    {
-        return $this->hasOne(SocialStatus::class);
-    }
-
-    public function religionStatus(): HasOne
-    {
-        return $this->hasOne(ReligionStatus::class);
-    }
-
-    public function wifeWorkStatus(): BelongsTo
-    {
-        return $this->belongsTo(WifeWorkStatus::class);
-    }
-
-    public function wifeStudyStatus(): BelongsTo
-    {
-        return $this->belongsTo(WifeStudyStatus::class);
-    }
-
-    public function acceptWifeWorkStatus(): BelongsTo
-    {
-        return $this->belongsTo(AcceptWifeWorkStatus::class);
-    }
-
-    public function acceptWifeStudyStatus(): BelongsTo
-    {
-        return $this->belongsTo(AcceptWifeStudyStatus::class);
-    }
-
-    public function educationStatus(): BelongsTo
-    {
-        return $this->belongsTo(EducationStatus::class);
-    }
-
-    public function smokeStatus(): BelongsTo
-    {
-        return $this->belongsTo(SmokeStatus::class);
-    }
-
-    public function alcoholStatus(): BelongsTo
-    {
-        return $this->belongsTo(AlcoholStatus::class);
-    }
-
-    public function halalFoodStatus(): BelongsTo
-    {
-        return $this->belongsTo(HalalFoodStatus::class);
-    }
-
-    public function foodType(): BelongsTo
-    {
-        return $this->belongsTo(FoodType::class);
-    }
-
     public function scopeFoodTypes(Builder $query, array $foodTypes): Builder
     {
-        return $query->whereIn('food_type_id', $foodTypes);
+        return $query->whereIn('food_type', $foodTypes);
     }
 
     public function hobbies(): BelongsToMany
@@ -196,168 +98,7 @@ class Profile extends Model
 
     public function scopeAllHobbies(Builder $query, array $hobbies): Builder
     {
-        return $query->whereHas('hobbies', function ($query) use ($hobbies) {
-            $query->whereIn('id', $hobbies);
-        });
-    }
-
-    public function bodyStatus(): BelongsTo
-    {
-        return $this->belongsTo(BodyStatus::class);
-    }
-
-    public function skinStatus(): BelongsTo
-    {
-        return $this->belongsTo(SkinStatus::class);
-    }
-
-    public function hairColor(): BelongsTo
-    {
-        return $this->belongsTo(HairColor::class);
-    }
-
-    public function hairLength(): BelongsTo
-    {
-        return $this->belongsTo(HairLength::class);
-    }
-
-    public function hairKind(): BelongsTo
-    {
-        return $this->belongsTo(HairKind::class);
-    }
-
-    public function eyeColor(): BelongsTo
-    {
-        return $this->belongsTo(EyeColor::class);
-    }
-
-    public function eyeGlass(): BelongsTo
-    {
-        return $this->belongsTo(EyeGlass::class);
-    }
-
-    public function healthStatus(): BelongsTo
-    {
-        return $this->belongsTo(HealthStatus::class);
-    }
-
-    public function psychologicalPattern(): BelongsTo
-    {
-        return $this->belongsTo(PsychologicalPattern::class);
-    }
-    public function religion(): BelongsTo
-    {
-        return $this->belongsTo(Religion::class);
-    }
-
-    public function religionMethod(): BelongsTo
-    {
-        return $this->belongsTo(ReligionMethod::class);
-    }
-
-    public function obligation(): BelongsTo
-    {
-        return $this->belongsTo(Obligation::class);
-    }
-
-    public function prayer(): BelongsTo
-    {
-        return $this->belongsTo(Prayer::class);
-    }
-
-    public function alfajrPrayer(): BelongsTo
-    {
-        return $this->belongsTo(AlfajrPrayer::class);
-    }
-
-    public function headdress(): BelongsTo
-    {
-        return $this->belongsTo(Headdress::class);
-    }
-
-    public function fasting(): BelongsTo
-    {
-        return $this->belongsTo(Fasting::class);
-    }
-
-    public function readingQuran(): BelongsTo
-    {
-        return $this->belongsTo(ReadingQuran::class);
-    }
-
-    public function robeStatus(): BelongsTo
-    {
-        return $this->belongsTo(RobeStatus::class);
-    }
-
-    public function veilStatus(): BelongsTo
-    {
-        return $this->belongsTo(VeilStatus::class);
-    }
-
-    public function showStatus(): BelongsTo
-    {
-        return $this->belongsTo(ShowStatus::class);
-    }
-
-    public function overdress(): BelongsTo
-    {
-        return $this->belongsTo(Overdress::class);
-    }
-
-    public function beardStatus(): BelongsTo
-    {
-        return $this->belongsTo(BeardStatus::class);
-    }
-
-    public function tafaqahStatus(): BelongsTo
-    {
-        return $this->belongsTo(TafaqahStatus::class);
-    }
-
-    public function musicStatus(): BelongsTo
-    {
-        return $this->belongsTo(MusicStatus::class);
-    }
-
-    public function friendStatus(): BelongsTo
-    {
-        return $this->belongsTo(FriendStatus::class);
-    }
-
-    public function shelterType(): BelongsTo
-    {
-        return $this->belongsTo(ShelterType::class);
-    }
-
-    public function shelterShape(): BelongsTo
-    {
-        return $this->belongsTo(ShelterShape::class);
-    }
-
-    public function shelterWay(): BelongsTo
-    {
-        return $this->belongsTo(ShelterWay::class);
-    }
-
-    public function maritalStatus(): BelongsTo
-    {
-        return $this->belongsTo(MaritalStatus::class);
-    }
-
-    public function polygamyStatus(): BelongsTo
-    {
-        return $this->belongsTo(PolygamyStatus::class);
-    }
-
-    public function childrenStatus(): BelongsTo
-    {
-        return $this->belongsTo(ChildrenStatus::class);
-    }
-
-    public function childrenDesireStatus(): BelongsTo
-    {
-        return $this->belongsTo(ChildrenDesireStatus::class);
+        return $query->whereJsonContains('hobbies', $hobbies);
     }
 
     public function scopeNationalities(Builder $query, array $nationalities): Builder
@@ -367,200 +108,200 @@ class Profile extends Model
 
     public function scopeHalalFoodStatuses(Builder $query, array $halalFoodStatuses): Builder
     {
-        return $query->whereIn('halal_food_status_id', $halalFoodStatuses);
+        return $query->whereIn('halal_food_status', $halalFoodStatuses);
     }
 
     public function scopeAlcoholStatuses(Builder $query, array $alcoholStatuses): Builder
     {
-        return $query->whereIn('alcohol_status_id', $alcoholStatuses);
+        return $query->whereIn('alcohol_status', $alcoholStatuses);
     }
 
     public function scopeSmokeStatuses(Builder $query, array $smokeStatuses): Builder
     {
-        return $query->whereIn('smoke_status_id', $smokeStatuses);
+        return $query->whereIn('smoke_status', $smokeStatuses);
     }
 
     public function scopePsychologicalPatterns(Builder $query, array $psychologicalPatterns): Builder
     {
-        return $query->whereIn('psychological_pattern_id', $psychologicalPatterns);
+        return $query->whereIn('psychological_pattern', $psychologicalPatterns);
     }
 
     public function scopeHealthStatuses(Builder $query, array $healthStatuses): Builder
     {
-        return $query->whereIn('health_status_id', $healthStatuses);
+        return $query->whereIn('health_status', $healthStatuses);
     }
 
     public function scopeEyeGlasses(Builder $query, array $eyeGlasses): Builder
     {
-        return $query->whereIn('eye_glass_id', $eyeGlasses);
+        return $query->whereIn('eye_glass', $eyeGlasses);
     }
 
     public function scopeEyeColors(Builder $query, array $eyeColors): Builder
     {
-        return $query->whereIn('eye_color_id', $eyeColors);
+        return $query->whereIn('eye_color', $eyeColors);
     }
 
     public function scopeHairKinds(Builder $query, array $hairKinds): Builder
     {
-        return $query->whereIn('hair_kind_id', $hairKinds);
+        return $query->whereIn('hair_kind', $hairKinds);
     }
 
     public function scopeHairLengths(Builder $query, array $hairLengths): Builder
     {
-        return $query->whereIn('hair_length_id', $hairLengths);
+        return $query->whereIn('hair_length', $hairLengths);
     }
 
     public function scopeHairColors(Builder $query, array $hairColors): Builder
     {
-        return $query->whereIn('hair_color_id', $hairColors);
+        return $query->whereIn('hair_color', $hairColors);
     }
 
     public function scopeSkinStatuses(Builder $query, array $skinStatuses): Builder
     {
-        return $query->whereIn('skin_status_id', $skinStatuses);
+        return $query->whereIn('skin_status', $skinStatuses);
     }
 
     public function scopeBodyStatuses(Builder $query, array $bodyStatuses): Builder
     {
-        return $query->whereIn('body_status_id', $bodyStatuses);
+        return $query->whereIn('body_status', $bodyStatuses);
     }
 
     public function scopeShelterWays(Builder $query, array $shelterWays): Builder
     {
-        return $query->whereIn('shelter_way_id', $shelterWays);
+        return $query->whereIn('shelter_way', $shelterWays);
     }
 
     public function scopeShelterShapes(Builder $query, array $shelterShapes): Builder
     {
-        return $query->whereIn('shelter_shape_id', $shelterShapes);
+        return $query->whereIn('shelter_shape', $shelterShapes);
     }
 
     public function scopeShelterTypes(Builder $query, array $shelterTypes): Builder
     {
-        return $query->whereIn('shelter_type_id', $shelterTypes);
+        return $query->whereIn('shelter_type', $shelterTypes);
     }
 
     public function scopeChildrenDesireStatuses(Builder $query, array $childrenDesireStatuses): Builder
     {
-        return $query->whereIn('children_desire_status_id', $childrenDesireStatuses);
+        return $query->whereIn('children_desire_status', $childrenDesireStatuses);
     }
 
     public function scopePolygamyStatuses(Builder $query, array $polygamyStatuses): Builder
     {
-        return $query->whereIn('polygamy_status_id', $polygamyStatuses);
+        return $query->whereIn('polygamy_status', $polygamyStatuses);
     }
 
     public function scopeChildrenStatuses(Builder $query, array $childrenStatuses): Builder
     {
-        return $query->whereIn('children_status_id', $childrenStatuses);
+        return $query->whereIn('children_status', $childrenStatuses);
     }
 
     public function scopeFriendStatuses(Builder $query, array $friendStatuses): Builder
     {
-        return $query->whereIn('friend_status_id', $friendStatuses);
+        return $query->whereIn('friend_status', $friendStatuses);
     }
 
     public function scopeShowStatuses(Builder $query, array $showStatuses): Builder
     {
-        return $query->whereIn('show_status_id', $showStatuses);
+        return $query->whereIn('show_status', $showStatuses);
     }
 
     public function scopeMusicStatuses(Builder $query, array $musicStatuses): Builder
     {
-        return $query->whereIn('music_status_id', $musicStatuses);
+        return $query->whereIn('music_status', $musicStatuses);
     }
 
     public function scopeTafaqahStatuses(Builder $query, array $tafaqahStatuses): Builder
     {
-        return $query->whereIn('tafaqah_status_id', $tafaqahStatuses);
+        return $query->whereIn('tafaqah_status', $tafaqahStatuses);
     }
 
     public function scopeRobeStatuses(Builder $query, array $robeStatuses): Builder
     {
-        return $query->whereIn('robe_status_id', $robeStatuses);
+        return $query->whereIn('robe_status', $robeStatuses);
     }
 
     public function scopeHeaddresses(Builder $query, array $headdresses): Builder
     {
-        return $query->whereIn('headdress_id', $headdresses);
+        return $query->whereIn('headdress', $headdresses);
     }
 
     public function scopeReadingQurans(Builder $query, array $readingQurans): Builder
     {
-        return $query->whereIn('reading_quran_id', $readingQurans);
+        return $query->whereIn('reading_quran', $readingQurans);
     }
 
     public function scopeFastings(Builder $query, array $fastings): Builder
     {
-        return $query->whereIn('fasting_id', $fastings);
+        return $query->whereIn('fasting', $fastings);
     }
 
     public function scopeAlfajrPrayers(Builder $query, array $alfajrPrayers): Builder
     {
-        return $query->whereIn('alfajr_prayer_id', $alfajrPrayers);
+        return $query->whereIn('alfajr_prayer', $alfajrPrayers);
     }
 
     public function scopePrayers(Builder $query, array $prayers): Builder
     {
-        return $query->whereIn('prayer_id', $prayers);
+        return $query->whereIn('prayer', $prayers);
     }
 
     public function scopeObligations(Builder $query, array $obligations): Builder
     {
-        return $query->whereIn('obligation_id', $obligations);
+        return $query->whereIn('obligation', $obligations);
     }
 
     public function scopeReligionMethods(Builder $query, array $religionMethods): Builder
     {
-        return $query->whereIn('religion_method_id', $religionMethods);
+        return $query->whereIn('religion_method', $religionMethods);
     }
 
     public function scopeReligions(Builder $query, array $religions): Builder
     {
-        return $query->whereIn('religion_id', $religions);
+        return $query->whereIn('religion', $religions);
     }
 
     public function scopeAcceptWifeStudyStatuses(Builder $query, array $acceptWifeStudyStatuses): Builder
     {
-        return $query->whereIn('accept_wife_study_status_id', $acceptWifeStudyStatuses);
+        return $query->whereIn('accept_wife_study_status', $acceptWifeStudyStatuses);
     }
 
     public function scopeAcceptWifeWorkStatuses(Builder $query, array $acceptWifeWorkStatuses): Builder
     {
-        return $query->whereIn('accept_wife_work_status_id', $acceptWifeWorkStatuses);
+        return $query->whereIn('accept_wife_work_status', $acceptWifeWorkStatuses);
     }
 
     public function scopeWorkStatuses(Builder $query, array $workStatuses): Builder
     {
-        return $query->whereIn('work_status_id', $workStatuses);
+        return $query->whereIn('work_status', $workStatuses);
     }
 
     public function scopeEducationStatuses(Builder $query, array $educationStatuses): Builder
     {
-        return $query->whereIn('education_status_id', $educationStatuses);
+        return $query->whereIn('education_status', $educationStatuses);
     }
 
     public function scopeMarriageStatuses(Builder $query, array $marriageStatuses): Builder
     {
-        return $query->whereIn('marriage_status_id', $marriageStatuses);
+        return $query->whereIn('marriage_status', $marriageStatuses);
     }
 
     public function scopeRelationshipStatuses(Builder $query, array $relationshipStatuses): Builder
     {
-        return $query->whereIn('relationship_status_id', $relationshipStatuses);
+        return $query->whereIn('relationship_status', $relationshipStatuses);
     }
 
     public function scopeRelocateStatuses(Builder $query, array $relocateStatuses): Builder
     {
-        return $query->whereIn('relocate_status_id', $relocateStatuses);
+        return $query->whereIn('relocate_status', $relocateStatuses);
     }
 
     public function scopeMaritalStatuses(Builder $query, array $maritalStatuses): Builder
     {
-        return $query->whereIn('marital_status_id', $maritalStatuses);
+        return $query->whereIn('marital_status', $maritalStatuses);
     }
 
-    public function scopeIncomes(Builder $query, int $id): Builder
+    public function scopeIncomeFromTo(Builder $query, int $id): Builder
     {
         switch ($id) {
             case 1:
@@ -599,7 +340,7 @@ class Profile extends Model
         }
     }
 
-    public function scopeNumberOfChildren(Builder $query, int $id): Builder
+    public function scopeNumberOfChildrenFromTo(Builder $query, int $id): Builder
     {
         switch ($id) {
             case 1:
@@ -628,7 +369,7 @@ class Profile extends Model
         }
     }
 
-    public function scopeWeights(Builder $query, int $id): Builder
+    public function scopeWeightFromTo(Builder $query, int $id): Builder
     {
         switch ($id) {
             case 1:
@@ -679,7 +420,7 @@ class Profile extends Model
         }
     }
 
-    public function scopeLengths(Builder $query, int $id): Builder
+    public function scopeHeightFromTo(Builder $query, int $id): Builder
     {
         switch ($id) {
             case 1:
