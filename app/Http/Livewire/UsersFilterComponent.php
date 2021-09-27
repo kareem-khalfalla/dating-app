@@ -12,9 +12,9 @@ class UsersFilterComponent extends Component
         'smokeStatuses'               => [],
         'residenceStatuses'           => [],
         'secondLanguages'             => [],
-        'secondLanguagesPerfections'  => [],
+        'secondLanguagePerfections'   => [],
         'thirdLanguages'              => [],
-        'thirdLanguagesPerfections'   => [],
+        'thirdLanguagePerfections'    => [],
         'nativeLanguages'             => [],
         'alcoholStatuses'             => [],
         'halalFoodStatuses'           => [],
@@ -79,20 +79,11 @@ class UsersFilterComponent extends Component
         session()->flash(
             'usersResults',
             Profile::smokeStatuses($this->state['smokeStatuses'])
-                ->secondLanguages(
-                    $this->state['secondLanguages'],
-                    $this->state['secondLanguagesPerfections']
-                )
-                ->thirdLanguages(
-                    $this->state['thirdLanguages'],
-                    $this->state['thirdLanguagesPerfections']
-                )
+                ->heightFromTo((int)$this->state['height_from_to_id'])
+                ->weightFromTo((int)$this->state['weight_from_to_id'])
+                ->numberOfChildrenFromTo((int)$this->state['children_count_from_to_id'])
                 ->residenceStatuses($this->state['residenceStatuses'])
-                ->lengths((int)$this->state['height_from_to_id'])
-                ->weights((int)$this->state['weight_from_to_id'])
-                ->numberOfChildren((int)$this->state['children_count_from_to_id'])
-                ->incomes((int)$this->state['income_from_to_id'])
-                ->nativeLanguages($this->state['nativeLanguages'])
+                ->incomeFromTo((int)$this->state['income_from_to_id'])
                 ->alcoholStatuses($this->state['alcoholStatuses'])
                 ->halalFoodStatuses($this->state['halalFoodStatuses'])
                 ->psychologicalPatterns($this->state['psychologicalPatterns'])
@@ -133,6 +124,15 @@ class UsersFilterComponent extends Component
                 ->maritalStatuses($this->state['maritalStatuses'])
                 ->foodTypes($this->state['foodTypes'])
                 ->allHobbies($this->state['hobbies'])
+                ->secondLanguages(
+                    $this->state['secondLanguages'],
+                    $this->state['secondLanguagePerfections']
+                )
+                ->thirdLanguages(
+                    $this->state['thirdLanguages'],
+                    $this->state['thirdLanguagePerfections']
+                )
+                ->nativeLanguages($this->state['nativeLanguages'])
                 ->countriesOfResidences($this->state['countriesOfResidences'])
                 ->countriesOfOrigin($this->state['countriesOfOrigin'])
                 ->nationalities($this->state['nationalities'])
