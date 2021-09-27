@@ -14,8 +14,7 @@ class CreateLanguagesTable extends Migration
     public function up()
     {
         Schema::create('languages', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('language_perfection_status_id')->nullable()->constrained('language_perfection_statuses')->onDelete('cascade');
+            $table->unsignedMediumInteger('id', true);
             $table->string('code', 2);
             $table->text('name');
             $table->string('nativeName');
