@@ -4,7 +4,7 @@
         <br>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Length') }}</label>
-            <input wire:model.defer="state.height" type="number"
+            <input wire:model.defer="state.height" type="number" min="40" max="222"
                 class="form-control form-control-lg @error('height') is-invalid @enderror" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="Length">
             @error('height')
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.the weight') }}</label>
-            <input wire:model.defer="state.weight" type="number"
+            <input wire:model.defer="state.weight" type="number" min="40" max="222"
                 class="form-control form-control-lg @error('weight') is-invalid @enderror" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="the weight">
             @error('weight')
@@ -26,41 +26,66 @@
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.body type') }}</label>
-            <x-selectbox wire:model.defer="state.body_status_id" :data="$bodyStatuses" :error="'body_status_id'" />
+            <x-selectbox wire:model.defer="state.body_status">
+                <option value="">---</option>
+                <x-selectboxes.body_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1"> {{ __('settings.skinStatus colour') }}</label>
-            <x-selectbox wire:model.defer="state.skin_status_id" :data="$skinStatuses" :error="'skin_status_id'" />
+            <x-selectbox wire:model.defer="state.skin_status">
+                <option value="">---</option>
+                <x-selectboxes.skin_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.hair colour') }}</label>
-            <x-selectbox wire:model.defer="state.hair_color_id" :data="$hairColors" :error="'hair_color_id'" />
+            <x-selectbox wire:model.defer="state.hair_color">
+                <option value="">---</option>
+                <x-selectboxes.hair_colors />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.hair length') }}</label>
-            <x-selectbox wire:model.defer="state.hair_length_id" :data="$hairLengths" :error="'hair_length_id'" />
+            <x-selectbox wire:model.defer="state.hair_length">
+                <option value="">---</option>
+                <x-selectboxes.hair_lengths />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.hair type') }}</label>
-            <x-selectbox wire:model.defer="state.hair_kind_id" :data="$hairKinds" :error="'hair_kind_id'" />
+            <x-selectbox wire:model.defer="state.hair_kind">
+                <option value="">---</option>
+                <x-selectboxes.hair_types />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Eye color') }}</label>
-            <x-selectbox wire:model.defer="state.eye_color_id" :data="$eyeColors" :error="'eye_color_id'" />
+            <x-selectbox wire:model.defer="state.eye_color">
+                <option value="">---</option>
+                <x-selectboxes.eye_colors />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Wearing the eye') }}</label>
-            <x-selectbox wire:model.defer="state.eye_glass_id" :data="$eyeGlasses" :error="'eye_glass_id'" />
+            <x-selectbox wire:model.defer="state.eye_glass">
+                <option value="">---</option>
+                <x-selectboxes.eye_glasses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.physical healthStatus') }}</label>
-            <x-selectbox wire:model.defer="state.health_status_id" :data="$healthStatuses"
-                :error="'health_status_id'" />
+            <x-selectbox wire:model.defer="state.health_status">
+                <option value="">---</option>
+                <x-selectboxes.health_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.psychological pattern') }}</label>
-            <x-selectbox wire:model.defer="state.psychological_pattern_id" :data="$psychologicalPatterns"
-                :error="'psychological_pattern_id'" />
+            <x-selectbox wire:model.defer="state.psychological_pattern">
+                <option value="">---</option>
+                <x-selectboxes.psychological_pattern_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group  mb-3 col-md-6">
             <label

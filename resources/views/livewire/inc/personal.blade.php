@@ -26,13 +26,17 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.The required relationship') }}</label>
-            <x-selectbox wire:model.defer="state.relationship_status_id" :data="$relationships"
-                :error="'relationship_status_id'" />
+            <x-selectbox wire:model.defer="state.relationship_status">
+                <option value="">---</option>
+                <x-selectboxes.relationship_statuses />
+            </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Desired method of marriageStatus') }}</label>
-            <x-selectbox wire:model.defer="state.marriage_status_id" :data="$marriageStatuses"
-                :error="'marriage_status_id'" />
+            <x-selectbox wire:model.defer="state.marriage_status">
+                <option value="">---</option>
+                <x-selectboxes.marriage_statuses />
+            </x-selectbox>
         </div>
         <div class="mt-4">
             <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">

@@ -1,7 +1,7 @@
 <div class="card shadow">
     <div class="card-header search_box">
         <div class="input-group">
-            <input wire:model.debounce.300ms="search" type="text" placeholder="{{ __('requests.Search') }}..." name=""
+            <input wire:model.debounce.300ms="search" type="text" placeholder="{{ __('requests.Search') }}..." 
                 class="form-control search">
             <div class="input-group-prepend">
                 <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>

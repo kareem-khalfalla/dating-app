@@ -9,7 +9,7 @@
 
         <div class="form-group col-md-6 m-auto">
             <label for="exampleFormControlFile1">{{ __('settings.choose image') }}</label>
-            <input type="file" wire:model.defer="image" class="form-control-file @error('image') is-invalid @enderror"
+            <input type="file" wire:model="image" class="form-control-file @error('image') is-invalid @enderror"
                 id="exampleFormControlFile1" accept="image/*">
             @error('image')
                 <div class="invalid-feedback">

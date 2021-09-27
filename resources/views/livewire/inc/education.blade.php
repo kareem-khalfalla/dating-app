@@ -4,8 +4,10 @@
         <br>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.EducationStatus') }}</label>
-            <x-selectbox wire:model.defer="state.education_status_id" :data="$educationStatuses"
-                :error="'education_status_id'" />
+            <x-selectbox wire:model.defer="state.education_status">
+                <option value="">---</option>
+                <x-selectboxes.education_and_work_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group">
             <label class="col-12">{{ __('settings.competence') }}</label>
@@ -20,7 +22,10 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.the work') }}</label>
-            <x-selectbox wire:model.defer="state.work_status_id" :data="$workStatuses" :error="'work_status_id'" />
+            <x-selectbox wire:model.defer="state.work_status">
+                <option value="">---</option>
+                <x-selectboxes.work_statuses />
+            </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">{{ __('settings.Monthly income') }}</label>
@@ -36,25 +41,33 @@
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you accept the wife\'s work?') }}</label>
-                <x-selectbox wire:model.defer="state.accept_wife_work_status_id" :data="$acceptWifeWorkStatuses"
-                    :error="'accept_wife_work_status_id'" />
+                <x-selectbox wire:model.defer="state.accept_wife_work_status">
+                    <option value="">---</option>
+                    <x-selectboxes.male.accept_wife_work_statuses />
+                </x-selectbox>
             </div>
             <div class="input-group input-group-lg mb-3 ">
                 <label
                     class="col-12">{{ __('settings.Do you accept studying the wife after marriageStatus?') }}</label>
-                <x-selectbox wire:model.defer="state.accept_wife_study_status_id" :data="$acceptWifeStudyStatuses"
-                    :error="'accept_wife_study_status_id'" />
+                <x-selectbox wire:model.defer="state.accept_wife_study_status">
+                    <option value="">---</option>
+                    <x-selectboxes.male.accept_wife_study_statuses />
+                </x-selectbox>
             </div>
         @else
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.You want the work?') }}</label>
-                <x-selectbox wire:model.defer="state.wife_work_status_id" :data="$wifeWorkStatuses"
-                    :error="'wife_work_status_id'" />
+                <x-selectbox wire:model.defer="state.wife_work_status">
+                    <option value="">---</option>
+                    <x-selectboxes.female.can_work_statuses />
+                </x-selectbox>
             </div>
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you want to study after marriageStatus?') }}</label>
-                <x-selectbox wire:model.defer="state.wife_study_status_id" :data="$wifeStudyStatuses"
-                    :error="'wife_study_status_id'" />
+                <x-selectbox wire:model.defer="state.wife_study_status">
+                    <option value="">---</option>
+                    <x-selectboxes.female.can_study_statuses />
+                </x-selectbox>
             </div>
         @endif
         <div class="mt-4">

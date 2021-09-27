@@ -4,11 +4,13 @@
         <br>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Marital Status') }}</label>
-            <x-selectbox wire:model.defer="state.marital_status_id" :data="$maritalStatuses"
-                :error="'marital_status_id'" />
+            <x-selectbox wire:model="state.marital_status">
+                <option value="">---</option>
+                <x-selectboxes.marital_statuses />
+            </x-selectbox>
         </div>
         <div>
-            @if (isset($state['marital_status_id']) && $state['marital_status_id'] == 4)
+            @if (isset($state['marital_status']) && $state['marital_status'] == 'divorced')
                 <div class="form-group">
                     <label
                         class="col-12">{{ __('settings.Determine the reason for the divorce, if any') }}</label>
@@ -27,8 +29,10 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Do you have children?') }}</label>
-            <x-selectbox wire:model.defer="state.children_status_id" :data="$childrenStatuses"
-                :error="'children_status_id'" />
+            <x-selectbox wire:model.defer="state.children_status">
+                <option value="">---</option>
+                <x-selectboxes.children_statuses />
+            </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.number of children') }}</label>
@@ -56,36 +60,50 @@
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you want polygamy?') }}</label>
-                <x-selectbox wire:model.defer="state.polygamy_status_id" :data="$polygamyStatuses"
-                    :error="'polygamy_status_id'" />
+                <x-selectbox wire:model.defer="state.polygamy_status">
+                    <option value="">---</option>
+                    <x-selectboxes.male.polygamy_statuses />
+                </x-selectbox>
             </div>
-        @endif
-        @if ($state['gender'] == 'female')
+        @else
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you accept polygamy?') }}</label>
-                <x-selectbox wire:model.defer="state.wife_polygamy_status_id" :data="$wifePolygamyStatuses"
-                    :error="'wife_polygamy_status_id'" />
+                <x-selectbox wire:model.defer="state.wife_polygamy_status">
+                    <option value="">---</option>
+                    <x-selectboxes.female.can_polygamy_statuses />
+                </x-selectbox>
             </div>
         @endif
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.desire to have children') }}</label>
-            <x-selectbox wire:model.defer="state.children_desire_status_id" :data="$childrenDesireStatuses"
-                :error="'children_desire_status_id'" />
+            <x-selectbox wire:model.defer="state.children_desire_status">
+                <option value="">---</option>
+                <x-selectboxes.children_desire_statuses />
+            </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Current type of housing') }}</label>
-            <x-selectbox wire:model.defer="state.shelter_type_id" :data="$shelterTypes" :error="'shelter_type_id'" />
+            <x-selectbox wire:model.defer="state.shelter_type">
+                <option value="">---</option>
+                <x-selectboxes.shelter_type_statuses />
+            </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.housing form') }}</label>
-            <x-selectbox wire:model.defer="state.shelter_shape_id" :data="$shelterShapes" :error="'shelter_shape_id'" />
+            <x-selectbox wire:model.defer="state.shelter_shape">
+                <option value="">---</option>
+                <x-selectboxes.shelter_way_statuses />
+            </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Housing method') }}</label>
-            <x-selectbox wire:model.defer="state.shelter_way_id" :data="$shelterWays" :error="'shelter_way_id'" />
+            <x-selectbox wire:model.defer="state.shelter_way">
+                <option value="">---</option>
+                <x-selectboxes.shelter_shape_statuses />
+            </x-selectbox>
         </div>
         <div class="mt-4">
-            <input name="" id="" type="submit" class="btn btn_form_settings btn-block p-2"
+            <input type="submit" class="btn btn_form_settings btn-block p-2"
                 value="{{ __('settings.save') }}">
         </div>
     </form>

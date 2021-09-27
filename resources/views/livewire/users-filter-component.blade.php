@@ -1,297 +1,382 @@
 <div class="container pb-1 mb-4 pt-4">
     <div class="shadow m-0 bg-white pb-4 mt-4">
         <div class="setting_content pt-2 mt-4">
-            <div id="" class="col-lg-11 m-auto pb-4">
+            <div class="col-lg-11 m-auto pb-4">
                 <h3 class="color_h text-primary">Complete search</h3>
                 <hr>
                 <form wire:submit.prevent="showResults" method="post">
                     <br>
                     <div class="row">
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.residenceStatuses" :data="$residenceStatuses"
-                                title="Type of accommodation" multiple :error="'residenceStatuses'"/>
+                            <x-selectbox wire:model.defer="state.residenceStatuses" class="selectpicker" multiple
+                                title="Type of accommodation">
+                                <x-selectboxes.residence_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3  col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.relocations" :data="$relocations"
-                                title="Moving to another place" multiple :error="'relocations'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.relocations"
+                                title="Moving to another place" multiple>
+                                <x-selectboxes.relocate_statuses />
+                            </x-selectbox>
                         </div>
-                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.relationships" :data="$relationships"
-                                title="Relationships" multiple :error="'relationships'"/>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.relationships"
+                                title="Relationships" multiple>
+                                <x-selectboxes.relationship_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3  col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.languages" :data="$languages" title="Native language"
-                                multiple :error="'languages'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.nativeLanguages"
+                                title="Native language" multiple>
+                                @foreach ($languages as $nativeLanguage)
+                                    <option value="{{ $nativeLanguage->id }}">{{ $nativeLanguage->name }}</option>
+                                @endforeach
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3  col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.languages" :data="$languages" title="Second language"
-                                multiple :error="'languages'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.secondLanguages"
+                                title="Second language" multiple>
+                                @foreach ($languages as $secondLanguage)
+                                    <option value="{{ $secondLanguage->id }}">{{ $secondLanguage->name }}</option>
+                                @endforeach
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-5">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.languagePerfections" :data="$languagePerfections"
-                                title="Level" multiple :error="'languagePerfections'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.secondLanguagePerfections"
+                                title="Level" multiple>
+                                <x-selectboxes.language_perfection />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-7">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.languages" :data="$languages" title="Second language"
-                                multiple :error="'languages'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.thirdLanguages"
+                                title="Third language" multiple>
+                                @foreach ($languages as $thirdLanguage)
+                                    <option value="{{ $thirdLanguage->id }}">{{ $thirdLanguage->name }}</option>
+                                @endforeach
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-5">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.languagePerfections" :data="$languagePerfections"
-                                title="Level" multiple :error="'languagePerfections'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.thirdlanguagePerfections"
+                                title="Level" multiple>
+                                <x-selectboxes.language_perfection />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.marriageStatuses" :data="$marriageStatuses"
-                                title="Desired method of marriage" multiple :error="'marriageStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.marriageStatuses"
+                                title="Desired method of marriage" multiple>
+                                <x-selectboxes.marriage_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.educationStatuses" :data="$educationStatuses"
-                                title="Education" multiple :error="'educationStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.educationStatuses"
+                                title="Education" multiple>
+                                <x-selectboxes.education_and_work_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.workStatuses" :data="$workStatuses" title="The work"
-                                multiple :error="'workStatuses'"/>
-                        </div>
-                        @if (Auth::user()->gender == 'male')
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeWorkStatuses"
-                                    :data="$acceptWifeWorkStatuses" title="Do you accept the wife's work?" multiple :error="'acceptWifeWorkStatusestiple'" />
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeStudyStatuses"
-                                    :data="$acceptWifeStudyStatuses"
-                                    title="Do you accept studying the wife after marriage?" multiple :error="'acceptWifeStudyStatuses'"/>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.headdresses" :data="$headdresses"
-                                    title="Headdress" multiple :error="'headdresses'"/>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.robeStatuses" :data="$robeStatuses" title="Jilbab"
-                                    multiple :error="'robeStatuses'"/>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.polygamyStatuses" :data="$polygamyStatuses"
-                                    title="Do you want multiplicity?" multiple :error="'polygamyStatuses'"/>
-                            </div>
-                        @else
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.wifeWorkStatuses" :data="$wifeWorkStatuses"
-                                    title="You want the work?" multiple :error="'wifeWorkStatuses'"/>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.wifeStudyStatuses" :data="$wifeStudyStatuses"
-                                    title="Do you want to study after marriage?" multiple :error="'wifeStudyStatuses'"/>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.beardStatuses" :data="$beardStatuses"
-                                    title="Beard" multiple :error="'beardStatuses'"/>
-                            </div>
-                            <div class="input-group input-group-lg mb-3 col-lg-6">
-                                <x-selectbox class="selectpicker" wire:model.defer="state.wifePolygamyStatuses"
-                                    :data="$wifePolygamyStatuses" title="Do you accept polygamy?" multiple :error="'wifePolygamyStatuses'"/>
-                            </div>
-                        @endif
-                        <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.religions" :data="$religions" title="Religious"
-                                multiple :error="'religions'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.workStatuses" title="The work"
+                                multiple>
+                                <x-selectboxes.work_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.religionMethods" :data="$religionMethods"
-                                title="Method" multiple :error="'religionMethods'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeWorkStatuses"
+                                title="Do you accept the wife's work?" multiple>
+                                <x-selectboxes.male.accept_wife_work_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.obligations" :data="$obligations" title="Commitment"
-                                multiple :error="'obligations'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeStudyStatuses"
+                                title="Do you accept studying the wife after marriage?" multiple>
+                                <x-selectboxes.male.accept_wife_study_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.prayers" :data="$prayers" title="Prayer" multiple :error="'prayers'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.headdresses" title="Headdress"
+                                multiple>
+                                <x-selectboxes.female.headdress_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.alfajrPrayers" :data="$alfajrPrayers" title="fasting"
-                                multiple :error="'alfajrPrayers'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.robeStatuses" title="Jilbab"
+                                multiple>
+                                <x-selectboxes.female.niqab_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.fastings" :data="$fastings" title="Fasting"
-                                multiple :error="'fastings'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.veilStatuses" title="Jilbab"
+                                multiple>
+                                <x-selectboxes.female.jilbab_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.readingQurans" :data="$readingQurans"
-                                title="Reading the Qoran" multiple :error="'readingQurans'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.polygamyStatuses"
+                                title="Do you want multiplicity?" multiple>
+                                <x-selectboxes.male.polygamy_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.tafaqahStatuses" :data="$tafaqahStatuses"
-                                title="Tafaqah in religion" multiple :error="'tafaqahStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.wifeWorkStatuses"
+                                title="You want the work?" multiple>
+                                <x-selectboxes.female.can_work_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.musicStatuses" :data="$musicStatuses"
-                                title="Listening to music" multiple :error="'musicStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.wifeStudyStatuses"
+                                title="Do you want to study after marriage?" multiple>
+                                <x-selectboxes.female.can_study_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.showStatuses" :data="$showStatuses"
-                                title="Movies and series" multiple :error="'showStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.beardStatuses" title="Beard"
+                                multiple>
+                                <x-selectboxes.male.beard_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.friendStatuses" :data="$friendStatuses"
-                                title="Friends of the opposite sex" multiple :error="'friendStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.wifePolygamyStatuses"
+                                title="Do you accept polygamy?" multiple>
+                                <x-selectboxes.female.can_polygamy_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.maritalStatuses" :data="$maritalStatuses"
-                                title="Marital Status" multiple :error="'maritalStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.religions" title="Religious"
+                                multiple>
+                                <x-selectboxes.religions />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.childrenStatuses" :data="$childrenStatuses"
-                                title="Do you have children?" multiple :error="'childrenStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.religionMethods" title="Method"
+                                multiple>
+                                <x-selectboxes.religion_method />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.obligations" title="Commitment"
+                                multiple>
+                                <x-selectboxes.obligations />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.prayers" title="Prayer"
+                                multiple>
+                                <x-selectboxes.prayers />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.alfajrPrayers" title="fasting"
+                                multiple>
+                                <x-selectboxes.alfajr_prayer_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.fastings" title="Fasting"
+                                multiple>
+                                <x-selectboxes.fastings />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.readingQurans"
+                                title="Reading the Qoran" multiple>
+                                <x-selectboxes.reading_quran_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.tafaqahStatuses"
+                                title="Tafaqah in religion" multiple>
+                                <x-selectboxes.tafaqah_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.musicStatuses"
+                                title="Listening to music" multiple>
+                                <x-selectboxes.music_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.showStatuses"
+                                title="Movies and series" multiple>
+                                <x-selectboxes.shows_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.friendStatuses"
+                                title="Friends of the opposite sex" multiple>
+                                <x-selectboxes.friend_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.maritalStatuses"
+                                title="Marital Status" multiple>
+                                <x-selectboxes.marital_statuses />
+                            </x-selectbox>
+                        </div>
+                        <div class="input-group input-group-lg mb-3 col-lg-6">
+                            <x-selectbox class="selectpicker" wire:model.defer="state.childrenStatuses"
+                                title="Do you have children?" multiple>
+                                <x-selectboxes.children_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.childrenDesireStatuses"
-                                :data="$childrenDesireStatuses" title="Desire to have children" multiple :error="'childrenDesireStatuses'"/>
+                                title="Desire to have children" multiple>
+                                <x-selectboxes.children_desire_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterTypes" :data="$shelterTypes"
-                                title="Current type of housing" multiple :error="'shelterTypes'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterTypes"
+                                title="Current type of housing" multiple>
+                                <x-selectboxes.shelter_type_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterShapes" :data="$shelterShapes"
-                                title="Housing method" multiple :error="'shelterShapes'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterShapes"
+                                title="Housing method" multiple>
+                                <x-selectboxes.shelter_shape_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterWays" :data="$shelterWays" title="Housing form"
-                                multiple :error="'shelterWays'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.shelterWays"
+                                title="Housing form" multiple>
+                                <x-selectboxes.shelter_way_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.bodyStatuses" :data="$bodyStatuses" title="Body type"
-                                multiple :error="'bodyStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.bodyStatuses" title="Body type"
+                                multiple>
+                                <x-selectboxes.body_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.skinStatuses" :data="$skinStatuses"
-                                title="Skin colour" multiple :error="'skinStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.skinStatuses"
+                                title="Skin colour" multiple>
+                                <x-selectboxes.skin_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.hairColors" :data="$hairColors" title="Hair colour"
-                                multiple :error="'hairColors'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hairColors" title="Hair colour"
+                                multiple>
+                                <x-selectboxes.hair_colors />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.hairLengths" :data="$hairLengths" title="Hair length"
-                                multiple :error="'hairLengths'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hairLengths" title="Hair length"
+                                multiple>
+                                <x-selectboxes.hair_lengths />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.hairKinds" :data="$hairKinds" title="Hair type"
-                                multiple :error="'hairKinds'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hairKinds" title="Hair type"
+                                multiple>
+                                <x-selectboxes.hair_types />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.eyeColors" :data="$eyeColors" title="Eye color"
-                                multiple :error="'eyeColors'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.eyeColors" title="Eye color"
+                                multiple>
+                                <x-selectboxes.eye_colors />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.eyeGlasses" :data="$eyeGlasses"
-                                title="Wearing the eye" multiple :error="'eyeGlasses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.eyeGlasses"
+                                title="Wearing the eye" multiple>
+                                <x-selectboxes.eye_glasses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.healthStatuses" :data="$healthStatuses"
-                                title="Physical health" multiple :error="'healthStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.healthStatuses"
+                                title="Physical health" multiple>
+                                <x-selectboxes.health_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.psychologicalPatterns" :data="$psychologicalPatterns"
-                                title="Psychological pattern" multiple :error="'psychologicalPatterns'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.psychologicalPatterns"
+                                title="Psychological pattern" multiple>
+                                <x-selectboxes.psychological_pattern_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.smokeStatuses" :data="$smokeStatuses" title="Smoking"
-                                multiple :error="'smokeStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.smokeStatuses" title="Smoking"
+                                multiple>
+                                <x-selectboxes.smoke_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.alcoholStatuses" :data="$alcoholStatuses"
-                                title="Alcohol" multiple :error="'alcoholStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.alcoholStatuses"
+                                title="Alcohol" multiple>
+                                <x-selectboxes.alcohol_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.halalFoodStatuses" :data="$halalFoodStatuses"
-                                title="Halal style" multiple :error="'halalFoodStatuses'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.halalFoodStatuses"
+                                title="Halal style" multiple>
+                                <x-selectboxes.halal_food_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.foodTypes" :data="$foodTypes" title="Food style"
-                                multiple :error="'foodTypes'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.foodTypes" title="Food style"
+                                multiple>
+                                <x-selectboxes.food_type_statuses />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.hobbies" :data="$hobbies" title="Interests"
-                                multiple :error="'hobbies'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.hobbies" title="Interests"
+                                multiple>
+                                <x-selectboxes.hobbies />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.countriesOfOrigin" :data="$countries"
-                                title="Countries of origin" multiple :error="'countriesOfOrigin'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.countriesOfOrigin"
+                                title="Countries of origin" multiple>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">
+                                        {{ $country->translations[app()->getLocale() == 'ar' ? 'fa' : app()->getLocale()] ?? $country->name }}
+                                    </option>
+                                @endforeach
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.countriesOfResidences" :data="$countries"
-                                title="Countries of residences" multiple :error="'countriesOfResidences'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.countriesOfResidences"
+                                title="Countries of residences" multiple>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">
+                                        {{ $country->translations[app()->getLocale() == 'ar' ? 'fa' : app()->getLocale()] ?? $country->name }}
+                                    </option>
+                                @endforeach
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
-                            <x-selectbox class="selectpicker" wire:model.defer="state.nationalities" :data="$nationalities"
-                                title="Nationalities" multiple :error="'nationalities'"/>
+                            <x-selectbox class="selectpicker" wire:model.defer="state.nationalities"
+                                title="Nationalities" multiple>
+                                @foreach ($nationalities as $nationality)
+                                    <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
+                                @endforeach
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
                             <label>Length</label>
-                            <select wire:model.defer="state.height_from_to_id" class="form-control form-control-lg @error('height_from_to_id')
-                                is-invalid    
-                            @enderror">
-                                <option value="1">from 120 to 140 cm</option>
-                                <option value="2">from 140 to 160 cm</option>
-                                <option value="3">from 160 to 180 cm</option>
-                                <option value="4">from 180 to 200 cm</option>
-                                <option value="5">more than that</option>
-                            </select>
-                            @error('height_from_to_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <x-selectbox wire:model.defer="state.height_from_to_id">
+                                <x-selectboxes.height_from_to />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
                             <label>the weight </label>
-                            <select wire:model.defer="state.weight_from_to_id" class="form-control form-control-lg">
-                                <option>the weight </option>
-                                <option value="1">less than that </option>
-                                <option value="2">from 50 to 60 kg</option>
-                                <option value="3">from 60 to 70 kg</option>
-                                <option value="4">from 70 to 80 kg</option>
-                                <option value="5">from 80 to 90 kg</option>
-                                <option value="6">from 90 to 100 kg</option>
-                                <option value="7">from 100 to 110 kg</option>
-                                <option value="8">from 110 to 120 kg</option>
-                                <option value="9">from 120 to 130 kg</option>
-                                <option value="10">from 130 to 140 kg</option>
-                                <option value="11">from 140 to 150 kg</option>
-                                <option value="12">from 150 to 160 kg</option>
-                                <option value="13">from 160 to 170 kg</option>
-                                <option value="14">from 170 to 180 kg</option>
-                                <option value="15">more than that</option>
-                            </select>
+                            <x-selectbox wire:model.defer="state.weight_from_to_id">
+                                <x-selectboxes.weight_from_to />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
                             <label>number of children</label>
-                            <select wire:model.defer="state.children_count_from_to_id"
-                                class="form-control form-control-lg">
-                                <option value="1">0</option>
-                                <option value="2">from 1 to 3 </option>
-                                <option value="3">from 3 to 6 </option>
-                                <option value="4">from 6 to 9 </option>
-                                <option value="5">from 9 to 12 </option>
-                                <option value="6">more than that</option>
-                            </select>
+                            <x-selectbox wire:model.defer="state.children_count_from_to_id">
+                                <x-selectboxes.children_count_from_to />
+                            </x-selectbox>
                         </div>
                         <div class="form-group mb-3 col-md-6">
                             <label>Monthly income </label>
-                            <select wire:model.defer="state.income_from_to_id" class="form-control form-control-lg">
-                                <option>Monthly income </option>
-                                <option value="1">less than that </option>
-                                <option value="2">from 1000 $ to 2000$</option>
-                                <option value="3">from 2000 $ to 3000$</option>
-                                <option value="4">from 3000 $ to 4000$</option>
-                                <option value="5">from 4000 $ to 5000$</option>
-                                <option value="6">from 5000 $ to 6000$</option>
-                                <option value="7">from 6000 $ to 7000$</option>
-                                <option value="8">from 7000 $ to 8000$</option>
-                                <option value="9">from 8000 $ to 9000$</option>
-                                <option value="10">from 9000 $ to 10000$</option>
-                                <option value="11">more than that</option>
-                            </select>
+                            <x-selectbox wire:model.defer="state.income_from_to_id"
+                                class="form-control form-control-lg">
+                                <x-selectboxes.income_from_to />
+                            </x-selectbox>
                         </div>
                         <div class="m-4 col-12">
                             <button class="btn btn-dark">submit</button>

@@ -4,25 +4,37 @@
         <br>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.smoking') }}</label>
-            <x-selectbox wire:model.defer="state.smoke_status_id" :data="$smokeStatuses" :error="'smoke_status_id'" />
+            <x-selectbox wire:model.defer="state.smoke_status">
+                <option value="">---</option>
+                <x-selectboxes.smoke_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Alcohol') }}</label>
-            <x-selectbox wire:model.defer="state.alcohol_status_id" :data="$alcoholStatuses"
-                :error="'alcohol_status_id'" />
+            <x-selectbox wire:model.defer="state.alcohol_status">
+                <option value="">---</option>
+                <x-selectboxes.alcohol_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.halal food') }}</label>
-            <x-selectbox wire:model.defer="state.halal_food_status_id" :data="$halalFoodStatuses"
-                :error="'halal_food_status_id'" />
+            <x-selectbox wire:model.defer="state.halal_food_status">
+                <option value="">---</option>
+                <x-selectboxes.halal_food_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.food style') }}</label>
-            <x-selectbox wire:model.defer="state.food_type_id" :data="$foodTypes" :error="'food_type_id'" />
+            <x-selectbox wire:model.defer="state.food_type">
+                <option value="">---</option>
+                <x-selectboxes.food_type_statuses />
+            </x-selectbox>
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Interests') }}</label>
-            <x-selectbox wire:model.defer="state.hobby_id" :data="$hobbies" :error="'hobby_id'" />
+            <x-selectbox wire:model.defer="state.hobbies" multiple>
+                <x-selectboxes.hobbies />
+            </x-selectbox>
         </div>
         <div class="form-group  mb-3 col-md-6">
             <label for="exampleFormControlTextarea1">{{ __('settings.Favorite books') }}</label>
@@ -47,9 +59,9 @@
         <div class="form-group  mb-3 col-md-6">
             <label for="exampleFormControlTextarea1">{{ __('settings.Other interests') }}</label>
             <textarea wire:model.defer="state.interests" class="form-control @error('interests') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3"></textarea>
-            @error('interests')
-                <div class="invalid-feedback">
+                id="exampleFormControlTextarea1" rows="3">
+            </textarea>
+            @error('interests') <div class="invalid-feedback">
                     <small id="passError" class="text-danger col-12">{{ $message }}</small>
                 </div>
             @enderror
