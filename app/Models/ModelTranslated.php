@@ -9,6 +9,6 @@ abstract class ModelTranslated extends Model
     use HasTranslations;
 
     public array $translatable = [
-        'name'
+        'name',
     ];
 }
