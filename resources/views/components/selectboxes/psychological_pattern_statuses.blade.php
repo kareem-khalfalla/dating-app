@@ -1,0 +1,11 @@
+<option value="Normal">{{ __('settings.Normal') }}</option>
+<option value="Neural">{{ __('settings.Neural') }}</option>
+<option value="Romantic">{{ __('settings.Romantic') }}</option>
+<option value="Very sensitive">{{ __('settings.Very sensitive') }}</option>
+<option value="Irritable">{{ __('settings.Irritable') }}</option>
+<option value="quick to get angry">{{ __('settings.quick to get angry') }}</option>
+<option value="Calm">{{ __('settings.Calm') }}</option>
+<option value="Suspicious">{{ __('settings.Suspicious') }}</option>
+<option value="Curious">{{ __('settings.Curious') }}</option>
+<option value="Sly">{{ __('settings.Sly') }}</option>
+<option value="Cheerful">{{ __('settings.Cheerful') }}</option>

@@ -1,0 +1,11 @@
+<option value="1">less than that </option>
+<option value="2">from 1000 $ to 2000$</option>
+<option value="3">from 2000 $ to 3000$</option>
+<option value="4">from 3000 $ to 4000$</option>
+<option value="5">from 4000 $ to 5000$</option>
+<option value="6">from 5000 $ to 6000$</option>
+<option value="7">from 6000 $ to 7000$</option>
+<option value="8">from 7000 $ to 8000$</option>
+<option value="9">from 8000 $ to 9000$</option>
+<option value="10">from 9000 $ to 10000$</option>
+<option value="11">more than that</option>

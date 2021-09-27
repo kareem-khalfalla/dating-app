@@ -1,0 +1,17 @@
+<option value="Sport">{{ __('settings.Sport') }}</option>
+<option value="Reading">{{ __('settings.Reading') }}</option>
+<option value="Writing">{{ __('settings.Writing') }}</option>
+<option value="Travel">{{ __('settings.Travel') }}</option>
+<option value="Games">{{ __('settings.Games') }}</option>
+<option value="Computer">{{ __('settings.Computer') }}</option>
+<option value="Spoking">{{ __('settings.Spoking') }}</option>
+<option value="Go to cafe">{{ __('settings.Go to cafe') }}</option>
+<option value="Rough games">{{ __('settings.Rough games') }}</option>
+<option value="Chess">{{ __('settings.Chess') }}</option>
+<option value="Disko">{{ __('settings.Disko') }}</option>
+<option value="Stay at natural">{{ __('settings.Stay at natural') }}</option>
+<option value="Action games">{{ __('settings.Action games') }}</option>
+<option value="Watching movies">{{ __('settings.Watching movies') }}</option>
+<option value="Watching cartoon movies">{{ __('settings.Watching cartoon movies') }}</option>
+<option value="going out with friends">{{ __('settings.going out with friends') }}</option>
+<option value="Walking">{{ __('settings.Walking') }}</option>
