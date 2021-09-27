@@ -91,7 +91,6 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">{{ __('profile.Additions') }} [
                         {{ count($friends) }} ]</h5>
@@ -100,9 +99,7 @@
                     </button>
                 </div>
                 <div class="modal-body" style="height: 80vh; overflow-y: scroll;">
-
                     @forelse ($friends as $friend)
-
                         <div class="row box_frind col-12 p-1">
                             <a href="{{ route('profile', $friend) }}">
                                 <img class="img_user" src="{{ asset('storage/' . $friend->avatar) }}"
@@ -118,7 +115,6 @@
                                 <a wire:click.prevent="deleteUser({{ $friend->id }})"><button
                                         class="btn btn-outline-danger">{{ __('profile.Delete') }}</button></a>&nbsp;
                             @endif
-
                         </div>
                     @empty
                         <p>{{ __('profile.Empty friends') }}!</p>

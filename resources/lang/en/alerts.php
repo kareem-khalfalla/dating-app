@@ -16,7 +16,7 @@ return [
     'User blocked successfully'                    => 'User blocked successfully',
     'User unblocked successfully'                  => 'User unblocked successfully',
     'User deleted successfully'                    => 'User deleted successfully',
-    'User Add request sent successfully'           => 'User Add request sent successfully',
+    'User request sent successfully'               => 'User request sent successfully',
     'Your message was sent'                        => 'Your message was sent',
     'Sadlly, you don\'t have friends to chat with' => 'Sadlly, you don\'t have friends to chat with',
 ];  

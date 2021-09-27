@@ -34,6 +34,16 @@ class SiteController extends Controller
         return view('pages.chat');
     }
 
+    public function friends(): View
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        return view('pages.friends', [
+            'friends' => $authUser->getFriends()->paginate(6)
+        ]);
+    }
+
     public function notFound(): View
     {
         return view('pages.not_found');

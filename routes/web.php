@@ -19,9 +19,10 @@ Route::group(
         Route::get('privacy', [SiteController::class, 'privacy'])->name('privacy');
         Route::get('not-found', [SiteController::class, 'notFound'])->name('notFound');
         Route::post('contact-us', [SiteController::class, 'contactStore'])->name('contactStore');
-
+        
         Route::group(['middleware' => 'auth'], function () {
             Route::get('chat', [SiteController::class, 'chat'])->name('chat')->middleware('verifyFriendsCount');
+            Route::get('friends', [SiteController::class, 'friends'])->name('friends');
             Route::get('results', [UserController::class, 'results'])->name('results');
             Route::get('requests', [UserController::class, 'requests'])->name('requests');
             Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
