@@ -22,9 +22,9 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.the work') }}</label>
-            <x-selectbox wire:model.defer="state.work_status">
+            <x-selectbox wire:model.defer="state.work">
                 <option value="">---</option>
-                <x-selectboxes.work_statuses />
+                <x-selectboxes.work />
             </x-selectbox>
         </div>
         <div class="input-group input-group-lg mb-3">
@@ -41,30 +41,30 @@
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you accept the wife\'s work?') }}</label>
-                <x-selectbox wire:model.defer="state.accept_wife_work_status">
+                <x-selectbox wire:model.defer="state.male_work_status">
                     <option value="">---</option>
-                    <x-selectboxes.male.accept_wife_work_statuses />
+                    <x-selectboxes.male.work_statuses />
                 </x-selectbox>
             </div>
             <div class="input-group input-group-lg mb-3 ">
                 <label
                     class="col-12">{{ __('settings.Do you accept studying the wife after marriageStatus?') }}</label>
-                <x-selectbox wire:model.defer="state.accept_wife_study_status">
+                <x-selectbox wire:model.defer="state.male_study_status">
                     <option value="">---</option>
-                    <x-selectboxes.male.accept_wife_study_statuses />
+                    <x-selectboxes.male.male_study_statuses />
                 </x-selectbox>
             </div>
         @else
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.You want the work?') }}</label>
-                <x-selectbox wire:model.defer="state.wife_work_status">
+                <x-selectbox wire:model.defer="state.female_work_status">
                     <option value="">---</option>
                     <x-selectboxes.female.can_work_statuses />
                 </x-selectbox>
             </div>
             <div class="input-group input-group-lg mb-3 ">
                 <label class="col-12">{{ __('settings.Do you want to study after marriageStatus?') }}</label>
-                <x-selectbox wire:model.defer="state.wife_study_status">
+                <x-selectbox wire:model.defer="state.female_study_status">
                     <option value="">---</option>
                     <x-selectboxes.female.can_study_statuses />
                 </x-selectbox>

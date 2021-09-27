@@ -144,7 +144,7 @@ return [
     'Secondary' => 'Secondary',
     'Junior'    => 'Junior',
     'Other'     => 'Other',
-    // work status
+    // work
     'Working'    => 'Working',
     'Student'    => 'Student',
     'Job seeker' => 'Job seeker',
@@ -155,21 +155,19 @@ return [
     'I do not accept'                      => 'I do not accept',
     'I do not like it but leave it to her' => 'I do not like it but leave it to her',
     'it does not matter'                   => 'it does not matter',
-    // accept wife study
+    // wife study
     'yes'                                  => 'yes',
-    'should work'                          => 'should work',
-    'I do not accept'                      => 'I do not accept',
+    'No'                                   => 'No',
     'I do not like it but leave it to her' => 'I do not like it but leave it to her',
-    'it does not matter'                   => 'it does not matter',
     // wife work
+    'yes'                                                => 'yes',
     'I have to work'                                     => 'I have to work',
     'I do not accept to work'                            => 'I do not accept to work',
-    'I would love to work if I am allowed'                  => 'I would love to work if I am allowed',
+    'I would love to work if I am allowed'               => 'I would love to work if I am allowed',
     'I do not like to work unless circumstances require' => 'I do not like to work unless circumstances require',
     // wife study
     'Yes'                               => 'Yes',
     'No'                                => 'No',
-    'No, but I leave the choice to her' => 'No, but I leave the choice to her',
     'Yes, if I may'                     => 'Yes, if I may',
     // social
     // marital
@@ -178,15 +176,15 @@ return [
     'Widower'  => 'Widower',
     'divorced' => 'divorced',
     // children status
-    'Yes, but they are not with me'              => 'Yes, but they are not with me',
-    'Yes, but not now'                           => 'Yes, but not now',
-    'According to the wishes of the other party' => 'According to the wishes of the other party',
+    'Yes, but they are not with me'                 => 'Yes, but they are not with me',
+    'Yes, but not now'                              => 'Yes, but not now',
+    'According to the wishes of the other partener' => 'According to the wishes of the other partener',
     // polygamy
     'Yes'                                                                          => 'Yes',
     'No'                                                                           => 'No',
-    'Yes, but in agreement with the other party'                                   => 'Yes, but in agreement with the other party',
-    'It\'s not in my mind, but if I decide to, I will'                             => 'It\'s not in my mind, but if I decide to, I will',
-    'It\'s not in my mind, but if I decide to, I don\'t do it without her consent' => 'It\'s not in my mind, but if I decide to, I don\'t do it without her consent',
+    'Yes, but in agreement with the other partener'                                   => 'Yes, but in agreement with the other partener',
+    'Not in my mind, but if I decide to, I will'                             => 'Not in my mind, but if I decide to, I will',
+    'Not in my mind, but if I decide to, I do not do it without her consent' => 'Not in my mind, but if I decide to, I do not do it without her consent',
     // accept polygamy
     'Accept'                                                                                  => 'Accept',
     'I accept if he was previously married and I do not accept that he gets married after me' => 'I accept if he was previously married and I do not accept that he gets married after me',
@@ -196,7 +194,7 @@ return [
     'I would like it'                                                                       => 'I would like it',
     'I do not want it'                                                                      => 'I do not want it',
     'Yes but not now Yes but not now'                                                       => 'Yes but not now Yes but not now',
-    'According to the desire of the other party According to the desire of the other party' => 'According to the desire of the other party According to the desire of the other party',
+    'According to the desire of the other partener According to the desire of the other partener' => 'According to the desire of the other partener According to the desire of the other partener',
     // shelter type
     'mine' => 'mine',
     'rent' => 'rent',
@@ -246,7 +244,7 @@ return [
     'Protestant'            => 'Protestant',
     'Catholic'              => 'Catholic',
     'Autodox'               => 'Autodox',
-    'I don\'t know'         => 'I don\'t know',
+    'I do not know'         => 'I do not know',
     'other'                 => 'other',
     // obligation
     'committed'           => 'committed',
@@ -304,7 +302,7 @@ return [
     'Listen'                                      => 'Listen',
     'Listen a little'                             => 'Listen a little',
     'I hear, but I want to leave it'              => 'I hear, but I want to leave it',
-    'I don\'t hear songs'                         => 'I don\'t hear songs',
+    'I do not hear songs'                         => 'I do not hear songs',
     'I do not hear and I do not want her at home' => 'I do not hear and I do not want her at home',
     // friend status
     'I have no problem with that I have no problem with that'                         => 'I have no problem with that I have no problem with that',

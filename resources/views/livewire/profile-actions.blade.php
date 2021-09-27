@@ -1,8 +1,12 @@
 <div>
     @if (Auth::user()->id == $user->id)
         <div class="row">
-            <button class="btn btn-outline-primary m-1" data-toggle="modal" data-target="#modal_add"> <i
-                    class="fa fa-users mr-2"></i>{{ __('profile.my additions') }}</button>
+            <a href="{{ route('friends') }}">
+                <button class="btn btn-outline-primary m-1">
+                    <i class="fa fa-users mr-2"></i>
+                    {{ __('profile.my additions') }}
+                </button>
+            </a>
             <button class="btn btn-outline-secondary m-1" data-toggle="modal" data-target="#modal_sent"> <i
                     class="fa fa-users mr-2"></i>{{ __('profile.sent additions') }}</button>
         </div>
@@ -157,7 +161,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 @push('scripts')

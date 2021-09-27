@@ -11,5 +11,5 @@
 <option value="Protestant">{{ __('settings.Protestant') }}</option>
 <option value="Catholic">{{ __('settings.Catholic') }}</option>
 <option value="Autodox">{{ __('settings.Autodox') }}</option>
-<option value="I don\'t know">{{ __('settings.I don\'t know') }}</option>
+<option value="I do not know">{{ __('settings.I do not know') }}</option>
 <option value="other">{{ __('settings.other') }}</option>

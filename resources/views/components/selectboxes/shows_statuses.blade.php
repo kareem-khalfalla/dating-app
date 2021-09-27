@@ -1,5 +1,5 @@
-<option value="Watch it">{{ __('state.Watch it') }}</option>
-<option value="A little">{{ __('state.A little') }}</option>
-<option value="rarely">{{ __('state.rarely') }}</option>
-<option value="No">{{ __('state.No') }}</option>
-<option value="No, and I do not want her at home">{{ __('state.No, and I do not want her at home') }}
+<option value="Watch it">{{ __('settings.Watch it') }}</option>
+<option value="A little">{{ __('settings.A little') }}</option>
+<option value="rarely">{{ __('settings.rarely') }}</option>
+<option value="No">{{ __('settings.No') }}</option>
+<option value="No, and I do not want her at home">{{ __('settings.No, and I do not want her at home') }}

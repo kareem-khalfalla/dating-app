@@ -188,7 +188,7 @@ class Profile extends Model
 
     public function scopePolygamyStatuses(Builder $query, array $polygamyStatuses): Builder
     {
-        return $query->whereIn('polygamy_status', $polygamyStatuses);
+        return $query->whereIn('male_polygamy_status', $polygamyStatuses);
     }
 
     public function scopeChildrenStatuses(Builder $query, array $childrenStatuses): Builder
@@ -263,17 +263,17 @@ class Profile extends Model
 
     public function scopeAcceptWifeStudyStatuses(Builder $query, array $acceptWifeStudyStatuses): Builder
     {
-        return $query->whereIn('accept_wife_study_status', $acceptWifeStudyStatuses);
+        return $query->whereIn('male_study_status', $acceptWifeStudyStatuses);
     }
 
     public function scopeAcceptWifeWorkStatuses(Builder $query, array $acceptWifeWorkStatuses): Builder
     {
-        return $query->whereIn('accept_wife_work_status', $acceptWifeWorkStatuses);
+        return $query->whereIn('male_work_status', $acceptWifeWorkStatuses);
     }
 
     public function scopeWorkStatuses(Builder $query, array $workStatuses): Builder
     {
-        return $query->whereIn('work_status', $workStatuses);
+        return $query->whereIn('work', $workStatuses);
     }
 
     public function scopeEducationStatuses(Builder $query, array $educationStatuses): Builder

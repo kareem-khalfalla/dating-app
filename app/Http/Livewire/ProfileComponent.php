@@ -68,20 +68,20 @@ class ProfileComponent extends Component
         // 
         $this->state['education_status']         = $user->profile->education_status;
         $this->state['competence']               = $user->profile->competence;
-        $this->state['work_status']              = $user->profile->work_status;
+        $this->state['work']                     = $user->profile->work;
         $this->state['income']                   = $user->profile->income;
-        $this->state['accept_wife_work_status']  = $user->profile->accept_wife_work_status;
-        $this->state['accept_wife_study_status'] = $user->profile->accept_wife_study_status;
-        $this->state['wife_work_status']         = $user->profile->wife_work_status;
-        $this->state['wife_study_status']        = $user->profile->wife_study_status;
+        $this->state['male_work_status']         = $user->profile->male_work_status;
+        $this->state['male_study_status']        = $user->profile->male_study_status;
+        $this->state['female_work_status']       = $user->profile->female_work_status;
+        $this->state['female_study_status']      = $user->profile->female_study_status;
         $this->state['marital_status']           = $user->profile->marital_status;
         $this->state['divorced_reason']          = $user->profile->divorced_reason;
         $this->state['children_status']          = $user->profile->children_status;
         $this->state['children_desire_status']   = $user->profile->children_desire_status;
         $this->state['children_count']           = $user->profile->children_count;
         $this->state['children_information']     = $user->profile->children_information;
-        $this->state['polygamy_status']          = $user->profile->polygamy_status;
-        $this->state['wife_polygamy_status']     = $user->profile->wife_polygamy_status;
+        $this->state['male_polygamy_status']     = $user->profile->male_polygamy_status;
+        $this->state['female_polygamy_status']   = $user->profile->female_polygamy_status;
         $this->state['shelter_type']             = $user->profile->shelter_type;
         $this->state['shelter_shape']            = $user->profile->shelter_shape;
         $this->state['shelter_way']              = $user->profile->shelter_way;
@@ -247,12 +247,12 @@ class ProfileComponent extends Component
         $updateUserProfileEducationInformation->update(auth()->user(), [
             'education_status' => $this->state['education_status'],
             'competence' => $this->state['competence'],
-            'work_status' => $this->state['work_status'],
+            'work' => $this->state['work'],
             'income' => $this->state['income'],
-            'accept_wife_work_status' => $this->state['accept_wife_work_status'],
-            'accept_wife_study_status' => $this->state['accept_wife_study_status'],
-            'wife_work_status' => $this->state['wife_work_status'],
-            'wife_study_status' => $this->state['wife_study_status'],
+            'male_work_status' => $this->state['male_work_status'],
+            'male_study_status' => $this->state['male_study_status'],
+            'female_work_status' => $this->state['female_work_status'],
+            'female_study_status' => $this->state['female_study_status'],
         ]);
 
         $this->success('Education and Work');
@@ -267,8 +267,8 @@ class ProfileComponent extends Component
             'children_count'         => $this->state['children_count'],
             'children_desire_status' => $this->state['children_desire_status'],
             'children_information'   => $this->state['children_information'],
-            'polygamy_status'        => $this->state['polygamy_status'],
-            'wife_polygamy_status'   => $this->state['wife_polygamy_status'],
+            'male_polygamy_status'        => $this->state['male_polygamy_status'],
+            'female_polygamy_status'   => $this->state['female_polygamy_status'],
             'shelter_type'           => $this->state['shelter_type'],
             'shelter_shape'          => $this->state['shelter_shape'],
             'shelter_way'            => $this->state['shelter_way'],

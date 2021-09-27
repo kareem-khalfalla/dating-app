@@ -76,19 +76,19 @@
                         <div class="input-group input-group-lg mb-3 col-lg-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.workStatuses" title="The work"
                                 multiple>
-                                <x-selectboxes.work_statuses />
+                                <x-selectboxes.work />
                             </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeWorkStatuses"
                                 title="Do you accept the wife's work?" multiple>
-                                <x-selectboxes.male.accept_wife_work_statuses />
+                                <x-selectboxes.male.work_statuses />
                             </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.acceptWifeStudyStatuses"
                                 title="Do you accept studying the wife after marriage?" multiple>
-                                <x-selectboxes.male.accept_wife_study_statuses />
+                                <x-selectboxes.male.male_study_statuses />
                             </x-selectbox>
                         </div>
                         <div class="input-group input-group-lg mb-3 col-lg-6">

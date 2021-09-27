@@ -106,29 +106,29 @@
                         <strong>{{ __('profile.competence') }}:&nbsp;</strong><span>{{ $user->profile->competence ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding row">
-                        <strong>{{ __('profile.the work') }}:&nbsp;</strong><span>{{ $user->profile->work_status ?? 'N/A' }}</span><br>
+                        <strong>{{ __('profile.the work') }}:&nbsp;</strong><span>{{ $user->profile->work ?? 'N/A' }}</span><br>
                     </p>
                     <p class="lead hover_padding row">
                         <strong>{{ __('profile.Monthly income') }}:&nbsp;</strong><span>{{ $user->profile->income ?? 'N/A' }}</span><br>
                     </p>
                     @if ($user->gender == 'male')
                         <p class="lead hover_padding row">
-                            <strong>{{ __('profile.Do you accept the wife\'s work?') }}:&nbsp;</strong><span>{{ $user->profile->accept_wife_work_status ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.Do you accept the wife\'s work?') }}:&nbsp;</strong><span>{{ $user->profile->male_work_status ?? 'N/A' }}</span><br>
                         </p>
                         <p class="lead hover_padding row">
-                            <strong>{{ __('profile.Do you accept studying the wife after marriageStatus?') }}:&nbsp;</strong><span>{{ $user->profile->accept_wife_study_status ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.Do you accept studying the wife after marriageStatus?') }}:&nbsp;</strong><span>{{ $user->profile->male_study_status ?? 'N/A' }}</span><br>
                         </p>
                         <p class="lead hover_padding row">
-                            <strong>{{ __('profile.Do you want multiplicity?') }}:&nbsp;</strong><span>{{ $user->profile->polygamy_status ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.Do you want multiplicity?') }}:&nbsp;</strong><span>{{ $user->profile->male_polygamy_status ?? 'N/A' }}</span><br>
                         </p>
                     @endif
                     @if ($user->gender == 'female')
                         <p class="lead hover_padding row">
-                            <strong>{{ __('profile.You want the work?') }}:&nbsp;</strong><span>{{ $user->profile->wife_work_status ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.You want the work?') }}:&nbsp;</strong><span>{{ $user->profile->female_work_status ?? 'N/A' }}</span><br>
                         </p>
 
                         <p class="lead hover_padding row">
-                            <strong>{{ __('profile.Do you want to study after marriageStatus?') }}:&nbsp;</strong><span>{{ $user->profile->wife_work_status ?? 'N/A' }}</span><br>
+                            <strong>{{ __('profile.Do you want to study after marriageStatus?') }}:&nbsp;</strong><span>{{ $user->profile->female_work_status ?? 'N/A' }}</span><br>
                         </p>
                     @endif
                     <p class="lead hover_padding row">

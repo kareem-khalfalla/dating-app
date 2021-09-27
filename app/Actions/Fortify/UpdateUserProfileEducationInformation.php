@@ -18,7 +18,7 @@ class UpdateUserProfileEducationInformation implements UpdatesUserProfileInforma
     public function update($user, array $input)
     {
         Validator::make($input, [
-            'work_status' => ['required', 'string', Rule::in([
+            'work' => ['required', 'string', Rule::in([
                 'Working',
                 'Student',
                 'Job seeker',
@@ -29,7 +29,7 @@ class UpdateUserProfileEducationInformation implements UpdatesUserProfileInforma
                 'Doctorate', 'Master', 'Bachelor', 'Institut', 'Secondary', 'Junior', 'Other',
             ])],
             'income' => ['required', 'numeric'],
-            'accept_wife_work_status' => [Rule::requiredIf(function () use ($user) {
+            'male_work_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
                 'yes',
@@ -38,30 +38,28 @@ class UpdateUserProfileEducationInformation implements UpdatesUserProfileInforma
                 'I do not like it but leave it to her',
                 'it does not matter',
             ])],
-            'accept_wife_study_status' => [Rule::requiredIf(function () use ($user) {
+            'male_study_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
                 'yes',
-                'should work',
-                'I do not accept',
+                'No',
                 'I do not like it but leave it to her',
-                'it does not matter',
             ])],
-            'wife_work_status' => [Rule::requiredIf(function () use ($user) {
+            'female_work_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
+                'yes',
                 'I have to work',
                 'I do not accept to work',
                 'If allowed',
                 'I do not like to work unless circumstances require',
             ])],
 
-            'wife_study_status' => [Rule::requiredIf(function () use ($user) {
+            'female_study_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'Yes',
                 'No',
-                'No, but I leave the choice to her',
                 'Yes, if I may',
             ])],
 

@@ -29,7 +29,7 @@ class UpdateUserProfileReligionInformation implements UpdatesUserProfileInformat
                 'feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
                 'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'my income',
                 'brothers', 'Ethiopian', 'Protestant', 'Catholic', 'Autodox',
-                'I don\'t know', 'other',
+                'I do not know', 'other',
             ])],
             'obligation' => ['required', 'string', Rule::in([
                 'committed', 'Uncommitted', 'sometimes obligated', 'Not interested',

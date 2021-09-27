@@ -24,29 +24,29 @@ class UpdateUserProfileSocialInformation implements UpdatesUserProfileInformatio
             'children_status' => ['required', 'string', Rule::in([
                 'Yes, but they are not with me',
                 'Yes, but not now',
-                'According to the wishes of the other party',
+                'According to the wishes of the other partener',
             ])],
             'children_count' => ['required', 'integer'],
             'children_desire_status' => ['required', 'string', Rule::in([
                 'I would like it',
                 'I do not want it',
                 'Yes but not now Yes but not now',
-                'According to the desire of the other party According to the desire of the other party',
+                'According to the desire of the other partener According to the desire of the other partener',
             ])],
             'children_information' => ['required', 'string', 'max:1000'],
             'divorced_reason' => ['nullable', RUle::requiredIf(function () use ($input) {
                 return $input['marital_status'] == 'divorced';
             }), 'max:1000'],
-            'polygamy_status' => [Rule::requiredIf(function () use ($user) {
+            'male_polygamy_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
                 'Yes',
                 'No',
-                'Yes, but in agreement with the other party',
-                'It\'s not in my mind, but if I decide to, I will',
-                'It\'s not in my mind, but if I decide to, I don\'t do it without her consent',
+                'Yes, but in agreement with the other partener',
+                'Not in my mind, but if I decide to, I will',
+                'Not in my mind, but if I decide to, I do not do it without her consent',
             ])],
-            'wife_polygamy_status' => [Rule::requiredIf(function () use ($user) {
+            'female_polygamy_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'Accept',
