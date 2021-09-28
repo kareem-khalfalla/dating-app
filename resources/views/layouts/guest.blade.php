@@ -1,3 +1,4 @@
-@include('partials.head')
+@include('layouts.partials.head')
+@include('layouts.partials.navbar')
     {{ $slot }}
-@include('partials.footer')
+@include('layouts.partials.footer')
