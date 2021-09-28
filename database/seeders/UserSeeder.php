@@ -2,58 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\AcceptWifeStudyStatus;
-use App\Models\AcceptWifeWorkStatus;
-use App\Models\AlcoholStatus;
-use App\Models\AlfajrPrayer;
-use App\Models\BeardStatus;
-use App\Models\BodyStatus;
-use App\Models\ChildrenDesireStatus;
-use App\Models\ChildrenStatus;
 use App\Models\Country;
-use App\Models\EducationStatus;
-use App\Models\EyeColor;
-use App\Models\EyeGlass;
-use App\Models\Fasting;
-use App\Models\FoodType;
-use App\Models\FriendStatus;
-use App\Models\HairColor;
-use App\Models\HairKind;
-use App\Models\HairLength;
-use App\Models\HalalFoodStatus;
-use App\Models\Headdress;
-use App\Models\HealthStatus;
 use App\Models\Language;
-use App\Models\LanguagePerfectionStatus;
-use App\Models\MaritalStatus;
-use App\Models\MarriageStatus;
-use App\Models\MusicStatus;
 use App\Models\Nationality;
-use App\Models\Obligation;
-use App\Models\PolygamyStatus;
-use App\Models\Prayer;
-use App\Models\PsychologicalPattern;
-use App\Models\ReadingQuran;
-use App\Models\RelationshipStatus;
-use App\Models\Religion;
-use App\Models\ReligionMethod;
-use App\Models\RelocateStatus;
-use App\Models\ResidenceStatus;
-use App\Models\RobeStatus;
-use App\Models\ShelterShape;
-use App\Models\ShelterType;
-use App\Models\ShelterWay;
-use App\Models\ShowStatus;
-use App\Models\SkinStatus;
-use App\Models\SmokeStatus;
 use App\Models\State;
-use App\Models\TafaqahStatus;
 use App\Models\User;
-use App\Models\VeilStatus;
-use App\Models\WifeStudyStatus;
-use App\Models\WifeWorkStatus;
-use App\Models\WorkStatus;
 use Illuminate\Database\Seeder;
+use Faker\Factory;
 
 class UserSeeder extends Seeder
 {
@@ -64,98 +19,247 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Factory::create();
+
+        /** @var \App\Models\User $user */
         $user = User::factory()->create();
-        $origin = Country::all()->random();
-        $residence = Country::all()->random();
-        $languageNative = Language::all()->random();
-        $languageSecond = Language::all()->random();
-        $languageThird = Language::all()->random();
-        $languagePerfectionStatus = LanguagePerfectionStatus::all()->random();
-        $languageNative->update([
-            'language_perfection_status_id' => $languagePerfectionStatus->id
+        /** @var \App\Models\Profile $profile */
+        $profile = $user->profile()->create();
+        $profile->country_of_origin_id = Country::all()->random()->id;
+        $profile->country_of_residence_id = Country::all()->random()->id;
+        $profile->state_id = State::all()->random()->id;
+        $profile->native_language_id = Language::all()->random()->id;
+        $profile->second_language_id = Language::all()->random()->id;
+        $profile->third_language_id = Language::all()->random()->id;
+        $profile->nationality_id = Nationality::all()->random()->id;
+        $profile->hobbies = '[Sport, Reading, Writing, Travel, Games, Computer, Spoking]';
+        $profile->second_language_perfection = $faker->randomElement($this->perfections());
+        $profile->third_language_perfection = $faker->randomElement($this->perfections());
+        $profile->education_status = $faker->randomElement(['Doctorate', 'Master', 'Bachelor', 'Institut', 'Secondary', 'Junior', 'Other',]);
+        $profile->work = $faker->randomElement(['Working', 'Student', 'Job seeker', 'House wife',]);
+        $profile->marriage_status = $faker->randomElement([
+            'Engagement and then marriageStatus',
+            'A short acquaintance, then engagement, then marriageStatus',
+            'Long time acquaintance before engagement',
+            'Friendship and love before engagement',
+            'no marriageStatus',
         ]);
-        $languageSecond->update([
-            'language_perfection_status_id' => $languagePerfectionStatus->id,
-            'order' => 2
+        $profile->residence_status = $faker->randomElement(['Citizen', 'Resident', 'Visitor', 'Student',]);
+        $profile->relocate_status = $faker->randomElement([
+            'Accept',
+            'Refuse',
+            'Accept due to nearby city',
+            'Accept due to be inside my origin',
+            'Accept due to nearby country',
         ]);
-        $languageThird->update([
-            'language_perfection_status_id' => $languagePerfectionStatus->id,
-            'order' => 3
+        $profile->relationship_status = $faker->randomElement([
+            'MarriageStatus', 'Other',
+        ]);
+        $profile->body_status = $faker->randomElement([
+            'fit', 'fitness', 'fat', 'thin',
+        ]);
+        $profile->skin_status = $faker->randomElement([
+            'White', 'very light', 'light', 'tan', 'wheat', 'dark', 'very dark',
+        ]);
+        $profile->hair_color = $faker->randomElement([
+            'Black', 'Brown', 'Light brown', 'Blonde', 'White', 'Red',
+        ]);
+        $profile->hair_length = $faker->randomElement([
+            'Hairless', 'Shaved', 'Short', 'a little tall', 'Long', 'Very long',
+        ]);
+        $profile->hair_kind = $faker->randomElement([
+            'Smooth', 'Crispy', 'Slightly curly', 'Very curly', 'Other',
+        ]);
+        $profile->eye_color = $faker->randomElement([
+            'Black', 'Brown', 'Light brown', 'Blue', 'Hazel', 'Green',
+        ]);
+        $profile->eye_glass = $faker->randomElement([
+            'No', 'Eyeglass', 'Contact lenses',
+        ]);
+        $profile->health_status = $faker->randomElement([
+            'Good', 'Some persistent diseases', 'Partial handicap',
+        ]);
+        $profile->psychological_pattern = $faker->randomElement([
+            'Normal', 'Neural', 'Romantic', 'Very sensitive',
+            'Irritable', 'quick to get angry', 'Calm',
+            'Suspicious', 'Curious', 'Sly', 'Cheerful',
+        ]);
+        $profile->shelter_type = $faker->randomElement([
+            'mine', 'rent',
+        ]);
+        $profile->shelter_shape = $faker->randomElement([
+            'detached house',
+            'apartment',
+            'room',
+            'student housing',
+            'shared accommodation',
+        ]);
+        $profile->shelter_way = $faker->randomElement([
+            'alone',
+            'with family',
+            'with friends',
+        ]);
+        $profile->marital_status = $faker->randomElement([
+            'Single', 'Married', 'Widower', 'divorced',
         ]);
 
-        /** @var \App\Models\Profile $adminUserProfile */
-        $adminUserProfile = $user->profile()->create();
-        $adminUserProfile->countries->find($residence->id)->pivot->is_origin = 0;
-        $adminUserProfile->countries->find($residence->id)->pivot->save();
-        $adminUserProfile->education_status_id = EducationStatus::all()->random()->id;
-        $adminUserProfile->work_status_id = WorkStatus::all()->random()->id;
-        $adminUserProfile->marriage_status_id = MarriageStatus::all()->random()->id;
-        $adminUserProfile->wife_work_status_id = WifeWorkStatus::all()->random()->id;
-        $adminUserProfile->wife_study_status_id = WifeStudyStatus::all()->random()->id;
-        $adminUserProfile->accept_wife_work_status_id = AcceptWifeWorkStatus::all()->random()->id;
-        $adminUserProfile->accept_wife_study_status_id = AcceptWifeStudyStatus::all()->random()->id;
-        $adminUserProfile->nationality_id = Nationality::all()->random()->id;
-        $adminUserProfile->residence_status_id = ResidenceStatus::all()->random()->id;
-        $adminUserProfile->relocate_status_id = RelocateStatus::all()->random()->id;
-        $adminUserProfile->relationship_status_id = RelationshipStatus::all()->random()->id;
-        $adminUserProfile->state_id = State::all()->random()->id;
-        $adminUserProfile->specialization = 'Computers';
-        $adminUserProfile->income = rand(999, 9999);
-        $adminUserProfile->bio = 'Lorem ipsum dolor sit amet consectetur.';
-        $adminUserProfile->partner_bio = 'Lorem, ipsum dolor sit amet consectetur adipisicing.';
-        $adminUserProfile->competence = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.';
-        $adminUserProfile->dob = rand(1980, 2001) . '-' . rand(1, 12) . '-' . rand(1, 30);
-        $adminUserProfile->postal_code = rand(11111, 99999). '-'. rand(1111, 9999);
-        $adminUserProfile->progress_bar = '99.99';
-        $adminUserProfile->shelter_type_id = ShelterType::all()->random()->id;
-        $adminUserProfile->shelter_shape_id = ShelterShape::all()->random()->id;
-        $adminUserProfile->shelter_way_id = ShelterWay::all()->random()->id;
-        $adminUserProfile->smoke_status_id = SmokeStatus::all()->random()->id;
-        $adminUserProfile->alcohol_status_id = AlcoholStatus::all()->random()->id;
-        $adminUserProfile->halal_food_status_id = HalalFoodStatus::all()->random()->id;
-        $adminUserProfile->food_type_id = FoodType::all()->random()->id;
-        $adminUserProfile->books = 'Lorem ipsum, dolor sit amet consectetur adipisicing.';
-        $adminUserProfile->places = 'Lorem ipsum dolor sit amet consectetur.';
-        $adminUserProfile->interests = 'Lorem ipsum dolor sit amet.';
-        $adminUserProfile->body_status_id = BodyStatus::all()->random()->id;
-        $adminUserProfile->skin_status_id = SkinStatus::all()->random()->id;
-        $adminUserProfile->hair_color_id = HairColor::all()->random()->id;
-        $adminUserProfile->hair_length_id = HairLength::all()->random()->id;
-        $adminUserProfile->hair_kind_id = HairKind::all()->random()->id;
-        $adminUserProfile->eye_color_id = EyeColor::all()->random()->id;
-        $adminUserProfile->eye_glass_id = EyeGlass::all()->random()->id;
-        $adminUserProfile->health_status_id = HealthStatus::all()->random()->id;
-        $adminUserProfile->psychological_pattern_id = PsychologicalPattern::all()->random()->id;
-        $adminUserProfile->height = rand(150, 200);
-        $adminUserProfile->weight = rand(50, 150);
-        $adminUserProfile->clarification = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ipsam?';
-        $adminUserProfile->marital_status_id = MaritalStatus::all()->random()->id;
-        $adminUserProfile->polygamy_status_id = PolygamyStatus::all()->random()->id;
-        $adminUserProfile->shelter_type_id = ShelterType::all()->random()->id;
-        $adminUserProfile->shelter_shape_id = ShelterShape::all()->random()->id;
-        $adminUserProfile->shelter_way_id = ShelterWay::all()->random()->id;
-        $adminUserProfile->children_count = rand(1, 9);
-        $adminUserProfile->children_status_id = ChildrenStatus::all()->random()->id;
-        $adminUserProfile->children_information = 'Lorem ipsum dolor sit.';
-        $adminUserProfile->children_desire_status_id = ChildrenDesireStatus::all()->random()->id;
-        $adminUserProfile->divorced_reason = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima error iste cumque omnis iure. Ratione!';
-        $adminUserProfile->religion_id = Religion::all()->random()->id;
-        $adminUserProfile->religion_method_id = ReligionMethod::all()->random()->id;
-        $adminUserProfile->obligation_id = Obligation::all()->random()->id;
-        $adminUserProfile->prayer_id = Prayer::all()->random()->id;
-        $adminUserProfile->alfajr_prayer_id = AlfajrPrayer::all()->random()->id;
-        $adminUserProfile->headdress_id = Headdress::all()->random()->id;
-        $adminUserProfile->fasting_id = Fasting::all()->random()->id;
-        $adminUserProfile->reading_quran_id = ReadingQuran::all()->random()->id;
-        $adminUserProfile->robe_status_id = RobeStatus::all()->random()->id;
-        $adminUserProfile->veil_status_id = VeilStatus::all()->random()->id;
-        // $adminUserProfile->overdress_id = adminUserProf::all()->random()->id;
-        $adminUserProfile->beard_status_id = BeardStatus::all()->random()->id;
-        $adminUserProfile->tafaqah_status_id = TafaqahStatus::all()->random()->id;
-        $adminUserProfile->music_status_id = MusicStatus::all()->random()->id;
-        $adminUserProfile->friend_status_id = FriendStatus::all()->random()->id;
-        $adminUserProfile->show_status_id = ShowStatus::all()->random()->id;
-        $adminUserProfile->lesson_listing = 'Lorem ipsum dolor sit amet.';
-        $adminUserProfile->save();
+        $profile->children_status = $faker->randomElement([
+            'Yes, but they are not with me',
+            'Yes, but not now',
+            'According to the wishes of the other partner',
+        ]);
+        $profile->children_desire_status = $faker->randomElement([
+            'I would like it',
+            'I do not want it',
+            'Yes but not now Yes but not now',
+            'According to the desire of the other partner According to the desire of the other partner',
+        ]);
+        $profile->smoke_status = $faker->randomElement([
+            'Yes', 'No, I do not like it', 'No', 'a little', 'Shisha',
+        ]);
+        $profile->alcohol_status = $faker->randomElement([
+            'Yes', 'No', 'No, I do not like it', 'a little',
+        ]);
+        $profile->halal_food_status = $faker->randomElement([
+            'Halal only', 'Halal if exists', 'Not a problem', 'Vegetarian',
+        ]);
+        $profile->food_type = $faker->randomElement([
+            'Arabic', 'Western', 'Asian', 'Fastfood', 'Hearty meals',
+        ]);
+        $profile->religion = $faker->randomElement([
+            'Christianity', 'Islam', 'Secular', 'Hinduism', 'Buddhism',
+            'Chinese traditional religion', 'African traditional religions',
+            'Sikhism', 'Spiritism', 'Judaism', 'Baháʼí', 'Jainism', 'Shinto',
+            'Cao', 'Zoroastrianism', 'Tenrikyo', 'Animism', 'Neo-Paganism',
+            'Unitarian Universalism', 'Rastafari',
+        ]);
+        $profile->religion_method = $faker->randomElement([
+            'feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
+            'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'my income',
+            'brothers', 'Ethiopian', 'Protestant', 'Catholic', 'Autodox',
+            'I do not know', 'other',
+        ]);
+        $profile->obligation = $faker->randomElement([
+            'committed', 'Uncommitted', 'sometimes obligated', 'Not interested',
+        ]);
+        $profile->prayer = $faker->randomElement([
+            'committed to', 'Not original', 'Original and leave', 'Friday only', 'mostly original',
+        ]);
+        $profile->alfajr_prayer = $faker->randomElement([
+            'committed to', 'not committed to', 'sometimes',
+        ]);
+        $profile->fasting = $faker->randomElement([
+            'Ramadan', 'Ramadan and waffles', 'Not every Ramadan',
+        ]);
+        $profile->reading_quran = $faker->randomElement([
+            'read daily', 'read a lot', 'Read a little', 'rarely', 'do not read',
+        ]);
+
+        if ($user->gender == 'male') {
+            $profile->male_work_status = $faker->randomElement([
+                'yes',
+                'should work',
+                'I do not accept',
+                'I do not like it but leave it to her',
+                'it does not matter',
+            ]);
+            $profile->male_study_status = $faker->randomElement([
+                'yes',
+                'No',
+                'I do not like it but leave it to her',
+            ]);
+            $profile->male_polygamy_status = $faker->randomElement([
+                'Yes',
+                'No',
+                'Yes, but in agreement with the other partner',
+                'Not in my mind, but if I decide to, I will',
+                'Not in my mind, but if I decide to, I do not do it without her consent',
+            ]);
+            $profile->beard_status = $faker->randomElement([
+                'No', 'light', 'heavy'
+            ]);
+        } else {
+            $profile->female_work_status = $faker->randomElement([
+                'yes',
+                'I have to work',
+                'I do not accept to work',
+                'If allowed',
+                'I do not like to work unless circumstances require',
+            ]);
+            $profile->female_polygamy_status = $faker->randomElement([
+                'Accept',
+                'I accept if he was previously married and I do not accept that he gets married after me',
+                'I do not accept',
+                'May we agree on that',
+            ]);
+            $profile->female_study_status = $faker->randomElement([
+                'Yes',
+                'No',
+                'Yes, if I may',
+            ]);
+            $profile->headdress = $faker->randomElement([
+                'Yes' => 'Yes',
+                'No' => 'No',
+                'With his trait' => 'With his trait',
+            ]);
+            $profile->robe_status = $faker->randomElement([
+                'full', 'jilbab covering the knees', 'jilbab covering the waist',
+                'No jilbab', 'No, but I would like to wear it',
+            ]);
+            $profile->veil_status = $faker->randomElement([
+                'yes', 'No',
+                'I do not want to wear it',
+                'No, but if the husband wants, I will wear it',
+            ]);
+            // $profile->overdress = $faker->randomElement([]);
+        }
+        $profile->tafaqah_status = $faker->randomElement([
+            'Know the basics', 'Read or attend lessons sometimes',
+            'Interested in educationStatus and try it', 'Seek knowledge',
+        ]);
+        $profile->music_status = $faker->randomElement([
+            'Listen', 'Listen a little', 'I hear, but I want to leave it',
+            'I do not hear songs', 'I do not hear and I do not want her at home',
+        ]);
+        $profile->friend_status = $faker->randomElement([
+            'I have no problem with that I have no problem with that',
+            'I have my own controls but I have my own controls but',
+            'I do not have it and I refuse to do so I do not have it and I refuse to do so',
+            'Connect with colleagues outside of work Connect with colleagues outside of work',
+        ]);
+        $profile->show_status = $faker->randomElement([
+            'Watch it', 'A little', 'rarely', 'No', 'No, and I do not want her at home',
+        ]);
+        $profile->children_count = rand(0, 9);
+        $profile->postal_code = $faker->postcode();
+        $profile->progress_bar = 99.99;
+        $profile->specialization = $faker->jobTitle();
+        $profile->books = $faker->word();
+        $profile->places = $faker->word();
+        $profile->interests = $faker->word();
+        $profile->height = rand(155, 190);
+        $profile->weight = rand(50, 130);
+        $profile->income = rand(999, 9999);
+        $profile->dob = $faker->dateTimeBetween('-60 years');
+        $profile->bio = $faker->paragraph();
+        $profile->partner_bio = $faker->paragraph();
+        $profile->competence = $faker->paragraph();
+        $profile->divorced_reason = $faker->paragraph();
+        if ($profile->divorced_reason == 'divorced') {
+            $profile->children_information = $faker->paragraph();
+        }
+        $profile->clarification = $faker->paragraph();
+        $profile->lesson_listing = $faker->paragraph();
+
+        $profile->save();
+    }
+
+    private function perfections(): array
+    {
+        return [
+            'High',
+            'Good',
+            'Bad',
+        ];
     }
 }
