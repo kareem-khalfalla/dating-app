@@ -24,14 +24,14 @@ class UpdateUserProfileSocialInformation implements UpdatesUserProfileInformatio
             'children_status' => ['required', 'string', Rule::in([
                 'Yes, but they are not with me',
                 'Yes, but not now',
-                'According to the wishes of the other partener',
+                'According to the wishes of the other partner',
             ])],
             'children_count' => ['required', 'integer'],
             'children_desire_status' => ['required', 'string', Rule::in([
                 'I would like it',
                 'I do not want it',
                 'Yes but not now Yes but not now',
-                'According to the desire of the other partener According to the desire of the other partener',
+                'According to the desire of the other partner According to the desire of the other partner',
             ])],
             'children_information' => ['required', 'string', 'max:1000'],
             'divorced_reason' => ['nullable', RUle::requiredIf(function () use ($input) {
@@ -42,7 +42,7 @@ class UpdateUserProfileSocialInformation implements UpdatesUserProfileInformatio
             }), 'nullable', 'string', Rule::in([
                 'Yes',
                 'No',
-                'Yes, but in agreement with the other partener',
+                'Yes, but in agreement with the other partner',
                 'Not in my mind, but if I decide to, I will',
                 'Not in my mind, but if I decide to, I do not do it without her consent',
             ])],
