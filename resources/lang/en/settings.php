@@ -178,11 +178,11 @@ return [
     // children status
     'Yes, but they are not with me'                 => 'Yes, but they are not with me',
     'Yes, but not now'                              => 'Yes, but not now',
-    'According to the wishes of the other partener' => 'According to the wishes of the other partener',
+    'According to the wishes of the other partner' => 'According to the wishes of the other partner',
     // polygamy
     'Yes'                                                                          => 'Yes',
     'No'                                                                           => 'No',
-    'Yes, but in agreement with the other partener'                                   => 'Yes, but in agreement with the other partener',
+    'Yes, but in agreement with the other partner'                                   => 'Yes, but in agreement with the other partner',
     'Not in my mind, but if I decide to, I will'                             => 'Not in my mind, but if I decide to, I will',
     'Not in my mind, but if I decide to, I do not do it without her consent' => 'Not in my mind, but if I decide to, I do not do it without her consent',
     // accept polygamy
@@ -194,7 +194,7 @@ return [
     'I would like it'                                                                       => 'I would like it',
     'I do not want it'                                                                      => 'I do not want it',
     'Yes but not now Yes but not now'                                                       => 'Yes but not now Yes but not now',
-    'According to the desire of the other partener According to the desire of the other partener' => 'According to the desire of the other partener According to the desire of the other partener',
+    'According to the desire of the other partner According to the desire of the other partner' => 'According to the desire of the other partner According to the desire of the other partner',
     // shelter type
     'mine' => 'mine',
     'rent' => 'rent',
