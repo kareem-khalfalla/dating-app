@@ -48,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer([
             'livewire.profile-component',
             'livewire.users-filter-component',
+            'livewire.admin.users.create-user-form-step2',
         ], SelectBoxesComposer::class);
     }
 }
