@@ -6,41 +6,22 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"></i></span>
             </div>
-            <input wire:model.defer="state.current_password" placeholder="{{ __('settings.Old password') }}" type="password"
-                class="form-control @error('current_password') is-invalid @enderror" aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm">
-            @error('current_password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-input wire:model.defer="state.current_password" placeholder="{{ __('settings.Old password') }}"
+                type="password" />
         </div>
         <div class="input-group input-group-lg mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"></i></span>
             </div>
-            <input wire:model.defer="state.password" placeholder="{{ __('settings.password') }}" type="password"
-                class="form-control @error('password') is-invalid @enderror" aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm">
-            @error('password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-input wire:model.defer="state.password" placeholder="{{ __('settings.password') }}" type="password" />
         </div>
         <div class="input-group input-group-lg mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
                         aria-hidden="true"></i></span>
             </div>
-            <input wire:model.defer="state.password_confirmation" placeholder="{{ __('settings.Confirm password') }}" type="password"
-                class="form-control @error('password_confirmation') is-invalid @enderror" aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm">
-            @error('password_confirmation')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <input wire:model.defer="state.password_confirmation" placeholder="{{ __('settings.Confirm password') }}"
+                type="password" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         </div>
         <div class="mt-4">
             <button type="submit" class="btn btn_form_settings btn-block p-2">{{ __('settings.save') }}</button>
