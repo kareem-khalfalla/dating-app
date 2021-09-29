@@ -15,7 +15,6 @@ class LoginResponse implements LoginResponseContract
             return redirect('admin/dashboard');
         }
 
-
         return $request->wantsJson()
             ? response()->json(['two_factor' => false])
             : redirect()->intended(config('fortify.home'));
