@@ -4,9 +4,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
-use App\Http\Livewire\Admin\Users\ChatUser;
-use App\Http\Livewire\Admin\Users\CreateUser;
 use App\Http\Livewire\Admin\Users\ListUsers;
+use App\Http\Livewire\Admin\Users\UpdateOrCreateUser;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -37,8 +36,8 @@ Route::group(
             Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('dashboard', DashboardController::class)->name('dashboard');
                 Route::get('users', ListUsers::class)->name('users');
-                Route::get('users/create', CreateUser::class)->name('users.create');
-                Route::get('users/{user?}', CreateUser::class)->name('users.update');
+                Route::get('users/create', UpdateOrCreateUser::class)->name('users.create');
+                Route::get('users/{user?}', UpdateOrCreateUser::class)->name('users.update');
             });
         });
     }
