@@ -42,10 +42,10 @@
                                     {{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}
                                 </p>
                                 <p class="row p-1 m-0"><b>{{ __('welcome.From') }} : </b>
-                                    {{ $user->profile->countryOfResidence ? $user->profile->countryOfResidence->getCountryLocale() : 'N/A' }}
+                                    {{ $user->profile->countryOfOrigin ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}
                                 </p>
                                 <p class="row p-1 m-0"><b>{{ __('welcome.Stay in') }} : </b>
-                                    {{ $user->profile->countryOfOrigin ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}
+                                    {{ $user->profile->countryOfResidence ? $user->profile->countryOfResidence->getCountryLocale() : 'N/A' }}
                                 </p>
                             </div>
                         </div>
