@@ -2,13 +2,15 @@
 
 namespace App\Actions\Fortify;
 
+use App\Traits\FormValidation;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
+    use FormValidation;
+
     /**
      * Validate and update the given user's profile information.
      *
@@ -18,20 +20,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
-        Validator::make($input, [
-            'name'     => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'phone'    => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'gender'   => ['required', 'string'],
-            'email' => [
-                'nullable',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-            ],
-
-        ])->validate();
+        Validator::make($input, $this->userRules())->validate();
 
         $input['username'] = Str::slug($input['username']);
 
