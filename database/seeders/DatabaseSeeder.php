@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Report;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +21,7 @@ class DatabaseSeeder extends Seeder
             // LanguageSeeder::class,
             UserSeeder::class,
         ]);
+
+        Report::factory(20)->create();
     }
 }

@@ -18,7 +18,7 @@
                     data-parent="#sidenavAccordion">
                     <a class="nav-link" href="{{ route('admin.users') }}">users</a>
                     <a class="nav-link" href="{{ route('admin.users.create') }}">Add user</a>
-                    <a class="nav-link" href="reports.html">reports</a>
+                    <a class="nav-link" href="{{ route('admin.reports') }}">reports</a>
                 </div>
 
             </div>

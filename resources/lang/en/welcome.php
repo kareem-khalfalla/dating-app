@@ -19,4 +19,5 @@ return [
     'Email' => 'Email',
     'Message here' => 'Message here',
     'Send' => 'Send',
+    'Dashboard' => 'Dashboard',
 ];
