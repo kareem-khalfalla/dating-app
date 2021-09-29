@@ -47,7 +47,6 @@ class ChatComponent extends Component
         }
 
         $this->users = User::friendsByLastMsg($user)->get();
-
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
 
