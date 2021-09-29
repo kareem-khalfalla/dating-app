@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Events\MessageEvent;
 use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,16 +13,12 @@ class ChatComponent extends Component
 {
     use WithFileUploads;
 
-    public function render()
-    {
-        return view('livewire.chat-component');
-    }
-
     protected $listeners = [
         'echo:messages,MessageEvent' => 'received',
         'loadMore',
     ];
 
+    public $user;
     public $users;
     public $selectedUser;
     public $search = '';
@@ -33,9 +30,24 @@ class ChatComponent extends Component
     public $file;
     public $fileName;
 
-    public function mount(): void
+    public function render()
     {
-        $this->users = User::allAuthFriendsByLastMsg()->get();
+        if (Route::currentRouteName() == 'chat') {
+            return view('livewire.chat-component');
+        } else {
+            return view('livewire.chat-component')->layout('layouts.admin');
+        }
+    }
+
+    public function mount(User $user): void
+    {
+        if (is_null($user->id)) {
+            $user = auth()->user();
+            $this->user = $user;
+        }
+
+        $this->users = User::friendsByLastMsg($user)->get();
+
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
 
@@ -54,15 +66,15 @@ class ChatComponent extends Component
 
     public function updatedSearch(): void
     {
-        $this->users = User::allAuthFriendsByLastMsg($this->search)->get();
+        $this->users = User::friendsByLastMsg($this->user, $this->search)->get();
     }
 
     public function userSelected(array $user): void
     {
         $this->selectedUser = $user;
         $this->isOnline = User::find($this->selectedUser['id'])->isOnline();
-        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit(5)->latest()->get()->toArray());
-        $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'])->count();
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit(5)->latest()->get()->toArray());
+        $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->count();
         $this->emit('scrollToBottom');
     }
 
@@ -72,7 +84,7 @@ class ChatComponent extends Component
             $this->loadAmount += 5;
         }
 
-        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'])->limit($this->loadAmount)->latest()->get()->toArray());
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit($this->loadAmount)->latest()->get()->toArray());
     }
 
     public function saveFile(): void
@@ -117,7 +129,7 @@ class ChatComponent extends Component
             'last_message_at' => now()
         ]);
 
-        $this->users = User::allAuthFriendsByLastMsg()->get();
+        $this->users = User::friendsByLastMsg($this->user)->get();
 
         $this->emit('userReceivedMsg', [
             'user' => User::find($message->from)->toArray()
@@ -140,7 +152,7 @@ class ChatComponent extends Component
 
         $this->emit('scrollToBottom');
 
-        $this->users = User::allAuthFriendsByLastMsg()->get();
+        $this->users = User::friendsByLastMsg($this->user)->get();
 
         $this->selectedUser = $user;
 

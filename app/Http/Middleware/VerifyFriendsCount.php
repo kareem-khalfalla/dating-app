@@ -19,7 +19,7 @@ class VerifyFriendsCount
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
-        if ($authUser->getFriendsCount() == 0) {
+        if ($authUser->getFriendsCount() == 0 && $authUser->role == 'user') {
             return redirect()->route('notFound')->withError(__('alerts.Sadlly, you don\'t have friends to chat with'));
         }
         return $next($request);

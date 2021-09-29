@@ -50,7 +50,10 @@
                                                 href="{{ route('admin.users.update', $user) }}">Edit</a>
                                             <a class="dropdown-item" href="{{ route('profile', $user) }}">Show
                                                 profile</a>
-                                            <a class="dropdown-item" href="{{ route('chat') }}">Open chat rooms</a>
+                                            @if (\App\Models\Message::count() > 0)
+                                                <a class="dropdown-item" href="{{ route('admin.user.chat', $user) }}">Open chat
+                                                    rooms</a>
+                                            @endif
                                         </div>
                                     </span>
                                 </td>

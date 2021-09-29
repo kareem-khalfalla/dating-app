@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Message extends Model
 {
-    public function scopeBetweenTwoUsers(Builder $query, int $id): Builder
+    public function scopeBetweenTwoUsers(Builder $query, int $selectedUserId, int $userId): Builder
     {
-        $authId = auth()->id();
-        return $query->where(function ($query) use ($id, $authId) {
-            $query->where('from', $id)->where('to', $authId);
-        })->oRwhere(function ($query) use ($id, $authId) {
-            $query->where('from', $authId)->where('to', $id);
+        return $query->where(function ($query) use ($selectedUserId, $userId) {
+            $query->where('from', $selectedUserId)->where('to', $userId);
+        })->oRwhere(function ($query) use ($selectedUserId, $userId) {
+            $query->where('from', $userId)->where('to', $selectedUserId);
         });
     }
 
