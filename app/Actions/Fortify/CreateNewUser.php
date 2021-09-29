@@ -22,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        Validator::make($input, $this->createUserRules())->validate();
+        Validator::make($input, $this->userRules())->validate();
 
         try {
             DB::beginTransaction();
