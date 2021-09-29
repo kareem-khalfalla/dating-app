@@ -4,9 +4,13 @@
         <li class="breadcrumb-item active">add user</li>
     </ol>
 
-    <h2 class="mb-4">Add New User</h2>
-
-
+    <h2 class="mb-4">
+        @if ($currentStep == 1)
+            Add New User
+            @else
+            Update User Profile
+        @endif
+    </h2>
 
     @if ($currentStep == 1)
         @include('livewire.admin.users.create-user-form-step1')
