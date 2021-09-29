@@ -21,7 +21,5 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             UserSeeder::class,
         ]);
-
-        Report::factory(20)->create();
     }
 }
