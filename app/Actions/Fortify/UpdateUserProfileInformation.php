@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Traits\FormValidation;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
@@ -20,7 +21,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
-        Validator::make($input, $this->userRules($user))->validate();
+        Validator::make($input, Arr::except($this->userRules($user), 'password'))->validate();
 
         $input['username'] = Str::slug($input['username']);
 

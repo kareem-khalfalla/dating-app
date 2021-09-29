@@ -24,7 +24,7 @@ trait FormValidation
                 'max:255',
                 Rule::unique('users')->ignore($user->id ?? ''),
             ],
-            'password' => array_merge(['sometimes'], $this->passwordRules())
+            'password' => $this->passwordRules()
         ];
     }
 
