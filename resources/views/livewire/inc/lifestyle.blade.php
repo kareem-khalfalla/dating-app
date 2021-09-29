@@ -38,33 +38,15 @@
         </div>
         <div class="form-group  mb-3 col-md-6">
             <label for="exampleFormControlTextarea1">{{ __('settings.Favorite books') }}</label>
-            <textarea wire:model.defer="state.books" class="form-control @error('books') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3"></textarea>
-            @error('books')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.books" />
         </div>
         <div class="form-group  mb-3 col-md-6">
             <label for="exampleFormControlTextarea1">{{ __('settings.favorite places') }}</label>
-            <textarea wire:model.defer="state.places" class="form-control @error('places') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3"></textarea>
-            @error('places')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.places" />
         </div>
         <div class="form-group  mb-3 col-md-6">
             <label for="exampleFormControlTextarea1">{{ __('settings.Other interests') }}</label>
-            <textarea wire:model.defer="state.interests" class="form-control @error('interests') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3">
-            </textarea>
-            @error('interests') <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.interests" />
         </div>
         <div class="mt-4 col-12">
             <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">

@@ -14,16 +14,8 @@
                 <div class="form-group">
                     <label
                         class="col-12">{{ __('settings.Determine the reason for the divorce, if any') }}</label>
-                    <textarea wire:model.defer="state.divorced_reason"
-                        class="form-control @error('divorced_reason') is-invalid @enderror"
-                        id="exampleFormControlTextarea1" rows="3"
-                        placeholder="{{ __('settings.Determine the reason for the divorce, if any') }}"
-                        maxlength="200"></textarea>
-                    @error('divorced_reason')
-                        <div class="invalid-feedback">
-                            <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                        </div>
-                    @enderror
+                    <x-textarea wire:model.defer="state.divorced_reason"
+                        placeholder="{{ __('settings.Determine the reason for the divorce, if any') }}" />
                 </div>
             @endif
         </div>
@@ -36,26 +28,13 @@
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.number of children') }}</label>
-            <input wire:model.defer="state.children_count" placeholder="{{ __('settings.number of children') }}"
-                min="0" max="9" type="number" class="form-control @error('children_count') is-invalid @enderror"
-                aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-            @error('children_count')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-input wire:model.defer="state.children_count" placeholder="{{ __('settings.number of children') }}"
+                min="0" max="9" type="number" />
         </div>
         <div class="form-group">
             <label class="col-12">{{ __('settings.Information about children') }}</label>
-            <textarea wire:model.defer="state.children_information"
-                class="form-control @error('children_information') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3"
-                placeholder="{{ __('settings.Information about children') }}" maxlength="200"></textarea>
-            @error('children_information')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.children_information"
+                placeholder="{{ __('settings.Information about children') }}" />
         </div>
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
@@ -103,8 +82,7 @@
             </x-selectbox>
         </div>
         <div class="mt-4">
-            <input type="submit" class="btn btn_form_settings btn-block p-2"
-                value="{{ __('settings.save') }}">
+            <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">
         </div>
     </form>
 </div>

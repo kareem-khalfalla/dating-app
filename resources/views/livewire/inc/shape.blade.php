@@ -4,25 +4,11 @@
         <br>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Length') }}</label>
-            <input wire:model.defer="state.height" type="number" min="40" max="222"
-                class="form-control form-control-lg @error('height') is-invalid @enderror" id="exampleInputEmail1"
-                aria-describedby="emailHelp" placeholder="Length">
-            @error('height')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-input wire:model.defer="state.height" type="number" min="40" max="222" placeholder="Length" />
         </div>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.the weight') }}</label>
-            <input wire:model.defer="state.weight" type="number" min="40" max="222"
-                class="form-control form-control-lg @error('weight') is-invalid @enderror" id="exampleInputEmail1"
-                aria-describedby="emailHelp" placeholder="the weight">
-            @error('weight')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-input wire:model.defer="state.weight" type="number" min="40" max="222" placeholder="the weight" />
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.body type') }}</label>
@@ -90,14 +76,7 @@
         <div class="form-group  mb-3 col-md-6">
             <label
                 for="exampleFormControlTextarea1">{{ __('settings.Clarification on physical healthStatus') }}</label>
-            <textarea wire:model.defer="state.clarification"
-                class="form-control @error('clarification') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3"></textarea>
-            @error('clarification')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.clarification" />
         </div>
         <div class="mt-4 col-12">
             <input name="login" id="btn_login" type="submit" class="btn btn_form_settings btn-block p-2"

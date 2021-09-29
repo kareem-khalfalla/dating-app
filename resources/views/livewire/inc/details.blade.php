@@ -5,14 +5,7 @@
         <div class="row">
             <div class="input-group input-group-lg mb-3 col-md-6">
                 <label class="col-12">{{ __('settings.Birthday') }}</label>
-                <input wire:model.defer="state.dob" placeholder="{{ __('settings.Birthday') }}" type="date"
-                    class="form-control @error('dob') is-invalid @enderror" aria-label="Large"
-                    aria-describedby="inputGroup-sizing-sm">
-                @error('dob')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <x-input wire:model.defer="state.dob" placeholder="{{ __('settings.Birthday') }}" type="date" />
             </div>
             <div class="input-group input-group-lg mb-3 col-md-6">
                 <label class="col-12">{{ __('settings.Country of Origin') }}</label>
@@ -61,14 +54,7 @@
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.Postal code') }}</label>
-                    <input wire:model.defer="state.postal_code" placeholder="{{ __('settings.Postal code') }}"
-                        type="text" class="form-control @error('postal_code') is-invalid @enderror" aria-label="Large"
-                        aria-describedby="inputGroup-sizing-sm">
-                    @error('postal_code')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                    <x-input wire:model.defer="state.postal_code" placeholder="{{ __('settings.Postal code') }}" />
                 </div>
             </div>
             <div class="input-group input-group-lg mb-3 col-md-6">
@@ -104,15 +90,15 @@
                         @endforeach
                     </x-selectbox>
                 </div>
-                @if (isset($state['second_language_id']))
-                    <div class="input-group input-group-lg mb-3 col-5">
+                <div class="input-group input-group-lg mb-3 col-5">
+                    @if (isset($state['second_language_id']))
                         <label class="col-12">{{ __('settings.level') }}</label>
                         <x-selectbox wire:model.defer="state.second_language_perfection">
                             <option value="">---</option>
                             <x-selectboxes.language_perfection />
                         </x-selectbox>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
             <div class="form-row col-12">
                 <div class="input-group input-group-lg mb-3 col-7">
@@ -124,20 +110,15 @@
                         @endforeach
                     </x-selectbox>
                 </div>
-                @if (isset($state['third_language_id']))
-                    <div class="input-group input-group-lg mb-3 col-5">
+                <div class="input-group input-group-lg mb-3 col-5">
+                    @if (isset($state['third_language_id']))
                         <label class="col-12">{{ __('settings.level') }}</label>
                         <x-selectbox wire:model.defer="state.third_language_perfection">
                             <option value="">---</option>
                             <x-selectboxes.language_perfection />
                         </x-selectbox>
-                        @error('third_language_perfection')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
             <div class="mt-4 col-12">
                 <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">

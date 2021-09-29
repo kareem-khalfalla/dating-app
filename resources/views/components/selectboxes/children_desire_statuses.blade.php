@@ -4,6 +4,6 @@
     {{ __('settings.I do not want it') }}</option>
 <option value="Yes but not now Yes but not now">{{ __('settings.Yes but not now Yes but not now') }}
 </option>
-<option value="According to the desire of the other party According to the desire of the other party">
-    {{ __('settings.According to the desire of the other party According to the desire of the other party') }}
+<option value="According to the desire of the other partner According to the desire of the other partner">
+    {{ __('settings.According to the desire of the other partner According to the desire of the other partner') }}
 </option>

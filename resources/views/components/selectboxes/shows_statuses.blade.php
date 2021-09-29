@@ -1,4 +1,4 @@
-<option value="Watch it">{{ __('settings.Watch it') }}</option>
+<option value="Watch it">{{ __('settings.Watching movies') }}</option>
 <option value="A little">{{ __('settings.A little') }}</option>
 <option value="rarely">{{ __('settings.rarely') }}</option>
 <option value="No">{{ __('settings.No') }}</option>

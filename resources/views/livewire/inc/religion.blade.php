@@ -72,15 +72,8 @@
         <div class="form-group">
             <label
                 class="col-12">{{ __('settings.If you listen to the lessons, who will you listen to?') }}</label>
-            <textarea wire:model.defer="state.lesson_listing"
-                class="form-control @error('lesson_listing') is-invalid @enderror" id="exampleFormControlTextarea1"
-                rows="3" placeholder="{{ __('settings.If you listen to the lessons, who will you listen to?') }}"
-                maxlength="200"></textarea>
-            @error('lesson_listing')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.lesson_listing"
+                placeholder="{{ __('settings.If you listen to the lessons, who will you listen to?') }}" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Listening to music') }}</label>

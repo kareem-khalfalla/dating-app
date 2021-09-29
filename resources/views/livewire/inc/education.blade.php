@@ -11,14 +11,7 @@
         </div>
         <div class="form-group">
             <label class="col-12">{{ __('settings.competence') }}</label>
-            <textarea wire:model.defer="state.competence" class="form-control @error('competence') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3" placeholder="{{ __('settings.competence') }}"
-                maxlength="200"></textarea>
-            @error('competence')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.competence" placeholder="{{ __('settings.competence') }}" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.the work') }}</label>
@@ -29,14 +22,7 @@
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">{{ __('settings.Monthly income') }}</label>
-            <input wire:model.defer="state.income" placeholder="Monthly income" type="number"
-                class="form-control @error('income') is-invalid @enderror" aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm">
-            @error('income')
-                <div class="invalid-feedback">
-                    <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                </div>
-            @enderror
+            <x-input wire:model.defer="state.income" placeholder="Monthly income" type="number" />
         </div>
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">

@@ -4,25 +4,11 @@
         <br>
         <div class="form-group">
             <label class="col-12">{{ __('settings.brief about me') }}</label>
-            <textarea wire:model.defer="state.bio" class="form-control @error('bio') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3" placeholder="{{ __('settings.brief about me') }}"
-                maxlength="200"></textarea>
-            @error('bio')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.bio" placeholder="{{ __('settings.brief about me') }}" />
         </div>
         <div class="form-group">
             <label class="col-12">{{ __('settings.A profile of your desired partner') }}</label>
-            <textarea wire:model.defer="state.partner_bio"
-                class="form-control @error('partner_bio') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3"
-                placeholder="{{ __('settings.A profile of your desired partner') }}" maxlength="200"></textarea>
-            @error('partner_bio')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <x-textarea wire:model.defer="state.partner_bio" placeholder="{{ __('settings.A profile of your desired partner') }}" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.The required relationship') }}</label>
