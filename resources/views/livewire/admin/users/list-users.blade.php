@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid">
     <h1 class="mt-4">Users</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
@@ -44,11 +44,13 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </button>
                                         <div class="dropdown-menu bg-warning" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#" data-toggle="modal"
-                                                data-target="#deleteUserId">Delete</a>
-                                            <a class="dropdown-item" href="edite-user.html">Edite</a>
-                                            <a class="dropdown-item" href="profile-id.html">Show profile</a>
-                                            <a class="dropdown-item" href="chat.html">Open chat rooms</a>
+                                            <a wire:click.prevent="confirm({{ $user->id }})" class="dropdown-item"
+                                                href="#" data-toggle="modal" data-target="#deleteUserId">Delete</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('admin.users.update', $user) }}">Edit</a>
+                                            <a class="dropdown-item" href="{{ route('profile', $user) }}">Show
+                                                profile</a>
+                                            <a class="dropdown-item" href="{{ route('chat') }}">Open chat rooms</a>
                                         </div>
                                     </span>
                                 </td>
@@ -64,3 +66,5 @@
         </div>
     </div>
 </div>
+
+<x-confirmation-alert />

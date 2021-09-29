@@ -5,7 +5,7 @@
     </ol>
 
     <h2 class="mb-4">
-        @if ($currentStep == 1)
+        @if ($currentStep == 1 && is_null($user))
             Add New User
             @else
             Update User Profile
