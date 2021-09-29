@@ -10,7 +10,7 @@ trait FormValidation
 {
     use PasswordValidationRules;
 
-    public function userRules(User $user): array
+    public function userRules(User $user = null): array
     {
         return [
             'name'     => ['required', 'string', 'max:255'],
@@ -57,7 +57,7 @@ trait FormValidation
         ];
     }
 
-    public function profileEducationRules(): array
+    public function profileEducationRules(User $user = null): array
     {
         return [
             'work' => ['required', 'string', Rule::in([
@@ -71,8 +71,8 @@ trait FormValidation
                 'Doctorate', 'Master', 'Bachelor', 'Institut', 'Secondary', 'Junior', 'Other',
             ])],
             'income' => ['required', 'numeric'],
-            'male_work_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'male';
+            'male_work_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
                 'yes',
                 'should work',
@@ -80,15 +80,15 @@ trait FormValidation
                 'I do not like it but leave it to her',
                 'it does not matter',
             ])],
-            'male_study_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'male';
+            'male_study_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
                 'yes',
                 'No',
                 'I do not like it but leave it to her',
             ])],
-            'female_work_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'female';
+            'female_work_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'yes',
                 'I have to work',
@@ -97,8 +97,8 @@ trait FormValidation
                 'I do not like to work unless circumstances require',
             ])],
 
-            'female_study_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'female';
+            'female_study_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'Yes',
                 'No',
@@ -126,7 +126,7 @@ trait FormValidation
         ];
     }
 
-    public function profileReligionRules(): array
+    public function profileReligionRules(User $user = null): array
     {
         return [
             'religion' => ['required', 'string', Rule::in([
@@ -158,24 +158,24 @@ trait FormValidation
             'reading_quran' => ['required', 'string', Rule::in([
                 'read daily', 'read a lot', 'Read a little', 'rarely', 'do not read',
             ])],
-            'beard_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'male';
+            'beard_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in(['No', 'light', 'heavy',])],
-            'headdress' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'female';
+            'headdress' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'Yes' => 'Yes',
                 'No' => 'No',
                 'With his trait' => 'With his trait',
             ])],
-            'robe_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'female';
+            'robe_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'full', 'jilbab covering the knees', 'jilbab covering the waist',
                 'No jilbab', 'No, but I would like to wear it',
             ])],
-            'veil_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'female';
+            'veil_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'yes', 'No',
                 'I do not want to wear it',
@@ -224,7 +224,7 @@ trait FormValidation
         ];
     }
 
-    public function profileSocialRules(): array
+    public function profileSocialRules(User $user = null): array
     {
         return [
             'marital_status' => ['required', 'string', Rule::in([
@@ -243,11 +243,11 @@ trait FormValidation
                 'According to the desire of the other partner According to the desire of the other partner',
             ])],
             'children_information' => ['required', 'string', 'max:1000'],
-            'divorced_reason' => ['nullable', RUle::requiredIf(function () {
-                return $this->state['marital_status'] == 'divorced';
+            'divorced_reason' => ['nullable', RUle::requiredIf(function () use ($user) {
+                return $user->marital_status == 'divorced';
             }), 'max:1000'],
-            'male_polygamy_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'male';
+            'male_polygamy_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
                 'Yes',
                 'No',
@@ -255,8 +255,8 @@ trait FormValidation
                 'Not in my mind, but if I decide to, I will',
                 'Not in my mind, but if I decide to, I do not do it without her consent',
             ])],
-            'female_polygamy_status' => [Rule::requiredIf(function () {
-                return $this->state['gender'] == 'female';
+            'female_polygamy_status' => [Rule::requiredIf(function () use ($user) {
+                return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
                 'Accept',
                 'I accept if he was previously married and I do not accept that he gets married after me',

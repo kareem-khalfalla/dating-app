@@ -75,11 +75,11 @@ class UpdateOrCreateUser extends Component
 
         Validator::make($this->state, $this->profileDetailsRules())->validate();
         Validator::make($this->state, $this->profilePersonalRules())->validate();
-        Validator::make($this->state, $this->profileReligionRules())->validate();
-        Validator::make($this->state, $this->profileEducationRules())->validate();
+        Validator::make($this->state, $this->profileEducationRules($user))->validate();
+        Validator::make($this->state, $this->profileReligionRules($user))->validate();
+        Validator::make($this->state, $this->profileSocialRules($user))->validate();
         Validator::make($this->state, $this->profileLifestyleRules())->validate();
         Validator::make($this->state, $this->profileShapeRules())->validate();
-        Validator::make($this->state, $this->profileSocialRules())->validate();
 
         $this->userArr['username'] = Str::slug($this->userArr['username']);
         $this->userArr['password'] = bcrypt($this->userArr['password']);
