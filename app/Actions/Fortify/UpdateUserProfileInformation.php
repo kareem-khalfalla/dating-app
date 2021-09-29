@@ -20,7 +20,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
-        Validator::make($input, $this->userRules())->validate();
+        Validator::make($input, $this->userRules($user))->validate();
 
         $input['username'] = Str::slug($input['username']);
 

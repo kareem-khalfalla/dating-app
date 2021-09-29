@@ -10,7 +10,7 @@ trait FormValidation
 {
     use PasswordValidationRules;
 
-    public function userRules(User $user = null): array
+    public function userRules(User $user): array
     {
         return [
             'name'     => ['required', 'string', 'max:255'],
@@ -24,7 +24,7 @@ trait FormValidation
                 'max:255',
                 Rule::unique('users')->ignore($user->id ?? ''),
             ],
-            'password' => $this->passwordRules()
+            'password' => array_merge(['sometimes'], $this->passwordRules())
         ];
     }
 

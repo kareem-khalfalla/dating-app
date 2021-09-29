@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Report;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 use Livewire\Redirector;
 

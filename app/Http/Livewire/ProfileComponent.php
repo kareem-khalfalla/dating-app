@@ -36,7 +36,7 @@ class ProfileComponent extends Component
         /** @var \App\Models\User $user */
         $user = auth()->user();
         $this->state = $user->only([
-            'name', 'email', 'username', 'phone'
+            'name', 'email', 'username', 'phone', 'gender'
         ]);
 
         $this->imageName       = $user->avatar;
@@ -47,83 +47,9 @@ class ProfileComponent extends Component
             ? State::where('country_id', $this->selectedCountry)->get()
             : collect();
 
-        $this->state['gender']                  = $user->gender;
-        $this->state['dob']                     = $user->profile->dob;
-        $this->state['postal_code']             = $user->profile->postal_code;
-        $this->state['nationality_id']          = $user->profile->nationality_id;
-        $this->state['residence_status']        = $user->profile->residence_status;
-        $this->state['country_of_residence_id'] = $user->profile->country_of_residence_id;
-        $this->state['relocate_status']         = $user->profile->relocate_status;
-        // 
-        $this->state['native_language_id']         = $user->profile->native_language_id;
-        $this->state['second_language_id']         = $user->profile->second_language_id;
-        $this->state['third_language_id']          = $user->profile->third_language_id;
-        $this->state['second_language_perfection'] = $user->profile->second_language_perfection;
-        $this->state['third_language_perfection']  = $user->profile->third_language_perfection;
-
-        $this->state['bio']                 = $user->profile->bio;
-        $this->state['partner_bio']         = $user->profile->partner_bio;
-        $this->state['relationship_status'] = $user->profile->relationship_status;
-        $this->state['marriage_status']     = $user->profile->marriage_status;
-        // 
-        $this->state['education_status']         = $user->profile->education_status;
-        $this->state['competence']               = $user->profile->competence;
-        $this->state['work']                     = $user->profile->work;
-        $this->state['income']                   = $user->profile->income;
-        $this->state['male_work_status']         = $user->profile->male_work_status;
-        $this->state['male_study_status']        = $user->profile->male_study_status;
-        $this->state['female_work_status']       = $user->profile->female_work_status;
-        $this->state['female_study_status']      = $user->profile->female_study_status;
-        $this->state['marital_status']           = $user->profile->marital_status;
-        $this->state['divorced_reason']          = $user->profile->divorced_reason;
-        $this->state['children_status']          = $user->profile->children_status;
-        $this->state['children_desire_status']   = $user->profile->children_desire_status;
-        $this->state['children_count']           = $user->profile->children_count;
-        $this->state['children_information']     = $user->profile->children_information;
-        $this->state['male_polygamy_status']     = $user->profile->male_polygamy_status;
-        $this->state['female_polygamy_status']   = $user->profile->female_polygamy_status;
-        $this->state['shelter_type']             = $user->profile->shelter_type;
-        $this->state['shelter_shape']            = $user->profile->shelter_shape;
-        $this->state['shelter_way']              = $user->profile->shelter_way;
-        // 
-        $this->state['religion']        = $user->profile->religion;
-        $this->state['religion_method'] = $user->profile->religion_method;
-        $this->state['obligation']      = $user->profile->obligation;
-        $this->state['prayer']          = $user->profile->prayer;
-        $this->state['alfajr_prayer']   = $user->profile->alfajr_prayer;
-        $this->state['fasting']         = $user->profile->fasting;
-        $this->state['reading_quran']   = $user->profile->reading_quran;
-        $this->state['beard_status']    = $user->profile->beard_status;
-        $this->state['robe_status']     = $user->profile->robe_status;
-        $this->state['veil_status']     = $user->profile->veil_status;
-        $this->state['headdress']       = $user->profile->headdress;
-        $this->state['tafaqah_status']  = $user->profile->tafaqah_status;
-        $this->state['lesson_listing']  = $user->profile->lesson_listing;
-        $this->state['music_status']    = $user->profile->music_status;
-        $this->state['show_status']     = $user->profile->show_status;
-        $this->state['friend_status']   = $user->profile->friend_status;
-        //
-        $this->state['height']                = $user->profile->height;
-        $this->state['weight']                = $user->profile->weight;
-        $this->state['body_status']           = $user->profile->body_status;
-        $this->state['skin_status']           = $user->profile->skin_status;
-        $this->state['hair_color']            = $user->profile->hair_color;
-        $this->state['hair_length']           = $user->profile->hair_length;
-        $this->state['hair_kind']             = $user->profile->hair_kind;
-        $this->state['eye_color']             = $user->profile->eye_color;
-        $this->state['eye_glass']             = $user->profile->eye_glass;
-        $this->state['health_status']         = $user->profile->health_status;
-        $this->state['psychological_pattern'] = $user->profile->psychological_pattern;
-        $this->state['clarification']         = $user->profile->clarification;
-        // 
-        $this->state['smoke_status']      = $user->profile->smoke_status;
-        $this->state['alcohol_status']    = $user->profile->alcohol_status;
-        $this->state['halal_food_status'] = $user->profile->halal_food_status;
-        $this->state['food_type']         = $user->profile->food_type;
-        $this->state['hobbies']           = $user->profile->hobbies;
-        $this->state['interests']         = $user->profile->interests;
-        $this->state['books']             = $user->profile->books;
-        $this->state['places']            = $user->profile->places;
+        $this->state = array_merge($this->state, Arr::except($user->profile->toArray(), [
+            'user_id', 'created_at', 'updated_at'
+        ]));
     }
 
     public function render(): View

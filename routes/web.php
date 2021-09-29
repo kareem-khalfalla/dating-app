@@ -8,7 +8,6 @@ use App\Http\Livewire\Admin\Users\ListReports;
 use App\Http\Livewire\Admin\Users\ListUsers;
 use App\Http\Livewire\Admin\Users\UpdateOrCreateUser;
 use App\Http\Livewire\ChatComponent;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
