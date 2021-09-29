@@ -13,11 +13,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Friendable;
+    use HasApiTokens, HasFactory, Notifiable, Friendable;
 
     /**
      * The attributes that are mass assignable.
@@ -60,6 +59,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getRouteKeyName(): string
     {
         return 'username';
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role == 'admin';
     }
 
     public function scopeSwapGender(BUilder $query): Builder
