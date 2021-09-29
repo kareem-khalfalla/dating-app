@@ -33,7 +33,7 @@
                         <h4>Today's visits</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">900000</p>
+                        <p class="lead">{{ $todayVisitsCount }}</p>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         <h4>All visits</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">900000</p>
+                        <p class="lead">{{ $visitsCount }}</p>
                     </div>
                 </div>
             </div>

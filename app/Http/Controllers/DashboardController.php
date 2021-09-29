@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Report;
+use App\Models\Tracker;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,10 @@ class DashboardController extends Controller
             'todayMessagesCount' => Message::query()->whereBetween('created_at', [
                 now()->today(), now()
             ])->count(),
+            'todayVisitsCount' => Tracker::query()->whereBetween('date', [
+                now()->today(), now()
+            ])->count(),
+            'visitsCount' => Tracker::count(),
         ]);
     }
 }
