@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Country;
 use App\Models\Language;
 use App\Models\Nationality;
-use App\Models\State;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Faker\Factory;
@@ -27,7 +26,7 @@ class UserSeeder extends Seeder
         $profile = $user->profile()->create();
         $profile->country_of_origin_id = Country::all()->random()->id;
         $profile->country_of_residence_id = Country::all()->random()->id;
-        $profile->state_id = State::all()->random()->id;
+        $profile->state_id = Country::find($profile->country_of_origin_id)->states->random()->id;
         $profile->native_language_id = Language::all()->random()->id;
         $profile->second_language_id = Language::all()->random()->id;
         $profile->third_language_id = Language::all()->random()->id;
@@ -244,9 +243,9 @@ class UserSeeder extends Seeder
         $profile->bio = $faker->paragraph();
         $profile->partner_bio = $faker->paragraph();
         $profile->competence = $faker->paragraph();
-        $profile->divorced_reason = $faker->paragraph();
-        if ($profile->divorced_reason == 'divorced') {
-            $profile->children_information = $faker->paragraph();
+        $profile->children_information = $faker->paragraph();
+        if ($profile->marital_status == 'divorced') {
+            $profile->divorced_reason = $faker->paragraph();
         }
         $profile->clarification = $faker->paragraph();
         $profile->lesson_listing = $faker->paragraph();

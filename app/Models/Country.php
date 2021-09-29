@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Country extends Model
 {
     public function getTranslationsAttribute(string $attr): array
@@ -16,5 +18,10 @@ class Country extends Model
             : app()->getLocale();
 
         return $this->translations[$locale] ?? $this->name;
+    }
+
+    public function states(): HasMany
+    {
+        return $this->hasMany(State::class);
     }
 }
