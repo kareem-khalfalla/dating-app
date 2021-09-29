@@ -11,7 +11,7 @@
                         <h4>Count Users</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">900000</p>
+                        <p class="lead">{{ $usersCount }}</p>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                         <h4>Today's Users</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">900000</p>
+                        <p class="lead">{{ $todayUsersCount }}</p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <h4>Online Users</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">900000</p>
+                        <p class="lead">{{ $onlineUsersCount }}</p>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         <h4>Reports</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">10000</p>
+                        <p class="lead">{{ $reportsCount }}</p>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         <h4>All Messages</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">10000</p>
+                        <p class="lead">{{ $messagesCount }}</p>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                         <h4>Today's msg</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <p class="lead">190</p>
+                        <p class="lead">{{ $todayMessagesCount }}</p>
                     </div>
                 </div>
             </div>

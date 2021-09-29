@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
+use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +17,17 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'usersCount' => User::count(),
+            'todayUsersCount' => User::query()->whereBetween('created_at', [
+                now()->today(), now()
+            ])->count(),
+            'onlineUsersCount' => User::where('last_seen_at', '>', now()->subHour())->count(),
+            'reportsCount' => Report::count(),
+            'messagesCount' => Message::count(),
+            'todayMessagesCount' => Message::query()->whereBetween('created_at', [
+                now()->today(), now()
+            ])->count(),
+        ]);
     }
 }

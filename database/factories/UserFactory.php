@@ -33,6 +33,7 @@ class UserFactory extends Factory
             'last_seen_at' => $this->faker->dateTimeBetween('-1 years', now()),
             'gender' => $this->faker->randomElement(['male', 'female']),
             'fake' => 1,
+            'created_at' => $this->faker->dateTimeBetween('-1 years')
         ];
     }
 
