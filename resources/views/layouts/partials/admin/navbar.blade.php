@@ -21,8 +21,12 @@
             </a>
 
             <div class="dropdown-menu custom_drop_h" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="lodout.html">Logout</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Logout</a>
+                <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
+                </form>
             </div>
+
         </div>
     </ul>
 </nav>
