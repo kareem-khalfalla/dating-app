@@ -12,7 +12,6 @@ return [
     'Today\'s msg'    => 'رسالة اليوم',
     // list users
     'Users'           => 'المستخدمون',
-    'Dashboard'       => 'لوحة القيادة',
     'Users'           => 'المستخدمون',
     'DataTable users' => 'مستخدمو DataTable',
     'Image'           => 'صورة',
@@ -30,13 +29,11 @@ return [
     'rooms'           => 'غرف',
     'Empty users'     => 'المستخدمون الفارغون',
     // create or update
-    'Dashboard'           => 'لوحة القيادة',
     'add user'            => 'إضافة مستخدم',
     'Add New User'        => 'إضافة مستخدم جديد',
     'Update User Profile' => 'تحديث ملف تعريف المستخدم',
     // reports
     'Reports'           => 'التقارير',
-    'Dashboard'         => 'لوحة القيادة',
     'Reports'           => 'التقارير',
     'DataTable Reports' => 'تقارير DataTable',
     'From'              => 'من عند',
@@ -47,8 +44,7 @@ return [
     'Search for' => 'بحث عن',
     'Logout'     => 'تسجيل خروج',
     // aside
-    'Core'      => 'جوهر',
-    'Dashboard' => 'لوحة القيادة',
+    'Core'      => 'أساسي',
     'Pages'     => 'الصفحات',
     'users'     => 'المستخدمين',
     'Add user'  => 'إضافة مستخدم',

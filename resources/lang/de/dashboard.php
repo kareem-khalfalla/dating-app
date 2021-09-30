@@ -12,8 +12,6 @@ return [
     'Today\'s msg'    => 'Nachricht von heute',
     // list users
     'Users'           => 'Benutzer',
-    'Dashboard'       => 'Armaturenbrett',
-    'Users'           => 'Benutzer',
     'DataTable users' => 'DataTable-Benutzer',
     'Image'           => 'Bild',
     'Name'            => 'Name',
@@ -35,7 +33,6 @@ return [
     'Update User Profile' => 'Benutzerprofil aktualisieren',
     // reports
     'Reports'           => 'Berichte',
-    'Dashboard'         => 'Armaturenbrett',
     'Reports'           => 'Berichte',
     'DataTable Reports' => 'DataTable-Berichte',
     'From'              => 'Von',
@@ -47,9 +44,7 @@ return [
     'Logout'     => 'Ausloggen',
     // aside
     'Core'      => 'Kern',
-    'Dashboard' => 'Armaturenbrett',
     'Pages'     => 'Seiten',
-    'users'     => 'Benutzer',
     'Add user'  => 'Nutzer hinzufügen',
     'reports'   => 'Berichte',
 ];

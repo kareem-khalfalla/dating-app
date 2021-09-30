@@ -27,9 +27,12 @@ return [
     'Are you sure?'                      => 'Are you sure?',
     'You won\'t be able to revert this!' => 'You won\'t be able to revert this!',
     'warning'                            => 'warning',
+    'User created successfully'          => 'User created successfully',
+    'User updated successfully'          => 'User updated successfully',
     'User deleted successfull'           => 'User deleted successfull',
+    'Report deleted successfully'        => 'Report deleted successfully',
     'Role changed to user successfully'       => 'Role changed to user successfully',
     'Role changed to super user successfully' => 'Role changed to super user successfully',
     'Role changed to admin successfully'      => 'Role changed to admin successfully',
     'Role changed to moderator successfully'  => 'Role changed to moderator successfully',
-];  
+];

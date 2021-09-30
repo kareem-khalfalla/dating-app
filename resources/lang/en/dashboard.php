@@ -12,8 +12,6 @@ return [
     'Today\'s msg'    => 'Today\'s msg',
     // list users
     'Users'           => 'Users',
-    'Dashboard'       => 'Dashboard',
-    'Users'           => 'Users',
     'DataTable users' => 'DataTable users',
     'Image'           => 'Image',
     'Name'            => 'Name',
@@ -30,13 +28,11 @@ return [
     'rooms'           => 'rooms',
     'Empty users'     => 'Empty users',
     // create or update
-    'Dashboard'           => 'Dashboard',
     'add user'            => 'add user',
     'Add New User'        => 'Add New User',
     'Update User Profile' => 'Update User Profile',
     // reports
     'Reports'           => 'Reports',
-    'Dashboard'         => 'Dashboard',
     'Reports'           => 'Reports',
     'DataTable Reports' => 'DataTable Reports',
     'From'              => 'From',
@@ -48,9 +44,7 @@ return [
     'Logout'     => 'Logout',
     // aside
     'Core'      => 'Core',
-    'Dashboard' => 'Dashboard',
     'Pages'     => 'Pages',
-    'users'     => 'users',
     'Add user'  => 'Add user',
     'reports'   => 'reports',
 ];

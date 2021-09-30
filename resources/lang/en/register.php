@@ -17,4 +17,5 @@ return [
     // dashboard
     'Add New User' => 'Add New User',
     'Next'         => 'Next',
+    'Update User'  => 'Update User',
 ];
