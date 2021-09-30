@@ -9,5 +9,4 @@
     @else
         @include('livewire.admin.users.create-user-form-step2')
     @endif
-
 </div>

@@ -34,15 +34,15 @@ Route::group(
             Route::get('requests', [UserController::class, 'requests'])->name('requests');
             Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
             Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
-
-            Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-                Route::get('dashboard', DashboardController::class)->name('dashboard');
-                Route::get('users', ListUsers::class)->name('users');
-                Route::get('reports', ListReports::class)->name('reports');
-                Route::get('users/create', UpdateOrCreateUser::class)->name('users.create');
-                Route::get('users/{user?}', UpdateOrCreateUser::class)->name('users.update');
-                Route::get('users/{user}/chat', ChatComponent::class)->name('user.chat');
-            });
         });
     }
 );
+
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::get('users', ListUsers::class)->name('users');
+    Route::get('reports', ListReports::class)->name('reports');
+    Route::get('users/create', UpdateOrCreateUser::class)->name('users.create');
+    Route::get('users/{user?}', UpdateOrCreateUser::class)->name('users.update');
+    Route::get('users/{user}/chat', ChatComponent::class)->name('user.chat');
+});

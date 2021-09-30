@@ -518,7 +518,7 @@
 
                 <div class="form-group mb-3 col-md-6">
                     <label for="exampleInputEmail1">{{ __('settings.Interests') }}</label>
-                    <x-selectbox wire:model.defer="state.hobbies" multiple>
+                    <x-selectbox wire:model.defer="state.hobbies" title="test" class="selectpicker" multiple>
                         <x-selectboxes.hobbies />
                     </x-selectbox>
                 </div>
