@@ -11,7 +11,7 @@ return [
     'All Messages'    => 'All Messages',
     'Today\'s msg'    => 'Today\'s msg',
     // list users
-    'Users'           => 'Users',
+    'users'           => 'users',
     'DataTable users' => 'DataTable users',
     'Image'           => 'Image',
     'Name'            => 'Name',

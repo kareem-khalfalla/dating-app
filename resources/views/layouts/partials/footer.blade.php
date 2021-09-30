@@ -52,6 +52,8 @@ integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKG
 crossorigin="anonymous"></script>
 @livewireScripts
 
+<x-alerts />
+
 @stack('scripts')
 
 </body>
