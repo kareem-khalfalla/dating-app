@@ -32,25 +32,27 @@
                 </div>
                 <x-input wire:model.defer="state.phone" placeholder="{{ __('register.phone') }}" type="tel" />
             </div>
-            <div class="input-group input-group-lg mb-3 col-md-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
-                            aria-hidden="true"></i></span>
+            @if (!$user)
+                <div class="input-group input-group-lg mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
+                                aria-hidden="true"></i></span>
+                    </div>
+                    <x-input id="rpassword" wire:model.defer="state.password"
+                        placeholder="{{ __('register.password') }}" type="password" />
                 </div>
-                <x-input id="rpassword" wire:model.defer="state.password" placeholder="{{ __('register.password') }}"
-                    type="password" />
-            </div>
-            <div class="input-group input-group-lg mb-3 col-md-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
-                            aria-hidden="true"></i></span>
-                </div>
-                <x-input id="cpassword" wire:model.defer="state.password_confirmation"
-                    placeholder="{{ __('register.cofirm password') }}" type="password" />
-                <small id="passError"
-                    class="d-none text-danger col-12">{{ __('register.password not
+                <div class="input-group input-group-lg mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
+                                aria-hidden="true"></i></span>
+                    </div>
+                    <x-input id="cpassword" wire:model.defer="state.password_confirmation"
+                        placeholder="{{ __('register.cofirm password') }}" type="password" />
+                    <small id="passError"
+                        class="d-none text-danger col-12">{{ __('register.password not
                 much') }}</small>
-            </div>
+                </div>
+            @endif
             <div class="mt-2 mb-2 col-md-6 pr-2">
                 <label class="mr-3"><b>{{ __('register.Gender') }}</b></label>
                 <label class="radio-inline p-2 @error('gender') is-invalid @enderror"><input type="radio" name="gender"

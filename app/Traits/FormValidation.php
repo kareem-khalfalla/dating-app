@@ -24,7 +24,7 @@ trait FormValidation
                 'max:255',
                 Rule::unique('users')->ignore($user->id ?? ''),
             ],
-            'password' => $this->passwordRules()
+            'password' => $user ?? $this->passwordRules()
         ];
     }
 
