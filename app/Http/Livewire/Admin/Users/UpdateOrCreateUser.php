@@ -21,6 +21,8 @@ class UpdateOrCreateUser extends Component
 
     public array $state = [];
 
+    public $isMale;
+
     public $selectedCountry;
     public $selectedState;
     public $countryStates;
@@ -60,12 +62,20 @@ class UpdateOrCreateUser extends Component
     {
         $data = Validator::make($this->state, $this->userRules($this->user))->validate();
         $this->userArr = $data;
+        $this->isMale = $this->userArr['gender'] == 'male';
         $this->currentStep = 2;
     }
 
-    public function store(): User
+    public function store()
     {
+        $imageName = 'images/users-avatar/default.png';
+        $status = 'updated';
+
         $user = $this->user;
+        if (is_null($user)) {
+            $user = new User($this->userArr);
+            $status = 'created';
+        }
 
         $this->validate([
             'selectedCountry' => 'required',
@@ -104,10 +114,7 @@ class UpdateOrCreateUser extends Component
                 $user = $this->user;
             }
 
-            $user->update([
-                'avatar' => $imageName
-            ]);
-
+            $this->userArr['avatar'] = $imageName;
             $this->user->update($this->userArr);
 
             $user->profile->update([
@@ -116,18 +123,16 @@ class UpdateOrCreateUser extends Component
 
             $user->profile->update(Arr::except($this->state, [
                 'name', 'gender', 'email', 'password', 'username', 'phone', 'password_confirmation',
-                'avatar'
+                'avatar', 'role'
             ]));
-
-            $this->state = [];
-            $this->currentStep = 1;
 
             DB::commit();
 
-            return $user;
-            //code...
+            session()->flash('success', "User $status sucessfully");
+
+            return redirect()->to('admin/users');
         } catch (\Throwable $th) {
-            //throw $th;
+            // throw $th;
             DB::rollBack();
         }
     }
