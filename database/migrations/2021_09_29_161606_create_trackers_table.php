@@ -16,7 +16,7 @@ class CreateTrackersTable extends Migration
         Schema::create('trackers', function (Blueprint $table) {
             $table->id();
             $table->string('ip')->unique();
-            $table->date('date')->unique();
+            $table->date('date');
         });
     }
 
