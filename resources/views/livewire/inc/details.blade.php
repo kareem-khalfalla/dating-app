@@ -40,16 +40,13 @@
             </div>
             <div class="form-row col-12">
                 <div class="input-group input-group-lg mb-3 col-md-6">
-                    @if ($selectedCountry)
-                        <label class="col-12">{{ __('settings.City') }}</label>
-                        <x-selectbox wire:model.defer="selectedState">
-                            <option value="">---</option>
-                            @foreach ($countryStates as $countryState)
-                                <option value="{{ $countryState->id }}">{{ $countryState->name }}</option>
-                            @endforeach
-                        </x-selectbox>
-                    @endif
-
+                    <label class="col-12">{{ __('settings.City') }}</label>
+                    <x-selectbox wire:model.defer="selectedState">
+                        <option value="">---</option>
+                        @foreach ($countryStates as $countryState)
+                            <option value="{{ $countryState->id }}">{{ $countryState->name }}</option>
+                        @endforeach
+                    </x-selectbox>
                 </div>
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
@@ -91,13 +88,11 @@
                     </x-selectbox>
                 </div>
                 <div class="input-group input-group-lg mb-3 col-5">
-                    @if (isset($state['second_language_id']))
-                        <label class="col-12">{{ __('settings.level') }}</label>
-                        <x-selectbox wire:model.defer="state.second_language_perfection">
-                            <option value="">---</option>
-                            <x-selectboxes.language_perfection />
-                        </x-selectbox>
-                    @endif
+                    <label class="col-12">{{ __('settings.level') }}</label>
+                    <x-selectbox wire:model.defer="state.second_language_perfection">
+                        <option value="">---</option>
+                        <x-selectboxes.language_perfection />
+                    </x-selectbox>
                 </div>
             </div>
             <div class="form-row col-12">
@@ -111,13 +106,11 @@
                     </x-selectbox>
                 </div>
                 <div class="input-group input-group-lg mb-3 col-5">
-                    @if (isset($state['third_language_id']))
-                        <label class="col-12">{{ __('settings.level') }}</label>
-                        <x-selectbox wire:model.defer="state.third_language_perfection">
-                            <option value="">---</option>
-                            <x-selectboxes.language_perfection />
-                        </x-selectbox>
-                    @endif
+                    <label class="col-12">{{ __('settings.level') }}</label>
+                    <x-selectbox wire:model.defer="state.third_language_perfection">
+                        <option value="">---</option>
+                        <x-selectboxes.language_perfection />
+                    </x-selectbox>
                 </div>
             </div>
             <div class="mt-4 col-12">

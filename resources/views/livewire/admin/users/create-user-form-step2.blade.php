@@ -68,28 +68,19 @@
                 </div>
                 <div class="form-row col-12">
                     <div class="input-group input-group-lg mb-3 col-6">
-                        @if ($selectedCountry)
-                            <label class="col-12">{{ __('settings.City') }}</label>
-                            <x-selectbox wire:model.defer="selectedState">
-                                <option value="">---</option>
-                                @foreach ($countryStates as $countryState)
-                                    <option value="{{ $countryState->id }}">{{ $countryState->name }}</option>
-                                @endforeach
-                            </x-selectbox>
-                        @endif
+                        <label class="col-12">{{ __('settings.City') }}</label>
+                        <x-selectbox wire:model.defer="selectedState">
+                            <option value="">---</option>
+                            @foreach ($countryStates as $countryState)
+                                <option value="{{ $countryState->id }}">{{ $countryState->name }}</option>
+                            @endforeach
+                        </x-selectbox>
                     </div>
                     <div class="input-group input-group-lg mb-3 col-6">
                         <label class="col-12">{{ __('settings.Postal code') }}</label>
                         <x-input wire:model.defer="state.postal_code"
                             placeholder="{{ __('settings.Postal code') }}" />
                     </div>
-                </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label class="col-12">{{ __('settings.Type of accommodation') }}</label>
-                    <x-selectbox wire:model.defer="state.residence_status">
-                        <option value="">---</option>
-                        <x-selectboxes.residence_statuses />
-                    </x-selectbox>
                 </div>
                 <div class="form-row col-12">
                     <div class="input-group input-group-lg mb-3 col-7">
@@ -102,14 +93,11 @@
                         </x-selectbox>
                     </div>
                     <div class="input-group input-group-lg mb-3 col-5">
-                        @if (isset($state['second_language_id']))
-
-                            <label class="col-12">{{ __('settings.level') }}</label>
-                            <x-selectbox wire:model.defer="state.second_language_perfection">
-                                <option value="">---</option>
-                                <x-selectboxes.language_perfection />
-                            </x-selectbox>
-                        @endif
+                        <label class="col-12">{{ __('settings.level') }}</label>
+                        <x-selectbox wire:model.defer="state.second_language_perfection">
+                            <option value="">---</option>
+                            <x-selectboxes.language_perfection />
+                        </x-selectbox>
                     </div>
                 </div>
                 <div class="form-row col-12">
@@ -123,14 +111,19 @@
                         </x-selectbox>
                     </div>
                     <div class="input-group input-group-lg mb-3 col-5">
-                        @if (isset($state['third_language_id']))
-                            <label class="col-12">{{ __('settings.level') }}</label>
-                            <x-selectbox wire:model.defer="state.third_language_perfection">
-                                <option value="">---</option>
-                                <x-selectboxes.language_perfection />
-                            </x-selectbox>
-                        @endif
+                        <label class="col-12">{{ __('settings.level') }}</label>
+                        <x-selectbox wire:model.defer="state.third_language_perfection">
+                            <option value="">---</option>
+                            <x-selectboxes.language_perfection />
+                        </x-selectbox>
                     </div>
+                </div>
+                <div class="input-group input-group-lg mb-3 col-md-6">
+                    <label class="col-12">{{ __('settings.Type of accommodation') }}</label>
+                    <x-selectbox wire:model.defer="state.residence_status">
+                        <option value="">---</option>
+                        <x-selectboxes.residence_statuses />
+                    </x-selectbox>
                 </div>
                 <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.brief about me') }}</label>
@@ -400,18 +393,18 @@
                 </div>
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label for="exampleInputEmail1">{{ __('settings.Length') }}</label>
+                    <label class="col-12" for="exampleInputEmail1">{{ __('settings.Length') }}</label>
                     <x-input wire:model.defer="state.height" type="number" min="40" max="222" placeholder="Length" />
                 </div>
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label for="exampleInputEmail1">{{ __('settings.the weight') }}</label>
+                    <label class="col-12" for="exampleInputEmail1">{{ __('settings.the weight') }}</label>
                     <x-input wire:model.defer="state.weight" type="number" min="40" max="222"
                         placeholder="the weight" />
                 </div>
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label for="exampleInputEmail1">{{ __('settings.body type') }}</label>
+                    <label class="col-12" for="exampleInputEmail1">{{ __('settings.body type') }}</label>
                     <x-selectbox wire:model.defer="state.body_status">
                         <option value="">---</option>
                         <x-selectboxes.body_statuses />
@@ -419,7 +412,8 @@
                 </div>
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label for="exampleInputEmail1"> {{ __('settings.skinStatus colour') }}</label>
+                    <label class="col-12" for="exampleInputEmail1">
+                        {{ __('settings.skinStatus colour') }}</label>
                     <x-selectbox wire:model.defer="state.skin_status">
                         <option value="">---</option>
                         <x-selectboxes.skin_statuses />
