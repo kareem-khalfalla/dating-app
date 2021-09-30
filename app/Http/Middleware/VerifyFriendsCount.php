@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Message;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,10 @@ class VerifyFriendsCount
         $authUser = auth()->user();
 
         if ($authUser->getFriendsCount() == 0 && $authUser->role == 'user') {
+            return redirect()->route('notFound')->withError(__('alerts.Sadlly, you don\'t have friends to chat with'));
+        }
+
+        if ($authUser->getFriendsCount() == 0 && $authUser->role == 'admin') {
             return redirect()->route('notFound')->withError(__('alerts.Sadlly, you don\'t have friends to chat with'));
         }
         return $next($request);
