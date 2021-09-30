@@ -12,6 +12,7 @@ return [
     'Today\'s msg'    => 'Today\'s msg',
     // list users
     'users'           => 'users',
+    'Users'           => 'Users',
     'DataTable users' => 'DataTable users',
     'Image'           => 'Image',
     'Name'            => 'Name',
