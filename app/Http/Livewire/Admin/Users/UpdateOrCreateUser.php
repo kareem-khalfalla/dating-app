@@ -34,6 +34,7 @@ class UpdateOrCreateUser extends Component
     public function mount(): void
     {
         if (!is_null($this->user)) {
+            $this->currentStep = 2;
             $this->state = $this->userArr = Arr::except($this->user->toArray(), [
                 'id', 'email_verified_at', 'last_seen_at', 'last_message_at', 'two_factor_secret',
                 'two_factor_recovery_codes', 'fake', 'status', 'created_at', 'updated_at'
