@@ -138,7 +138,7 @@ trait FormValidation
             ])],
             'religion_method' => ['required', 'string', Rule::in([
                 'Feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
-                'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'My income',
+                'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi',
                 'brothers', 'Ethiopian', 'Protestant', 'Catholic', 'Autodox',
                 'I do not know', 'other',
             ])],

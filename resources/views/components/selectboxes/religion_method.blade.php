@@ -5,7 +5,6 @@
 <option value="Jaafari">{{ __('data.Jaafari') }}</option>
 <option value="Matrade">{{ __('data.Matrade') }}</option>
 <option value="Abadi">{{ __('data.Abadi') }}</option>
-<option value="My income">{{ __('data.My income') }}</option>
 <option value="brothers">{{ __('data.brothers') }}</option>
 <option value="Ethiopian">{{ __('data.Ethiopian') }}</option>
 <option value="Protestant">{{ __('data.Protestant') }}</option>
