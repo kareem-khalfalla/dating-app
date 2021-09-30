@@ -33,6 +33,7 @@ class DashboardController extends Controller
                 now()->today(), now()
             ])->count(),
             'visitsCount' => Tracker::count(),
+            'users' => User::allExceptAuthId()->latest()->limit(50)->get()
         ]);
     }
 }
