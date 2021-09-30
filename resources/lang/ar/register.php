@@ -14,4 +14,7 @@ return [
     'Female' => 'أنثى',
     'you have an account already?' => 'لديك حساب بالفعل؟',
     'Login from here' => 'تسجيل الدخول من هنا',
+    // dashboard
+    'Add New User' => 'اضافه عضو جديد',
+    'Next'         => 'التالي',
 ];

@@ -14,4 +14,7 @@ return [
     'Female' => 'Female',
     'you have an account already?' => 'you have an account already?',
     'Login from here' => 'Login from here',
+    // dashboard
+    'Add New User' => 'Add New User',
+    'Next'         => 'Next',
 ];

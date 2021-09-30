@@ -1,14 +1,14 @@
 <div>
     <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">add user</li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('dashboard.Dashboard') }}</a></li>
+        <li class="breadcrumb-item active">{{ __('dashboard.add user') }}</li>
     </ol>
 
     <h2 class="mb-4">
         @if ($currentStep == 1 && is_null($user))
-            Add New User
+            {{ __('dashboard.Add New User') }}
             @else
-            Update User Profile
+            {{ __('dashboard.Update User Profile') }}
         @endif
     </h2>
 

@@ -47,7 +47,7 @@ class UpdateOrCreateUser extends Component
 
     public function render()
     {
-        return view('livewire.admin.users.create-user')->layout('layouts.admin');
+        return view('livewire.admin.users.update-or-create-user')->layout('layouts.admin');
     }
 
     public function updatedSelectedCountry($country): void

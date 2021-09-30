@@ -14,4 +14,12 @@ return [
     'Female' => 'Weiblich',
     'you have an account already?' => 'hast du schon ein konto?',
     'Login from here' => 'Von hier aus anmelden',
+    // dashboard
+    'Add New User' => 'Neuen Benutzer hinzufügen',
+    'Next'         => 'Nächste',
+    // create or update
+    'Dashboard'           => 'Armaturenbrett',
+    'add user'            => 'Nutzer hinzufügen',
+    'Add New User'        => 'Neuen Benutzer hinzufügen',
+    'Update User Profile' => 'Benutzerprofil aktualisieren',
 ];
