@@ -1,5 +1,9 @@
 <div class="card card-body shadow">
-    <h2 class="mb-4">{{ __('register.Add New User') }}</h2>
+    @if ($currentStep == 1 && is_null($user))
+        <h2 class="mb-4">{{ __('register.Add New User') }}</h2>
+    @else
+        <h2 class="mb-4">{{ __('register.Update User') }}</h2>
+    @endif
     <div class="row">
         <div class="input-group input-group-lg mb-3 col-md-6">
             <div class="input-group-prepend">
