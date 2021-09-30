@@ -83,4 +83,6 @@ return [
     'Alcohol' => 'كحول',
     'halal food' => 'طعام حلال',
     'food style' => 'أسلوب الطعام',
+    'All friends' => 'جميع الاصدقاء',
+    'No friends' => 'ﻻ يوجد اصدقاء',
 ];

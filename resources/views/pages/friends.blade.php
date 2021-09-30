@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="card shadow">
         <div class="card-header">
-            <h4>{{ __('friends.All friends') }} [ {{ count($friends) }} ]</h4>
+            <h4>{{ __('profile.All friends') }} [ {{ count($friends) }} ]</h4>
         </div>
         <div class="card-body">
             @forelse ($friends as $friend)
@@ -17,7 +17,7 @@
                             class="btn btn-outline-danger">{{ __('profile.delete friend') }}</button></a>
                 </div>
             @empty
-                <p>{{ __('friends.No friends') }}!</p>
+                <p>{{ __('profile.No friends') }}!</p>
             @endforelse
         </div>
         <div class="card-footer">

@@ -83,4 +83,6 @@ return [
     'Alcohol' => 'Alcohol',
     'halal food' => 'halal food',
     'food style' => 'food style',
+    'All friends' => 'All friends',
+    'No friends' => 'No friends',
 ];
