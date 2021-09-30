@@ -118,21 +118,21 @@
                         </x-selectbox>
                     </div>
                 </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="col-12">{{ __('settings.brief about me') }}</label>
+                    <x-textarea wire:model.defer="state.bio" placeholder="{{ __('settings.brief about me') }}" />
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="col-12">{{ __('settings.A profile of your desired partner') }}</label>
+                    <x-textarea wire:model.defer="state.partner_bio"
+                        placeholder="{{ __('settings.A profile of your desired partner') }}" />
+                </div>
                 <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.Type of accommodation') }}</label>
                     <x-selectbox wire:model.defer="state.residence_status">
                         <option value="">---</option>
                         <x-selectboxes.residence_statuses />
                     </x-selectbox>
-                </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label class="col-12">{{ __('settings.brief about me') }}</label>
-                    <x-textarea wire:model.defer="state.bio" placeholder="{{ __('settings.brief about me') }}" />
-                </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label class="col-12">{{ __('settings.A profile of your desired partner') }}</label>
-                    <x-textarea wire:model.defer="state.partner_bio"
-                        placeholder="{{ __('settings.A profile of your desired partner') }}" />
                 </div>
                 <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.The required relationship') }}</label>
@@ -155,26 +155,28 @@
                         <x-selectboxes.education_and_work_statuses />
                     </x-selectbox>
                 </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label class="col-12">{{ __('settings.the work') }}</label>
-                    <x-selectbox wire:model.defer="state.work">
-                        <option value="">---</option>
-                        <x-selectboxes.work />
-                    </x-selectbox>
-                </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
+
+                <div class="form-group mb-3 col-md-6">
                     <label
                         class="col-12">{{ __('settings.If you listen to the lessons, who will you listen to?') }}</label>
                     <x-textarea wire:model.defer="state.lesson_listing"
                         placeholder="{{ __('settings.If you listen to the lessons, who will you listen to?') }}" />
                 </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
+
+                <div class="form-group mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.competence') }}</label>
                     <x-textarea wire:model.defer="state.competence" placeholder="{{ __('settings.competence') }}" />
                 </div>
                 <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.Monthly income') }}</label>
                     <x-input wire:model.defer="state.income" placeholder="Monthly income" type="number" />
+                </div>
+                <div class="input-group input-group-lg mb-3 col-md-6">
+                    <label class="col-12">{{ __('settings.the work') }}</label>
+                    <x-selectbox wire:model.defer="state.work">
+                        <option value="">---</option>
+                        <x-selectboxes.work />
+                    </x-selectbox>
                 </div>
                 @if ($isMale)
                     <div class="input-group input-group-lg mb-3 col-md-6">
@@ -350,15 +352,13 @@
                     </x-selectbox>
                 </div>
 
-                @if (isset($state['marital_status']) && $state['marital_status'] == 'divorced')
-                    <div class="input-group input-group-lg mb-3 col-md-6">
-                        <label
-                            class="col-12">{{ __('settings.Determine the reason for the divorce, if any') }}</label>
-                        <x-textarea wire:model.defer="state.divorced_reason"
-                            placeholder="{{ __('settings.Determine the reason for the divorce, if any') }}" />
-                    </div>
-                @endif
-                <div class="input-group input-group-lg mb-3 col-md-6">
+                <div class="form-group mb-3 col-md-6">
+                    <label
+                        class="col-12">{{ __('settings.Determine the reason for the divorce, if any') }}</label>
+                    <x-textarea wire:model.defer="state.divorced_reason"
+                        placeholder="{{ __('settings.Determine the reason for the divorce, if any') }}" />
+                </div>
+                <div class="form-group mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.Information about children') }}</label>
                     <x-textarea wire:model.defer="state.children_information"
                         placeholder="{{ __('settings.Information about children') }}" />
