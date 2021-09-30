@@ -93,7 +93,6 @@ class UpdateOrCreateUser extends Component
         Validator::make($this->state, $this->profileShapeRules())->validate();
 
         $this->userArr['username'] = Str::slug($this->userArr['username']);
-        $this->userArr['password'] = bcrypt($this->userArr['password']);
 
         if ($this->image) {
             /** @var \Illuminate\Http\UploadedFile */
@@ -110,6 +109,7 @@ class UpdateOrCreateUser extends Component
             DB::beginTransaction();
 
             if (is_null($this->user)) {
+                $this->userArr['password'] = bcrypt($this->userArr['password']);
                 $this->user = User::create($this->userArr);
                 $this->user->profile()->create();
                 $user = $this->user;
