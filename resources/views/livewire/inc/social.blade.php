@@ -41,7 +41,7 @@
                 <label class="col-12">{{ __('settings.Do you want polygamy?') }}</label>
                 <x-selectbox wire:model.defer="state.male_polygamy_status">
                     <option value="">---</option>
-                    <x-selectboxes.male.polygamy_statuses />
+                    <x-selectboxes.male.need_polygamy />
                 </x-selectbox>
             </div>
         @else

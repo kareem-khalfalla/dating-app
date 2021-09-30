@@ -1,2 +1,2 @@
-<option value="MarriageStatus">{{ __('settings.MarriageStatus') }}</option>
-<option value="Other">{{ __('settings.Other') }}</option>
+<option value="MarriageStatus">{{ __('data.MarriageStatus') }}</option>
+<option value="Other">{{ __('data.Other') }}</option>

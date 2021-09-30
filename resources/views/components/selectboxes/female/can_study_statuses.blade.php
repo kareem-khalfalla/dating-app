@@ -1,3 +1,3 @@
-<option value="Yes">{{ __('settings.Yes') }}</option>
-<option value="No">{{ __('settings.No') }}</option>
-<option value="Yes, if I may">{{ __('settings.Yes, if I may') }}</option>
+<option value="Yes">{{ __('data.Yes') }}</option>
+<option value="No">{{ __('data.No') }}</option>
+<option value="Yes, if I may">{{ __('data.Yes, if I may') }}</option>

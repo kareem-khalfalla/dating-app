@@ -55,10 +55,10 @@ class UserSeeder extends Seeder
             'MarriageStatus', 'Other',
         ]);
         $profile->body_status = $faker->randomElement([
-            'fit', 'fitness', 'fat', 'thin',
+            'Fit', 'Fitness', 'Fat', 'Thin',
         ]);
         $profile->skin_status = $faker->randomElement([
-            'White', 'very light', 'light', 'tan', 'wheat', 'dark', 'very dark',
+            'White', 'Very light', 'light', 'Tan', 'Wheat', 'dark', 'Very dark',
         ]);
         $profile->hair_color = $faker->randomElement([
             'Black', 'Brown', 'Light brown', 'Blonde', 'White', 'Red',
@@ -84,19 +84,19 @@ class UserSeeder extends Seeder
             'Suspicious', 'Curious', 'Sly', 'Cheerful',
         ]);
         $profile->shelter_type = $faker->randomElement([
-            'mine', 'rent',
+            'Mine', 'Rent',
         ]);
         $profile->shelter_shape = $faker->randomElement([
-            'detached house',
-            'apartment',
-            'room',
-            'student housing',
-            'shared accommodation',
+            'Detached house',
+            'Apartment',
+            'Room',
+            'Student housing',
+            'Shared accommodation',
         ]);
         $profile->shelter_way = $faker->randomElement([
-            'alone',
-            'with family',
-            'with friends',
+            'Alone',
+            'With family',
+            'With friends',
         ]);
         $profile->marital_status = $faker->randomElement([
             'Single', 'Married', 'Widower', 'divorced',
@@ -110,8 +110,8 @@ class UserSeeder extends Seeder
         $profile->children_desire_status = $faker->randomElement([
             'I would like it',
             'I do not want it',
-            'Yes but not now Yes but not now',
-            'According to the desire of the other partner According to the desire of the other partner',
+            'Yes but not now',
+            'According to the desire of the other partner',
         ]);
         $profile->smoke_status = $faker->randomElement([
             'Yes', 'No, I do not like it', 'No', 'a little', 'Shisha',
@@ -133,37 +133,37 @@ class UserSeeder extends Seeder
             'Unitarian Universalism', 'Rastafari',
         ]);
         $profile->religion_method = $faker->randomElement([
-            'feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
-            'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'my income',
+            'Feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
+            'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'My income',
             'brothers', 'Ethiopian', 'Protestant', 'Catholic', 'Autodox',
             'I do not know', 'other',
         ]);
         $profile->obligation = $faker->randomElement([
-            'committed', 'Uncommitted', 'sometimes obligated', 'Not interested',
+            'Committed', 'Uncommitted', 'Sometimes obligated', 'Not interested',
         ]);
         $profile->prayer = $faker->randomElement([
-            'committed to', 'Not original', 'Original and leave', 'Friday only', 'mostly original',
+            'Committed to', 'Not original', 'Original and leave', 'Friday only', 'Mostly original',
         ]);
         $profile->alfajr_prayer = $faker->randomElement([
-            'committed to', 'not committed to', 'sometimes',
+            'Committed to', 'Not Committed to', 'Sometimes',
         ]);
         $profile->fasting = $faker->randomElement([
             'Ramadan', 'Ramadan and waffles', 'Not every Ramadan',
         ]);
         $profile->reading_quran = $faker->randomElement([
-            'read daily', 'read a lot', 'Read a little', 'rarely', 'do not read',
+            'Read daily', 'Read a lot', 'Read a little', 'Rarely', 'Do not read',
         ]);
 
         if ($user->gender == 'male') {
             $profile->male_work_status = $faker->randomElement([
-                'yes',
-                'should work',
+                'Yes',
+                'Should work',
                 'I do not accept',
                 'I do not like it but leave it to her',
-                'it does not matter',
+                'It does not matter',
             ]);
             $profile->male_study_status = $faker->randomElement([
-                'yes',
+                'Yes',
                 'No',
                 'I do not like it but leave it to her',
             ]);
@@ -179,7 +179,7 @@ class UserSeeder extends Seeder
             ]);
         } else {
             $profile->female_work_status = $faker->randomElement([
-                'yes',
+                'Yes',
                 'I have to work',
                 'I do not accept to work',
                 'If allowed',
@@ -206,14 +206,14 @@ class UserSeeder extends Seeder
                 'No jilbab', 'No, but I would like to wear it',
             ]);
             $profile->veil_status = $faker->randomElement([
-                'yes', 'No',
+                'Yes', 'No',
                 'I do not want to wear it',
                 'No, but if the husband wants, I will wear it',
             ]);
             // $profile->overdress = $faker->randomElement([]);
         }
         $profile->tafaqah_status = $faker->randomElement([
-            'Know the basics', 'Read or attend lessons sometimes',
+            'Know the basics', 'Read or attend lessons Sometimes',
             'Interested in educationStatus and try it', 'Seek knowledge',
         ]);
         $profile->music_status = $faker->randomElement([
@@ -221,13 +221,13 @@ class UserSeeder extends Seeder
             'I do not hear songs', 'I do not hear and I do not want her at home',
         ]);
         $profile->friend_status = $faker->randomElement([
-            'I have no problem with that I have no problem with that',
-            'I have my own controls but I have my own controls but',
-            'I do not have it and I refuse to do so I do not have it and I refuse to do so',
-            'Connect with colleagues outside of work Connect with colleagues outside of work',
+            'I have no problem with that',
+            'I have my own controls',
+            'I do not have it and I refuse to do so',
+            'Connect with colleagues outside of work',
         ]);
         $profile->show_status = $faker->randomElement([
-            'Watch it', 'A little', 'rarely', 'No', 'No, and I do not want her at home',
+            'Watch it', 'A little', 'Rarely', 'No', 'No, and I do not want it at home',
         ]);
         $profile->children_count = rand(0, 9);
         $profile->postal_code = $faker->postcode();

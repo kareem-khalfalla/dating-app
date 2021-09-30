@@ -1,6 +1,6 @@
-<option value="Black">{{ __('settings.Black') }}</option>
-<option value="Brown">{{ __('settings.Brown') }}</option>
-<option value="Light brown">{{ __('settings.Light brown') }}</option>
-<option value="Blue">{{ __('settings.Blue') }}</option>
-<option value="Hazel">{{ __('settings.Hazel') }}</option>
-<option value="Green">{{ __('settings.Green') }}</option>
+<option value="Black">{{ __('data.Black') }}</option>
+<option value="Brown">{{ __('data.Brown') }}</option>
+<option value="Light brown">{{ __('data.Light brown') }}</option>
+<option value="Blue">{{ __('data.Blue') }}</option>
+<option value="Hazel">{{ __('data.Hazel') }}</option>
+<option value="Green">{{ __('data.Green') }}</option>

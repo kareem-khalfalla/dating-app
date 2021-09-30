@@ -1,2 +1,2 @@
-<option value="mine">{{ __('settings.mine') }}</option>
-<option value="rent">{{ __('settings.rent') }}</option>
+<option value="Mine">{{ __('data.Mine') }}</option>
+<option value="Rent">{{ __('data.Rent') }}</option>

@@ -1,5 +1,5 @@
-<option value="Watch it">{{ __('settings.Watching movies') }}</option>
-<option value="A little">{{ __('settings.A little') }}</option>
-<option value="rarely">{{ __('settings.rarely') }}</option>
-<option value="No">{{ __('settings.No') }}</option>
-<option value="No, and I do not want her at home">{{ __('settings.No, and I do not want her at home') }}
+<option value="Watch it">{{ __('data.Watching movies') }}</option>
+<option value="A little">{{ __('data.A little') }}</option>
+<option value="Rarely">{{ __('data.Rarely') }}</option>
+<option value="No">{{ __('data.No') }}</option>
+<option value="No, and I do not want it at home">{{ __('data.No, and I do not want it at home') }}

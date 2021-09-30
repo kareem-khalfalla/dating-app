@@ -188,7 +188,7 @@
                         <label class="col-12">{{ __('settings.Do you accept the wife\'s work?') }}</label>
                         <x-selectbox wire:model.defer="state.male_work_status">
                             <option value="">---</option>
-                            <x-selectboxes.male.work_statuses />
+                            <x-selectboxes.male.accet_wife_work />
                         </x-selectbox>
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
@@ -196,7 +196,7 @@
                             class="col-12">{{ __('settings.Do you accept studying the wife after marriageStatus?') }}</label>
                         <x-selectbox wire:model.defer="state.male_study_status">
                             <option value="">---</option>
-                            <x-selectboxes.male.male_study_statuses />
+                            <x-selectboxes.male.accept_wife_study />
                         </x-selectbox>
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
@@ -210,7 +210,7 @@
                         <label class="col-12">{{ __('settings.Do you want polygamy?') }}</label>
                         <x-selectbox wire:model.defer="state.male_polygamy_status">
                             <option value="">---</option>
-                            <x-selectboxes.male.polygamy_statuses />
+                            <x-selectboxes.male.need_polygamy />
                         </x-selectbox>
                     </div>
                 @else

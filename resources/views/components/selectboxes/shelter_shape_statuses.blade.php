@@ -1,3 +1,3 @@
-<option value="alone">{{ __('settings.alone') }}</option>
-<option value="with family">{{ __('settings.with family') }}</option>
-<option value="with friends">{{ __('settings.with friends') }}</option>
+<option value="Alone">{{ __('data.Alone') }}</option>
+<option value="With family">{{ __('data.With family') }}</option>
+<option value="With friends">{{ __('data.With friends') }}</option>

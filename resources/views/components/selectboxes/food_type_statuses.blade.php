@@ -1,5 +1,5 @@
-<option value="Arabic">{{ __('settings.Arabic') }}</option>
-<option value="Western">{{ __('settings.Western') }}</option>
-<option value="Asian">{{ __('settings.Asian') }}</option>
-<option value="Fastfood">{{ __('settings.Fastfood') }}</option>
-<option value="Hearty meals">{{ __('settings.Hearty meals') }}</option>
+<option value="Arabic">{{ __('data.Arabic') }}</option>
+<option value="Western">{{ __('data.Western') }}</option>
+<option value="Asian">{{ __('data.Asian') }}</option>
+<option value="Fastfood">{{ __('data.Fastfood') }}</option>
+<option value="Hearty meals">{{ __('data.Hearty meals') }}</option>

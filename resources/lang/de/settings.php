@@ -31,7 +31,7 @@ return [
     'Birthday'                                              => 'Geburtstag',
     'Birthday'                                              => 'Geburtstag',
     'Country of Origin'                                     => 'Ursprungsland',
-    'Country of Residence'                            => 'Land des WohnsitzesStatus',
+    'Country of Residence'                                  => 'Land des WohnsitzesStatus',
     'Nationality'                                           => 'Staatsangehörigkeit',
     'City'                                                  => 'Stadt',
     'Postal code'                                           => 'Postleitzahl',

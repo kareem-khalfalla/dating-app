@@ -74,23 +74,23 @@ trait FormValidation
             'male_work_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
-                'yes',
-                'should work',
+                'Yes',
+                'Should work',
                 'I do not accept',
                 'I do not like it but leave it to her',
-                'it does not matter',
+                'It does not matter',
             ])],
             'male_study_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'male';
             }), 'nullable', 'string', Rule::in([
-                'yes',
+                'Yes',
                 'No',
                 'I do not like it but leave it to her',
             ])],
             'female_work_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
-                'yes',
+                'Yes',
                 'I have to work',
                 'I do not accept to work',
                 'If allowed',
@@ -137,26 +137,26 @@ trait FormValidation
                 'Unitarian Universalism', 'Rastafari',
             ])],
             'religion_method' => ['required', 'string', Rule::in([
-                'feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
-                'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'my income',
+                'Feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
+                'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi', 'My income',
                 'brothers', 'Ethiopian', 'Protestant', 'Catholic', 'Autodox',
                 'I do not know', 'other',
             ])],
             'obligation' => ['required', 'string', Rule::in([
-                'committed', 'Uncommitted', 'sometimes obligated', 'Not interested',
+                'Committed', 'Uncommitted', 'Sometimes obligated', 'Not interested',
             ])],
             'prayer' => ['required', 'string', Rule::in([
-                'committed to', 'Not original', 'Original and leave', 'Friday only', 'mostly original',
+                'Committed to', 'Not original', 'Original and leave', 'Friday only', 'Mostly original',
             ])],
             'alfajr_prayer' => ['required', 'string', Rule::in([
-                'committed to', 'not committed to', 'sometimes',
+                'Committed to', 'Not Committed to', 'Sometimes',
             ])],
             'fasting' => ['required', 'string', Rule::in([
                 'Ramadan', 'Ramadan and waffles', 'Not every Ramadan',
                 'I fast some days of Ramadan', 'I do not fasting',
             ])],
             'reading_quran' => ['required', 'string', Rule::in([
-                'read daily', 'read a lot', 'Read a little', 'rarely', 'do not read',
+                'Read daily', 'Read a lot', 'Read a little', 'Rarely', 'Do not read',
             ])],
             'beard_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'male';
@@ -177,13 +177,13 @@ trait FormValidation
             'veil_status' => [Rule::requiredIf(function () use ($user) {
                 return $user->gender == 'female';
             }), 'nullable', 'string', Rule::in([
-                'yes', 'No',
+                'Yes', 'No',
                 'I do not want to wear it',
                 'No, but if the husband wants, I will wear it',
             ])],
             'lesson_listing' => ['required', 'string', 'max:1000'],
             'tafaqah_status' => ['required', 'string', Rule::in([
-                'Know the basics', 'Read or attend lessons sometimes',
+                'Know the basics', 'Read or attend lessons Sometimes',
                 'Interested in educationStatus and try it', 'Seek knowledge',
             ])],
             'music_status' => ['required', 'string', Rule::in([
@@ -191,13 +191,13 @@ trait FormValidation
                 'I do not hear songs', 'I do not hear and I do not want her at home',
             ])],
             'show_status' => ['required', 'string', Rule::in([
-                'Watch it', 'A little', 'rarely', 'No', 'No, and I do not want her at home',
+                'Watch it', 'A little', 'Rarely', 'No', 'No, and I do not want it at home',
             ])],
             'friend_status' => ['required', 'string', Rule::in([
-                'I have no problem with that I have no problem with that',
-                'I have my own controls but I have my own controls but',
-                'I do not have it and I refuse to do so I do not have it and I refuse to do so',
-                'Connect with colleagues outside of work Connect with colleagues outside of work',
+                'I have no problem with that',
+                'I have my own controls',
+                'I do not have it and I refuse to do so',
+                'Connect with colleagues outside of work',
             ])],
         ];
     }
@@ -239,8 +239,8 @@ trait FormValidation
             'children_desire_status' => ['required', 'string', Rule::in([
                 'I would like it',
                 'I do not want it',
-                'Yes but not now Yes but not now',
-                'According to the desire of the other partner According to the desire of the other partner',
+                'Yes but not now',
+                'According to the desire of the other partner',
             ])],
             'children_information' => ['required', 'string', 'max:1000'],
             'divorced_reason' => ['nullable', RUle::requiredIf(function () use ($user) {
@@ -264,19 +264,19 @@ trait FormValidation
                 'May we agree on that',
             ])],
             'shelter_type' => ['required', 'string', Rule::in([
-                'mine', 'rent',
+                'Mine', 'Rent',
             ])],
             'shelter_shape' => ['required', 'string', Rule::in([
-                'detached house',
-                'apartment',
-                'room',
-                'student housing',
-                'shared accommodation',
+                'Detached house',
+                'Apartment',
+                'Room',
+                'Student housing',
+                'Shared accommodation',
             ])],
             'shelter_way' => ['required', 'string', Rule::in([
-                'alone',
-                'with family',
-                'with friends',
+                'Alone',
+                'With family',
+                'With friends',
             ])],
         ];
     }
@@ -287,10 +287,10 @@ trait FormValidation
             'height' => ['required', 'numeric', 'min:40', 'max:220'],
             'weight' => ['required', 'numeric', 'min:40', 'max:220'],
             'body_status' => ['required', 'string', Rule::in([
-                'fit', 'fitness', 'fat', 'thin',
+                'Fit', 'Fitness', 'Fat', 'Thin',
             ])],
             'skin_status' => ['required', 'string', Rule::in([
-                'White', 'very light', 'light', 'tan', 'wheat', 'dark', 'very dark',
+                'White', 'Very light', 'light', 'Tan', 'Wheat', 'dark', 'Very dark',
             ])],
             'hair_color' => ['required', 'string', Rule::in([
                 'Black', 'Brown', 'Light brown', 'Blonde', 'White', 'Red',

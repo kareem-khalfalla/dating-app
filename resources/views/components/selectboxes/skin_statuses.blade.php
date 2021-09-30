@@ -1,7 +1,7 @@
-<option value="White">{{ __('settings.White') }}</option>
-<option value="very light">{{ __('settings.very light') }}</option>
-<option value="light">{{ __('settings.light') }}</option>
-<option value="tan">{{ __('settings.tan') }}</option>
-<option value="wheat">{{ __('settings.wheat') }}</option>
-<option value="dark">{{ __('settings.dark') }}</option>
-<option value="very dark">{{ __('settings.very dark') }}</option>
+<option value="White">{{ __('data.White') }}</option>
+<option value="Very light">{{ __('data.Very light') }}</option>
+<option value="light">{{ __('data.light') }}</option>
+<option value="Tan">{{ __('data.Tan') }}</option>
+<option value="Wheat">{{ __('data.Wheat') }}</option>
+<option value="dark">{{ __('data.dark') }}</option>
+<option value="Very dark">{{ __('data.Very dark') }}</option>
