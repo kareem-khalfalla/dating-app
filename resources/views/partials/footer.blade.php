@@ -52,31 +52,7 @@ integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKG
 crossorigin="anonymous"></script>
 @livewireScripts
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-    addEventListener('swal:modal', event => {
-        swal({
-            title: event.detail.title,
-            text: event.detail.text,
-            timer: event.detail.timer,
-            icon: event.detail.type,
-        });
-    })
-
-    addEventListener('swal:confirm', event => {
-        swal({
-            title: event.detail.title,
-            text: event.detail.text,
-            icon: event.detail.type,
-            buttons: true,
-            dangerMode: true
-        }).then((willDelete) => {
-            if (willDelete) {
-                window.livewire.emit('delete', event.detail.id);
-            }
-        });
-    })
-</script>
+<x-alerts />
 
 @stack('scripts')
 
