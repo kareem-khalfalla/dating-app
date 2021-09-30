@@ -16,27 +16,29 @@
                     @enderror
                 </div>
 
+                @if ($user)
 
-                <div class="input-group input-group-lg mb-3 mt-3 col-md-6">
-                    <label class="col-12">fullname</label>
-                    <x-input wire:model.defer="state.name" placeholder="{{ __('register.fullname') }}" type="text" />
-                </div>
-                <div class="input-group input-group-lg mb-3 mt-3 col-md-6">
-                    <label class="col-12">username</label>
-                    <x-input wire:model.defer="state.username" placeholder="{{ __('register.username') }}"
-                        type="text" />
-                </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label class="col-12">email</label>
-                    <x-input wire:model.defer="state.email" placeholder="{{ __('register.email') }}" type="email" />
-                </div>
-                <div class="input-group input-group-lg mb-3 col-md-6">
-                    <label class="col-12">phone</label>
-                    <x-input wire:model.defer="state.phone" placeholder="{{ __('register.phone') }}" type="tel" />
-                </div>
+                    <div class="input-group input-group-lg mb-3 mt-3 col-md-6">
+                        <label class="col-12">fullname</label>
+                        <x-input wire:model.defer="state.name" placeholder="{{ __('register.fullname') }}"
+                            type="text" />
+                    </div>
+                    <div class="input-group input-group-lg mb-3 mt-3 col-md-6">
+                        <label class="col-12">username</label>
+                        <x-input wire:model.defer="state.username" placeholder="{{ __('register.username') }}"
+                            type="text" />
+                    </div>
+                    <div class="input-group input-group-lg mb-3 col-md-6">
+                        <label class="col-12">email</label>
+                        <x-input wire:model.defer="state.email" placeholder="{{ __('register.email') }}"
+                            type="email" />
+                    </div>
+                    <div class="input-group input-group-lg mb-3 col-md-6">
+                        <label class="col-12">phone</label>
+                        <x-input wire:model.defer="state.phone" placeholder="{{ __('register.phone') }}" type="tel" />
+                    </div>
 
-
-
+                @endif
 
                 <div class="input-group input-group-lg mb-3 col-md-6">
                     <label class="col-12">{{ __('settings.Native language') }}</label>
