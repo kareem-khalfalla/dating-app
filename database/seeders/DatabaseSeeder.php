@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             StateSeeder::class,
             NationalitySeeder::class,
             LanguageSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
         ]);
     }
 }
