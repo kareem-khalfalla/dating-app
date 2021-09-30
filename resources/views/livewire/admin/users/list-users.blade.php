@@ -1,10 +1,15 @@
 <div class="container-fluid">
     <h1 class="mt-4">{{ __('dashboard.Users') }}</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">{{ __('dashboard.Dashboard') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('dashboard.Dashboard') }}</a></li>
         <li class="breadcrumb-item active">{{ __('dashboard.Users') }} [ {{ count($users) }} ]</li>
     </ol>
-
+    @if (session('success'))
+        <div id="success-alert" class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
@@ -42,7 +47,8 @@
                                         class="form-control">
                                         <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>user
                                         </option>
-                                        <option value="user" {{ $user->role == 'super user' ? 'selected' : '' }}>super user
+                                        <option value="super user" {{ $user->role == 'super user' ? 'selected' : '' }}>
+                                            super user
                                         </option>
                                         <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>admin
                                         </option>
@@ -86,5 +92,10 @@
         </div>
     </div>
 </div>
-
-<x-alerts />
+@push('scripts')
+    <script>
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+            $("#success-alert").slideUp(500);
+        });
+    </script>
+@endpush

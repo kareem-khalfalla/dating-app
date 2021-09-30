@@ -55,7 +55,9 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('admin/assets/demo/datatables-demo.js') }}"></script>
     <script src="{{ asset('admin/js/scripts.js') }}"></script>
+    <x-alerts />
     @stack('scripts')
+
     @livewireScripts
 </body>
 

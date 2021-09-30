@@ -23,14 +23,18 @@ class ListReports extends Component
     public function confirm(int $id): void
     {
         $this->reportId = $id;
-        $this->dispatchBrowserEvent('show-delete-modal');
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => __('alerts.Are you sure?'),
+            'text'  => __('alerts.You won\'t be able to revert this!'),
+            'type'  => 'warning',
+        ]);
     }
 
     public function destroy(): void
     {
         Report::find($this->reportId)->delete();
-        $this->dispatchBrowserEvent('deleted', [
-            'message' => 'Report deleted successfully'
+        $this->dispatchBrowserEvent('swal:modal', [
+            'title' => __('alerts.Report deleted successfully')
         ]);
     }
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <h1 class="mt-4">{{ __('dashboard.Reports') }}</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">{{ __('dashboard.Dashboard') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('dashboard.Dashboard') }}</a></li>
         <li class="breadcrumb-item active">{{ __('dashboard.Reports') }} [ {{ $reports->count() }} ]</li>
     </ol>
 
@@ -24,17 +24,19 @@
                     <tbody>
                         @foreach ($reports as $report)
                             <tr>
-                                <td>{{ $report->sender->name }} <a href="profile-id.html"><i class="fa fa-link"
+                                <td>{{ $report->sender->name }} <a
+                                        href="{{ route('profile', $report->sender) }}"><i class="fa fa-link"
                                             aria-hidden="true"></i></a>
                                 </td>
-                                <td>{{ $report->recipient->name }} <a href="profile-id.html"><i class="fa fa-link"
+                                <td>{{ $report->recipient->name }} <a
+                                        href="{{ route('profile', $report->recipient) }}"><i class="fa fa-link"
                                             aria-hidden="true"></i></a>
                                 </td>
                                 <td>{{ $report->reason }}</td>
                                 <td>
-                                    <button wire:click.prevent="confirm({{ $report->id }})" data-toggle="modal" data-target="#delete_report"
-                                        class="btn btn-danger text-center"><i class="fa fa-trash"
-                                            aria-hidden="true"></i></button>
+                                    <button wire:click.prevent="confirm({{ $report->id }})" data-toggle="modal"
+                                        data-target="#delete_report" class="btn btn-danger text-center"><i
+                                            class="fa fa-trash" aria-hidden="true"></i></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -44,4 +46,5 @@
         </div>
     </div>
 </div>
-<x-confirmation-alert />
+
+<x-alerts />

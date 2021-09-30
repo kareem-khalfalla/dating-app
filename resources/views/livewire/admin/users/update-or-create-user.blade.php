@@ -7,7 +7,7 @@
     <h2 class="mb-4">
         @if ($currentStep == 1 && is_null($user))
             {{ __('dashboard.Add New User') }}
-            @else
+        @else
             {{ __('dashboard.Update User Profile') }}
         @endif
     </h2>
@@ -17,7 +17,5 @@
     @else
         @include('livewire.admin.users.create-user-form-step2')
     @endif
-
-</div>
 
 </div>

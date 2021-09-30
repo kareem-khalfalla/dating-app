@@ -8,7 +8,7 @@ use Livewire\Component;
 class ListUsers extends Component
 {
     protected $listeners = [
-        'destroy'
+        'destroy',
     ];
 
     public $userId;
@@ -27,7 +27,7 @@ class ListUsers extends Component
         $this->dispatchBrowserEvent('swal:confirm', [
             'title' => __('alerts.Are you sure?'),
             'text'  => __('alerts.You won\'t be able to revert this!'),
-            'icon'  => __('alerts.warning'),
+            'type'  => 'warning',
         ]);
     }
 
