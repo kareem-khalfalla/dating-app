@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class ListUsers extends Component
@@ -42,6 +44,10 @@ class ListUsers extends Component
 
     public function updateRole(int $userId, string $role): void
     {
+        Validator::make(['role' => $role], [
+            'role' => ['required', Rule::in(['user', 'super user', 'admin', 'moderator',])]
+        ])->validate();
+
         User::find($userId)->update([
             'role' => $role
         ]);
