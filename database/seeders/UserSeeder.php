@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
 
         /** @var \App\Models\User $user */
         $user = User::factory()->create();
+        $user->role = 'admin';
+        $user->save();
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile()->create();
         $profile->country_of_origin_id = Country::all()->random()->id;
