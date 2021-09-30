@@ -19,4 +19,17 @@ return [
     'User Add request sent successfully'           => 'Anfrage zum Hinzufügen von Benutzern erfolgreich gesendet',
     'Your message was sent'                        => 'Ihre Nachricht wurde verschickt',
     'Sadlly, you don\'t have friends to chat with' => 'Leider hast du keine Freunde, mit denen du chatten kannst',
+    // dashboard
+    'user'       => 'Benutzer',
+    'super user' => 'Superuser',
+    'admin'      => 'Administrator',
+    'moderator'  => 'Moderator',
+    'Are you sure?'                      => 'Bist du sicher?',
+    'You won\'t be able to revert this!' => 'Sie können dies nicht rückgängig machen!',
+    'warning'                            => 'Warnung',
+    'User deleted successfull'           => 'Benutzer erfolgreich gelöscht',
+    'Role changed to user successfully'       => 'Rolle erfolgreich in Benutzer geändert',
+    'Role changed to super user successfully' => 'Rolle erfolgreich in Superuser geändert',
+    'Role changed to admin successfully'      => 'Rolle erfolgreich in Admin geändert',
+    'Role changed to moderator successfully'  => 'Rolle erfolgreich in Moderator geändert',
 ];

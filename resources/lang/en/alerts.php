@@ -19,4 +19,17 @@ return [
     'User request sent successfully'               => 'User request sent successfully',
     'Your message was sent'                        => 'Your message was sent',
     'Sadlly, you don\'t have friends to chat with' => 'Sadlly, you don\'t have friends to chat with',
+    // dashboard
+    'user'       => 'user',
+    'super user' => 'super user',
+    'admin'      => 'admin',
+    'moderator'  => 'moderator',
+    'Are you sure?'                      => 'Are you sure?',
+    'You won\'t be able to revert this!' => 'You won\'t be able to revert this!',
+    'warning'                            => 'warning',
+    'User deleted successfull'           => 'User deleted successfull',
+    'Role changed to user successfully'       => 'Role changed to user successfully',
+    'Role changed to super user successfully' => 'Role changed to super user successfully',
+    'Role changed to admin successfully'      => 'Role changed to admin successfully',
+    'Role changed to moderator successfully'  => 'Role changed to moderator successfully',
 ];  

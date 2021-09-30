@@ -19,4 +19,17 @@ return [
     'User Add request sent successfully'           => 'تم إرسال طلب إضافة المستخدم بنجاح',
     'Your message was sent'                        => 'تم إرسال رسالتك بنجاح',
     'Sadlly, you don\'t have friends to chat with' => 'للأسف ، ليس لديك أصدقاء للدردشة معهم',
+    // dashboard
+    'user'       => 'المستعمل',
+    'super user' => 'مستخدم متميز',
+    'admin'      => 'مشرف',
+    'moderator'  => 'الوسيط',
+    'Are you sure?'                      => 'هل أنت متأكد؟',
+    'You won\'t be able to revert this!' => 'لن تتمكن من التراجع عن هذا!',
+    'warning'                            => 'تحذير',
+    'User deleted successfull'           => 'تم حذف المستخدم بنجاح',
+    'Role changed to user successfully'       => 'تم تغيير الصلاحية إلى المستخدم بنجاح',
+    'Role changed to super user successfully' => 'تم تغيير الصلاحية إلى المستخدم المتميز بنجاح',
+    'Role changed to admin successfully'      => 'تم تغيير الصلاحية إلى المسؤول بنجاح',
+    'Role changed to moderator successfully'  => 'تم تغيير الصلاحية إلى مشرف بنجاح',
 ];

@@ -21,6 +21,7 @@
                             <th>{{ __('dashboard.Age') }}</th>
                             <th>{{ __('dashboard.Email') }}</th>
                             <th>{{ __('dashboard.Phone') }}</th>
+                            <th>{{ __('dashboard.Role') }}</th>
                             <th>{{ __('dashboard.Manage') }}</th>
                         </tr>
                     </thead>
@@ -37,6 +38,19 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>
+                                    <select wire:change="updateRole({{ $user->id }} ,$event.target.value)"
+                                        class="form-control">
+                                        <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>user
+                                        </option>
+                                        <option value="user" {{ $user->role == 'super user' ? 'selected' : '' }}>super user
+                                        </option>
+                                        <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>admin
+                                        </option>
+                                        <option value="moderator" {{ $user->role == 'moderator' ? 'selected' : '' }}>
+                                            moderator</option>
+                                    </select>
+                                </td>
+                                <td>
                                     <span class="dropdown pl-2">
                                         <button class="btn btn-outline-secondary p-1 pr-2 pl-2" type="button"
                                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -45,13 +59,16 @@
                                         </button>
                                         <div class="dropdown-menu bg-warning" aria-labelledby="dropdownMenuButton">
                                             <a wire:click.prevent="confirm({{ $user->id }})" class="dropdown-item"
-                                                href="#" data-toggle="modal" data-target="#deleteUserId">{{ __('dashboard.Delete') }}</a>
+                                                href="#" data-toggle="modal"
+                                                data-target="#deleteUserId">{{ __('dashboard.Delete') }}</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('admin.users.update', $user) }}">{{ __('dashboard.Edit') }}</a>
-                                            <a class="dropdown-item" href="{{ route('profile', $user) }}">{{ __('dashboard.Show') }}
+                                            <a class="dropdown-item"
+                                                href="{{ route('profile', $user) }}">{{ __('dashboard.Show') }}
                                                 {{ __('dashboard.profile') }}</a>
                                             @if (\App\Models\Message::count() > 0)
-                                                <a class="dropdown-item" href="{{ route('admin.user.chat', $user) }}">{{ __('dashboard.Open chat
+                                                <a class="dropdown-item"
+                                                    href="{{ route('admin.user.chat', $user) }}">{{ __('dashboard.Open chat
                                                     rooms') }}</a>
                                             @endif
                                         </div>
@@ -70,4 +87,4 @@
     </div>
 </div>
 
-<x-confirmation-alert />
+<x-alerts />
