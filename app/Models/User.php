@@ -92,7 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
         $ids = $authUser->getDeniedFriendships()->pluck('recipient_id');
-        
+
         return $query->whereIn('id', $ids);
     }
 
@@ -124,5 +124,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeFake(Builder $query): Builder
     {
         return $query->where('fake', 1);
+    }
+
+    public function scopeLastSeenAtByMonths(Builder $query, int $months = 1): Builder
+    {
+        return $query->whereMonth('last_seen_at', now()->subMonths($months));
     }
 }
