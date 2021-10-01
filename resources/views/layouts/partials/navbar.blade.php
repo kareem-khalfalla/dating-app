@@ -36,7 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();"><i
+                                                                                            document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1"></i>{{ __('navbar.logout') }}</a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
@@ -59,14 +59,21 @@
                                 class="fas fa-sign-in-alt fa-lg p-1"></i>{{ __('navbar.login') }}</a>
                     </li>
 
-                    <li class="nav-item nav_login">
-                        <a class="nav-link hover-bar" href="{{ route('about') }}">{{ __('navbar.About') }}</a>
+
+
+                    <li dir="ltr" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fas fa-info-circle"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" style="background: transparent"
+                                href="{{ route('privacy') }}">{{ __('navbar.Privacy policy') }}</a>
+                            <a class="dropdown-item" style="background: transparent"
+                                href="{{ route('about') }}">{{ __('navbar.About') }}</a>
+                        </div>
                     </li>
 
-                    <li class="nav-item nav_login">
-                        <a class="nav-link hover-bar"
-                            href="{{ route('privacy') }}">{{ __('navbar.Privacy policy') }}</a>
-                    </li>
                 @endguest
                 <li dir="ltr" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
@@ -75,7 +82,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach (\App\Models\Language::allAvailable()->get() as $language)
-                            <a class="dropdown-item" style="background: transparent" href="{{ route('locale', $language->code) }}">{{ $language->nativeName }}</a>
+                            <a class="dropdown-item" style="background: transparent"
+                                href="{{ route('locale', $language->code) }}">{{ $language->nativeName }}</a>
                         @endforeach
                     </div>
                 </li>
