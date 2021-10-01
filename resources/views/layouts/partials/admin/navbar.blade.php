@@ -21,11 +21,11 @@
             </a>
 
             <div class="dropdown-menu custom_drop_h" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ route('welcome') }}">Website</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">{{ __('dashboard.Logout') }}</a>
                 <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                 </form>
-                <a class="dropdown-item" href="{{ route('welcome') }}">Website</a>
             </div>
 
         </div>
