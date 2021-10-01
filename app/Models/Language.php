@@ -32,4 +32,11 @@ class Language extends Model
     {
         return $query->where('order', 3);
     }
+
+    public function scopeAllAvailable(Builder $query) : Builder
+    {
+        return $query->whereIn('code', [
+            'en', 'ar', 'de'
+        ]);
+    }
 }

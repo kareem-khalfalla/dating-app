@@ -34,8 +34,9 @@
                                 class="fas fa-lg fa-cogs p-1"></i>{{ __('navbar.settings') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"><i
+                        <a class="nav-link hover-bar" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1"></i>{{ __('navbar.logout') }}</a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
@@ -70,14 +71,11 @@
                 <li dir="ltr" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                            class="fa fa-lg fa-language p-1"></i>
+                            class="fa fa-lg fa-language "></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
+                        @foreach (\App\Models\Language::allAvailable()->get() as $language)
+                            <a class="dropdown-item" style="background: transparent" href="{{ route('locale', $language->code) }}">{{ $language->nativeName }}</a>
                         @endforeach
                     </div>
                 </li>
