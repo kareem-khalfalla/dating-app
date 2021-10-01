@@ -87,6 +87,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->where('id', '!=', Auth::id());
     }
 
+    public function scopeIgnoreDenied(Builder $query): Builder
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+        $ids = $authUser->getDeniedFriendships()->pluck('recipient_id');
+        
+        return $query->whereIn('id', $ids);
+    }
+
     public function scopeAllExceptAuthName(Builder $query, string $search): Builder
     {
         return $query->where('name', 'like', "%$search%")->where('name', '!=', auth()->user()->name);

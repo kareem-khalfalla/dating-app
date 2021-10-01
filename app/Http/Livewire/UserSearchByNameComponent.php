@@ -25,7 +25,6 @@ class UserSearchByNameComponent extends Component
 
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
-
         $pendingSenderIds = $authUser->getPendingFriendships()->pluck('sender_id');
         $pendingRecipientIds = $authUser->getPendingFriendships()->pluck('recipient_id');
         $blockedRecipientIds = $authUser->getBlockedFriendships()->pluck('recipient_id');
@@ -38,6 +37,7 @@ class UserSearchByNameComponent extends Component
                 ->merge($this->usersResults)
                 ->diff(User::findMany($allPendingIds))
                 ->diff($authUser->getFriends()->get())
+                ->diff(User::ignoreDenied()->get())
                 ->paginate(6)
         ]);
     }
