@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use App\Models\User;
 use Illuminate\Console\Command;
 
-class DeleteInactiveUsers extends Command
+class DeleteFakeUsers extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'users:delete-inactive';
+    protected $signature = 'users:delete-fake';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Permentatly delete inactive users.';
+    protected $description = 'Delete fake users.';
 
     /**
      * Create a new command instance.
@@ -38,7 +38,7 @@ class DeleteInactiveUsers extends Command
      */
     public function handle()
     {
-        User::lastSeenAtByMonths()->delete();
+        User::fake()->delete();
         return 0;
     }
 }

@@ -11,7 +11,7 @@ class CreateFakeUser extends Command
      *
      * @var string
      */
-    protected $signature = 'users:fake';
+    protected $signature = 'create-fake';
 
     /**
      * The console command description.
