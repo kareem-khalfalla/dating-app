@@ -74,8 +74,7 @@
                                                 {{ __('dashboard.profile') }}</a>
                                             @if (\App\Models\Message::count() > 0)
                                                 <a class="dropdown-item"
-                                                    href="{{ route('admin.user.chat', $user) }}">{{ __('dashboard.Open chat
-                                                    rooms') }}</a>
+                                                    href="{{ route('admin.user.chat', $user) }}">{{ __('dashboard.Open chat rooms') }}</a>
                                             @endif
                                         </div>
                                     </span>

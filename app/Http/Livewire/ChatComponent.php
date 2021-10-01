@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Events\MessageEvent;
 use App\Models\Message;
 use App\Models\User;
-use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -32,11 +31,7 @@ class ChatComponent extends Component
 
     public function render()
     {
-        if (Route::currentRouteName() == 'chat') {
-            return view('livewire.chat-component');
-        } else {
-            return view('livewire.chat-component')->layout('layouts.admin');
-        }
+        return view('livewire.chat-component');
     }
 
     public function mount(User $user): void

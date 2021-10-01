@@ -1,5 +1,5 @@
 @php
-$isAdmin = \Request::route()->getPrefix() == 'admin';
+$isAdmin = \Request::route()->getPrefix() == 'admin' && Auth::user()->role == 'admin';
 $prevIsAdmin =
     app('router')
         ->getRoutes()
