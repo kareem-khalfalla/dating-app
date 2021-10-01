@@ -50,7 +50,7 @@ class UpdateOrCreateUser extends Component
 
     public function render()
     {
-        return view('livewire.admin.users.update-or-create-user')->layout('layouts.admin');
+        return view('livewire.admin.users.update-or-create-user');
     }
 
     public function updatedSelectedCountry($country): void
@@ -62,8 +62,17 @@ class UpdateOrCreateUser extends Component
     public function nextStep(): void
     {
         $data = Validator::make($this->state, $this->userRules($this->user))->validate();
-        $this->userArr = $data;
-        $this->isMale = $this->userArr['gender'] == 'male';
+        try {
+            DB::beginTransaction();
+            $this->user = User::create($data);
+            $this->user->profile()->create();
+            DB::commit();
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+            DB::rollBack();
+        }
+        $this->isMale = $this->user->gender == 'male';
         $this->currentStep = 2;
     }
 
@@ -73,10 +82,6 @@ class UpdateOrCreateUser extends Component
         $status = 'updated';
 
         $user = $this->user;
-        if (is_null($user)) {
-            $user = new User($this->userArr);
-            $status = 'created';
-        }
 
         $this->validate([
             'selectedCountry' => 'required',
@@ -92,7 +97,6 @@ class UpdateOrCreateUser extends Component
         Validator::make($this->state, $this->profileLifestyleRules())->validate();
         Validator::make($this->state, $this->profileShapeRules())->validate();
 
-        $this->userArr['username'] = Str::slug($this->userArr['username']);
 
         if ($this->image) {
             /** @var \Illuminate\Http\UploadedFile */
@@ -109,6 +113,7 @@ class UpdateOrCreateUser extends Component
             DB::beginTransaction();
 
             if (is_null($this->user)) {
+                $this->userArr['username'] = Str::slug($this->userArr['username']);
                 $this->userArr['password'] = bcrypt($this->userArr['password']);
                 $this->user = User::create($this->userArr);
                 $this->user->profile()->create();
