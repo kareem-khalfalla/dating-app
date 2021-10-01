@@ -19,7 +19,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}
+                                    <td>{{ $user->profile->getAge() }}
                                     </td>
                                     <td>{{ $user->profile->nationality->name ?? 'N/A' }}</td>
                                 </tr>
