@@ -5,7 +5,7 @@ return [
     'fullname' => 'vollständiger Name',
     'username' => 'Nutzername',
     'email' => 'Email',
-    'We\'ll never share your email with anyone else' => 'Wir werden deine E-Mail niemals mit anderen teilen',
+    'Only the full name of the administration will appear.' => 'Wir werden deine E-Mail niemals mit anderen teilen',
     'phone' => 'Telefon',
     'password' => 'Passwort',
     'cofirm password' => 'Passwort bestätigen',

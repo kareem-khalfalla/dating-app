@@ -2,7 +2,7 @@
 
 return [
     'Welcome there' => 'Welcome there',
-    'page description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem non rerum ea',
+    'page description' => '( وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ )',
     'register' => 'register',
     'login' => 'login',
     'search' => 'search',

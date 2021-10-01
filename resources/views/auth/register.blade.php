@@ -13,11 +13,8 @@
                         <input name="name" value="{{ old('name') }}" placeholder="{{ __('register.fullname') }}"
                             type="text" class="form-control @error('name') is-invalid @enderror" aria-label="Large"
                             aria-describedby="inputGroup-sizing-sm">
-                        @error('name')
-                            <div class="invalid-feedback">
-                                <small id="passError" class="text-danger col-12">{{ $message }}</small>
-                            </div>
-                        @enderror
+                        <small id="emailHelp"
+                            class="form-text text-muted col-12">{{ __('register.Only the full name of the administration will appear.') }}.</small>
                     </div>
                     <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
@@ -34,7 +31,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-12">
+                    <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i
                                     class="fa fa-envelope"></i></span>
@@ -42,15 +39,13 @@
                         <input name="email" value="{{ old('email') }}" placeholder="{{ __('register.email') }}"
                             type="email" class="form-control @error('email') is-invalid @enderror" aria-label="Large"
                             aria-describedby="inputGroup-sizing-sm">
-                        <small id="emailHelp"
-                            class="form-text text-muted col-12">{{ __('register.We\'ll never share your email with anyone else') }}.</small>
                         @error('email')
                             <div class="invalid-feedback">
                                 <small id="passError" class="text-danger col-12">{{ $message }}</small>
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-12">
+                    <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i
                                     class="fa fa-phone"></i></span>
@@ -64,7 +59,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-12">
+                    <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
                                     aria-hidden="true"></i></span>
@@ -78,7 +73,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="input-group input-group-lg mb-3 col-md-12">
+                    <div class="input-group input-group-lg mb-3 col-md-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key"
                                     aria-hidden="true"></i></span>

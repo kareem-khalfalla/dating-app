@@ -5,7 +5,7 @@ return [
     'fullname' => 'الاسم بالكامل',
     'username' => 'اسم االمستخدم',
     'email' => 'البريد الإلكتروني',
-    'We\'ll never share your email with anyone else' => 'سوف يظهر الاسم الكامل للاداره فقط',
+    'Only the full name of the administration will appear.' => 'سوف يظهر الاسم الكامل للاداره فقط',
     'phone' => 'هاتف',
     'password' => 'كلمه السر',
     'cofirm password' => 'تأكيد كلمة المرور',
