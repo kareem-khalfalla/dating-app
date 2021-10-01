@@ -5,7 +5,7 @@ $prevIsAdmin =
     app('router')
         ->getRoutes()
         ->match(app('request')->create(URL::previous()))
-        ->getName() == 'admin.users' && \Request::route()->getName() != 'welcome';
+        ->getPrefix() == 'admin' && \Request::route()->getName() != 'welcome';
 @endphp
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
