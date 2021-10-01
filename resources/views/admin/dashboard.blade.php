@@ -1,5 +1,5 @@
-<x-admin-layout>
-    <div class="container-fluid">
+<x-app-layout>
+    <div class="container-fluid" style="margin-bottom: 4rem">
         <h1 class="mt-4">{{ __('dashboard.Dashboard') }}</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">{{ __('dashboard.Dashboard') }}</li>
@@ -150,4 +150,4 @@
             </div>
         </div>
     </div>
-</x-admin-layout>
+</x-app-layout>

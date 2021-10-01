@@ -1,4 +1,4 @@
-<x-guest-layout title="Forgot password">
+<x-app-layout>
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -49,4 +49,4 @@
             toastr('Reset password link sent');
         @endphp
     @endif
-</x-guest-layout>
+</x-app-layout>

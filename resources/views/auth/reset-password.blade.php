@@ -1,10 +1,4 @@
-@extends('guest')
-
-@section('title', 'Islam heiraten | Reset Password')
-
-@section('content')
-
-
+<x-app-layout>
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -16,7 +10,8 @@
                                     <h3 class="text-center font-weight-light my-4">Password Recovery</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="small mb-3 text-muted">Enter your email address and we will send you a link
+                                    <div class="small mb-3 text-muted">Enter your email address and we will send you a
+                                        link
                                         to reset your
                                         password.</div>
                                     <form action="{{ route('password.update') }}" method="POST">
@@ -46,22 +41,24 @@
                                                 <span class="input-group-text" id="inputGroup-sizing-lg"><i
                                                         class="fa fa-key" aria-hidden="true"></i></span>
                                             </div>
-                                            <input id="cpassword" name="password_confirmation" placeholder="cofirm password"
-                                                type="password" class="form-control" aria-label="Large"
-                                                aria-describedby="inputGroup-sizing-sm">
+                                            <input id="cpassword" name="password_confirmation"
+                                                placeholder="cofirm password" type="password" class="form-control"
+                                                aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                                             <small id="passError" class="d-none text-danger col-12">password not
                                                 much</small>
                                         </div>
                                         <!-- => End input cofirm password  !-->
 
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <div
+                                            class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="{{ route('login') }}">Return to login</a>
                                             <button class="btn btn-primary" type="submit">Update Password</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <div class="small"><a href="{{ route('register') }}">Need an account? Sign
+                                    <div class="small"><a href="{{ route('register') }}">Need an account?
+                                            Sign
                                             up!</a></div>
                                 </div>
                             </div>
@@ -73,5 +70,4 @@
 
     </div>
 
-
-@endsection
+</x-app-layout>

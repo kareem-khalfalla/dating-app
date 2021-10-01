@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <br><br><br><br>
     <div class="container ">
       <h1 class="text-center">{{ __('about.title') }}</h1>
@@ -15,4 +15,4 @@
          </div>
       </div>
     </div>
-</x-guest-layout>
+</x-app-layout>

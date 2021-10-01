@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <br><br><br><br>
     <div class="container ">
         <h1 class="text-center mb-3 h_2">{{ __('privacy.title') }}</h1>
@@ -49,4 +49,4 @@
 
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>

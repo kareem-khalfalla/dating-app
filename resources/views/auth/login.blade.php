@@ -1,4 +1,4 @@
-<x-guest-layout title="Login">
+<x-app-layout>
     <div class="container container_form col-12 col-sm-8 col-md-7 col-lg-5 pt-5">
         <div class="card card-body shadow">
             <h1 class="h_2">{{ __('login.Login') }}</h1>
@@ -47,4 +47,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>
