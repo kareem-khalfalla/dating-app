@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\URL;
 
 class ProfileController extends Controller
 {
     public function index(User $user): View
     {
+        /** @var \Illuminate\Routing\Router $router */
+        $router = app('router');
+        $isAdmin = $router->getRoutes()->match(request()->create(URL::previous()))->getName() == 'admin.users';
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
@@ -19,6 +23,7 @@ class ProfileController extends Controller
             'user' => $user,
             'isPending' => $isPending,
             'isFriend' => $isFriend,
+            'isAdmin' => $isAdmin
         ]);
     }
 

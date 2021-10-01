@@ -113,7 +113,7 @@ class ProfileComponent extends Component
         $this->success('Password');
     }
 
-    public function updateUserInfo(UpdatesUserProfileInformation $updatesUserProfileInformation): void
+    public function updateUserInfo(UpdatesUserProfileInformation $updatesUserProfileInformation)
     {
         $updatesUserProfileInformation->update(auth()->user(), [
             'name'     => $this->state['name'],
@@ -123,6 +123,9 @@ class ProfileComponent extends Component
             'gender'   => $this->state['gender'],
         ]);
 
+        if (auth()->user()->username != $this->state['username']){
+            return redirect()->route('settings');
+        }
         $this->success('Main Information');
     }
 

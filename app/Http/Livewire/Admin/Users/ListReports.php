@@ -17,7 +17,7 @@ class ListReports extends Component
     {
         return view('livewire.admin.users.list-reports', [
             'reports' => Report::latest()->paginate(),
-        ])->layout('layouts.admin');
+        ]);
     }
 
     public function confirm(int $id): void

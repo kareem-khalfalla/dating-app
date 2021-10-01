@@ -19,7 +19,7 @@ class ListUsers extends Component
     {
         return view('livewire.admin.users.list-users', [
             'users' => User::allExceptAuthId()->latest()->paginate()
-        ])->layout('layouts.admin');
+        ]);
     }
 
     public function confirm(int $userId): void

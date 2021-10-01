@@ -44,9 +44,9 @@ class SiteController extends Controller
         ]);
     }
 
-    public function notFound(): View
+    public function notAllowed(): View
     {
-        return view('pages.not_found');
+        return view('pages.not_allowed');
     }
 
     public function contactStore(ContactUsRequest $request)
