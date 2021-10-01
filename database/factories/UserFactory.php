@@ -30,9 +30,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'username' => $this->faker->userName(),
             'phone' => $this->faker->phoneNumber(),
-            // 'last_seen_at' => $this->faker->dateTimeBetween('-1 years', now()),
-            // 'last_seen_at' => now()->subMonth(),
-            'last_seen_at' => now()->subMonths(2),
+            'last_seen_at' => now(),
             'gender' => $this->faker->randomElement(['male', 'female']),
             'fake' => 1,
             'created_at' => $this->faker->dateTimeBetween('-1 years')
