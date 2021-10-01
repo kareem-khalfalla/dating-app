@@ -1,17 +1,20 @@
 @php
+
 $isAdmin = \Request::route()->getPrefix() == 'admin' && Auth::user()->role == 'admin';
 $prevIsAdmin =
     app('router')
         ->getRoutes()
         ->match(app('request')->create(URL::previous()))
-        ->getName() == 'admin.users';
+        ->getName() == 'admin.users' && \Request::route()->getName() != 'welcome';
 @endphp
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
-    <title>{{ ucfirst(\Request::route()->getName()) }}</title>
+    <title>
+        {{ ucfirst(strstr(\Request::route()->getName(), '.', true)) ?: ucfirst(\Request::route()->getName()) }}
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#1D2625" />
     <meta name="msapplication-navbutton-color" content="#1D2625" />
@@ -19,8 +22,6 @@ $prevIsAdmin =
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
@@ -28,10 +29,9 @@ $prevIsAdmin =
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&#038;display=swap"
         rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 
     @if ($isAdmin || $prevIsAdmin)
-
+    {{-- {{ dd() }} --}}
         <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     @else
         <link src="{{ asset('css/app.css') }}">
