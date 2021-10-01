@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CreateFakeUser;
+use App\Console\Commands\DeleteInactiveUsers;
 use App\Console\Commands\SendReminderEmails;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -14,7 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SendReminderEmails::class
+        SendReminderEmails::class,
+        DeleteInactiveUsers::class,
+        CreateFakeUser::class,
     ];
 
     /**
@@ -27,6 +31,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('reminders:emails')->daily();
         $schedule->command('users:delete')->daily();
+        $schedule->command('users:fake')->daily();
     }
 
     /**
