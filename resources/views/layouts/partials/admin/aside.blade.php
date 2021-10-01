@@ -19,6 +19,7 @@
                     <a class="nav-link" href="{{ route('admin.users') }}">{{ __('dashboard.users') }}</a>
                     <a class="nav-link" href="{{ route('admin.users.create') }}">{{ __('dashboard.Add user') }}</a>
                     <a class="nav-link" href="{{ route('admin.reports') }}">{{ __('dashboard.reports') }}</a>
+                    <a class="nav-link" href="{{ route('welcome') }}">{{ __('dashboard.welcome') }}</a>
                 </div>
 
             </div>

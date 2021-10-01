@@ -6,7 +6,7 @@ return [
     'Addition' => 'Addition',
     'Additions' => 'Additions',
     'Delete' => 'Delete',
-    'Empty friends' => 'Empty friends',
+    'Empty friends' => 'Empty additions',
     'Block' => 'Block',
     'show additions' => 'show additions',
     'report' => 'report',

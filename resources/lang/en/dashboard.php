@@ -25,6 +25,7 @@ return [
     'Edit'            => 'Edit',
     'Show'            => 'Show',
     'profile'         => 'profile',
+    'welcome'         => 'View website',
     'Role'            => 'Role',
     'Open chat rooms' => 'Open chat rooms',
     'rooms'           => 'rooms',

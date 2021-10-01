@@ -6,7 +6,7 @@ return [
     'Addition' => 'إضافة',
     'Additions' => 'ألاضافات',
     'Delete' => 'حذف',
-    'Empty friends' => 'أصدقاء فارغين',
+    'Empty friends' => 'لا يوجد أضافات',
     'Block' => 'حاجز',
     'show additions' => 'تظهر الاضافات',
     'report' => 'أبلغ عن',
