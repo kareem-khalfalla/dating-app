@@ -1,7 +1,8 @@
 <x-app-layout>
+    <br><br><b><br><br><br>
     <div class="container-fluid" style="padding-top: 70px;">
         <div class="row">
-            <div class="col-md-12 col-md-offset-3 card shadow">
+            <div class="col-md-10 col-md-offset-3 card shadow m-auto">
                 <div class="card-header">
                     <h4>{{ __('profile.All friends') }} [ {{ count($friends) }} ]</h4>
                 </div>
