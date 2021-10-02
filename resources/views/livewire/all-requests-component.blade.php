@@ -10,10 +10,10 @@
             <div class="row box_frind col-12 p-1">
                 <a href="{{ route('profile', $user) }}">
                     <img class="img_user" src="{{ asset('storage/' . $user->avatar) }}"
-                        alt="{{ $user->name }}">
+                        alt="{{ $user->prettyUsername() }}">
                 </a>
                 <h5 class="col-5">
-                    {{ $user->name }}
+                    {{ $user->prettyUsername() }}
                 </h5>
                 <a wire:click.prevent="accept({{ $request->sender_id }})"><button
                         class="btn btn-outline-primary">{{ __('requests.accept') }}</button></a>&nbsp;

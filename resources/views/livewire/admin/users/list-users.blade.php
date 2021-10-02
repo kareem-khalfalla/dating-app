@@ -38,7 +38,7 @@
                                 <td class="p-0 m-0 text-center"><img src="{{ asset('storage/' . $user->avatar) }}"
                                         alt="" width="70px" height="70px"></td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->prettyUsername() }}</td>
                                 <td>{{ $user->profile->getAge() }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>

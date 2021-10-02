@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -131,13 +132,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->whereMonth('last_seen_at', now()->subMonths($months));
     }
 
-    public function scopeMale(Builder $query) : Builder
+    public function scopeMale(Builder $query): Builder
     {
-        return $query->where('gender' , 'male');
+        return $query->where('gender', 'male');
     }
 
-    public function scopeFemale(Builder $query) : Builder
+    public function scopeFemale(Builder $query): Builder
     {
-        return $query->where('gender' , 'female');
+        return $query->where('gender', 'female');
+    }
+
+    public function prettyUsername(): string
+    {
+        return Str::title(str_replace('-', ' ', $this->username));
     }
 }

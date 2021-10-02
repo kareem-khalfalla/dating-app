@@ -142,10 +142,10 @@
                         <div class="row box_frind col-12 p-1">
                             <a href="{{ route('profile', $user) }}">
                                 <img class="img_user" src="{{ asset('storage/' . $user->avatar) }}"
-                                    alt="{{ $user->name }}" data-toggle="tooltip" data-placement="top"
+                                    alt="{{ $user->username }}" data-toggle="tooltip" data-placement="top"
                                     title="show profile">
                             </a>
-                            <h5 class="col-6">{{ $user->name }}</h5>
+                            <h5 class="col-6">{{ $user->username }}</h5>
                             <a wire:click.prevent="deleteUser({{ $user->id }})"><button
                                     class="btn btn-outline-danger">{{ __('profile.Delete') }}</button></a>&nbsp;
 

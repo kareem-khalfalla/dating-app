@@ -18,7 +18,7 @@
                         @foreach ($users as $user)
                             <tbody>
                                 <tr>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->prettyUsername() }}</td>
                                     <td>{{ $user->profile->getAge() }}
                                     </td>
                                     <td>{{ $user->profile->nationality->name ?? 'N/A' }}</td>
@@ -36,7 +36,7 @@
                                     src="{{ asset('storage/' . $user->avatar) }}" width="150px" height="150px" alt="">
                             </div>
                             <div class="col-6 col-md-7">
-                                <p class="row p-1 m-0"><b>{{ __('welcome.Name') }} : </b> {{ $user->name }}</p>
+                                <p class="row p-1 m-0"><b>{{ __('welcome.Name') }} : </b> {{ $user->prettyUsername() }}</p>
 
                                 <p class="row p-1 m-0"><b>{{ __('welcome.Age') }} : </b>
                                     {{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}

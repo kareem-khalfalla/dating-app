@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form action="{{ route('profile.reportStore', $user) }}" method="post">
                         @csrf
-                        <input type="text" class="form-control form-lg mb-2" readonly value="{{ $user->name }}">
+                        <input type="text" class="form-control form-lg mb-2" readonly value="{{ $user->username }}">
 
                         <textarea name="reason" class="form-control @error('reason') is-invalid @enderror" cols="30"
                             rows="5"></textarea>
