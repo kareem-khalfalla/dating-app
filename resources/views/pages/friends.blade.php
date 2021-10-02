@@ -10,10 +10,10 @@
                         <div class="row box_frind col-12 p-1">
                             <a href="{{ route('profile', $friend) }}">
                                 <img class="img_user" src="{{ asset('storage/' . $friend->avatar) }}"
-                                    alt="{{ $friend->name }}">
+                                    alt="{{ $friend->prettyUsername() }}">
                             </a>
                             <h5 class="col-5">
-                                {{ $friend->name }}
+                                {{ $friend->prettyUsername() }}
                             </h5>
                             <a wire:click.prevent="deleteUser({{ $friend->sender_id }})"><button
                                     class="btn btn-outline-danger">{{ __('profile.delete friend') }}</button></a>

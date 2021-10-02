@@ -41,13 +41,13 @@
                                 @endforeach
                             </x-selectbox>
                         </div>
-                        <div class="input-group input-group-lg mb-3 col-5">
+                        <div class="input-group input-group-lg mb-3 col-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.secondLanguagePerfections"
                                 title="Level" multiple>
                                 <x-selectboxes.language_perfection />
                             </x-selectbox>
                         </div>
-                        <div class="input-group input-group-lg mb-3 col-7">
+                        <div class="input-group input-group-lg mb-3 col-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.thirdLanguages"
                                 title="Third language" multiple>
                                 @foreach ($languages as $thirdLanguage)
@@ -55,7 +55,7 @@
                                 @endforeach
                             </x-selectbox>
                         </div>
-                        <div class="input-group input-group-lg mb-3 col-5">
+                        <div class="input-group input-group-lg mb-3 col-6">
                             <x-selectbox class="selectpicker" wire:model.defer="state.thirdlanguagePerfections"
                                 title="Level" multiple>
                                 <x-selectboxes.language_perfection />
