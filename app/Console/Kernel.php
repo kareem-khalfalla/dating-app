@@ -6,6 +6,7 @@ use App\Console\Commands\CreateFakeUser;
 use App\Console\Commands\DeleteFakeUsers;
 use App\Console\Commands\DeleteInactiveUsers;
 use App\Console\Commands\SendReminderEmails;
+use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -31,10 +32,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $adminInput = User::find(1)->schuedule_task_time;
+        
         $schedule->command('reminders:emails')->daily();
         $schedule->command('users:delete-inactive')->daily();
         $schedule->command('users:delete-fake')->daily();
-        $schedule->command('users:create-fake')->daily();
+        $schedule->command('users:create-fake')->$adminInput();
     }
 
     /**

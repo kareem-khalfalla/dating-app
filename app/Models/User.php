@@ -37,6 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_seen_at',
         'last_message_at',
         'avatar',
+        'schuedule_task_time',
     ];
 
     /**
@@ -145,5 +146,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function prettyUsername(): string
     {
         return Str::title(str_replace('-', ' ', $this->username));
+    }
+
+    public function scheduleTaskTime(): HasOne
+    {
+        return $this->hasOne(ScheduleTaskTime::class);
     }
 }

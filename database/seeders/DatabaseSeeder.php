@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Report;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +18,7 @@ class DatabaseSeeder extends Seeder
             // StateSeeder::class,
             // NationalitySeeder::class,
             // LanguageSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
         ]);
     }
 }

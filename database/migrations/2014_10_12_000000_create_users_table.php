@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->boolean('fake')->default(0);
             $table->boolean('status')->default(1);
             $table->string('role')->default('user');
+            $table->string('schuedule_task_time')->default('yearly')->nullable();
             $table->string('avatar')->default('images/users-avatar/default.png');
             $table->rememberToken();
             $table->timestamps();

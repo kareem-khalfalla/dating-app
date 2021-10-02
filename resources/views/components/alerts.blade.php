@@ -2,7 +2,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         addEventListener('swal:modal', event => {
-            console.log('fire...');
             swal({
                 title: event.detail.title,
                 text: event.detail.text,
