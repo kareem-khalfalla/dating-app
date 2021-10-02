@@ -36,12 +36,94 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                            document.getElementById('logout-form').submit();"><i
+                                                                                                                                                                                    document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1"></i>{{ __('navbar.logout') }}</a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
+                    <style>
+                        .notifications {
+                            width: 300px;
+                            border-radius: 5px 0px 5px 5px;
+                            background-color: #fff;
+                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+                        }
 
+                        .notifications h2 {
+                            font-size: 14px;
+                            padding: 10px;
+                            border-bottom: 1px solid #eee;
+                            color: #333;
+                        }
+
+                        .notifications h2 span {
+                            color: #f00
+                        }
+
+                        .notifications-item {
+                            display: flex;
+                            border-bottom: 1px solid #eee;
+                            padding: 6px 9px;
+                            margin-bottom: 0px;
+                            cursor: pointer
+                        }
+
+                        .notifications-item:hover {
+                            background-color: #eee
+                        }
+
+                        .notifications-item img {
+                            display: block;
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 9px;
+                            border-radius: 50%;
+                            margin-top: 2px
+                        }
+
+                        .notifications-item .text h4 {
+                            color: #777;
+                            font-size: 16px;
+                            margin-top: 3px
+                        }
+
+                        .notifications-item .text p {
+                            color: #aaa;
+                            font-size: 12px
+                        }
+
+                    </style>
+
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            @php
+                                $notifications = Auth::user()->notifications;
+                            @endphp
+                            <span class="badge badge-danger ml-2"><span>{{ count($notifications) }}</span>
+                                <i class="fas fa-bell"></i>
+                        </a>
+                        <div style="background-color: #fff!important"
+                            class="notifications dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                            aria-labelledby="navbarDropdownMenuLink-5">
+
+                            <h2>Notifications</span></h2>
+                            @foreach ($notifications as $notification)
+                                @if ($notification->type == 'App\Notifications\FriendRequestDeniedNotification' && $notification->notifiable_type == 'App\Models\User')
+                                    <div class="notifications-item">
+                                        <img src="{{ asset('storage/' . $notification->data['avatar']) }}" alt="img">
+                                        <div class="text">
+                                            <h4>{{ $notification->data['username'] }}
+                                            </h4>
+                                            <p>
+                                                {{ $notification->data['message'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li>
 
                 @endauth
                 @guest
@@ -59,8 +141,6 @@
                                 class="fas fa-sign-in-alt fa-lg p-1"></i>{{ __('navbar.login') }}</a>
                     </li>
 
-
-
                     <li dir="ltr" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -73,6 +153,7 @@
                                 href="{{ route('about') }}">{{ __('navbar.About') }}</a>
                         </div>
                     </li>
+
 
                 @endguest
                 <li dir="ltr" class="nav-item dropdown">

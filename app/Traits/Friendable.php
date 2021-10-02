@@ -132,12 +132,9 @@ trait Friendable
         return $deleted;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Collection|Friendship[]
-     */
-    public function getFriendRequests()
+    public function getFriendRequests(): Builder
     {
-        return Friendship::whereRecipient($this)->whereStatus(Status::PENDING)->get();
+        return Friendship::whereRecipient($this)->whereStatus(Status::PENDING);
     }
 
     /**

@@ -24,4 +24,9 @@
             <p>{{ __('requests.No requests') }}!</p>
         @endforelse
     </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center">
+            {{ $requests->links() }}
+        </div>
+    </div>
 </div>
