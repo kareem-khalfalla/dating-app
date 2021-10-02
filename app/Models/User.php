@@ -130,4 +130,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $query->whereMonth('last_seen_at', now()->subMonths($months));
     }
+
+    public function scopeMale(Builder $query) : Builder
+    {
+        return $query->where('gender' , 'male');
+    }
+
+    public function scopeFemale(Builder $query) : Builder
+    {
+        return $query->where('gender' , 'female');
+    }
 }

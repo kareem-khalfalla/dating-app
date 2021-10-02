@@ -6,6 +6,7 @@ use App\Models\Message;
 use App\Models\Report;
 use App\Models\Tracker;
 use App\Models\User;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,6 +19,23 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $males = User::male()->count();
+        $females = User::female()->count();
+
+        $chart = (new LarapexChart())->setTitle('Users')
+            ->setXAxis([
+                'male users', 'female users'
+            ])
+            ->setDataset([
+                $males, $females
+            ])
+            ->setLabels([
+                'male users', 'female users'
+            ])
+            ->setColors([
+                '#008ffb', '#dc3545'
+            ]);
+
         return view('admin.dashboard', [
             'usersCount' => User::count(),
             'todayUsersCount' => User::query()->whereBetween('created_at', [
@@ -33,7 +51,8 @@ class DashboardController extends Controller
                 now()->today(), now()
             ])->count(),
             'visitsCount' => Tracker::count(),
-            'users' => User::allExceptAuthId()->latest()->limit(50)->get()
+            'users' => User::allExceptAuthId()->latest()->limit(50)->get(),
+            'chart' => $chart
         ]);
     }
 }
