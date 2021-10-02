@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
 
         /** @var \App\Models\User $user */
         $user = User::factory()->create();
-        $user->role = 'admin';
         $user->save();
         /** @var \App\Models\Profile $profile */
         $profile = $user->profile()->create();
