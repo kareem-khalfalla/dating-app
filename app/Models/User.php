@@ -37,7 +37,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_seen_at',
         'last_message_at',
         'avatar',
-        'schuedule_task_time',
+        'create_fake_time',
+        'delete_fake_time',
     ];
 
     /**

@@ -32,12 +32,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $adminInput = User::find(1)->schuedule_task_time;
+        $createFakeTime = User::find(1)->create_fake_time;
+        $deleteFakeTime = User::find(1)->delete_fake_time;
         
         $schedule->command('reminders:emails')->daily();
         $schedule->command('users:delete-inactive')->daily();
-        $schedule->command('users:delete-fake')->daily();
-        $schedule->command('users:create-fake')->$adminInput();
+        $schedule->command('users:create-fake')->$createFakeTime();
+        $schedule->command('users:delete-fake')->$deleteFakeTime();
     }
 
     /**
