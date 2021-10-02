@@ -22,6 +22,7 @@ class UpdateOrCreateUser extends Component
     public array $state = [];
 
     public $isMale;
+    public $isCreate;
 
     public $selectedCountry;
     public $selectedState;
@@ -61,9 +62,13 @@ class UpdateOrCreateUser extends Component
 
     public function nextStep(): void
     {
+        $this->isCreate = true;
+
         $data = Validator::make($this->state, $this->userRules($this->user))->validate();
         try {
             DB::beginTransaction();
+            $data['username'] = Str::slug($data['username']);
+            $data['password'] = bcrypt($data['password']);
             $this->user = User::create($data);
             $this->user->profile()->create();
             DB::commit();
@@ -79,13 +84,12 @@ class UpdateOrCreateUser extends Component
     public function store()
     {
         $imageName = 'images/users-avatar/default.png';
-        $status = 'updated';
 
         $user = $this->user;
 
         $this->validate([
-            'selectedCountry' => 'required',
-            'selectedState'   => 'required',
+            'selectedCountry' => 'nullable',
+            'selectedState'   => 'nullable',
             'image'           => 'nullable|image',
         ]);
 
@@ -96,7 +100,6 @@ class UpdateOrCreateUser extends Component
         Validator::make($this->state, $this->profileSocialRules($user))->validate();
         Validator::make($this->state, $this->profileLifestyleRules())->validate();
         Validator::make($this->state, $this->profileShapeRules())->validate();
-
 
         if ($this->image) {
             /** @var \Illuminate\Http\UploadedFile */
@@ -109,37 +112,24 @@ class UpdateOrCreateUser extends Component
             $imageName = $image->store('images/users-avatar');
         }
 
-        try {
-            DB::beginTransaction();
+        $this->userArr['avatar'] = $imageName;
+        $this->user->update($this->userArr);
 
-            if (is_null($this->user)) {
-                $this->userArr['username'] = Str::slug($this->userArr['username']);
-                $this->userArr['password'] = bcrypt($this->userArr['password']);
-                $this->user = User::create($this->userArr);
-                $this->user->profile()->create();
-                $user = $this->user;
-            }
+        $user->profile->update([
+            'country_of_origin_id' => $this->selectedCountry,
+        ]);
 
-            $this->userArr['avatar'] = $imageName;
-            $this->user->update($this->userArr);
+        $user->profile->update(Arr::except($this->state, [
+            'name', 'gender', 'email', 'password', 'username', 'phone', 'password_confirmation',
+            'avatar', 'role'
+        ]));
 
-            $user->profile->update([
-                'country_of_origin_id' => $this->selectedCountry,
-            ]);
+        $status = $this->isCreate
+            ? 'created'
+            : 'updated';
 
-            $user->profile->update(Arr::except($this->state, [
-                'name', 'gender', 'email', 'password', 'username', 'phone', 'password_confirmation',
-                'avatar', 'role'
-            ]));
+        session()->flash('success', "User $status sucessfully");
 
-            DB::commit();
-
-            session()->flash('success', "User $status sucessfully");
-
-            return redirect()->to('admin/users');
-        } catch (\Throwable $th) {
-            // throw $th;
-            DB::rollBack();
-        }
+        return redirect()->to('admin/users');
     }
 }

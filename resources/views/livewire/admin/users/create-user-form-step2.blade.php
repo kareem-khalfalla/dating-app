@@ -16,7 +16,7 @@
                     @enderror
                 </div>
 
-                @if ($user)
+                @if (!$isCreate)
 
                     <div class="input-group input-group-lg mb-3 mt-3 col-md-6">
                         <label class="col-12">fullname</label>
@@ -537,7 +537,7 @@
 
                 <div class="form-group mb-3 col-md-6">
                     <label for="exampleInputEmail1">{{ __('settings.Interests') }}</label>
-                    <x-selectbox wire:model.defer="state.hobbies" title="test" class="selectpicker" multiple>
+                    <x-selectbox wire:model.defer="state.hobbies" title="test" class="selectpicker">
                         <x-selectboxes.hobbies />
                     </x-selectbox>
                 </div>
