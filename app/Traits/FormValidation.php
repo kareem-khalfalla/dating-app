@@ -49,10 +49,10 @@ trait FormValidation
             'second_language_id' => ['nullable', 'integer'],
             'third_language_id' => ['nullable', 'integer'],
             'second_language_perfection' => [
-                'required_with:second_language_id', 'string', Rule::in($this->perfection())
+                'nullable', 'string', Rule::in($this->perfection())
             ],
             'third_language_perfection' => [
-                'required_with:third_language_id', Rule::in($this->perfection())
+                'nullable', Rule::in($this->perfection())
             ],
         ];
     }
@@ -72,8 +72,6 @@ trait FormValidation
             ])],
             'income' => ['nullable', 'numeric'],
             'male_work_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'male';}),
                 'nullable', 'string', Rule::in([
                     'Yes',
                     'Should work',
@@ -83,8 +81,6 @@ trait FormValidation
                 ])
             ],
             'male_study_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'male';}),
                 'nullable', 'string', Rule::in([
                     'Yes',
                     'No',
@@ -92,8 +88,6 @@ trait FormValidation
                 ])
             ],
             'female_work_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'female';}),
                 'nullable', 'string', Rule::in([
                     'Yes',
                     'I have to work',
@@ -104,9 +98,6 @@ trait FormValidation
             ],
 
             'female_study_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                    // return $user->gender == 'female';
-                // }),
                 'nullable', 'string', Rule::in([
                     'Yes',
                     'No',
@@ -168,13 +159,9 @@ trait FormValidation
                 'Read daily', 'Read a lot', 'Read a little', 'Rarely', 'Do not read',
             ])],
             'beard_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'male';}),
                 'nullable', 'string', Rule::in(['No', 'light', 'heavy',])
             ],
             'headdress' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'female';}),
                 'nullable', 'string', Rule::in([
                     'Yes' => 'Yes',
                     'No' => 'No',
@@ -182,16 +169,12 @@ trait FormValidation
                 ])
             ],
             'robe_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'female';}),
                 'nullable', 'string', Rule::in([
                     'full', 'jilbab covering the knees', 'jilbab covering the waist',
                     'No jilbab', 'No, but I would like to wear it',
                 ])
             ],
             'veil_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'female';}),
                 'nullable', 'string', Rule::in([
                     'Yes', 'No',
                     'I do not want to wear it',
@@ -260,29 +243,27 @@ trait FormValidation
                 'According to the desire of the other partner',
             ])],
             'children_information' => ['nullable', 'string', 'max:1000'],
-            'divorced_reason' => ['nullable',
-                // RUle::requiredIf(function () use ($user) {
-                // return $user->marital_status == 'divorced';}),
-            'max:1000'],
+            'divorced_reason' => [
+                'nullable',
+                'max:1000'
+            ],
             'male_polygamy_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'male';}),
                 'nullable', 'string', Rule::in([
-                'Yes',
-                'No',
-                'Yes, but in agreement with the other partner',
-                'Not in my mind, but if I decide to, I will',
-                'Not in my mind, but if I decide to, I do not do it without her consent',
-            ])],
+                    'Yes',
+                    'No',
+                    'Yes, but in agreement with the other partner',
+                    'Not in my mind, but if I decide to, I will',
+                    'Not in my mind, but if I decide to, I do not do it without her consent',
+                ])
+            ],
             'female_polygamy_status' => [
-                // Rule::requiredIf(function () use ($user) {
-                // return $user->gender == 'female';}),
                 'nullable', 'string', Rule::in([
-                'Accept',
-                'I accept if he was previously married and I do not accept that he gets married after me',
-                'I do not accept',
-                'May we agree on that',
-            ])],
+                    'Accept',
+                    'I accept if he was previously married and I do not accept that he gets married after me',
+                    'I do not accept',
+                    'May we agree on that',
+                ])
+            ],
             'shelter_type' => ['nullable', 'string', Rule::in([
                 'Mine', 'Rent',
             ])],

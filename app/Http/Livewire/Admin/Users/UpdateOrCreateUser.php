@@ -81,6 +81,11 @@ class UpdateOrCreateUser extends Component
         $this->currentStep = 2;
     }
 
+    public function hydrate(): void
+    {
+        $this->emit('select2');
+    }
+
     public function store()
     {
         $imageName = 'images/users-avatar/default.png';
@@ -121,7 +126,7 @@ class UpdateOrCreateUser extends Component
 
         $user->profile->update(Arr::except($this->state, [
             'name', 'gender', 'email', 'password', 'username', 'phone', 'password_confirmation',
-            'avatar', 'role'
+            'avatar', 'role', 'create_fake_time', 'delete_fake_time'
         ]));
 
         $status = $this->isCreate
