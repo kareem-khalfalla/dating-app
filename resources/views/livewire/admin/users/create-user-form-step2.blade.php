@@ -538,7 +538,7 @@
                 <div class="form-group mb-3 col-md-6">
                     <label>{{ __('settings.Interests') }}</label>
                     <x-selectbox wire:model.defer="state.hobbies" class="select2" multiple>
-                        <x-selectboxes.hobbies />
+                        <x-selectboxes.hobbies :hobbies="$state['hobbies']" />
                     </x-selectbox>
                 </div>
 
