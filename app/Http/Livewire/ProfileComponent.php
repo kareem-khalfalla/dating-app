@@ -77,7 +77,7 @@ class ProfileComponent extends Component
     {
         /** @var \Illuminate\Http\UploadedFile $image */
         $image = $this->image;
-        dd($image);
+        dd($image->temporaryUrl());
 
         $this->validate([
             'image' => ['nullable', 'image', 'max:1024'],
