@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        dd(phpinfo());
         if (!Collection::hasMacro('paginate')) {
             Collection::macro(
                 'paginate',
