@@ -7,6 +7,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     {{ __('dashboard.Dashboard') }}
                 </a>
+                <a class="nav-link" href="{{ route('welcome') }}">{{ __('dashboard.welcome') }}</a>
 
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="false" aria-controls="collapsePages">
@@ -20,7 +21,6 @@
                     <a class="nav-link" href="{{ route('admin.users.create') }}">{{ __('dashboard.Add user') }}</a>
                     <a class="nav-link" href="{{ route('admin.reports') }}">{{ __('dashboard.reports') }}</a>
                     <a class="nav-link" href="{{ route('admin.tasks') }}">{{ __('dashboard.tasks') }}</a>
-                    <a class="nav-link" href="{{ route('welcome') }}">{{ __('dashboard.welcome') }}</a>
                 </div>
 
             </div>
