@@ -3,7 +3,7 @@
     <br>
     <div class="row">
         <figure class="col-md-6">
-            <img src="{{ asset('storage/' . $imageName) }}" alt="..."
+            <img src="{{ !is_null($image) ? $image->temporaryUrl() : asset('storage/' . $imageName) }}" alt="..."
                 class="img-thumbnail">
         </figure>
 
