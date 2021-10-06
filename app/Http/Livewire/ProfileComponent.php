@@ -15,7 +15,6 @@ use App\Models\State;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -80,7 +79,7 @@ class ProfileComponent extends Component
         $image = $this->image;
 
         $this->validate([
-            'image' => ['required', 'image', 'max:1024'],
+            'image' => ['nullable', 'image', 'max:1024'],
         ]);
 
         $imageName = $image->store('images/users-avatar');
@@ -132,10 +131,8 @@ class ProfileComponent extends Component
     public function updateDetails(UpdateUserProfileDetailInformation $updatesUserProfileInformation): void
     {
         $this->validate([
-            'selectedCountry' => ['required', 'integer'],
-            'selectedState' => [Rule::requiredIf(function () {
-                return (int) $this->selectedCountry !== 0;
-            })],
+            'selectedCountry' => ['nullable', 'integer'],
+            'selectedState' => ['nullable', 'integer'],
         ], [
             'selectedCountry.integer' => 'The :attribute is required'
         ]);
