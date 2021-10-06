@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+
+Route::get('upload', [UploadController::class, 'upload']);
+Route::post('upload', [UploadController::class, 'uploadFile'])->name('upload-me');
 
 Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
