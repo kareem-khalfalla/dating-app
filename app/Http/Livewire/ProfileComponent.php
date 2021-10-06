@@ -77,26 +77,28 @@ class ProfileComponent extends Component
     {
         /** @var \Illuminate\Http\UploadedFile $image */
         $image = $this->image;
-        dd($image->temporaryUrl());
 
-        $this->validate([
-            'image' => ['nullable', 'image', 'max:1024'],
-        ]);
+        if ($image) {
 
-        $imageName = $image->store('images/users-avatar');
+            $this->validate([
+                'image' => ['nullable', 'image', 'max:1024'],
+            ]);
 
-        /** @var \App\Models\User $user */
-        $user = auth()->user();
+            $imageName = $image->store('images/users-avatar');
 
-        if (!$user->avatar == 'images/users-avatar/default.png') {
-            Storage::delete($user->avatar);
+            /** @var \App\Models\User $user */
+            $user = auth()->user();
+
+            if (!$user->avatar == 'images/users-avatar/default.png') {
+                Storage::delete($user->avatar);
+            }
+
+            $user->update([
+                'avatar' => $imageName,
+            ]);
+
+            $this->success('Image');
         }
-
-        $user->update([
-            'avatar' => $imageName,
-        ]);
-
-        $this->success('Image');
     }
 
     public function updatePassword(UpdatesUserPasswords $updatesUserPasswords): void
@@ -123,7 +125,7 @@ class ProfileComponent extends Component
             'gender'   => $this->state['gender'],
         ]);
 
-        if (auth()->user()->username != $this->state['username']){
+        if (auth()->user()->username != $this->state['username']) {
             return redirect()->route('settings');
         }
         $this->success('Main Information');
