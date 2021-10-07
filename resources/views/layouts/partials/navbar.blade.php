@@ -1,3 +1,55 @@
+<style>
+    .notifications {
+        width: 300px;
+        border-radius: 5px 0px 5px 5px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    }
+
+    .notifications h2 {
+        font-size: 14px;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        color: #333;
+    }
+
+    .notifications h2 span {
+        color: #f00
+    }
+
+    .notifications-item {
+        display: flex;
+        border-bottom: 1px solid #eee;
+        padding: 6px 9px;
+        margin-bottom: 0px;
+        cursor: pointer
+    }
+
+    .notifications-item:hover {
+        background-color: #eee
+    }
+
+    .notifications-item img {
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin-right: 9px;
+        border-radius: 50%;
+        margin-top: 2px
+    }
+
+    .notifications-item .text h4 {
+        color: #777;
+        font-size: 16px;
+        margin-top: 3px
+    }
+
+    .notifications-item .text p {
+        color: #aaa;
+        font-size: 12px
+    }
+
+</style>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -36,63 +88,11 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                    document.getElementById('logout-form').submit();"><i
+                                                                                                                                                                                        document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1"></i>{{ __('navbar.logout') }}</a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
-                    <style>
-                        .notifications {
-                            width: 300px;
-                            border-radius: 5px 0px 5px 5px;
-                            background-color: #fff;
-                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-                        }
-
-                        .notifications h2 {
-                            font-size: 14px;
-                            padding: 10px;
-                            border-bottom: 1px solid #eee;
-                            color: #333;
-                        }
-
-                        .notifications h2 span {
-                            color: #f00
-                        }
-
-                        .notifications-item {
-                            display: flex;
-                            border-bottom: 1px solid #eee;
-                            padding: 6px 9px;
-                            margin-bottom: 0px;
-                            cursor: pointer
-                        }
-
-                        .notifications-item:hover {
-                            background-color: #eee
-                        }
-
-                        .notifications-item img {
-                            display: block;
-                            width: 50px;
-                            height: 50px;
-                            margin-right: 9px;
-                            border-radius: 50%;
-                            margin-top: 2px
-                        }
-
-                        .notifications-item .text h4 {
-                            color: #777;
-                            font-size: 16px;
-                            margin-top: 3px
-                        }
-
-                        .notifications-item .text p {
-                            color: #aaa;
-                            font-size: 12px
-                        }
-
-                    </style>
 
                     <li class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
