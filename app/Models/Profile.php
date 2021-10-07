@@ -107,7 +107,9 @@ class Profile extends Model
 
     public function scopeAllHobbies(Builder $query, array $hobbies): Builder
     {
-        return $query->whereJsonContains('hobbies', $hobbies);
+        return $query;
+        // in order to run this query we need to upgrade mysql to be at least version 5.7
+        // return $query->whereJsonContains('hobbies', $hobbies);
     }
 
     public function scopeNationalities(Builder $query, array $nationalities): Builder

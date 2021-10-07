@@ -18,7 +18,7 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('profile', Auth::user()->username) }}">
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="img_icon_user"
-                                alt="image tit">
+                                alt="{{ Auth::user()->username }}">
                             {{ __('navbar.profile') }}</a>
                     </li>
                     <li class="nav-item">
