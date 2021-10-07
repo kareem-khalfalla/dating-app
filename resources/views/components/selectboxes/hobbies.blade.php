@@ -1,3 +1,7 @@
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 <option value="Sport" {{ isset($hobbies) && in_array('Sport', $hobbies) ? 'selected' : '' }}>{{ __('data.Sport') }}</option>
 <option value="Reading" {{ isset($hobbies) && in_array('Reading', $hobbies) ? 'selected' : '' }}>{{ __('data.Reading') }}</option>
 <option value="Writing" {{ isset($hobbies) && in_array('Writing', $hobbies) ? 'selected' : '' }}>{{ __('data.Writing') }}</option>
@@ -22,3 +26,22 @@
 <option value="going out With friends" {{ isset($hobbies) && in_array('going out With friends', $hobbies) ? 'selected' : '' }}>
     {{ __('data.going out With friends') }}</option>
 <option value="Walking" {{ isset($hobbies) && in_array('Walking', $hobbies) ? 'selected' : '' }}>{{ __('data.Walking') }}</option>
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            window.initSelectDrop = () => {
+                $('.select2').select2({
+                    placeholder: '{{ __('Select') }}',
+                    allowClear: true
+                }).on('change', () => {
+                    @this.set('state.hobbies', $('.select2').val())
+                });
+            }
+            initSelectDrop();
+            window.livewire.on('select2', () => {
+                initSelectDrop();
+            });
+        });
+    </script>
+@endpush

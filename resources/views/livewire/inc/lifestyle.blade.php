@@ -30,10 +30,10 @@
                 <x-selectboxes.food_type_statuses />
             </x-selectbox>
         </div>
-        <div class="form-group mb-3 col-md-6">
+        <div wire:ignore class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Interests') }}</label>
-            <x-selectbox wire:model.defer="state.hobbies">
-                <x-selectboxes.hobbies />
+            <x-selectbox wire:model.defer="state.hobbies" class="select2" multiple>
+                <x-selectboxes.hobbies :hobbies="$state['hobbies']" />
             </x-selectbox>
         </div>
         <div class="form-group  mb-3 col-md-6">
