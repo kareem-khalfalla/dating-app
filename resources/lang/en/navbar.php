@@ -9,6 +9,7 @@ return [
     'logout' => 'logout',
     'signup' => 'signup',
     'login' => 'login',
+    'others' => 'Others',
     'About' => 'About',
     'Privacy policy' => 'Privacy policy',
 ];

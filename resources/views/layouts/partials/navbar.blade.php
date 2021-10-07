@@ -143,8 +143,7 @@
 
                     <li dir="ltr" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                class="fas fa-info-circle"></i>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('navbar.others') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" style="background: transparent"

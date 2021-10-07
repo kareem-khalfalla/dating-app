@@ -9,6 +9,7 @@ return [
     'logout' => 'Ausloggen',
     'signup' => 'Anmeldung',
     'login' => 'Anmeldung',
+    'others' => 'Andere',
     'About' => 'Über',
     'Privacy policy' => 'Datenschutz-Bestimmungen',
 ];
