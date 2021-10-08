@@ -79,11 +79,7 @@ class UpdateOrCreateUser extends Component
         }
         $this->isMale = $this->user->gender == 'male';
         $this->currentStep = 2;
-    }
-
-    public function hydrate(): void
-    {
-        $this->emit('select2');
+        $this->dispatchBrowserEvent('select2');
     }
 
     public function store()
