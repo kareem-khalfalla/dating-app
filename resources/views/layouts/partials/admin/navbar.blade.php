@@ -5,7 +5,7 @@
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="{{ __('dashboard.Search for') }}..." aria-label="Search"
+            <input class="form-control" type="text" placeholder="Search for" aria-label="Search"
                 aria-describedby="basic-addon2" />
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
@@ -23,7 +23,7 @@
             <div class="dropdown-menu custom_drop_h" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('welcome') }}">Website</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">{{ __('dashboard.Logout') }}</a>
+                        document.getElementById('logout-form').submit();">Logout</a>
                 <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                 </form>
             </div>
