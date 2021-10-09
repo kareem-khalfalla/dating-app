@@ -41,7 +41,7 @@ class UpdateOrCreateUser extends Component
                 'two_factor_recovery_codes', 'fake', 'status', 'created_at', 'updated_at'
             ]);
             $this->state = array_merge($this->state, $this->user->profile->toArray());
-            $this->selectedCountry = $this->state['country_of_origin_id'];
+            $this->selectedCountry = $this->state['country_of_residence_id'];
             $this->selectedState = $this->state['state_id'];
         }
         $this->countryStates = !is_null($this->selectedCountry)

@@ -39,7 +39,7 @@ class ProfileComponent extends Component
         ]);
 
         $this->imageName       = $user->avatar;
-        $this->selectedCountry = $user->profile->country_of_origin_id;
+        $this->selectedCountry = $user->profile->country_of_residence_id;
         $this->selectedState   = $user->profile->state_id;
 
         $this->countryStates   = !is_null($this->selectedCountry)
