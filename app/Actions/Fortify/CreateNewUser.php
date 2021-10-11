@@ -27,7 +27,6 @@ class CreateNewUser implements CreatesNewUsers
         try {
             DB::beginTransaction();
 
-            $input['username'] = Str::slug($input['username']);
             $input['password'] = Hash::make($input['password']);
 
             /** @var \App\Models\User $user */

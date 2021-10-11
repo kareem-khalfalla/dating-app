@@ -24,7 +24,7 @@
                                         <span class="online_icon {{ $user->isOnline() ? '' : 'offline' }}"></span>
                                     </div>
                                     <div class="user_info">
-                                        <span>{{ $user->prettyUsername() }}</span>
+                                        <span>{{ $user->username }}</span>
                                         <p>{{ $user->isOnline() ? __('chat.online') : __('chat.offline') }}</p>
                                     </div>
                                 </div>
