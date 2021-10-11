@@ -22,7 +22,7 @@
                     <h4>{{ __('profile.brief about me') }}</h4>
                     <p class="lead">{{ $user->profile->bio ?? 'N/A' }}</p>
                 </div>
-                @if (request()->route('user') == Auth::user()->id && $user->profile->progress_bar < 99.99)
+                @if (request()->route('user')->id == Auth::user()->id && $user->profile->progress_bar < 99.99)
 
                     <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
                         role="alert">
