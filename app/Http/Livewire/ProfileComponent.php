@@ -125,9 +125,6 @@ class ProfileComponent extends Component
             'gender'   => $this->state['gender'],
         ]);
 
-        if (auth()->user()->username != $this->state['username']) {
-            return redirect()->route('settings');
-        }
         $this->success('Main Information');
     }
 

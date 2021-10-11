@@ -130,7 +130,7 @@
                                             src="{{ asset('storage/' . $user->avatar) }}" alt="" width="70px"
                                             height="70px"></td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->prettyUsername() }}</td>
+                                    <td>{{ $user->username }}</td>
                                     <td>{{ $user->profile->getAge() }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>

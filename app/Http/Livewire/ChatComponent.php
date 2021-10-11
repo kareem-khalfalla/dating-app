@@ -51,10 +51,10 @@ class ChatComponent extends Component
         $request = app('request');
         if (
             $router->getRoutes()->match($request->create(url()->previous()))->getName() == 'profile'
-            && $router->getRoutes()->match($request->create(url()->previous()))->user !== auth()->user()->username
+            && $router->getRoutes()->match($request->create(url()->previous()))->user !== auth()->user()->id
         ) {
-            $username = $router->getRoutes()->match($request->create(url()->previous()))->user;
-            $this->selectedUser = $this->users->where('username', $username)->first()->toArray();
+            // $user = $router->getRoutes()->match($request->create(url()->previous()))->user;
+            $this->selectedUser = $this->users->first()->toArray();
         }
     }
 

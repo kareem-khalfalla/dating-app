@@ -9,7 +9,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -67,7 +66,6 @@ class UpdateOrCreateUser extends Component
         $data = Validator::make($this->state, $this->userRules($this->user))->validate();
         try {
             DB::beginTransaction();
-            $data['username'] = Str::slug($data['username']);
             $data['password'] = bcrypt($data['password']);
             $this->user = User::create($data);
             $this->user->profile()->create();

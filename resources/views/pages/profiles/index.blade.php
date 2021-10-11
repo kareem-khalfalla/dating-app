@@ -6,13 +6,13 @@
                 <div class="box_img col-10 col-md-5 col-lg-3">
                     <figure class="figure">
                         <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('images/users-avatar/default.png') ?? 'N/A' }}"
-                            class="figure-img img-fluid rounded" alt="{{ $user->prettyUsername() ?? 'N/A' }}" data-toggle="modal"
+                            class="figure-img img-fluid rounded" alt="{{ $user->username ?? 'N/A' }}" data-toggle="modal"
                             data-target="#exampleModalCenter">
                     </figure>
                 </div>
 
                 <div class="box_info_1 col-11 col-md-7 col-lg-9 m-auto">
-                    <p class="lead username"><strong>{{ $user->prettyUsername() ?? 'N/A' }}</strong><br></p>
+                    <p class="lead username"><strong>{{ $user->username ?? 'N/A' }}</strong><br></p>
                     @livewire('profile-actions', [
                     'user' => $user,
                     'isPending' => $isPending,
@@ -23,7 +23,7 @@
                     <h4>{{ __('profile.brief about me') }}</h4>
                     <p class="lead">{{ $user->profile->bio ?? 'N/A' }}</p>
                 </div>
-                @if (request()->route('user') == Auth::user()->username && $user->profile->progress_bar < 99.99)
+                @if (request()->route('user') == Auth::user()->id && $user->profile->progress_bar < 99.99)
 
                     <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
                         role="alert">

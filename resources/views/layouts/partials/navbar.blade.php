@@ -68,7 +68,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('profile', Auth::user()->username) }}">
+                        <a class="nav-link hover-bar" href="{{ route('profile', Auth::user()) }}">
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="img_icon_user"
                                 alt="{{ Auth::user()->username }}">
                             </a>

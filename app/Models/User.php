@@ -60,11 +60,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function getRouteKeyName(): string
-    {
-        return 'username';
-    }
-
     public function isAdmin(): bool
     {
         return $this->role == 'admin';
@@ -144,10 +139,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->where('gender', 'female');
     }
 
-    public function prettyUsername(): string
-    {
-        return Str::title(str_replace('-', ' ', $this->username));
-    }
+    // public function prettyUsername(): string
+    // {
+    //     return Str::title(str_replace('-', ' ', $this->username));
+    // }
 
     public function scheduleTaskTime(): HasOne
     {

@@ -23,8 +23,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         Validator::make($input, Arr::except($this->userRules($user), 'password'))->validate();
 
-        $input['username'] = Str::slug($input['username']);
-
         $user->update($input);
     }
 }
