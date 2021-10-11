@@ -1,6 +1,7 @@
 <x-app-layout>
+    <br><br><br>
     <div class="container container_profile col-sm-10 col-md-11 col-lg-10 p-1 pt-4 pb-1 mb-4">
-        <div style="margin: auto 0; padding: 8rem 0;" class="shadow m-0">
+        <div class="shadow m-0">
             <div class="row m-0">
                 <div class="box_img col-10 col-md-5 col-lg-3">
                     <figure class="figure">

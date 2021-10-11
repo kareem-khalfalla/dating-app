@@ -1,6 +1,6 @@
 <section id="latest users" class="bg-white mb-4">
     <br>
-    <div class="container-fluid">
+    <div class="container-fluid bg-white pt-3 pb-3">
         <div class="row">
 
             @if (isset($users) && count($users) > 1)

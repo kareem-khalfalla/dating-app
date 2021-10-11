@@ -114,7 +114,7 @@ nav {
 }
 
 nav .last_link {
-    color: var(--color-5) !important;
+    color: var(--color-4) !important;
 
 }
 
@@ -126,13 +126,14 @@ nav .last_link {
     padding-top: 150px;
 }
 
-.container-index h1 {
-    color: var(--color-5);
+
+.container-index h1{
+    color: var(--color-4);
     text-align: center;
     margin: 0px;
-    font-weight: 800;
+    font-weight: 700;
+    font-size: 28px;
 }
-
 .h_2 {
     color: var(--color-4);
     text-align: center;
@@ -449,6 +450,6 @@ footer {
 
 
 .img_icon_user {
-    width: 25px;
+    width: 30px;
     border-radius: 50% !important
 }

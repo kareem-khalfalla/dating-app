@@ -13,12 +13,13 @@ $prevIsAdmin =
 <head>
     <meta charset="utf-8">
     <title>
+        Zawaj | 
         {{ ucfirst(strstr(\Request::route()->getName(), '.', true)) ?: ucfirst(\Request::route()->getName()) }}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#1D2625" />
-    <meta name="msapplication-navbutton-color" content="#1D2625" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#1D2625" />
+    <meta name="theme-color" content="#5f023a" />
+    <meta name="msapplication-navbutton-color" content="#5f023a" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#5f023a" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 

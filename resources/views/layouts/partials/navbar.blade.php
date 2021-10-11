@@ -63,7 +63,7 @@
             <ul class="navbar-nav ml-auto">
                 @auth
                     <li class="nav-item nav_home">
-                        <a class="nav-link hover-bar" href="{{ route('results') }}"><i class="fas fa-search"></i><span
+                        <a class="nav-link hover-bar" href="{{ route('results') }}"><i class="fas fa-search" style='font-size: 30px ;'></i><span
                                 class="sr-only">(current)</span></a>
                     </li>
 
@@ -71,25 +71,25 @@
                         <a class="nav-link hover-bar" href="{{ route('profile', Auth::user()->username) }}">
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="img_icon_user"
                                 alt="{{ Auth::user()->username }}">
-                            {{ __('navbar.profile') }}</a>
+                            </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('requests') }}"><i
-                                class="fas fa-lg fa-user-plus p-1"></i>{{ __('navbar.requests') }}</a>
+                                class="fas fa-lg fa-user-plus p-1" style='font-size: 30px ;'></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('chat') }}"><i
-                                class="fas fa-lg fa-envelope p-1"></i>{{ __('navbar.Chat') }}</a>
+                                class="fas fa-lg fa-envelope p-1" style='font-size: 30px ;'></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('settings') }}"><i
-                                class="fas fa-lg fa-cogs p-1"></i>{{ __('navbar.settings') }}</a>
+                                class="fas fa-lg fa-cogs p-1" style='font-size: 30px ;'></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link hover-bar" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                                                                                                                                                                         document.getElementById('logout-form').submit();"><i
-                                class="fas fa-lg fa-sign-out-alt p-1"></i>{{ __('navbar.logout') }}</a>
+                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i></a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
@@ -101,7 +101,7 @@
                                 $notifications = Auth::user()->notifications;
                             @endphp
                             <span class="badge badge-danger ml-2"><span>{{ count($notifications) }}</span>
-                                <i class="fas fa-bell"></i>
+                                <i class="fas fa-bell" style='font-size: 30px ;'></i>
                         </a>
                         <div style="background-color: #fff!important"
                             class="notifications dropdown-menu dropdown-menu-lg-right dropdown-secondary"
@@ -124,6 +124,19 @@
                             @endforeach
                         </div>
                     </li>
+                    
+                <li dir="ltr" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                            class="fa fa-lg fa-language " style='font-size: 30px ;'></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @foreach (\App\Models\Language::allAvailable()->get() as $language)
+                            <a class="dropdown-item" style="background: transparent"
+                                href="{{ route('locale', $language->code) }}">{{ $language->nativeName }}</a>
+                        @endforeach
+                    </div>
+                </li>
 
                 @endauth
                 @guest
@@ -152,9 +165,7 @@
                                 href="{{ route('about') }}">{{ __('navbar.About') }}</a>
                         </div>
                     </li>
-
-
-                @endguest
+                    
                 <li dir="ltr" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hover-bar" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -167,6 +178,10 @@
                         @endforeach
                     </div>
                 </li>
+
+
+                @endguest
+            
             </ul>
         </div>
     </div>
