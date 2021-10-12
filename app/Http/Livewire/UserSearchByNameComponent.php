@@ -32,8 +32,8 @@ class UserSearchByNameComponent extends Component
             ->merge($pendingRecipientIds)
             ->merge($blockedRecipientIds);
 
-        return view('livewire.user-search-by-name-component', [
-            'users' => User::swapGender()->allExceptAuthName($this->search)->get()
+            return view('livewire.user-search-by-name-component', [
+            'users' => User::allExceptAuthName($this->search)->swapGender($this->search)->get()
                 ->merge($this->usersResults)
                 ->diff(User::findMany($allPendingIds))
                 ->diff($authUser->getFriends()->get())
