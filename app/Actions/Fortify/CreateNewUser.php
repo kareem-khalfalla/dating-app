@@ -31,6 +31,10 @@ class CreateNewUser implements CreatesNewUsers
             /** @var \App\Models\User $user */
             $user = User::create($input);
 
+            $user->update([
+                'avatar' => "images/users-avatar/default-$user->gender.jpeg"
+            ]);
+
             $user->profile()->create();
 
             DB::commit();

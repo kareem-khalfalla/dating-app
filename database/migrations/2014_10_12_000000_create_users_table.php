@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('role')->default('user');
             $table->string('create_fake_time')->default('yearly')->nullable();
             $table->string('delete_fake_time')->default('yearly')->nullable();
-            $table->string('avatar')->default('images/users-avatar/default.png');
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
