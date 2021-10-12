@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use App\Events\FriendRequestDenied;
-use App\Events\MessageRequestEvent;
-use App\Events\MessageRequestRefusedEvent;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

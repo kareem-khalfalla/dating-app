@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\VerifyEmail;
 use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
@@ -58,6 +59,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function sendEmailVerificationNotification(): void
+    {
+        event(new VerifyEmail($this));
+    }
 
     public function isAdmin(): bool
     {
