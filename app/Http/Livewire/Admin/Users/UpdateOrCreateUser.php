@@ -82,7 +82,7 @@ class UpdateOrCreateUser extends Component
 
     public function store()
     {
-        $imageName = 'images/users-avatar/default.png';
+        $imageName = "images/users-avatar/default-{$this->user->gender}.jpeg";
 
         $user = $this->user;
 
@@ -104,7 +104,7 @@ class UpdateOrCreateUser extends Component
             /** @var \Illuminate\Http\UploadedFile */
             $image = $this->image;
             if (!is_null($this->user)) {
-                if ($this->user->avatar != 'images/users-avatar/default.png') {
+                if ($this->user->avatar != "images/users-avatar/default-{$this->user->gender}.jpeg") {
                     Storage::delete($user->avatar);
                 }
             }
