@@ -9,11 +9,10 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class VerifyEmail implements ShouldQueue
+class VerifyEmail
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -24,11 +23,16 @@ class VerifyEmail implements ShouldQueue
      */
     public function __construct(protected User $user)
     {
-        //
+        $this->user->notify(new NotificationsVerifyEmail());
     }
 
-    public function handle(): void
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
     {
-        $this->user->notify(new NotificationsVerifyEmail());
+        return new PrivateChannel('channel-name');
     }
 }
