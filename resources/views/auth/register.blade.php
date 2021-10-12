@@ -25,6 +25,7 @@
                             placeholder="{{ __('register.username') }}" type="text"
                             class="form-control @error('username') is-invalid @enderror" aria-label="Large"
                             aria-describedby="inputGroup-sizing-sm">
+                            <small id="passError" class="text-danger col-12">&nbsp;</small>
                         @error('username')
                             <div class="invalid-feedback">
                                 <small id="passError" class="text-danger col-12">{{ $message }}</small>

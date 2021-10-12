@@ -17,9 +17,11 @@
                         data-toggle="tooltip" data-placement="top" title="show profile">
                 </a>
                 <h5 class="col-8">{{ $user->username }}</h5>
+                <a href="#">
                 <button wire:click.prevent="add({{ $user->id }})"
                     class="btn btn-outline-success">{{ __('requests.Add') }}</button>
-                &nbsp;
+                    </a>&nbsp;
+                    
                 {{-- <button class="btn btn-outline-secondary" onclick="hide()"
                     id="hide">{{ __('requests.Hide') }}</button> --}}
             </div>
