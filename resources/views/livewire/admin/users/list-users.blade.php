@@ -82,7 +82,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td>Emptys') }}!</td>
+                                <td>Empty Users</td>
                             </tr>
                         @endforelse
                     </tbody>
