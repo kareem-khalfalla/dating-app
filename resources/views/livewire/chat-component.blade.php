@@ -44,14 +44,14 @@
                             <span class="online_icon {{ $isOnline ? '' : 'offline' }}"></span>
                         </div>
                         <div class="user_info">
-                            <span>{{ $selectedUser['name'] }}</span>
+                            <span>{{ $selectedUser['username'] }}</span>
                             <p>{{ $messagesCount }} {{ __('chat.Messages') }}</p>
                         </div>
                     </div>
                     <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                     <div class="action_menu">
                         <ul>
-                            <li><a href="{{ route('profile', $selectedUser['username']) }}"><i
+                            <li><a href="{{ route('profile', $selectedUser['id']) }}"><i
                                         class="fas fa-user-circle"></i>
                                     {{ __('chat.View') }}
                                     {{ __('chat.profile') }}</a></li>

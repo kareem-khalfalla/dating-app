@@ -101,8 +101,8 @@ $prevIsAdmin =
 
     <x-alerts />
 
+    
     @stack('scripts')
-
     @livewireScripts
 </body>
 

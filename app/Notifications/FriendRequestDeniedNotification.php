@@ -32,6 +32,7 @@ class FriendRequestDeniedNotification extends Notification
             'message' => "Sadlly, {$this->user->username} has denied your request.",
             'avatar' => $this->user->avatar,
             'username' => $this->user->username,
+            'id' => $this->user->id,
         ];
     }
 
