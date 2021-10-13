@@ -1,7 +1,7 @@
 <section id="latest users" class="bg-white mb-4">
     <br>
     <div class="container-fluid bg-white pt-3 pb-3">
-        <div class="row">
+        <div class="row m-1">
 
             @if (isset($users) && count($users) > 1)
 
@@ -31,11 +31,12 @@
                     @foreach ($users->take(6) as $user)
 
                         <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
-                            <div class="col-6 col-md-5 p-0 m-0">
-                                <img class="p-0 m-0" style="border: 1px solid #eee;"
+                            <div class="col-5 col-md-5 p-0 m-0">
+                                <img class="p-0 m-0 img-fluid
+                                " style="border: 1px solid #eee;"
                                     src="{{ asset('storage/' . $user->avatar) }}" width="150px" height="150px" alt="">
                             </div>
-                            <div class="col-6 col-md-7">
+                            <div class="col-7 col-md-7">
                                 <p class="row p-1 m-0"><b>{{ __('welcome.Name') }} : </b> {{ $user->username }}</p>
 
                                 <p class="row p-1 m-0"><b>{{ __('welcome.Age') }} : </b>

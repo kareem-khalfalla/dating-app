@@ -1,4 +1,5 @@
 <style>
+
     .notifications {
         width: 300px;
         border-radius: 5px 0px 5px 5px;
@@ -48,6 +49,10 @@
         color: #aaa;
         font-size: 12px
     }
+    
+    .navbar{
+    width: 100%;
+}
 
 </style>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
@@ -60,6 +65,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
             <ul class="navbar-nav ml-auto">
                 @auth
                     <li class="nav-item nav_home">
