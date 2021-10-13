@@ -60,11 +60,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function sendEmailVerificationNotification(): void
-    {
-        event(new VerifyEmail($this));
-    }
-
     public function isAdmin(): bool
     {
         return $this->role == 'admin';
