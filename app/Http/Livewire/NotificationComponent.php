@@ -2,19 +2,32 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class NotificationComponent extends Component
 {
+    public $loadAmount = 5;
     public $notifications;
 
     protected $listeners = [
         'updateNotifications'
     ];
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.notification-component');
+    }
+
+    public function mount()
+    {
+        $this->notifications = auth()->user()->notifications->sortBy('created_at')->take($this->loadAmount);
+    }
+
+    public function loadMore(): void
+    {
+        $this->loadAmount += 5;
+        $this->notifications = auth()->user()->notifications->sortBy('created_at')->take($this->loadAmount);
     }
 
     public function updateNotifications(): void
