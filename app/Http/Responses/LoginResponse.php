@@ -2,7 +2,6 @@
 
 namespace App\Http\Responses;
 
-use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 
 class LoginResponse implements LoginResponseContract
@@ -10,9 +9,14 @@ class LoginResponse implements LoginResponseContract
 
     public function toResponse($request)
     {
-        $role = Auth::user()->role;
-        if ($role == 'admin'){
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+        if ($user->role == 'admin') {
             return redirect('admin/dashboard');
+        }
+
+        if (!$user->wasRecentlyCreated) {
+            return redirect()->route('profile', $user->id);
         }
 
         return $request->wantsJson()
