@@ -75,28 +75,41 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('profile', Auth::user()) }}">
+                        <a class="nav-link hover-bar d-flex" href="{{ route('profile', Auth::user()) }}">
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="img_icon_user"
                                 alt="{{ Auth::user()->username }}">
+                                <span class="only_mobile">&nbsp; {{ __('navbar.profile') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('requests') }}"><i class="fas fa-lg fa-user-plus p-1"
-                                style='font-size: 30px ;'></i></a>
+                        <a class="nav-link hover-bar d-flex" href="{{ route('requests') }}"><i class="fas fa-lg fa-user-plus p-1"
+                                style='font-size: 30px ;'></i>
+                                
+                                 <span class="only_mobile">{{ __('navbar.requests') }}</span>
+                                </a>
+                    </li>
+                    
+                       <li class="nav-item">
+                     <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}"><i class="fas fa-lg fa-envelope p-1"
+                                style='font-size: 30px ;'></i>
+                                 <span class="only_mobile">{{ __('navbar.Chat') }}</span>
+                                </a>
+                    </li>
+                    
+                  
+                    <li class="nav-item">
+                        <a class="nav-link hover-bar d-flex" href="{{ route('settings') }}"><i class="fas fa-lg fa-cogs p-1"
+                                style='font-size: 30px ;'></i>
+                                 <span class="only_mobile">{{ __('navbar.settings') }}</span>
+                                </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('chat') }}"><i class="fas fa-lg fa-envelope p-1"
-                                style='font-size: 30px ;'></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('settings') }}"><i class="fas fa-lg fa-cogs p-1"
-                                style='font-size: 30px ;'></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hover-bar" href="{{ route('logout') }}"
+                        <a class="nav-link hover-bar d-flex" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                                                                                                                                                                                 document.getElementById('logout-form').submit();"><i
-                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i></a>
+                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i>
+                                <span class="only_mobile">{{ __('navbar.logout') }}</span>
+                                </a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
@@ -130,8 +143,10 @@
                 @endauth
                 @guest
                     <li class="nav-item nav_home">
-                        <a class="nav-link hover-bar" href="{{ route('welcome') }}"><i
-                                class="fa fa-home fa-lg p-1"></i>{{ __('navbar.home') }}</a>
+                        <a class="nav-link hover-bar d-flex" href="{{ route('welcome') }}">
+                            <i class="fa fa-home fa-lg p-1"></i>
+                            {{ __('navbar.home') }}
+                        </a>
                     </li>
                     <li class="nav-item nav_signup">
                         <a class="nav-link hover-bar" href="{{ route('register') }}"><i

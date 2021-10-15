@@ -30,6 +30,10 @@
     display: none;
   }
   
+  .only_mobile{
+   display: block;
+ }
+  
 }
  
 /* Large Mobile :480px. */

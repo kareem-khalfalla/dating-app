@@ -13,7 +13,7 @@ $prevIsAdmin =
 <head>
     <meta charset="utf-8">
     <title>
-        Zawaj | 
+        Zawag | 
         {{ ucfirst(strstr(\Request::route()->getName(), '.', true)) ?: ucfirst(\Request::route()->getName()) }}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">

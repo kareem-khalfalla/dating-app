@@ -453,3 +453,8 @@ footer {
     width: 30px;
     border-radius: 50% !important
 }
+
+  .only_mobile{
+   display: none;
+ }
+  
