@@ -39,7 +39,8 @@
                 }
             }, options);
         });
-
-        observer.observe(lastRecord);
+        if (lastRecord) {
+            observer.observe(lastRecord);
+        }
     </script>
 @endpush
