@@ -1,5 +1,4 @@
 <style>
-
     .notifications {
         width: 300px;
         border-radius: 5px 0px 5px 5px;
@@ -49,10 +48,10 @@
         color: #aaa;
         font-size: 12px
     }
-    
-    .navbar{
-    width: 100%;
-}
+
+    .navbar {
+        width: 100%;
+    }
 
 </style>
 
@@ -66,7 +65,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
+
             <ul class="navbar-nav ml-auto">
                 @auth
                     <li class="nav-item nav_home">
@@ -106,10 +105,15 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar d-flex" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
+<<<<<<< HEAD
                                                                                                                                                                                                 document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i>
                                 <span class="only_mobile">{{ __('navbar.logout') }}</span>
                                 </a>
+=======
+                                                                                                                                                                                                    document.getElementById('logout-form').submit();"><i
+                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i></a>
+>>>>>>> 29e93fc33c42018fe87e18cb2a3a07e67e8ad463
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
@@ -117,14 +121,11 @@
                     <li onclick="Livewire.emit('updateNotifications')" class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            @php
-                                $notifications = Auth::user()->notifications;
-                            @endphp
                             <span
                                 class="badge badge-danger ml-2"><span>{{ count(Auth::user()->unreadNotifications) }}</span>
                                 <i class="fas fa-bell" style='font-size: 30px ;'></i>
                         </a>
-                        @livewire('notification-component', ['notifications' => $notifications])
+                        @livewire('notification-component')
                     </li>
 
                     <li dir="ltr" class="nav-item dropdown">
