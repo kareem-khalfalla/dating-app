@@ -1,3 +1,7 @@
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 <div id="their_lifestyle" class="col-lg-11 m-auto pb-4" wire:ignore.self>
     <h3 class="color_h">{{ __('settings.Change their lifestyle') }}</h3>
     <form wire:submit.prevent="updateLifestyleInfo" id="captcha_form" class="row" method="post" action="#">
@@ -53,3 +57,22 @@
         </div>
     </form>
 </div>
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            addEventListener('select2', function() {
+                initSelectDrop();
+            });
+            window.initSelectDrop = () => {
+                $('.select2').select2({
+                    placeholder: '{{ __('Select') }}',
+                    allowClear: true
+                }).on('change', () => {
+                    @this.set('state.hobbies', $('.select2').val())
+                });
+            }
+            initSelectDrop();
+        });
+    </script>
+@endpush
