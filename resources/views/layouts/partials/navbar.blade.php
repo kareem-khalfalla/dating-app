@@ -77,43 +77,36 @@
                         <a class="nav-link hover-bar d-flex" href="{{ route('profile', Auth::user()) }}">
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="img_icon_user"
                                 alt="{{ Auth::user()->username }}">
-                                <span class="only_mobile">&nbsp; {{ __('navbar.profile') }}</span>
+                            <span class="only_mobile">&nbsp; {{ __('navbar.profile') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hover-bar d-flex" href="{{ route('requests') }}"><i class="fas fa-lg fa-user-plus p-1"
-                                style='font-size: 30px ;'></i>
-                                
-                                 <span class="only_mobile">{{ __('navbar.requests') }}</span>
-                                </a>
+                        <a class="nav-link hover-bar d-flex" href="{{ route('requests') }}"><i
+                                class="fas fa-lg fa-user-plus p-1" style='font-size: 30px ;'></i>
+
+                            <span class="only_mobile">{{ __('navbar.requests') }}</span>
+                        </a>
                     </li>
-                    
-                       <li class="nav-item">
-                     <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}"><i class="fas fa-lg fa-envelope p-1"
-                                style='font-size: 30px ;'></i>
-                                 <span class="only_mobile">{{ __('navbar.Chat') }}</span>
-                                </a>
-                    </li>
-                    
-                  
+
                     <li class="nav-item">
-                        <a class="nav-link hover-bar d-flex" href="{{ route('settings') }}"><i class="fas fa-lg fa-cogs p-1"
-                                style='font-size: 30px ;'></i>
-                                 <span class="only_mobile">{{ __('navbar.settings') }}</span>
-                                </a>
+                        <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}"><i
+                                class="fas fa-lg fa-envelope p-1" style='font-size: 30px ;'></i>
+                            <span class="only_mobile">{{ __('navbar.Chat') }}</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link hover-bar d-flex" href="{{ route('settings') }}"><i
+                                class="fas fa-lg fa-cogs p-1" style='font-size: 30px ;'></i>
+                            <span class="only_mobile">{{ __('navbar.settings') }}</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link hover-bar d-flex" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-<<<<<<< HEAD
-                                                                                                                                                                                                document.getElementById('logout-form').submit();"><i
-                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i>
-                                <span class="only_mobile">{{ __('navbar.logout') }}</span>
-                                </a>
-=======
-                                                                                                                                                                                                    document.getElementById('logout-form').submit();"><i
+                                                                                                                                                                                                        document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i></a>
->>>>>>> 29e93fc33c42018fe87e18cb2a3a07e67e8ad463
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
