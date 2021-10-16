@@ -37,10 +37,10 @@ class Kernel extends ConsoleKernel
         $createFakeUserTime = $setting->create_fake_user_time;
         $deleteFakeUserTime = $setting->delete_fake_user_time;
         
-        $schedule->command('reminders:emails')->daily();
-        $schedule->command('users:delete-inactive')->daily();
-        $schedule->command('users:create-fake')->$createFakeUserTime();
-        $schedule->command('users:delete-fake')->$deleteFakeUserTime();
+        $schedule->command('reminders:emails')->daily()->runInBackground();
+        $schedule->command('users:delete-inactive')->daily()->runInBackground();
+        $schedule->command('users:create-fake')->$createFakeUserTime()->runInBackground();
+        $schedule->command('users:delete-fake')->$deleteFakeUserTime()->runInBackground();
     }
 
     /**
