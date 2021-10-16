@@ -22,7 +22,7 @@
                         <tr>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>username</th>
+                            <th>Username</th>
                             <th>Age</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -47,7 +47,8 @@
                                         class="form-control">
                                         <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>user
                                         </option>
-                                        <option value="super user" {{ $user->role == 'super user' ? 'selected' : '' }}>
+                                        <option value="super user"
+                                            {{ $user->role == 'super user' ? 'selected' : '' }}>
                                             super user
                                         </option>
                                         <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>admin
@@ -65,17 +66,14 @@
                                         </button>
                                         <div class="dropdown-menu bg-warning" aria-labelledby="dropdownMenuButton">
                                             <a wire:click.prevent="confirm({{ $user->id }})" class="dropdown-item"
-                                                href="#" data-toggle="modal"
-                                                data-target="#deleteUserId">Delete</a>
+                                                href="#" data-toggle="modal" data-target="#deleteUserId">Delete</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('admin.users.update', $user) }}">Edit</a>
-                                            <a class="dropdown-item"
-                                                href="{{ route('profile', $user) }}">Show
+                                            <a class="dropdown-item" href="{{ route('profile', $user) }}">Show
                                                 profile</a>
-                                            @if (\App\Models\Message::count() > 0)
-                                                <a class="dropdown-item"
-                                                    href="{{ route('admin.user.chat', $user) }}">Open rooms') }}</a>
-                                            @endif
+                                            <a wire:click.prevent="openChat({{ $user->id }})" class="dropdown-item"
+                                                href="#">Open rooms</a>
+
                                         </div>
                                     </span>
                                 </td>

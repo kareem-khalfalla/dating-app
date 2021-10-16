@@ -22,6 +22,8 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $gender = $this->faker->randomElement(['male', 'female']);
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -31,7 +33,8 @@ class UserFactory extends Factory
             'username' => $this->faker->userName(),
             'phone' => $this->faker->phoneNumber(),
             'last_seen_at' => now(),
-            'gender' => $this->faker->randomElement(['male', 'female']),
+            'gender' => $gender,
+            'avatar' => "images/users-avatar/default-$gender.jpeg",
             'fake' => 1,
             'created_at' => $this->faker->dateTimeBetween('-1 years')
         ];

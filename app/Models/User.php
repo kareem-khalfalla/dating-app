@@ -37,8 +37,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_seen_at',
         'last_message_at',
         'avatar',
-        'create_fake_time',
-        'delete_fake_time',
     ];
 
     /**
@@ -119,11 +117,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isOnline(): bool
     {
         return Cache::has('user-online-' . $this->id);
-    }
-
-    public function scopeAuth(Builder $query): Builder
-    {
-        return $query->where('id', auth()->id());
     }
 
     public function scopeFake(Builder $query): Builder

@@ -27,7 +27,6 @@ class NotificationComponent extends Component
     public function loadMore(): void
     {
         $this->loadAmount += 5;
-        $this->notifications = auth()->user()->notifications->sortBy('created_at')->take($this->loadAmount);
     }
 
     public function updateNotifications(): void

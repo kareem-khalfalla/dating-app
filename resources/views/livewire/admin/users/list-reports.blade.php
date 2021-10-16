@@ -1,24 +1,24 @@
 <div class="container-fluid">
-    <h1 class="mt-4">{{ __('dashboard.Reports') }}</h1>
+    <h1 class="mt-4">Reports</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('dashboard.Dashboard') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('dashboard.Reports') }} [ {{ $reports->count() }} ]</li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Reports [ {{ $reports->count() }} ]</li>
     </ol>
 
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            {{ __('dashboard.DataTable Reports') }}
+            DataTable Reports
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>{{ __('dashboard.From') }}</th>
-                            <th>{{ __('dashboard.About') }}</th>
-                            <th>{{ __('dashboard.report') }}</th>
-                            <th>{{ __('dashboard.Manage') }}</th>
+                            <th>From</th>
+                            <th>About</th>
+                            <th>report</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>

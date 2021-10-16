@@ -17,6 +17,7 @@ return [
     'User unblocked successfully'                  => 'تم إلغاء حظر المستخدم بنجاح',
     'User deleted successfully'                    => 'تم حذف المستخدم بنجاح',
     'User Add request sent successfully'           => 'تم إرسال طلب إضافة المستخدم بنجاح',
+    'This user has no chat!'                       => 'هذا العضو ليس لدية محادثات',
     'Your message was sent'                        => 'تم إرسال رسالتك بنجاح',
     'Sadlly, you don\'t have friends to chat with' => 'للأسف ، ليس لديك أصدقاء للدردشة معهم',
     // dashboard

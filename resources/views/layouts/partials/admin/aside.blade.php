@@ -20,11 +20,9 @@
                     <a class="nav-link" href="{{ route('admin.users') }}">Users</a>
                     <a class="nav-link" href="{{ route('admin.users.create') }}">Add user</a>
                     <a class="nav-link" href="{{ route('admin.reports') }}">Reports</a>
-                    <a class="nav-link" href="{{ route('admin.tasks') }}">Scheduled Tasks</a>
+                    <a class="nav-link" href="{{ route('admin.settings') }}">Settings</a>
                 </div>
-
             </div>
         </div>
-
     </nav>
 </div>

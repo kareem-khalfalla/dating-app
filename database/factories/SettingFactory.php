@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ScheduleTaskTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Setting;
 
-class ScheduleTaskTimeFactory extends Factory
+class SettingFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ScheduleTaskTime::class;
+    protected $model = Setting::class;
 
     /**
      * Define the model's default state.

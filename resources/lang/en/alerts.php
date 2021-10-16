@@ -30,6 +30,7 @@ return [
     'User created successfully'          => 'User created successfully',
     'User updated successfully'          => 'User updated successfully',
     'User deleted successfull'           => 'User deleted successfull',
+    'This user has no chat!'             => 'This user has no chat!',
     'Report deleted successfully'        => 'Report deleted successfully',
     'Role changed to user successfully'       => 'Role changed to user successfully',
     'Role changed to super user successfully' => 'Role changed to super user successfully',

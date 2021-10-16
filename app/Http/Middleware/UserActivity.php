@@ -19,11 +19,16 @@ class UserActivity
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check()) {
-            Cache::put('user-online-' . auth()->user()->id, true, now()->addMinute(1));
+            /** @var \App\Models\User $user */
+            $user = auth()->user();
 
-            User::auth()->update([
-                'last_seen_at' => now()
-            ]);
+            Cache::put('user-online-' . $user->id, true, now()->addMinute(1));
+
+            if ($user->last_seen_at < now()->subMinutes(5)) {
+                $user->update([
+                    'last_seen_at' => now()
+                ]);
+            }
         }
 
         return $next($request);

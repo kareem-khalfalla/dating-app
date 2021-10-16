@@ -240,7 +240,7 @@ class UserSeeder extends Seeder
         $profile->height = rand(155, 190);
         $profile->weight = rand(50, 130);
         $profile->income = rand(999, 9999);
-        $profile->dob = $faker->dateTimeBetween('-60 years');
+        $profile->dob = $faker->dateTimeBetween('-60 years', '-20 years');
         $profile->bio = $faker->paragraph();
         $profile->partner_bio = $faker->paragraph();
         $profile->competence = $faker->paragraph();

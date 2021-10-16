@@ -17,6 +17,7 @@ return [
     'User unblocked successfully'                  => 'Benutzer erfolgreich entsperrt',
     'User deleted successfully'                    => 'Benutzer erfolgreich gelöscht',
     'User Add request sent successfully'           => 'Anfrage zum Hinzufügen von Benutzern erfolgreich gesendet',
+    'This user has no chat!'                       => 'Dieser Benutzer hat keinen Chat!',
     'Your message was sent'                        => 'Ihre Nachricht wurde verschickt',
     'Sadlly, you don\'t have friends to chat with' => 'Leider hast du keine Freunde, mit denen du chatten kannst',
     // dashboard

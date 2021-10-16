@@ -83,6 +83,7 @@
                         <p>{{ __('chat.Say HI') }}!</p>
                     @endforelse
                 </div>
+                @if(!\Request::route()->getPrefix() =='admin')
                 <div class="card-footer">
                     <form wire:submit.prevent="addMessage">
                         <div class="input-group">
@@ -105,6 +106,7 @@
                             </div>
                     </form>
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -131,6 +133,12 @@
                     observer.observe(lastRecord);
                 }
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('li').click();
         });
     </script>
 @endpush

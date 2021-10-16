@@ -2,23 +2,36 @@
 
 namespace App\Http\Livewire\Admin\Users;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\Redirector;
 
 class ListUsers extends Component
 {
+    public $userId;
+
     protected $listeners = [
         'destroy',
     ];
 
-    public $userId;
-
     public function render()
     {
         return view('livewire.admin.users.list-users', [
-            'users' => User::allExceptAuthId()->latest()->paginate()
+            'users' => User::with('profile')->allExceptAuthId()->latest()->paginate()
+        ]);
+    }
+
+    public function openChat(int $userId)
+    {
+        if (Message::where('from', $userId)->orWhere('to', $userId)->count() > 0) {
+            return redirect()->route('admin.user.chat', $userId);
+        }
+
+        $this->dispatchBrowserEvent('swal:modal', [
+            'title' => __('alerts.This user has no chat!')
         ]);
     }
 
