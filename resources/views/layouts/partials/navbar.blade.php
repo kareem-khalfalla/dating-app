@@ -54,7 +54,6 @@
     }
 
 </style>
-
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -91,6 +90,7 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}"><i
                                 class="fas fa-lg fa-envelope p-1" style='font-size: 30px ;'></i>
+                                <span style="color: red">{{ Auth::user()->newMessages() }}</span>
                             <span class="only_mobile">{{ __('navbar.Chat') }}</span>
                         </a>
                     </li>
@@ -115,7 +115,7 @@
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <span
-                                class="badge badge-danger ml-2"><span>{{ count(Auth::user()->unreadNotifications) }}</span>
+                                class="badge ml-2"><span style="color: red">{{ count(Auth::user()->unreadNotifications) }}</span>
                                 <i class="fas fa-bell" style='font-size: 30px ;'></i>
                         </a>
                         @livewire('notification-component')

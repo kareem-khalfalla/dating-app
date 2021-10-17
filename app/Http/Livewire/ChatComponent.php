@@ -116,12 +116,14 @@ class ChatComponent extends Component
         $this->fileName = null;
 
         User::find($message->from)->update([
-            'last_message_at' => now()
+            'last_message_at' => now(),
         ]);
 
         User::find($message->to)->update([
-            'last_message_at' => now()
+            'last_message_at' => now(),
         ]);
+
+        Message::where('to', auth()->id())->update(['is_seen' => 1]);
 
         $this->users = User::friendsByLastMsg($this->user)->get();
 
@@ -157,6 +159,6 @@ class ChatComponent extends Component
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
-        $authUser->blockFriend(User::find($id));
+        // $authUser->blockFriend(User::find($id));
     }
 }

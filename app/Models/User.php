@@ -148,4 +148,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(ScheduleTaskTime::class);
     }
+
+    public function newMessages(): int
+    {
+        return Message::query()->where('to', $this->id)->where('is_seen', 0)->count();
+    }
 }
