@@ -8,7 +8,7 @@
                 <x-input wire:model.defer="state.dob" placeholder="{{ __('settings.Birthday') }}" type="date" />
             </div>
             <div class="input-group input-group-lg mb-3 col-md-6">
-                <label class="col-12">{{ __('settings.Country of Origin') }}</label>
+                <label class="col-12">{{ __('settings.Country of Residence') }}</label>
                 <x-selectbox wire:model="selectedCountry">
                     <option>---</option>
                     @foreach ($countries as $country)
@@ -19,7 +19,7 @@
                 </x-selectbox>
             </div>
             <div class="input-group input-group-lg mb-3 col-md-6">
-                <label class="col-12">{{ __('settings.Country of Residence') }}</label>
+                <label class="col-12">{{ __('settings.Country of Origin') }}</label>
                 <x-selectbox wire:model="state.country_of_residence_id">
                     <option>---</option>
                     @foreach ($countries as $country)
