@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\FriendRequestSentEvent;
+use App\Events\FriendRequestAcceptedEvent;
 use App\Notifications\FriendRequestAcceptedNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -22,11 +22,11 @@ class FriendRequestAcceptedListener
     /**
      * Handle the event.
      *
-     * @param  FriendRequestSentEvent  $event
+     * @param  FriendRequestAcceptedEvent  $event
      * @return void
      */
-    public function handle(FriendRequestSentEvent $event)
+    public function handle(FriendRequestAcceptedEvent $event)
     {
-        $event->acceptedUser->notify(new FriendRequestAcceptedNotification($event->user));
+        $event->recievedUser->notify(new FriendRequestAcceptedNotification($event->user));
     }
 }

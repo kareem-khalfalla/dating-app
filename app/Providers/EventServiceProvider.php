@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\FriendRequestAcceptedEvent;
 use App\Events\FriendRequestDeniedEvent;
 use App\Events\FriendRequestSentEvent;
 use Illuminate\Auth\Events\Login;
@@ -33,8 +34,8 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\FriendRequestSentListener::class
         ],
 
-        FriendRequestAccepted::class => [
-            \App\Listeners\FriendRequestAcceptedistener::class
+        FriendRequestAcceptedEvent::class => [
+            \App\Listeners\FriendRequestAcceptedListener::class
         ],
     ];
 

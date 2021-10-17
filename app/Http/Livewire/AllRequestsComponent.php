@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\FriendRequestAcceptedEvent;
 use App\Events\FriendRequestDeniedEvent;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -25,6 +26,8 @@ class AllRequestsComponent extends Component
         $authUser = auth()->user();
 
         $authUser->acceptFriendRequest(User::find($id));
+        
+        event(new FriendRequestAcceptedEvent($authUser, User::find($id)));
     }
 
     public function deny(int $id): void
