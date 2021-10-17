@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\FriendRequestDenied;
+use App\Events\FriendRequestSentEvent;
 use App\Models\Report;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -79,6 +81,10 @@ class ProfileActions extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
+        if (!$authUser->isFriendWith(User::find($id))) {
+            event(new FriendRequestDenied($authUser, User::find($id)));
+        }
+
         $authUser->unfriend(User::find($id));
 
         $this->dispatchBrowserEvent('hide-form');
@@ -92,6 +98,8 @@ class ProfileActions extends Component
         $authUser = auth()->user();
 
         $authUser->befriend(User::find($id));
+
+        event(new FriendRequestSentEvent($authUser, User::find($id)));
 
         $this->dispatchBrowserEvent('hide-form');
 

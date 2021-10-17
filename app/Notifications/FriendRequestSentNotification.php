@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class FriendRequestDeniedNotification extends Notification
+class FriendRequestSentNotification extends Notification
 {
     use Queueable;
 
@@ -29,7 +29,7 @@ class FriendRequestDeniedNotification extends Notification
     public function toDatabase($notifiable): array
     {
         return [
-            'message' => "Sadlly, {$this->user->username} has denied your request.",
+            'message' => "Whoa!, {$this->user->username} has sent you a friend request.",
             'avatar' => $this->user->avatar,
             'id' => $this->user->id,
         ];

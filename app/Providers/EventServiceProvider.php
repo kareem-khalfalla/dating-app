@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use App\Events\FriendRequestDenied;
+use App\Events\FriendRequestSentEvent;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -26,6 +26,10 @@ class EventServiceProvider extends ServiceProvider
 
         FriendRequestDenied::class => [
             \App\Listeners\SendNotification::class
+        ],
+
+        FriendRequestSentEvent::class => [
+            \App\Listeners\FriendRequestSentListener::class
         ],
     ];
 
