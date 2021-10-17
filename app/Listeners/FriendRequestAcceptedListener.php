@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\FriendRequestDeniedEvent;
-use App\Notifications\FriendRequestDeniedNotification;
+use App\Events\FriendRequestSentEvent;
+use App\Notifications\FriendRequestAcceptedNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendNotification
+class FriendRequestAcceptedListener
 {
     /**
      * Create the event listener.
@@ -22,11 +22,11 @@ class SendNotification
     /**
      * Handle the event.
      *
-     * @param  FriendRequestDeniedEvent  $event
+     * @param  FriendRequestSentEvent  $event
      * @return void
      */
-    public function handle(FriendRequestDeniedEvent $event)
+    public function handle(FriendRequestSentEvent $event)
     {
-        $event->deniedUser->notify(new FriendRequestDeniedNotification($event->user));
+        $event->acceptedUser->notify(new FriendRequestAcceptedNotification($event->user));
     }
 }

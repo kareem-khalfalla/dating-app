@@ -36,12 +36,7 @@ class SiteController extends Controller
 
     public function friends(): View
     {
-        /** @var \App\Models\User $authUser */
-        $authUser = auth()->user();
-
-        return view('pages.friends', [
-            'friends' => $authUser->getFriends()->paginate(6)
-        ]);
+        return view('pages.friends');
     }
 
     public function notAllowed(): View

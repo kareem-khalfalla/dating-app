@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class FriendRequestSentEvent
+class FriendRequestAccepted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,9 +20,9 @@ class FriendRequestSentEvent
      *
      * @return void
      */
-    public function __construct(public User $user ,public User $acceptedUser)
+    public function __construct(public User $user ,public User $deniedUser)
     {
-        // 
+        //
     }
 
     /**

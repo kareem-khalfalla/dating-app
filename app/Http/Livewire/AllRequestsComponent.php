@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Events\FriendRequestDenied;
+use App\Events\FriendRequestDeniedEvent;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
@@ -36,6 +36,6 @@ class AllRequestsComponent extends Component
 
         $authUser->denyFriendRequest($deniedUser);
 
-        event(new FriendRequestDenied($authUser, $deniedUser));
+        event(new FriendRequestDeniedEvent($authUser, $deniedUser));
     }
 }

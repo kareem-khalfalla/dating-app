@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Events\FriendRequestDenied;
+use App\Events\FriendRequestDeniedEvent;
 use App\Events\FriendRequestSentEvent;
 use App\Models\Report;
 use App\Models\User;
@@ -82,7 +82,7 @@ class ProfileActions extends Component
         $authUser = auth()->user();
 
         if (!$authUser->isFriendWith(User::find($id))) {
-            event(new FriendRequestDenied($authUser, User::find($id)));
+            event(new FriendRequestDeniedEvent($authUser, User::find($id)));
         }
 
         $authUser->unfriend(User::find($id));
