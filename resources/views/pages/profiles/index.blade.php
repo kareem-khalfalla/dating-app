@@ -6,8 +6,8 @@
                 <div class="box_img col-10 col-md-5 col-lg-3">
                     <figure class="figure">
                         <img src="{{ !is_null($user->avatar) ? asset('storage/' . $user->avatar) : asset('images/users-avatar/default.svg') ?? 'N/A' }}"
-                            class="figure-img img-fluid rounded" alt="{{ $user->username ?? 'N/A' }}" data-toggle="modal"
-                            data-target="#exampleModalCenter">
+                            class="figure-img img-fluid rounded" alt="{{ $user->username ?? 'N/A' }}"
+                            data-toggle="modal" data-target="#exampleModalCenter">
                     </figure>
                 </div>
 
@@ -23,7 +23,9 @@
                     <h4>{{ __('profile.brief about me') }}</h4>
                     <p class="lead">{{ $user->profile->bio ?? 'N/A' }}</p>
                 </div>
-                @if (request()->route('user') || request()->route('user')->id == Auth::user()->id && $user->profile->progress_bar < 99.99)
+                {{-- $user->profile->progress_bar < 99.99 --}}
+                @if ($user->justMe())
+
                     <div class="mt-4 alert alert-{{ $user->profile->progress_bar > 50 ? 'warning' : 'danger' }} alert-dismissible fade show col-12"
                         role="alert">
                         @if ($user->profile->progress_bar > 99)
@@ -46,6 +48,7 @@
                             {{ $user->profile->progress_bar }}</div>
                     </div>
                 @endif
+
 
                 <div class="box_info col-lg-12">
 

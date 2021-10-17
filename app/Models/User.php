@@ -139,10 +139,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->where('gender', 'female');
     }
 
-    // public function prettyUsername(): string
-    // {
-    //     return Str::title(str_replace('-', ' ', $this->username));
-    // }
+    public function justMe(): bool
+    {
+        return auth()->user()->id == $this->id;
+    }
 
     public function scheduleTaskTime(): HasOne
     {
