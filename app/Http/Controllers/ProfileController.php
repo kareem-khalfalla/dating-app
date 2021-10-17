@@ -16,7 +16,10 @@ class ProfileController extends Controller
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
-        $isPending = in_array($user->id, $authUser->getPendingFriendships()->pluck('recipient_id')->toArray());
+        $isPending = in_array($user->id, $authUser->getPendingFriendships()->pluck('recipient_id')->toArray())
+        || in_array($user->id, $authUser->getPendingFriendships()->pluck('sender_id')->toArray())
+        ;
+
         $isFriend = $authUser->isFriendWith($user);
 
         return view('pages.profiles.index', [

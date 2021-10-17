@@ -6,6 +6,7 @@ return [
     'Addition' => 'Zusatz',
     'Additions' => 'Zusatz',
     'Delete' => 'Löschen',
+    'Accept Friend Request' => 'Freundschaftsanfrage annehmen',
     'Empty friends' => 'Leere Freunde',
     'Block' => 'Block',
     'show additions' => 'Ergänzungen anzeigen',

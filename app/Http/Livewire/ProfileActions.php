@@ -17,7 +17,7 @@ class ProfileActions extends Component
 
     public function render(): View
     {
-        $pendingIds =  $this->user->getPendingFriendships()->pluck('recipient_id')->toArray();
+        $pendingIds = $this->user->getPendingFriendships()->pluck('recipient_id')->toArray();
         $getUniqueFromIds = array_unique($pendingIds);
         $authId = auth()->id();
         $allIdsExceptAuthId = array_diff($getUniqueFromIds, [$authId]);
@@ -92,6 +92,18 @@ class ProfileActions extends Component
         $authUser = auth()->user();
 
         $authUser->befriend(User::find($id));
+
+        $this->dispatchBrowserEvent('hide-form');
+
+        return redirect(request()->header('Referer'));
+    }
+
+    public function acceptFriendRequest($id): Redirector
+    {
+        /** @var \App\Models\User $authUser */
+        $authUser = auth()->user();
+
+        $authUser->acceptFriendRequest(User::find($id));
 
         $this->dispatchBrowserEvent('hide-form');
 
