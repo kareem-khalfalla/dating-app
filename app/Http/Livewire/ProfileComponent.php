@@ -81,7 +81,7 @@ class ProfileComponent extends Component
         if ($image) {
 
             $this->validate([
-                'image' => ['nullable', 'image', 'max:1024'],
+                'image' => ['nullable', 'image', 'max:5120'],
             ]);
 
             $imageName = $image->store('images/users-avatar');
