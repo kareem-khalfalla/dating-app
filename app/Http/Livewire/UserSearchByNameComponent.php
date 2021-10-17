@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\FriendRequestSentEvent;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
@@ -47,5 +48,7 @@ class UserSearchByNameComponent extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
         $authUser->befriend(User::find($id));
+
+        event(new FriendRequestSentEvent($authUser, User::find($id)));
     }
 }

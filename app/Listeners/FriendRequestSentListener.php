@@ -27,6 +27,7 @@ class FriendRequestSentListener
      */
     public function handle(FriendRequestSentEvent $event)
     {
+        dd($event);
         $event->receivedUser->notify(new FriendRequestSentNotification($event->user));
     }
 }
