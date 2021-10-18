@@ -29,7 +29,7 @@ class FriendRequestAcceptedNotification extends Notification
     public function toDatabase($notifiable): array
     {
         return [
-            'message' => __("notifications.Congratulations, {$this->user->username} has accepted your friend request."),
+            'message' => __("notifications.Congratulations, :user has accepted your friend request.", $this->user->username),
             'avatar' => $this->user->avatar,
             'id' => $this->user->id,
         ];
