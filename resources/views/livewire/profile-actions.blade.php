@@ -1,4 +1,4 @@
-<div wire:loading.lazy.class="loading">
+<div>
     @if (Auth::user()->id == $user->id)
         <div class="row">
             <a href="{{ route('friends') }}">
@@ -47,6 +47,7 @@
             @endif
             
                 <a wire:click.prevent="deleteUser({{ $user->id }})"><button
+                    wire:loading.lazy.class="d-none"
                         class=" btn
                     btn-outline-danger"> <i class="fa fa-trash"></i>
                         {{ __('profile.remove request') }}</button></a>
@@ -166,7 +167,7 @@
             </div>
         </div>
     </div>
-</div>
+</div=>
 
 @push('scripts')
     <script>
@@ -178,14 +179,4 @@
             });
         });
     </script>
-@endpush
-@push('styles')
-    <style>
-        .loadingg {
-            opacity: 1;
-            pointer-events: none;
-            cursor: no-drop;
-        }
-
-    </style>
 @endpush
