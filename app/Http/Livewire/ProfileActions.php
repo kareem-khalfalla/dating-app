@@ -106,16 +106,16 @@ class ProfileActions extends Component
         return redirect(request()->header('Referer'));
     }
 
-    public function acceptFriendRequest($id): Redirector
+    public function acceptFriendRequest($id)
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
         $authUser->acceptFriendRequest(User::find($id));
 
-        $this->dispatchBrowserEvent('hide-form');
+        // $this->dispatchBrowserEvent('hide-form');
 
-        return redirect(request()->header('Referer'));
+        // return redirect(request()->header('Referer'));
     }
 
     public function success(string $status = ''): void
