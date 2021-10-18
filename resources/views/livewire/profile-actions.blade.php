@@ -47,7 +47,6 @@
             @endif
             
                 <a wire:click.prevent="deleteUser({{ $user->id }})"><button
-                    wire:loading.lazy.class="d-none"
                         class=" btn
                     btn-outline-danger"> <i class="fa fa-trash"></i>
                         {{ __('profile.remove request') }}</button></a>

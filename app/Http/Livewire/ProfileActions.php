@@ -108,6 +108,10 @@ class ProfileActions extends Component
 
     public function acceptFriendRequest($id): Redirector
     {
+        dd(
+            $this->isPending,
+            $this->isFriend,
+        );
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
