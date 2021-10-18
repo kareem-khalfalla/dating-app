@@ -179,10 +179,11 @@
 @endpush
 @push('styles')
     <style>
-        .loading{
+        .loading {
             opacity: .5;
             pointer-events: none;
-            cursor:no-drop;
+            cursor: no-drop;
         }
+
     </style>
 @endpush
