@@ -92,7 +92,7 @@ class ProfileActions extends Component
         return redirect(request()->header('Referer'));
     }
 
-    public function addFriend($id)
+    public function addFriend($id): Redirector
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
@@ -101,16 +101,16 @@ class ProfileActions extends Component
 
         event(new FriendRequestSentEvent($authUser, User::find($id)));
 
-        // $this->dispatchBrowserEvent('hide-form');
+        $this->dispatchBrowserEvent('hide-form');
 
-        // return redirect(request()->header('Referer'));
+        return redirect(request()->header('Referer'));
     }
 
     public function acceptFriendRequest($id): Redirector
     {
         $this->isPending = false;
         $this->isFriend = true;
-
+        
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
