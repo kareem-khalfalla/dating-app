@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\FriendRequestAcceptedEvent;
 use App\Events\FriendRequestDeniedEvent;
 use App\Events\FriendRequestSentEvent;
 use App\Models\Report;
@@ -115,6 +116,8 @@ class ProfileActions extends Component
         $authUser = auth()->user();
 
         $authUser->acceptFriendRequest(User::find($id));
+
+        event(new FriendRequestAcceptedEvent($authUser, User::find($id)));
 
         return redirect(request()->header('Referer'));
     }
