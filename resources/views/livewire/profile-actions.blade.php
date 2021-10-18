@@ -45,12 +45,12 @@
             btn-outline-success">
                         <i class="fa fa-user-plus"></i> {{ __('profile.Accept Friend Request') }}</button></a>
             @endif
-            @if (!$isFriend)
+            
                 <a wire:click.prevent="deleteUser({{ $user->id }})"><button
                         class=" btn
-                    btn-outline-danger"> <i class="fa fa-user-trash"></i>
+                    btn-outline-danger"> <i class="fa fa-trash"></i>
                         {{ __('profile.remove request') }}</button></a>
-            @endif
+            
 
         @elseif($isFriend)
             <a wire:click.prevent="deleteUser({{ $user->id }})"><button
@@ -182,7 +182,7 @@
 @push('styles')
     <style>
         .loadingg {
-            opacity: .5;
+            opacity: 1;
             pointer-events: none;
             cursor: no-drop;
         }
