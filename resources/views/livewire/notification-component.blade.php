@@ -10,7 +10,7 @@
             <div class="text">
                 </h4>
                 <p>
-                    {{ $notification->data['message'] }}
+                    {{ __('notifications.'.$notification->data['message']) }}
                 </p>
             </div>
         </a>
