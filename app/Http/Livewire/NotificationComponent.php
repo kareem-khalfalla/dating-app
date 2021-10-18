@@ -21,7 +21,7 @@ class NotificationComponent extends Component
 
     public function mount()
     {
-        $this->notifications = auth()->user()->notifications->sortBy('created_at');
+        $this->notifications = auth()->user()->notifications->sortBy('created_at', 'desc');
     }
 
     public function loadMore(): void
