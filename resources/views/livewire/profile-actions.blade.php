@@ -131,36 +131,38 @@
         </div>
     </div>
 
-    <!-- Modal sent additions -->
-    <div class="modal fade" id="modal_sent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
 
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{ __('profile.Additions') }} [
-                        {{ count($friends) }} ]</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="height: 80vh; overflow-y: scroll;">
-                    @forelse ($pendingUsers as $user)
-                        <div class="row box_frind col-12 p-1">
-                            <a href="{{ route('profile', $user) }}">
-                                <img class="img_user" src="{{ asset('storage/' . $user->avatar) }}"
-                                    alt="{{ $user->username }}" data-toggle="tooltip" data-placement="top"
-                                    title="show profile">
-                            </a>
-                            <h5 class="col-6">{{ $user->username }}</h5>
-                            <a wire:click.prevent="deleteUser({{ $user->id }})"><button
-                                    class="btn btn-outline-danger">{{ __('profile.Delete') }}</button></a>&nbsp;
+</div>
 
-                        </div>
-                    @empty
-                        <p>{{ __('profile.Empty friends') }}!</p>
-                    @endforelse
-                </div>
+<!-- Modal sent additions -->
+<div class="modal fade" id="modal_sent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{ __('profile.Additions') }} [
+                    {{ count($friends) }} ]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 80vh; overflow-y: scroll;">
+                @forelse ($pendingUsers as $user)
+                    <div class="row box_frind col-12 p-1">
+                        <a href="{{ route('profile', $user) }}">
+                            <img class="img_user" src="{{ asset('storage/' . $user->avatar) }}"
+                                alt="{{ $user->username }}" data-toggle="tooltip" data-placement="top"
+                                title="show profile">
+                        </a>
+                        <h5 class="col-6">{{ $user->username }}</h5>
+                        <a wire:click.prevent="deleteUser({{ $user->id }})"><button
+                                class="btn btn-outline-danger">{{ __('profile.Delete') }}</button></a>&nbsp;
+
+                    </div>
+                @empty
+                    <p>{{ __('profile.Empty friends') }}!</p>
+                @endforelse
             </div>
         </div>
     </div>

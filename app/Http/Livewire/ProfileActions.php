@@ -111,9 +111,9 @@ class ProfileActions extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
-        if ($authUser->acceptFriendRequest(User::find($id))){
-            return redirect(request()->header('Referer'));
-        }
+        $authUser->acceptFriendRequest(User::find($id));
+
+        return redirect(request()->header('Referer'));
     }
 
     public function success(string $status = ''): void
