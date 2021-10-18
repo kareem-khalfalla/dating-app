@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Congratulations,  has accepted your friend request.' => 'مبروك ، لقد قبلت طلب الصداقة الخاص بك.',
-    'Sadlly,  has denied your request.'                   => 'للأسف ، رفض طلبك.',
-    'Whoa!,  has sent you a friend request.'              => 'توقف !، أرسل لك طلب صداقة.',
+    'Congratulations, :user has accepted your friend request.' => 'مبروك :user ، لقد قبلت طلب الصداقة الخاص بك.',
+    'Sadlly, :user has denied your request.'                   => 'للأسف ،  :user رفض طلبك.',
+    'Whoa!, :user has sent you a friend request.'              => ':user توقف !، أرسل لك طلب صداقة.',
 ];
