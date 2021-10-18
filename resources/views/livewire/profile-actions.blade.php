@@ -179,7 +179,7 @@
 @endpush
 @push('styles')
     <style>
-        .loading {
+        .loadingg {
             opacity: .5;
             pointer-events: none;
             cursor: no-drop;
