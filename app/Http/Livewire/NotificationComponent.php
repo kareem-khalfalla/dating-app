@@ -21,7 +21,7 @@ class NotificationComponent extends Component
 
     public function mount()
     {
-        $this->notifications = auth()->user()->notifications->reverse();
+        $this->notifications = auth()->user()->notifications;
     }
 
     public function loadMore(): void
