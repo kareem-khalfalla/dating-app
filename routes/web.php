@@ -18,7 +18,7 @@ Route::post('contact-us', [SiteController::class, 'contactStore'])->name('contac
 Route::get('not-allowed', [SiteController::class, 'notAllowed'])->name('notAllowed');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('chat', [SiteController::class, 'chat'])->name('chat')->middleware('verifyFriendsCount');
+    Route::get('chat', [SiteController::class, 'chat'])->name('chat')->middleware('verifyFriendsAndMessagesCount');
     Route::get('friends', [SiteController::class, 'friends'])->name('friends');
     Route::get('results', [UserController::class, 'results'])->name('results');
     Route::get('requests', [UserController::class, 'requests'])->name('requests');
