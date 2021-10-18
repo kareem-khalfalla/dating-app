@@ -45,13 +45,7 @@ class ChatComponent extends Component
             $this->users = User::friendsByLastMsg($user)->get();
         }else{
             $messageUsersIds= Message::where('from', $user->id)->orWhere('to', $user->id)->get()->pluck('to')->unique();
-            if (in_array($user->id, $messageUsersIds->toArray())){
-                foreach ($messageUsersIds as $key => $value) {
-                    if ($value == $user->id){
-                        unset($messageUsersIds[$key]);
-                    }
-                }
-            }
+
             $this->users = User::whereIn('id', $messageUsersIds)->get();
         }
         $this->selectedUser = $this->users[0]->toArray();
