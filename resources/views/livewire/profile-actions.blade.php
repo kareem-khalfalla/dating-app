@@ -1,4 +1,4 @@
-<div>
+<div wire:loading.lazy.class="loading">
     @if (Auth::user()->id == $user->id)
         <div class="row">
             <a href="{{ route('friends') }}">
@@ -176,4 +176,13 @@
             });
         });
     </script>
+@endpush
+@push('styles')
+    <style>
+        .loading{
+            opacity: .5;
+            pointer-events: none;
+            cursor:no-drop;
+        }
+    </style>
 @endpush
