@@ -38,7 +38,7 @@
             <a wire:click.prevent="addFriend({{ $user->id }})"><button class=" btn
             btn-outline-danger">
                     <i class="fa fa-user-plus"></i> {{ __('profile.Addition') }}</button></a>
-        @elseif($isPending)
+        @elseif($isPending && !$isFriend)
             @if ($user->hasSentFriendRequestTo(Auth::user()))
                 <a wire:click.prevent="acceptFriendRequest({{ $user->id }})"><button
                         class=" btn
