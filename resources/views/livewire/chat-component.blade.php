@@ -93,7 +93,7 @@
                 @if (!$isBlockedUser && !\Request::route()->getPrefix() == 'admin')
                     <div class="card-footer">
                         <form wire:submit.prevent="addMessage">
-                            <div class="input-group">
+                            <div class="input-group" style="direction: ltr!important;">
                                 <div class="input-group-append">
                                     <span onclick="document.getElementById('file').click()"
                                         class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
