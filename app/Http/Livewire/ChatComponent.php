@@ -74,6 +74,7 @@ class ChatComponent extends Component
         $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit(5)->latest()->get()->toArray());
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->count();
         $this->emit('scrollToBottom');
+        Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->get()->map(fn($item) => $item->update(['is_seen' => 1]));
     }
 
     public function loadMore(): void
