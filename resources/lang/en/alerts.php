@@ -19,6 +19,7 @@ return [
     'User request sent successfully'               => 'User request sent successfully',
     'Your message was sent'                        => 'Your message was sent',
     'Sadlly, you don\'t have friends to chat with' => 'Sadlly, you don\'t have friends to chat with',
+    'Sadlly, cannot access this profile while you or this user in the blacklist.' => 'Sadlly, cannot access this profile while you or this user in the blacklist.',
     // dashboard
     'user'       => 'user',
     'super user' => 'super user',

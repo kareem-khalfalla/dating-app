@@ -3,6 +3,11 @@
 return [
     'my additions' => 'meine Ergänzungen',
     'sent additions' => 'gesendete Ergänzungen',
+    'blocked users' => 'blockierte Benutzer',
+    'blockedList' => 'Blockierte Liste',
+    'Empty blocked list' => 'Sperrliste leeren',
+    'Block' => 'Block',
+    'unBlock' => 'Blockierung aufheben',
     'Addition' => 'Zusatz',
     'Additions' => 'Zusatz',
     'Delete' => 'Löschen',

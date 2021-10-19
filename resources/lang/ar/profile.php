@@ -3,6 +3,11 @@
 return [
     'my additions' => 'إضافاتي',
     'sent additions' => 'الاضافات المرسلة',
+    'blocked users' => 'مستخدمين محجوبين',
+    'blockedList' => 'القائمة المحظورة',
+    'Empty blocked list' => 'قائمة ممنوعة فارغة',
+    'Block' => 'حاجز',
+    'unBlock' => 'رفع الحظر',
     'Addition' => 'إضافة',
     'Additions' => 'ألاضافات',
     'Delete' => 'حذف',

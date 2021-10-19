@@ -111,16 +111,6 @@ trait Friendable
     /**
      * @param Model $recipient
      *
-     * @return bool
-     */
-    public function isBlockedBy(Model $recipient)
-    {
-        return $recipient->hasBlocked($this);
-    }
-
-    /**
-     * @param Model $recipient
-     *
      * @return mixed
      */
     public function unblockFriend(Model $recipient)

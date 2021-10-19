@@ -23,6 +23,7 @@ class ProfileActions extends Component
         $pendingIds = $this->user->getPendingFriendships()->pluck('recipient_id')->toArray();
         $getUniqueFromIds = array_unique($pendingIds);
         $authId = auth()->id();
+
         $allIdsExceptAuthId = array_diff($getUniqueFromIds, [$authId]);
 
         return view('livewire.profile-actions', [
@@ -30,7 +31,8 @@ class ProfileActions extends Component
                 ? User::allExceptAuthId()->fake()->get()->random(rand(0, User::all()->count()))
                 : $this->user->getFriends()->allExceptAuthId()->paginate(6),
 
-            'pendingUsers' => User::whereIn('id', $allIdsExceptAuthId)->get()
+            'pendingUsers' => User::whereIn('id', $allIdsExceptAuthId)->get(),
+            'blockedUsers' => User::find($authId)->getBlockedFriendships(),
         ]);
     }
 
