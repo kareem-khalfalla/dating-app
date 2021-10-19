@@ -41,13 +41,8 @@ class ChatComponent extends Component
             $this->user = $user;
         }
 
-        if (User::friendsByLastMsg($user)->count() > 0){
-            $this->users = User::friendsByLastMsg($user)->get();
-        }else{
-            $messageUsersIds= Message::where('from', $user->id)->orWhere('to', $user->id)->get()->pluck('to')->unique();
+        $this->getUsers();
 
-            $this->users = User::whereIn('id', $messageUsersIds)->get();
-        }
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
 
@@ -131,7 +126,7 @@ class ChatComponent extends Component
 
         Message::where('to', auth()->id())->update(['is_seen' => 1]);
 
-        $this->users = User::friendsByLastMsg($this->user)->get();
+        $this->getUsers();
 
         $this->emit('userReceivedMsg', [
             'user' => User::find($message->from)->toArray()
@@ -154,7 +149,7 @@ class ChatComponent extends Component
 
         $this->emit('scrollToBottom');
 
-        $this->users = User::friendsByLastMsg($this->user)->get();
+        $this->getUsers();
 
         $this->selectedUser = $user;
 
@@ -166,5 +161,25 @@ class ChatComponent extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
         // $authUser->blockFriend(User::find($id));
+    }
+
+    private function getUsers()
+    {
+        if (User::friendsByLastMsg($this->user)->count() > 0){
+            $this->users = User::friendsByLastMsg($this->user)->get();
+        }else{
+            $messageUsersIds= 
+                Message::where('to', $this->user->id)->pluck('from')->unique()->toArray() +
+                Message::where('from', $this->user->id)->pluck('to')->unique()->toArray();
+
+            if (in_array($this->user->id, $messageUsersIds)){
+                foreach ($messageUsersIds as $key => $value) {
+                    if ($value == $this->user->id){
+                        unset($messageUsersIds[$key]);
+                    }
+                }
+            }
+            $this->users = User::whereIn('id', $messageUsersIds)->get();
+        }
     }
 }
