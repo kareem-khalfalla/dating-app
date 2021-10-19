@@ -55,8 +55,11 @@
                                         class="fas fa-user-circle"></i>
                                     {{ __('chat.View') }}
                                     {{ __('chat.profile') }}</a></li>
-                            <li wire:click.prevent="block({{ $selectedUser['id'] }})"><i class="fas fa-ban"></i>
-                                {{ __('chat.Block') }}</li>
+                            <li>
+                                <a href="" wire:click.prevent="block({{ $selectedUser['id'] }})"><i
+                                        class="fas fa-ban"></i>
+                                    {{ __('chat.Block') }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -83,29 +86,30 @@
                         <p>{{ __('chat.Say HI') }}!</p>
                     @endforelse
                 </div>
-                @if(!\Request::route()->getPrefix() =='admin')
-                <div class="card-footer">
-                    <form wire:submit.prevent="addMessage">
-                        <div class="input-group">
-                            <div class="input-group-append">
-                                <span onclick="document.getElementById('file').click()"
-                                    class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-                            </div>
-                            <input wire:model="file" id="file" type="file" style="opacity: 0; display: none">
-                            <textarea autofocus wire:model.defer="message" id="type_msg" class="form-control type_msg"
-                                placeholder="{{ __('chat.Type your message') }}..."></textarea>
-                            @if (!is_null($file))
+                @if (!\Request::route()->getPrefix() == 'admin')
+                    <div class="card-footer">
+                        <form wire:submit.prevent="addMessage">
+                            <div class="input-group">
                                 <div class="input-group-append">
-                                    <img wire:mode="file" style="width: 160px; height: 160px"
-                                        src="{{ $file->temporaryUrl() }}">
+                                    <span onclick="document.getElementById('file').click()"
+                                        class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                                 </div>
-                            @endif
-                            <div class="input-group-append">
-                                <span wire:click="addMessage" class="input-group-text send_btn"><i
-                                        class="fas fa-location-arrow"></i></span>
-                            </div>
-                    </form>
-                </div>
+                                <input wire:model="file" id="file" type="file" style="opacity: 0; display: none">
+                                <textarea autofocus wire:model.defer="message" id="type_msg"
+                                    class="form-control type_msg"
+                                    placeholder="{{ __('chat.Type your message') }}..."></textarea>
+                                @if (!is_null($file))
+                                    <div class="input-group-append">
+                                        <img wire:mode="file" style="width: 160px; height: 160px"
+                                            src="{{ $file->temporaryUrl() }}">
+                                    </div>
+                                @endif
+                                <div class="input-group-append">
+                                    <span wire:click="addMessage" class="input-group-text send_btn"><i
+                                            class="fas fa-location-arrow"></i></span>
+                                </div>
+                        </form>
+                    </div>
                 @endif
             </div>
         </div>
@@ -137,7 +141,7 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('li').click();
         });
     </script>
