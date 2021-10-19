@@ -74,7 +74,18 @@ class ChatComponent extends Component
         $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit(5)->latest()->get()->toArray());
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->count();
         $this->emit('scrollToBottom');
-        Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->get()->map(fn($item) => $item->update(['is_seen' => 1]));
+        if ($user['id'] != auth()->id()) {
+            Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->get()->map(fn ($item) => $item->update(['is_seen' => 1]));
+        }
+         
+        if (
+            User::find($user['id'])->isBlockedBy(auth()->user())
+            || auth()->user()->isBlockedBy(User::find($user['id']))
+            ){
+            $this->isBlockedUser = true;
+        }else{
+            $this->isBlockedUser = false;
+        }
     }
 
     public function loadMore(): void
@@ -181,29 +192,30 @@ class ChatComponent extends Component
 
     private function renderUsers(): void
     {
-        if (User::friendsByLastMsg($this->user)->count() > 0) {
-            $this->users = User::friendsByLastMsg($this->user)->get();
-        } else {
-            $blockedUsersIds = $this->user->getBlockedFriendships()->pluck('recipient_id')->toArray();
-            $messageUsersIds =
-                Message::where('to', $this->user->id)->pluck('from')->unique()->toArray() +
-                Message::where('from', $this->user->id)->pluck('to')->unique()->toArray();
+        $this->users = User::friendsByLastMsg($this->user)->get();
 
-            if (in_array($this->user->id, $messageUsersIds)) {
-                foreach ($messageUsersIds as $key => $value) {
-                    if ($value == $this->user->id) {
-                        unset($messageUsersIds[$key]);
-                    }
+        $messageUsersIds =
+            Message::where('to', $this->user->id)->pluck('from')->unique()->toArray() +
+            Message::where('from', $this->user->id)->pluck('to')->unique()->toArray();
+
+
+        if (in_array($this->user->id, $messageUsersIds)) {
+            foreach ($messageUsersIds as $key => $value) {
+                if ($value == $this->user->id) {
+                    unset($messageUsersIds[$key]);
                 }
             }
-            
-            foreach ($blockedUsersIds as $blockedUserKey => $blockedUserVal) {
-                if (in_array($blockedUserVal, $messageUsersIds)) {
-                    // unset($messageUsersIds[$blockedUserKey]);
-                    $this->isBlockedUser = true;
-                }
-            }
-            $this->users = User::whereIn('id', $messageUsersIds)->get();
         }
+
+        $blockedUsersRecipientIds = $this->user->getBlockedFriendships()->pluck('recipient_id')->toArray();
+        $blockedUsersSenderIds = $this->user->getBlockedFriendships()->pluck('sender_id')->toArray();
+        foreach (array_merge($blockedUsersRecipientIds, $blockedUsersSenderIds) as $blockedUserKey => $blockedUserVal) {
+            if (in_array($blockedUserVal, $messageUsersIds)) {
+                // unset($messageUsersIds[$blockedUserKey]);
+                $this->isBlockedUser = true;
+            }
+        }
+
+        $this->users = $this->users->merge(User::whereIn('id', $messageUsersIds)->get());
     }
 }

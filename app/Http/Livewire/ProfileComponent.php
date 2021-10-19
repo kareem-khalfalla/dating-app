@@ -117,12 +117,16 @@ class ProfileComponent extends Component
 
     public function updateUserInfo(UpdatesUserProfileInformation $updatesUserProfileInformation)
     {
+        if ($this->imageName == 'images/users-avatar/default-female.jpeg' || $this->imageName == 'images/users-avatar/default-male.jpeg'){
+            $this->imageName = "images/users-avatar/default-{$this->state['gender']}.jpeg";
+        }
         $updatesUserProfileInformation->update(auth()->user(), [
             'name'     => $this->state['name'],
             'username' => $this->state['username'],
             'phone'    => $this->state['phone'],
             'email'    => $this->state['email'],
             'gender'   => $this->state['gender'],
+            'avatar'   => $this->imageName,
         ]);
 
         $this->success('Main Information');
