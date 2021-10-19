@@ -167,7 +167,10 @@ class ChatComponent extends Component
         ]);
     }
 
-    public function destroy()
+    /**
+     * Block user.
+     */
+    public function destroy(): void
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
