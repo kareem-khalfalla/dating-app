@@ -48,17 +48,19 @@
                             <p>{{ $messagesCount }} {{ __('chat.Messages') }}</p>
                         </div>
                     </div>
+                    <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                     @if (!$isBlockedUser)
-                        <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+
+
                         <div class="action_menu">
                             <ul>
                                 <li><a href="{{ route('profile', $selectedUser['id']) }}"><i
                                             class="fas fa-user-circle"></i>
                                         {{ __('chat.View') }}
                                         {{ __('chat.profile') }}</a></li>
-                                <li>
+                                <li wire:click.prevent="confirm({{ $selectedUser['id'] }})">
 
-                                    <a href="" wire:click.prevent="confirm({{ $selectedUser['id'] }})"><i
+                                    <a href=""><i
                                             class="fas fa-ban"></i>
                                         {{ __('chat.Block') }}</a>
 
