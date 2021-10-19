@@ -23,5 +23,5 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('results', [UserController::class, 'results'])->name('results');
     Route::get('requests', [UserController::class, 'requests'])->name('requests');
     Route::get('settings', [ProfileController::class, 'edit'])->name('settings');
-    Route::get('{user}', [ProfileController::class, 'index'])->name('profile');
+    Route::get('{user}', [ProfileController::class, 'index'])->name('profile')->middleware('verifyBlockedByUser');
 });
