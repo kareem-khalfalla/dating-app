@@ -9,6 +9,8 @@
             </a>
             <button class="btn btn-outline-secondary m-1" data-toggle="modal" data-target="#modal_sent"> <i
                     class="fa fa-users mr-2"></i>{{ __('profile.sent additions') }}</button>
+            <button class="btn btn-outline-danger m-1" data-toggle="modal" data-target="#modal_blocked"> <i
+                    class="fa fa-users mr-2"></i>{{ __('profile.blocked users') }}</button>
         </div>
     @else
         <span class="dropdown">
@@ -45,12 +47,12 @@
             btn-outline-success">
                         <i class="fa fa-user-plus"></i> {{ __('profile.Accept Friend Request') }}</button></a>
             @endif
-            
-                <a wire:click.prevent="deleteUser({{ $user->id }})"><button
-                        class=" btn
+
+            <a wire:click.prevent="deleteUser({{ $user->id }})"><button
+                    class=" btn
                     btn-outline-danger"> <i class="fa fa-trash"></i>
-                        {{ __('profile.remove request') }}</button></a>
-            
+                    {{ __('profile.remove request') }}</button></a>
+
 
         @elseif($isFriend)
             <a wire:click.prevent="deleteUser({{ $user->id }})"><button
@@ -166,6 +168,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal blocked users -->
+    <div class="modal fade" id="modal_blocked" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ __('profile.blockedList') }} [
+                        {{ count($blockedUsers) }} ]</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 80vh; overflow-y: scroll;">
+                    @forelse ($blockedUsers as $blockedUser)
+                        <div class="row box_frind col-12 p-1">
+                            <a href="#">
+                                <img class="img_user" src="{{ asset('storage/' . \App\Models\User::find($blockedUser->recipient_id)->avatar) }}"
+                                    alt="{{ $blockedUser->username }}" data-toggle="tooltip" data-placement="top"
+                                    title="show profile">
+                            </a>
+                            <h5 class="col-6">{{ \App\Models\User::find($blockedUser->recipient_id)->username }}</h5>
+                            <a wire:click.prevent="unblockUser({{ $blockedUser->recipient_id }})"><button
+                                    class="btn btn-outline-danger">{{ __('profile.unBlock') }}</button></a>&nbsp;
+
+                        </div>
+                    @empty
+                        <p>{{ __('profile.Empty blocked list') }}!</p>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @push('scripts')
@@ -174,6 +210,7 @@
             addEventListener('hide-form', event => {
                 $('#modal_add').modal('hide');
                 $('#modal_sent').modal('hide');
+                $('#modal_blocked').modal('hide');
                 $('#reportAlert').modal('hide');
             });
         });
