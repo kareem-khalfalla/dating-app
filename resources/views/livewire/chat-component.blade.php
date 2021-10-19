@@ -48,20 +48,24 @@
                             <p>{{ $messagesCount }} {{ __('chat.Messages') }}</p>
                         </div>
                     </div>
-                    <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-                    <div class="action_menu">
-                        <ul>
-                            <li><a href="{{ route('profile', $selectedUser['id']) }}"><i
-                                        class="fas fa-user-circle"></i>
-                                    {{ __('chat.View') }}
-                                    {{ __('chat.profile') }}</a></li>
-                            <li>
-                                <a href="" wire:click.prevent="confirm({{ $selectedUser['id'] }})"><i
-                                        class="fas fa-ban"></i>
-                                    {{ __('chat.Block') }}</a>
-                            </li>
-                        </ul>
-                    </div>
+                    @if (!$isBlockedUser)
+                        <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+                        <div class="action_menu">
+                            <ul>
+                                <li><a href="{{ route('profile', $selectedUser['id']) }}"><i
+                                            class="fas fa-user-circle"></i>
+                                        {{ __('chat.View') }}
+                                        {{ __('chat.profile') }}</a></li>
+                                <li>
+
+                                    <a href="" wire:click.prevent="confirm({{ $selectedUser['id'] }})"><i
+                                            class="fas fa-ban"></i>
+                                        {{ __('chat.Block') }}</a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body msg_card_body">
                     @forelse ($messages as $message)
@@ -86,7 +90,7 @@
                         <p>{{ __('chat.Say HI') }}!</p>
                     @endforelse
                 </div>
-                @if (!\Request::route()->getPrefix() == 'admin')
+                @if (!$isBlockedUser && !\Request::route()->getPrefix() == 'admin')
                     <div class="card-footer">
                         <form wire:submit.prevent="addMessage">
                             <div class="input-group">

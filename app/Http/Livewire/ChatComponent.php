@@ -28,6 +28,7 @@ class ChatComponent extends Component
     public $messagesCount;
     public $loadAmount = 5;
     public $blockedId = 5;
+    public $isBlockedUser = false;
     public $file;
     public $fileName;
 
@@ -197,7 +198,8 @@ class ChatComponent extends Component
             
             foreach ($blockedUsersIds as $blockedUserKey => $blockedUserVal) {
                 if (in_array($blockedUserVal, $messageUsersIds)) {
-                    unset($messageUsersIds[$blockedUserKey]);
+                    // unset($messageUsersIds[$blockedUserKey]);
+                    $this->isBlockedUser = true;
                 }
             }
             $this->users = User::whereIn('id', $messageUsersIds)->get();
