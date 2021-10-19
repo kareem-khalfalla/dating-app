@@ -1,4 +1,9 @@
 <x-app-layout>
+    
+    @section('title')
+        {{ __('navbar.title_registaer') }}
+    @endsection
+
     <div class="container container_form col-12 col-sm-10 col-md-11 col-lg-10 pt-4 pb-1 my-4">
         <div class="card card-body shadow">
             <h1>{{ __('register.Sign Up') }}</h1>

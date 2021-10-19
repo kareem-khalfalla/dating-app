@@ -9,7 +9,7 @@ return [
     'phone' => 'هاتف',
     'password' => 'كلمه السر',
     'cofirm password' => 'تأكيد كلمة المرور',
-    'Gender' => 'الجنس',
+    'Gender' => 'النوع',
     'Male' => 'ذكر',
     'Female' => 'أنثى',
     'you have an account already?' => 'لديك حساب بالفعل؟',

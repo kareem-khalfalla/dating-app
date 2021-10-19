@@ -3,12 +3,12 @@
 return [
     'All requests'        => 'كل الطلبات',
     'No requests'         => 'لا توجد طلبات',
-    'from'                => 'من عند',
+    'from'                => 'المنشأ',
     'accept'              => 'قبول',
     'cancel'              => 'إلغاء',
-    'Empty notifications' => 'إخطارات فارغة',
+    'Empty notifications' => 'لا توجد اشعارات حاليا',
     'Search'              => 'بحث',
-    'Add'                 => 'يضيف',
+    'Add'                 => 'اضافه',
     'Hide'                => 'إخفاء',
     'Empty members'       => 'ﻻ توجد أعضاء',
 ];

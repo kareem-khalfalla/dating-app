@@ -12,4 +12,5 @@ return [
     'others' => 'Others',
     'About' => 'About',
     'Privacy policy' => 'Privacy policy',
+    'title_welcome' => 'Home page'
 ];

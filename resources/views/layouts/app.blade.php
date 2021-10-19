@@ -14,7 +14,7 @@ $prevIsAdmin =
     <meta charset="utf-8">
     <title>
         Zawag | 
-        {{ ucfirst(strstr(\Request::route()->getName(), '.', true)) ?: ucfirst(\Request::route()->getName()) }}
+        @yield('title','Zawag')
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#5f023a" />
