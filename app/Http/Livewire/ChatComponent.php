@@ -6,6 +6,7 @@ use App\Events\MessageEvent;
 use App\Models\Message;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\Redirector;
 use Livewire\WithFileUploads;
 
 class ChatComponent extends Component
@@ -119,6 +120,11 @@ class ChatComponent extends Component
             return;
         }
 
+        $this->renderUsers();
+        if ($this->isBlockedUser){
+            return;
+        }
+
         $message = Message::create([
             'from' => auth()->id(),
             'to' => $this->selectedUser['id'],
@@ -183,11 +189,12 @@ class ChatComponent extends Component
     /**
      * Block user.
      */
-    public function destroy(): void
+    public function destroy(): Redirector
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
         $authUser->blockFriend(User::find($this->blockedId));
+        return redirect(request()->header('Referer'));
     }
 
     private function renderUsers(): void
