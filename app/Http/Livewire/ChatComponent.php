@@ -120,6 +120,11 @@ class ChatComponent extends Component
             return;
         }
 
+        $this->renderUsers();
+        if ($this->isBlockedUser){
+            return;
+        }
+
         $message = Message::create([
             'from' => auth()->id(),
             'to' => $this->selectedUser['id'],

@@ -58,9 +58,9 @@
                                             class="fas fa-user-circle"></i>
                                         {{ __('chat.View') }}
                                         {{ __('chat.profile') }}</a></li>
-                                <li wire:click.prevent="confirm({{ $selectedUser['id'] }})">
+                                <li>
 
-                                    <a href=""><i
+                                    <a href="" wire:click.prevent="confirm({{ $selectedUser['id'] }})"><i
                                             class="fas fa-ban"></i>
                                         {{ __('chat.Block') }}</a>
 
