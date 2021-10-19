@@ -15,6 +15,7 @@ class ChatComponent extends Component
     protected $listeners = [
         'echo:messages,MessageEvent' => 'received',
         'loadMore',
+        'destroy',
     ];
 
     public $user;
@@ -26,6 +27,7 @@ class ChatComponent extends Component
     public $message;
     public $messagesCount;
     public $loadAmount = 5;
+    public $blockedId = 5;
     public $file;
     public $fileName;
 
@@ -156,27 +158,43 @@ class ChatComponent extends Component
         $this->message = '';
     }
 
-    public function block(int $id): void
+    public function confirm(int $id): void
+    {
+        $this->blockedId = $id;
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => __('alerts.Are you sure?'),
+            'type'  => 'warning',
+        ]);
+    }
+
+    public function destroy()
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
-        $authUser->blockFriend(User::find($id));
+        $authUser->blockFriend(User::find($this->blockedId));
     }
 
     private function renderUsers(): void
     {
-        if (User::friendsByLastMsg($this->user)->count() > 0){
+        if (User::friendsByLastMsg($this->user)->count() > 0) {
             $this->users = User::friendsByLastMsg($this->user)->get();
-        }else{
-            $messageUsersIds= 
+        } else {
+            $blockedUsersIds = $this->user->getBlockedFriendships()->pluck('recipient_id')->toArray();
+            $messageUsersIds =
                 Message::where('to', $this->user->id)->pluck('from')->unique()->toArray() +
                 Message::where('from', $this->user->id)->pluck('to')->unique()->toArray();
 
-            if (in_array($this->user->id, $messageUsersIds)){
+            if (in_array($this->user->id, $messageUsersIds)) {
                 foreach ($messageUsersIds as $key => $value) {
-                    if ($value == $this->user->id){
+                    if ($value == $this->user->id) {
                         unset($messageUsersIds[$key]);
                     }
+                }
+            }
+            
+            foreach ($blockedUsersIds as $blockedUserKey => $blockedUserVal) {
+                if (in_array($blockedUserVal, $messageUsersIds)) {
+                    unset($messageUsersIds[$blockedUserKey]);
                 }
             }
             $this->users = User::whereIn('id', $messageUsersIds)->get();

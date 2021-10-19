@@ -56,7 +56,7 @@
                                     {{ __('chat.View') }}
                                     {{ __('chat.profile') }}</a></li>
                             <li>
-                                <a href="" wire:click.prevent="block({{ $selectedUser['id'] }})"><i
+                                <a href="" wire:click.prevent="confirm({{ $selectedUser['id'] }})"><i
                                         class="fas fa-ban"></i>
                                     {{ __('chat.Block') }}</a>
                             </li>
