@@ -41,7 +41,7 @@ class ChatComponent extends Component
             $this->user = $user;
         }
 
-        $this->getUsers();
+        $this->renderUsers();
 
         $this->selectedUser = $this->users[0]->toArray();
         $this->messages = [];
@@ -126,7 +126,7 @@ class ChatComponent extends Component
 
         Message::where('to', auth()->id())->update(['is_seen' => 1]);
 
-        $this->getUsers();
+        $this->renderUsers();
 
         $this->emit('userReceivedMsg', [
             'user' => User::find($message->from)->toArray()
@@ -149,7 +149,7 @@ class ChatComponent extends Component
 
         $this->emit('scrollToBottom');
 
-        $this->getUsers();
+        $this->renderUsers();
 
         $this->selectedUser = $user;
 
@@ -160,10 +160,10 @@ class ChatComponent extends Component
     {
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
-        // $authUser->blockFriend(User::find($id));
+        $authUser->blockFriend(User::find($id));
     }
 
-    private function getUsers()
+    private function renderUsers(): void
     {
         if (User::friendsByLastMsg($this->user)->count() > 0){
             $this->users = User::friendsByLastMsg($this->user)->get();
