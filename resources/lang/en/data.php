@@ -67,9 +67,9 @@ return [
     'Widower'  => 'Widower',
     'divorced' => 'divorced',
     // do you have children
-    'Yes, but they are not with me'                 => 'Yes, but they are not with me',
-    'Yes, but not now'                              => 'Yes, but not now',
-    'According to the wishes of the other partner'  => 'According to the wishes of the other partner',
+    'yes'                 => 'Yes',
+    'no'                              => 'No',
+    'Yes but they are not with me'  => 'Yes but they are not with me',
     // desire to have children
     'I would like it'                              => 'I would like it',
     'I do not want it'                             => 'I do not want it',

@@ -38,7 +38,7 @@
         </div>
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
-                <label class="col-12">{{ __('settings.Do you want polygamy?') }}</label>
+                <label class="col-12">{{ __('settings.Do you want multiplicity?') }}</label>
                 <x-selectbox wire:model.defer="state.male_polygamy_status">
                     <option value="">---</option>
                     <x-selectboxes.male.need_polygamy />

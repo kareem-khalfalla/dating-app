@@ -16,6 +16,7 @@ $prevIsAdmin =
         Zawag | 
         @yield('title','Zawag')
     </title>
+      <link rel="icon" href="{{ URL::asset('http://zawag.eu/img/avatar.svg') }}" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#5f023a" />
     <meta name="msapplication-navbutton-color" content="#5f023a" />

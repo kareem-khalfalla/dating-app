@@ -12,5 +12,9 @@ return [
     'others' => 'Others',
     'About' => 'About',
     'Privacy policy' => 'Privacy policy',
-    'title_welcome' => 'Home page'
+    'title_welcome' => 'Home page',
+    'title_register' => 'sign up',
+    'title_verify' => 'Email confirmation',
+    'title_login' => 'login',
+    'title_privacy' => 'Privacy policy',
 ];

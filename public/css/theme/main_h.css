@@ -378,11 +378,6 @@ nav .last_link {
 /*---------------------------------------------------------*/
 
 
-.latest_user2 {
-    border-left: 3px solid var(--color-4);
-    padding-left: 5%;
-}
-
 .latest_user1 {
     padding-right: 5%;
 }

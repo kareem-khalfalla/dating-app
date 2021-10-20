@@ -14,4 +14,9 @@ return [
     'Privacy policy' => 'سياسة خاصة',
     'title_welcome' => 'الرئيسيه',
     'title_registaer' => 'انشاء حساب',
+    'title_verify' => 'تاكيد الاميل',
+    'title_login' => 'تسجيل دخول',
+    'title_privacy' => 'سياسه الخصوصيه',
+    
+    
 ];
