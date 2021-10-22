@@ -14,7 +14,7 @@ trait FormValidation
     {
         return [
             'name'     => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id ?? '')],
+            'username' => ['required', 'string', 'min:4','max:8', Rule::unique('users')->ignore($user->id ?? '')],
             'phone'    => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id ?? '')],
             'gender'   => ['required', 'string'],
             'email' => [
