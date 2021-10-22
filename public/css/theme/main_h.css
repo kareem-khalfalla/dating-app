@@ -85,7 +85,6 @@ a {
 }
 
 nav {
-    background-color: var(--color-1) !important;
     z-index: 30;
 }
 

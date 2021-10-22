@@ -1,5 +1,7 @@
 <x-app-layout>
-
+   @section('title')
+        {{ __('navbar.title_chat') }}
+    @endsection
     @push('styles')
         <link rel="stylesheet" href="{{ asset('css/theme/chat-style.css') }}">
     @endpush

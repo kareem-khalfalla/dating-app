@@ -18,7 +18,7 @@
             @enderror
             <div class="mt-4">
                 <button wire:click="updateOrCreateImage"
-                    class="btn btn_form_settings btn-block p-2__">{{ 'save' }}</button>
+                    class="btn btn_form_settings btn-block p-2__">{{ __('settings.save') }}</button>
             </div>
         </div>
     </div>

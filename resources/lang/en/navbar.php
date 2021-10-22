@@ -17,4 +17,10 @@ return [
     'title_verify' => 'Email confirmation',
     'title_login' => 'login',
     'title_privacy' => 'Privacy policy',
+    'search' => 'search',
+    'Notifications' => 'Notifications',
+      'title_profile' => 'Profile',
+    'title_settings' => 'Settings',
+    'title_chat' => 'Chat',
+    'title_requests' => 'Requests',
 ];

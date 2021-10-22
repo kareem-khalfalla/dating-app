@@ -21,8 +21,8 @@
             @auth
                 @if (Auth::user()->role == 'admin')
                     <div class="col-12 col-md-5 col-lg-4 pb-3">
-                        <a href="{{ route('admin.dashboard') }}"><button class="btn btn-block btn_login"><i
-                                    class="fas fa-management"></i>
+                        <a href="{{ route('admin.dashboard') }}"><button class="btn btn-block btn_login">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
                                 {{ __('welcome.Dashboard') }}</button></a>
                     </div>
                 @endif

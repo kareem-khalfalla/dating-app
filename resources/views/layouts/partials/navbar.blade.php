@@ -54,7 +54,7 @@
     }
 
 </style>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:var(--color-1) !important;">
     <div class="container">
         <a class="navbar-brand" href="/">
             <strong><span class="last_link">{{ config('app.name') }}</span></strong>
@@ -68,8 +68,10 @@
             <ul class="navbar-nav ml-auto">
                 @auth
                     <li class="nav-item nav_home">
-                        <a class="nav-link hover-bar" href="{{ route('results') }}"><i class="fas fa-search"
-                                style='font-size: 30px ;'></i><span class="sr-only">(current)</span></a>
+                        <a class="nav-link hover-bar d-flex" href="{{ route('results') }}"><i class="fas fa-search"
+                                style='font-size: 30px ;'></i><span class="sr-only">(current)</span>
+                                <span class="only_mobile">&nbsp; {{ __('navbar.search') }}</span>
+                                </a>
                     </li>
 
                     <li class="nav-item">
@@ -106,7 +108,9 @@
                         <a class="nav-link hover-bar d-flex" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                                                                                                                                                                                         document.getElementById('logout-form').submit();"><i
-                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i></a>
+                                class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i>
+                                 <span class="only_mobile">{{ __('navbar.logout') }}</span>
+                                </a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
@@ -115,7 +119,8 @@
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <span
-                                class="badge ml-2"><span style="color: red">{{ count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : ''}}</span>
+                                class="badge ml-2"><span style="color: red">{{ count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : ''}}
+                                </span>
                                 <i class="fas fa-bell" style='font-size: 30px ;'></i>
                         </a>
                         @livewire('notification-component')

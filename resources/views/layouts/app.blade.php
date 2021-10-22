@@ -22,6 +22,17 @@ $prevIsAdmin =
     <meta name="msapplication-navbutton-color" content="#5f023a" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#5f023a" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    
+    <meta property="og:url"         content="http://zawag.eu" />
+  <meta property="og:image"         content="http://zawag.eu/img/p.png" />
+  <meta property="og:image" content="http://zawag.eu/img/p.png" />
+  <meta property="og:image:secure_url" content="http://zawag.eu/img/p.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="300" />
+  <meta name="description" content="وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ">
+
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -31,6 +42,7 @@ $prevIsAdmin =
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&#038;display=swap"
         rel="stylesheet" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     @if ($isAdmin || $prevIsAdmin)
     {{-- {{ dd() }} --}}
