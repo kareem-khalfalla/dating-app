@@ -91,4 +91,8 @@ return [
     'from 160 to 170 kg'                              => 'von 160 bis 170 kg',
     'from 170 to 180 kg'                              => 'von 170 bis 180 kg',
     'more than that'                                  => 'mehr als das',
+    'from 120 to 140 cm'                              => 'von 120 bis 140 cm',
+    'from 140 to 160 cm'                              => 'von 140 bis 160 cm',
+    'from 160 to 180 cm'                              => 'von 160 bis 180 cm',
+    'from 180 to 200 cm'                              => 'von 180 bis 200 cm²',
 ];
