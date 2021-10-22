@@ -23,7 +23,7 @@ class VerifyFriendsAndMessagesCount
         $messagesCount = Message::query()
             ->where('to', $authUser->id)->orWhere('from', $authUser->id)->count();
 
-        if ($authUser->getFriendsCount() == 0 && $messagesCount < 1 && $authUser->role == 'user' || $authUser->role == 'admin') {
+        if ($authUser->getFriendsCount() == 0) {
             return redirect()->route('notAllowed')->withError(__('alerts.Sadlly, you don\'t have friends to chat with'));
         }
 
