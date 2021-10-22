@@ -143,21 +143,21 @@
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">{{ __('profile.Additions') }} [
-                        {{ count($friends) }} ]</h5>
+                        {{ count($pendingUsers) }} ]</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" style="height: 80vh; overflow-y: scroll;">
-                    @forelse ($pendingUsers as $user)
+                    @forelse ($pendingUsers as $pendingUser)
                         <div class="row box_frind col-12 p-1">
-                            <a href="{{ route('profile', $user) }}">
-                                <img class="img_user" src="{{ asset('storage/' . $user->avatar) }}"
-                                    alt="{{ $user->username }}" data-toggle="tooltip" data-placement="top"
+                            <a href="{{ route('profile', $pendingUser) }}">
+                                <img class="img_user" src="{{ asset('storage/' . $pendingUser->avatar) }}"
+                                    alt="{{ $pendingUser->username }}" data-toggle="tooltip" data-placement="top"
                                     title="show profile">
                             </a>
-                            <h5 class="col-6">{{ $user->username }}</h5>
-                            <a wire:click.prevent="deleteUser({{ $user->id }})"><button
+                            <h5 class="col-6">{{ $pendingUser->username }}</h5>
+                            <a wire:click.prevent="deleteUser({{ $pendingUser->id }})"><button
                                     class="btn btn-outline-danger">{{ __('profile.Delete') }}</button></a>&nbsp;
 
                         </div>
