@@ -2,7 +2,7 @@
     class="notifications dropdown-menu dropdown-menu-lg-right dropdown-secondary"
     aria-labelledby="navbarDropdownMenuLink-5">
 
-    <h2>Notifications</span></h2>
+    <h2>{{ __('navbar.Notifications') }}</span></h2>
     @foreach ($notifications as $notification)
         <a href="{{ route('profile', $notification->data['id']) }}" class="notifications-item"
             {{ $loop->last ? 'id=last_record' : '' }}>

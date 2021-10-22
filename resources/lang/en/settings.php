@@ -63,7 +63,7 @@ return [
     'Do you have children?'                                 => 'Do you have children?',
     'number of children'                                    => 'number of children',
     'Information about children'                            => 'Information about children',
-    'Do you want polygamy?'                                 => 'Do you want polygamy?',
+    'Do you want multiplicity?'                             => 'Do you want multiplicity?',
     'Do you accept polygamy?'                               => 'Do you accept polygamy?',
     'desire to have children'                               => 'desire to have children',
     'Current type of housing'                               => 'Current type of housing',

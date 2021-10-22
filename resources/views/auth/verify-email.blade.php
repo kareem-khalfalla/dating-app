@@ -1,4 +1,7 @@
 <x-app-layout>
+      @section('title')
+        {{ __('navbar.title_verify') }}
+    @endsection
     <div style="margin-top: 4rem !important;" class="container container_form col-12 col-sm-8 col-md-7 col-lg-5 pt-5">
         <div class="card card-body shadow">
             <h1>Verification</h1>

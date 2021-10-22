@@ -1,4 +1,7 @@
 <x-app-layout>
+       @section('title')
+        {{ __('navbar.title_requests') }}
+    @endsection
     <br><br><br><br>
     <div class="container mb-4">
         <div class="row">

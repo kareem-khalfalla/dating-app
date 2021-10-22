@@ -1,4 +1,7 @@
 <x-app-layout>
+      @section('title')
+        {{ __('navbar.title_privacy') }}
+    @endsection
     <br><br><br><br>
     <div class="container ">
         <h1 class="text-center mb-3 h_2">{{ __('privacy.title') }}</h1>

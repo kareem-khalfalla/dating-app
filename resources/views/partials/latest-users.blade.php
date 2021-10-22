@@ -5,32 +5,11 @@
 
             @if (isset($users) && count($users) > 1)
 
-                <div class="col-12 col-md-5 col-lg-4 mb-4 latest_user1">
-                    <h2 class="h_2 mb-3">{{ __('welcome.latest users') }}</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">{{ __('welcome.Name') }}</th>
-                                <th scope="col">{{ __('welcome.Age') }}</th>
-                                <th scope="col">{{ __('welcome.nationality') }}</th>
-                            </tr>
-                        </thead>
-                        @foreach ($users as $user)
-                            <tbody>
-                                <tr>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->profile->getAge() }}
-                                    </td>
-                                    <td>{{ $user->profile->nationality->name ?? 'N/A' }}</td>
-                                </tr>
-                            </tbody>
-                        @endforeach
-                    </table>
-                </div>
-                <div class="row col-12 col-md-7 col-lg-8 pl-3 latest_user2 mb-4">
+            <h2 class="h_2 mb-3 col-12 pb-3">{{ __('welcome.latest users') }}</h2>
+                
                     @foreach ($users->take(6) as $user)
 
-                        <div class="row col-12 col-sm-8 col-md-12 col-lg-6 mb-2">
+                        <div class="row col-12 col-sm-8 col-md-6 col-lg-4 mb-2 pb-3">
                             <div class="col-5 col-md-5 p-0 m-0">
                                 <img class="p-0 m-0 img-fluid
                                 " style="border: 1px solid #eee;"
@@ -51,7 +30,7 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
+                
 
             @endif
         </div>

@@ -57,20 +57,20 @@
             @enderror
         </div>
         <div class="mt-2 mb-2 pr-2">
-            <label class="mr-3"><b>Gender</b></label>
+            <label class="mr-3"><b>{{ __('settings.Gender') }}</b></label>
             <label class="radio-inline p-2">
                 <input type="radio" name="gender" wire:model.defer="state.gender" wire:model.defer="state.gender"
                     id="male" value="male">
-                &nbsp;Male
+                &nbsp;{{ __('settings.Male') }}
             </label>
             <label class="radio-inline p-2">
                 <input type="radio" name="gender" wire:model.defer="state.gender" wire:model.defer="state.gender"
                     id="female" value="female">
-                &nbsp;Female
+                &nbsp;{{ __('settings.Female') }}
             </label>
         </div>
         <div class="mt-4">
-            <input type="submit" class="btn btn_form_settings btn-block p-2" value="save">
+            <input type="submit" class="btn btn_form_settings btn-block p-2" value="{{ __('settings.save') }}">
         </div>
     </form>
 </div>

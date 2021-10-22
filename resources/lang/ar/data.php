@@ -67,12 +67,12 @@ return [
     'Widower'  => 'أرمل',
     'divorced' => 'مطلقة',
     // do you have children
-    'Yes, but they are not with me'                 => 'نعم ، لكنهم ليسوا معي',
-    'Yes, but not now'                              => 'نعم ولكن ليس الآن',
-    'According to the wishes of the other partner'  => 'حسب رغبة الشريك الآخر',
+    'yes'                 => 'نعم',
+    'no'                        => 'لا',
+    'Yes but they are not with me'  => 'نعم ولكن ليسو معي',
     // desire to have children
-    'I would like it'                              => 'يسرني ذلك',
-    'I do not want it'                             => 'لا أريده',
+    'I would like it'                              => 'ارغب',
+    'I do not want it'                             => 'لا ارغب',
     'Yes but not now'                              => 'نعم ولكن ليس الآن',
     'According to the desire of the other partner' => 'حسب رغبة الشريك الآخر',
     // need polygamy
