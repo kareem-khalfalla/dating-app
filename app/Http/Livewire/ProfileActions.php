@@ -32,7 +32,7 @@ class ProfileActions extends Component
                 : $this->user->getFriends()->allExceptAuthId()->paginate(6),
 
             'pendingUsers' => User::whereIn('id', $allIdsExceptAuthId)->get(),
-            'blockedUsers' => User::find($authId)->getBlockedFriendships(),
+            'blockedUsers' => User::find($authId)->getBlockedFriendships()->whereNotIn('recipient_id', [$authId])->get(),
         ]);
     }
 

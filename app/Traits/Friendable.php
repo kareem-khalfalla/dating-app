@@ -118,7 +118,7 @@ trait Friendable
         $deleted = $this->findFriendship($recipient)->whereSender($this)->delete();
 
         Event::dispatch('friendships.unblocked', [$this, $recipient]);
-      
+
         return $deleted;
     }
 
@@ -138,5 +138,10 @@ trait Friendable
     public function getFriends($perPage = 0, $groupSlug = ''): Builder
     {
         return $this->getFriendsQueryBuilder($groupSlug);
+    }
+
+    public function getBlockedFriendships(): Builder
+    {
+        return $this->findFriendships(Status::BLOCKED);
     }
 }
