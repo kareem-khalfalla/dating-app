@@ -150,7 +150,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function newMessages(): int
     {
-        dump(Message::where('to', $this->id)->where('is_seen', 0)->get()->unique('from')->count());
         return Message::where('to', $this->id)->where('is_seen', 0)->get()->unique('from')->count();
     }
 }
