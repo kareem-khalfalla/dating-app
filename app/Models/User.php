@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Events\VerifyEmail;
 use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
