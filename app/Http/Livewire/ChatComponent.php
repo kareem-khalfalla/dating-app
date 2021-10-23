@@ -76,7 +76,11 @@ class ChatComponent extends Component
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->count();
         $this->emit('scrollToBottom');
         
-        if ($user['id'] != auth()->id() && Message::latest()->limit(1)->get()->first()->from != auth()->id()) {
+        $messagesExists = Message::count() > 0
+        ? Message::latest()->limit(1)->get()->first()->from != auth()->id()
+        : false;
+
+        if ($user['id'] != auth()->id() && $messagesExists) {
             Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->get()->map(fn ($item) => $item->update(['is_seen' => 1]));
         }
          
