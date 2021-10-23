@@ -19,6 +19,12 @@ class UpdateUserProfileDetailInformation implements UpdatesUserProfileInformatio
      */
     public function update($user, array $input)
     {
+        foreach ($input as $key => $value) {
+            if (str_ends_with($key, '_id') && $value == ''){
+                $input[$key] = null;
+            }
+        }
+
         Validator::make($input, $this->profileDetailsRules(), [
             '*.integer' => 'The :attribute is required.'
         ])->validate();
