@@ -57,7 +57,7 @@ $prevIsAdmin =
         <link href="{{ asset('admin/css/chat-style.css') }}" rel="stylesheet">
     @endif
 
-    @if (app()->getLocale() == 'ar' && !$isAdmin)
+    @if (app()->getLocale() == 'ar' && !$isAdmin && \Route::currentRouteName() != 'chat')
         <link rel="stylesheet" href="{{ asset('css/theme/rtl.css') }}" />
     @endif
     @stack('head')
