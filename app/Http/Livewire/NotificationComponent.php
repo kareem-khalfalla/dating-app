@@ -7,26 +7,31 @@ use Livewire\Component;
 
 class NotificationComponent extends Component
 {
-    public $loadAmount = 5;
-    public $notifications;
+    public $loadAmount = 7;
+    public $notificationsCount;
 
     protected $listeners = [
         'updateNotifications'
     ];
 
-    public function render(): View
-    {
-        return view('livewire.notification-component');
-    }
-
     public function mount()
     {
-        $this->notifications = auth()->user()->notifications;
+        $this->notificationsCount = count(auth()->user()->notifications);
     }
 
-    public function loadMore(): void
+    public function render(): View
     {
-        $this->loadAmount += 5;
+        return view('livewire.notification-component', [
+            'notifications' => auth()->user()->notifications->take($this->loadAmount)
+        ]);
+    }
+
+    public function loadMore()
+    {
+        if ($this->notificationsCount < $this->loadAmount) {
+            return;
+        }
+        $this->loadAmount += 7;
     }
 
     public function updateNotifications(): void

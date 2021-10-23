@@ -1,4 +1,4 @@
-<div wire:ignore style="background-color: #fff!important; overflow-y: auto; max-height: 400px"
+<div wire:ignore.self style="background-color: #fff!important; overflow-y: auto; max-height: 400px"
     class="notifications dropdown-menu dropdown-menu-lg-right dropdown-secondary"
     aria-labelledby="navbarDropdownMenuLink-5">
 
@@ -33,11 +33,14 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     @this.loadMore();
+                    lastRecord.remove();
                 }
             }, options);
         });
+
         if (lastRecord) {
             observer.observe(lastRecord);
         }
     </script>
+
 @endpush

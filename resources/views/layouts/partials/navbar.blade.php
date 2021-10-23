@@ -70,8 +70,8 @@
                     <li class="nav-item nav_home">
                         <a class="nav-link hover-bar d-flex" href="{{ route('results') }}"><i class="fas fa-search"
                                 style='font-size: 30px ;'></i><span class="sr-only">(current)</span>
-                                <span class="only_mobile">&nbsp; {{ __('navbar.search') }}</span>
-                                </a>
+                            <span class="only_mobile">&nbsp; {{ __('navbar.search') }}</span>
+                        </a>
                     </li>
 
                     <li class="nav-item">
@@ -92,7 +92,8 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}"><i
                                 class="fas fa-lg fa-envelope p-1" style='font-size: 30px ;'></i>
-                                <span style="color: red">{{ Auth::user()->newMessages() > 0 ? Auth::user()->newMessages() : '' }}</span>
+                            <span
+                                style="color: red">{{ Auth::user()->newMessages() > 0 ? Auth::user()->newMessages() : '' }}</span>
                             <span class="only_mobile">{{ __('navbar.Chat') }}</span>
                         </a>
                     </li>
@@ -107,10 +108,10 @@
                     <li class="nav-item">
                         <a class="nav-link hover-bar d-flex" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                        document.getElementById('logout-form').submit();"><i
+                                                                                                                                                                                                            document.getElementById('logout-form').submit();"><i
                                 class="fas fa-lg fa-sign-out-alt p-1" style='font-size: 30px ;'></i>
-                                 <span class="only_mobile">{{ __('navbar.logout') }}</span>
-                                </a>
+                            <span class="only_mobile">{{ __('navbar.logout') }}</span>
+                        </a>
                         <form action="{{ route('logout') }}" id="logout-form" method="post" style="display: none">@csrf
                         </form>
                     </li>
@@ -118,8 +119,8 @@
                     <li onclick="Livewire.emit('updateNotifications')" class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <span
-                                class="badge ml-2"><span style="color: red">{{ count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : ''}}
+                            <span class="badge ml-2"><span
+                                    style="color: red">{{ count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : '' }}
                                 </span>
                                 <i class="fas fa-bell" style='font-size: 30px ;'></i>
                         </a>
@@ -133,7 +134,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach (\App\Models\Language::allAvailable()->get() as $language)
-                                <a class="dropdown-item" style="background-color: {{ app()->getLocale() == $language->code ? '#108292!important' : ''}}"
+                                <a class="dropdown-item"
+                                    style="background-color: {{ app()->getLocale() == $language->code ? '#108292!important' : '' }}"
                                     href="{{ route('locale', $language->code) }}">{{ $language->nativeName }}</a>
                             @endforeach
                         </div>
@@ -188,4 +190,5 @@
             </ul>
         </div>
     </div>
+    
 </nav>
