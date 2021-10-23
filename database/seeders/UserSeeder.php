@@ -143,13 +143,13 @@ class UserSeeder extends Seeder
             'Committed', 'Uncommitted', 'Sometimes obligated', 'Not interested',
         ]);
         $profile->prayer = $faker->randomElement([
-            'Committed to', 'Not original', 'Original and leave', 'Friday only', 'Mostly original',
+            'Committed to', 'I do not pray', 'Original and leave', 'Friday only', 'Mostly original',
         ]);
         $profile->alfajr_prayer = $faker->randomElement([
             'Committed to', 'Not Committed to', 'Sometimes',
         ]);
         $profile->fasting = $faker->randomElement([
-            'Ramadan', 'Ramadan and waffles', 'Not every Ramadan',
+            'Ramadan', 'Ramadan and nawafil', 'Not every Ramadan',
         ]);
         $profile->reading_quran = $faker->randomElement([
             'Read daily', 'Read a lot', 'Read a little', 'Rarely', 'Do not read',
