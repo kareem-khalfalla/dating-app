@@ -133,7 +133,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach (\App\Models\Language::allAvailable()->get() as $language)
-                                <a class="dropdown-item" style="background: transparent"
+                                <a class="dropdown-item" style="background-color: {{ app()->getLocale() == $language->code ? '#108292!important' : ''}}"
                                     href="{{ route('locale', $language->code) }}">{{ $language->nativeName }}</a>
                             @endforeach
                         </div>
