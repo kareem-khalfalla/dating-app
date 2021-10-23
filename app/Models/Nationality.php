@@ -4,6 +4,10 @@ namespace App\Models;
 
 class Nationality extends Model
 {
+    protected $casts = [
+        'name' => 'array'
+    ];
+
     public function getName(): string
     {
         $locale = app()->getLocale();
