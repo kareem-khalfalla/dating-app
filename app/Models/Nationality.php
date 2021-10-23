@@ -11,12 +11,12 @@ class Nationality extends Model
     public function getName(): string
     {
         $locale = app()->getLocale();
-        $langsAvailable = array_keys(json_decode($this->name, true));
-        
+        $langsAvailable = array_keys($this->name);
+
         if (in_array($locale, $langsAvailable)) {
-            return json_decode($this->name, true)[$locale];
+            return $this->name[$locale];
         } else {
-            return json_decode($this->name, true)['en'];
+            return $this->name['en'];
         }
     }
 }
