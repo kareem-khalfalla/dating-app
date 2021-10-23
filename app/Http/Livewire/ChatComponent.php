@@ -145,7 +145,7 @@ class ChatComponent extends Component
             'last_message_at' => now(),
         ]);
 
-        Message::where('to', auth()->id())->update(['is_seen' => 1]);
+        // Message::where('to', auth()->id())->update(['is_seen' => 1]);
 
         $this->renderUsers();
 
