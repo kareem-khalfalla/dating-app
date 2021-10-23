@@ -26,7 +26,6 @@ return [
     'A short acquaintance, then engagement, then marriageStatus' => 'A short acquaintance, then engagement, then marriageStatus',
     'Long time acquaintance before engagement'                   => 'Long time acquaintance before engagement',
     'Friendship and love before engagement'                      => 'Friendship and love before engagement',
-    'no marriageStatus',
     // education and work
     // education
     'Doctorate'  => 'Doctorate',
@@ -124,6 +123,7 @@ return [
     // religion method
     'Feel'                  => 'Feel',
     'Dismissal predecessor' => 'Dismissal predecessor',
+    'no sunnah'             => 'No sunnah',
     'Sufi of the Sunnah'    => 'Sufi of the Sunnah',
     'Zedy Munkar'           => 'Zedy Munkar',
     'Jaafari'               => 'Jaafari',
@@ -143,7 +143,7 @@ return [
     'Not interested'      => 'Not interested',
     // prayer
     'Committed to'       => 'Committed to',
-    'Not original'       => 'Not original',
+    'I do not pray'       => 'I do not pray',
     'Original and leave' => 'Original and leave',
     'Friday only'        => 'Friday only',
     'Mostly original'    => 'Mostly original',
@@ -153,7 +153,7 @@ return [
     'Sometimes'        => 'Sometimes',
     // fasting
     'Ramadan'                     => 'Ramadan',
-    'Ramadan and waffles'         => 'Ramadan and waffles',
+    'Ramadan and nawafil'         => 'Ramadan and nawafil',
     'Not every Ramadan'           => 'Not every Ramadan',
     'I fast some days of Ramadan' => 'I fast some days of Ramadan',
     'I do not fasting'            => 'I do not fasting',
@@ -182,6 +182,7 @@ return [
     'No'    => 'No',
     'light' => 'light',
     'heavy' => 'heavy',
+    'long'  => 'long',
     // tafaqah
     'Know the basics'                          => 'Know the basics',
     'Read or attend lessons Sometimes'         => 'Read or attend lessons Sometimes',

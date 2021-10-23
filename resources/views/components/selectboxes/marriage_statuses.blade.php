@@ -8,4 +8,3 @@
 </option>
 <option value="Friendship and love before engagement">
     {{ __('data.Friendship and love before engagement') }}</option>
-<option value="no marriageStatus">{{ __('data.no marriageStatus') }}</option>

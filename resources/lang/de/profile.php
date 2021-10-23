@@ -91,4 +91,7 @@ return [
     'food style' => 'Essensstil',
     'All friends' => 'Alle Freunde',
     'No friends' => 'Keine Freunde',
+    // data
+    'male' => 'Male',
+    'female' => 'Female',
 ];

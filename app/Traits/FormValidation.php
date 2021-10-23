@@ -138,7 +138,7 @@ trait FormValidation
             ])],
             'religion_method' => ['nullable', 'string', Rule::in([
                 'Feel', 'Dismissal predecessor', 'Sufi of the Sunnah',
-                'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi',
+                'no sunnah', 'Zedy Munkar', 'Jaafari', 'Matrade', 'Abadi',
                 'brothers', 'Ethiopian', 'Protestant', 'Catholic', 'Autodox',
                 'I do not know', 'other',
             ])],
@@ -146,20 +146,20 @@ trait FormValidation
                 'Committed', 'Uncommitted', 'Sometimes obligated', 'Not interested',
             ])],
             'prayer' => ['nullable', 'string', Rule::in([
-                'Committed to', 'Not original', 'Original and leave', 'Friday only', 'Mostly original',
+                'Committed to', 'I do not pray', 'Original and leave', 'Friday only', 'Mostly original',
             ])],
             'alfajr_prayer' => ['nullable', 'string', Rule::in([
                 'Committed to', 'Not Committed to', 'Sometimes',
             ])],
             'fasting' => ['nullable', 'string', Rule::in([
-                'Ramadan', 'Ramadan and waffles', 'Not every Ramadan',
+                'Ramadan', 'Ramadan and nawafil', 'Not every Ramadan',
                 'I fast some days of Ramadan', 'I do not fasting',
             ])],
             'reading_quran' => ['nullable', 'string', Rule::in([
                 'Read daily', 'Read a lot', 'Read a little', 'Rarely', 'Do not read',
             ])],
             'beard_status' => [
-                'nullable', 'string', Rule::in(['No', 'light', 'heavy',])
+                'nullable', 'string', Rule::in(['No', 'light', 'heavy', 'long'])
             ],
             'headdress' => [
                 'nullable', 'string', Rule::in([
@@ -231,9 +231,9 @@ trait FormValidation
                 'Single', 'Married', 'Widower', 'divorced',
             ])],
             'children_status' => ['nullable', 'string', Rule::in([
-                'Yes, but they are not with me',
-                'Yes, but not now',
-                'According to the wishes of the other partner',
+                'yes',
+                'no',
+                'Yes but they are not with me',
             ])],
             'children_count' => ['nullable', 'integer'],
             'children_desire_status' => ['nullable', 'string', Rule::in([

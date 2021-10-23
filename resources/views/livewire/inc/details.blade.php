@@ -34,7 +34,7 @@
                 <x-selectbox wire:model.defer="state.nationality_id">
                     <option value="">---</option>
                     @foreach ($nationalities as $nationality)
-                        <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
+                        <option value="{{ $nationality->id }}">{{ $nationality->getName() }}</option>
                     @endforeach
                 </x-selectbox>
             </div>
@@ -73,7 +73,7 @@
                 <x-selectbox wire:model.defer="state.native_language_id">
                     <option value="">---</option>
                     @foreach ($languages as $nativeLanguage)
-                        <option value="{{ $nativeLanguage->id }}">{{ $nativeLanguage->name }}</option>
+                        <option value="{{ $nativeLanguage->id }}">{{ $nativeLanguage->nativeName }}</option>
                     @endforeach
                 </x-selectbox>
             </div>
@@ -83,7 +83,7 @@
                     <x-selectbox wire:model.defer="state.second_language_id">
                         <option value="">---</option>
                         @foreach ($languages as $secondLanguage)
-                            <option value="{{ $secondLanguage->id }}">{{ $secondLanguage->name }}</option>
+                            <option value="{{ $secondLanguage->id }}">{{ $secondLanguage->nativeName }}</option>
                         @endforeach
                     </x-selectbox>
                 </div>
@@ -101,7 +101,7 @@
                     <x-selectbox wire:model="state.third_language_id">
                         <option value="">---</option>
                         @foreach ($languages as $thirdLanguage)
-                            <option value="{{ $thirdLanguage->id }}">{{ $thirdLanguage->name }}</option>
+                            <option value="{{ $thirdLanguage->id }}">{{ $thirdLanguage->nativeName }}</option>
                         @endforeach
                     </x-selectbox>
                 </div>

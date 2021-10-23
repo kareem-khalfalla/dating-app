@@ -1,5 +1,6 @@
 <option value="Feel">{{ __('data.Feel') }}</option>
 <option value="Dismissal predecessor">{{ __('data.Dismissal predecessor') }}</option>
+<option value="no sunnah">{{ __('data.no sunnah') }}</option>
 <option value="Sufi of the Sunnah">{{ __('data.Sufi of the Sunnah') }}</option>
 <option value="Zedy Munkar">{{ __('data.Zedy Munkar') }}</option>
 <option value="Jaafari">{{ __('data.Jaafari') }}</option>

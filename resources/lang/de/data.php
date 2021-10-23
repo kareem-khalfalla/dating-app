@@ -26,7 +26,6 @@ return [
     'A short acquaintance, then engagement, then marriageStatus' => 'Kurze Bekanntschaft, dann Verlobung, dann EheStatus',
     'Long time acquaintance before engagement'                   => 'Lange Bekanntschaft vor der Verlobung',
     'Friendship and love before engagement'                      => 'Freundschaft und Liebe vor der Verlobung',
-    'no marriageStatus',
     // education and work
     // education
     'Doctorate'  => 'Promotion',
@@ -124,6 +123,7 @@ return [
     // religion method
     'Feel'                  => 'Gefühl',
     'Dismissal predecessor' => 'Entlassung Vorgänger',
+    'no sunnah'             => 'No sunnah',
     'Sufi of the Sunnah'    => 'Sufi der Sunnah',
     'Zedy Munkar'           => 'Zedy Munkara',
     'Jaafari'               => 'Jaafari',
@@ -143,7 +143,7 @@ return [
     'Not interested'      => 'Nicht interessiert',
     // prayer
     'Committed to'       => 'Verpflichtet',
-    'Not original'       => 'Nicht original',
+    'I do not pray'       => 'Nicht original',
     'Original and leave' => 'Original und verlassen',
     'Friday only'        => 'Nur Freitag',
     'Mostly original'    => 'Meist originell',
@@ -153,7 +153,7 @@ return [
     'Sometimes'        => 'Manchmal',
     // fasting
     'Ramadan'                     => 'Ramadan',
-    'Ramadan and waffles'         => 'Ramadan und Waffeln',
+    'Ramadan and nawafil'         => 'Ramadan und Waffeln',
     'Not every Ramadan'           => 'Nicht jeder Ramadan',
     'I fast some days of Ramadan' => 'Ich faste einige Tage im Ramadan',
     'I do not fasting'            => 'ich faste nicht',
@@ -182,6 +182,7 @@ return [
     'No'    => 'Nein',
     'light' => 'hell',
     'heavy' => 'schwer',
+    'long' => 'Long',
     // tafaqah
     'Know the basics'                          => 'Kenne die Grundlagen',
     'Read or attend lessons Sometimes'         => 'Lesen oder besuchen Sie den Unterricht Manchmal',

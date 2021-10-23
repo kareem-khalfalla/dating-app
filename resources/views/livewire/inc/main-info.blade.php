@@ -6,7 +6,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user"></i></span>
             </div>
-            <input wire:model.defer="state.name" placeholder="fullname" type="text"
+            <input wire:model.defer="state.name" placeholder="{{ __('register.fullname') }}" type="text"
                 class="form-control @error('name') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('name')
@@ -19,7 +19,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-circle"></i></span>
             </div>
-            <input wire:model.defer="state.username" placeholder="username" type="text"
+            <input wire:model.defer="state.username" placeholder="{{ __('register.username') }}" type="text"
                 class="form-control @error('username') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('username')
@@ -33,7 +33,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-envelope"
                         aria-hidden="true"></i></span>
             </div>
-            <input wire:model.defer="state.email" placeholder="email" type="email"
+            <input wire:model.defer="state.email" placeholder="{{ __('register.email') }}" type="email"
                 class="form-control @error('email') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('email')
@@ -47,7 +47,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-phone"
                         aria-hidden="true"></i></span>
             </div>
-            <input wire:model.defer="state.phone" placeholder="phone" type="tel"
+            <input wire:model.defer="state.phone" placeholder="{{ __('register.phone') }}" type="tel"
                 class="form-control @error('phone') is-invalid @enderror" aria-label="Large"
                 aria-describedby="inputGroup-sizing-sm">
             @error('phone')

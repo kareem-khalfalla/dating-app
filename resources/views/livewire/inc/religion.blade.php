@@ -72,8 +72,7 @@
         <div class="form-group">
             <label
                 class="col-12">{{ __('settings.If you listen to the lessons, who will you listen to?') }}</label>
-            <x-textarea wire:model.defer="state.lesson_listing"
-                placeholder="{{ __('settings.If you listen to the lessons, who will you listen to?') }}" />
+            <x-textarea wire:model.defer="state.lesson_listing" />
         </div>
         <div class="input-group input-group-lg mb-3 ">
             <label class="col-12">{{ __('settings.Listening to music') }}</label>

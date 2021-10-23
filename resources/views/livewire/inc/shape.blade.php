@@ -4,11 +4,11 @@
         <br>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.Length') }}</label>
-            <x-input wire:model.defer="state.height" type="number" min="40" max="222" placeholder="Length" />
+            <x-input wire:model.defer="state.height" type="number" min="40" max="222" />
         </div>
         <div class="form-group col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.the weight') }}</label>
-            <x-input wire:model.defer="state.weight" type="number" min="40" max="222" placeholder="the weight" />
+            <x-input wire:model.defer="state.weight" type="number" min="40" max="222" />
         </div>
         <div class="form-group mb-3 col-md-6">
             <label for="exampleInputEmail1">{{ __('settings.body type') }}</label>

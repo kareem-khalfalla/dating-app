@@ -22,7 +22,7 @@
         </div>
         <div class="input-group input-group-lg mb-3">
             <label class="col-12">{{ __('settings.Monthly income') }}</label>
-            <x-input wire:model.defer="state.income" placeholder="Monthly income" type="number" />
+            <x-input wire:model.defer="state.income" placeholder="{{ __('settings.Monthly income') }}" type="number" />
         </div>
         @if ($state['gender'] == 'male')
             <div class="input-group input-group-lg mb-3 ">
