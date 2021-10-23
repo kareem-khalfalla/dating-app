@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Congratulations, your friend request has been accepted' => 'Congratulations, your friend request has been accepted',
-    'Sadlly, your request has been rejected'                   => 'Sadlly, your request has been rejected',
-    'New friend request received'              => 'New friend request received',
+    'Congratulations, :username has been accepted your friend request' => 'Congratulations, :username has been accepted your friend request',
+    'Sadlly, :username your request has been rejected'                 => 'Sadlly, :username your request has been rejected',
+    'New friend request received from :username'                       => 'New friend request received from :username',
 ];

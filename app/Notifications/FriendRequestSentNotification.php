@@ -29,7 +29,7 @@ class FriendRequestSentNotification extends Notification
     public function toDatabase($notifiable): array
     {
         return [
-            'message' => 'New friend request received',
+            'message' => 'New friend request received from :username',
             'username' => $this->user->username,
             'avatar' => $this->user->avatar,
             'id' => $this->user->id,

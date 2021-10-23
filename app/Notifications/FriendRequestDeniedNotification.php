@@ -29,7 +29,7 @@ class FriendRequestDeniedNotification extends Notification
     public function toDatabase($notifiable): array
     {
         return [
-            'message' => 'Sadlly, your request has been rejected',
+            'message' => 'Sadlly, :username your request has been rejected',
             'username' => $this->user->username,
             'avatar' => $this->user->avatar,
             'id' => $this->user->id,
