@@ -404,7 +404,7 @@
                                 title="{{ __('filter.Nationalities') }}"
                                 multiple>
                                 @foreach ($nationalities as $nationality)
-                                    <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
+                                    <option value="{{ $nationality->id }}">{{ $nationality->getName() }}</option>
                                 @endforeach
                             </x-selectbox>
                         </div>
