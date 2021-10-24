@@ -19,8 +19,8 @@ return [
     'User Add request sent successfully'           => 'Anfrage zum Hinzufügen von Benutzern erfolgreich gesendet',
     'This user has no chat!'                       => 'Dieser Benutzer hat keinen Chat!',
     'Your message was sent'                        => 'Ihre Nachricht wurde verschickt',
-    'Sadlly, you don\'t have friends to chat with' => 'Leider hast du keine Freunde, mit denen du chatten kannst',
-    'Sadlly, cannot access this profile while you or this user in the blacklist.' => 'Kann leider nicht auf dieses Profil zugreifen, während Sie oder dieser Benutzer in der Blacklist sind.',
+    'Sadly, you don\'t have friends to chat with' => 'Leider hast du keine Freunde, mit denen du chatten kannst',
+    'Sadly, cannot access this profile while you or this user in the blacklist.' => 'Kann leider nicht auf dieses Profil zugreifen, während Sie oder dieser Benutzer in der Blacklist sind.',
     // dashboard
     'user'       => 'Benutzer',
     'super user' => 'Superuser',

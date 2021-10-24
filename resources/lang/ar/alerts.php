@@ -19,8 +19,8 @@ return [
     'User Add request sent successfully'           => 'تم إرسال طلب إضافة المستخدم بنجاح',
     'This user has no chat!'                       => 'هذا العضو ليس لدية محادثات',
     'Your message was sent'                        => 'تم إرسال رسالتك بنجاح',
-    'Sadlly, you don\'t have friends to chat with' => 'للأسف ، ليس لديك أصدقاء للدردشة معهم',
-    'Sadlly, cannot access this profile while you or this user in the blacklist.' => 'للأسف ، لا يمكنك الوصول إلى هذا الملف الشخصي أثناء وجودك أنت أو هذا المستخدم في القائمة السوداء.',
+    'Sadly, you don\'t have friends to chat with' => 'للأسف ، ليس لديك أصدقاء للدردشة معهم',
+    'Sadly, cannot access this profile while you or this user in the blacklist.' => 'للأسف ، لا يمكنك الوصول إلى هذا الملف الشخصي أثناء وجودك أنت أو هذا المستخدم في القائمة السوداء.',
     // dashboard
     'user'       => 'المستعمل',
     'super user' => 'مستخدم متميز',

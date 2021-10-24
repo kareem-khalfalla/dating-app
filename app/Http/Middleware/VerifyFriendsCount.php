@@ -28,7 +28,7 @@ class VerifyFriendsCount
         }
 
         if ($authUser->getFriendsCount() == 0) {
-            return redirect()->route('notAllowed')->withError(__('alerts.Sadlly, you don\'t have friends to chat with'));
+            return redirect()->route('notAllowed')->withError(__('alerts.Sadly, you don\'t have friends to chat with'));
         }
 
         return $next($request);
