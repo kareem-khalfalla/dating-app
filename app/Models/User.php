@@ -98,14 +98,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->whereIn('id', $ids);
     }
 
-    public function scopeAllExceptAuthName(Builder $query, string $search = null): Builder
+    public function scopeAllExceptAuthUsername(Builder $query, string $search = null): Builder
     {
-        return $query->where('name', 'like', "%$search%")->where('name', '!=', auth()->user()->name);
+        return $query->where('username', 'like', "%$search%")->where('username', '!=', auth()->user()->username);
     }
 
     public function scopeFriendsByLastMsg(Builder $query, User $user, string $search = ''): Builder
     {
-        return $user->getFriends()->latest('last_message_at')->where('name', 'like', "%$search%");
+        return $user->getFriends()->latest('last_message_at')->where('username', 'like', "%$search%");
     }
 
     public function scopeOrderByLastMsg(Builder $query): Builder
