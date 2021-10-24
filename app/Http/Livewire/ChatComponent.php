@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Events\MessageEvent;
 use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\Redirector;
 use Livewire\WithFileUploads;
@@ -33,6 +34,11 @@ class ChatComponent extends Component
     public $file;
     public $fileName;
 
+    public $isAdmin = false;
+    public $getRouteUserId;
+    public $userId;
+    public $startOrEnd;
+
     public function render()
     {
         return view('livewire.chat-component');
@@ -40,6 +46,18 @@ class ChatComponent extends Component
 
     public function mount(User $user): void
     {
+        $this->isAdmin = Route::currentRouteName() == 'admin.user.chat'
+            ? true
+            : false;
+
+            if ($this->isAdmin){
+                $this->getRouteUserId = request('user')->id;
+            }
+
+            $this->userId = $this->isAdmin
+            ? \App\Models\User::find($this->getRouteUserId)->id
+            : auth()->id();
+
         if (is_null($user->id)) {
             $user = auth()->user();
             $this->user = $user;
@@ -75,21 +93,21 @@ class ChatComponent extends Component
         $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit(5)->latest()->get()->toArray());
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->count();
         $this->emit('scrollToBottom');
-        
+
         $messagesExists = Message::count() > 0
-        ? Message::latest()->limit(1)->get()->first()->from != auth()->id()
-        : false;
+            ? Message::latest()->limit(1)->get()->first()->from != auth()->id()
+            : false;
 
         if ($user['id'] != auth()->id() && $messagesExists) {
             Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->get()->map(fn ($item) => $item->update(['is_seen' => 1]));
         }
-         
+
         if (
             User::find($user['id'])->isBlockedBy(auth()->user())
             || auth()->user()->isBlockedBy(User::find($user['id']))
-            ){
+        ) {
             $this->isBlockedUser = true;
-        }else{
+        } else {
             $this->isBlockedUser = false;
         }
     }
@@ -126,7 +144,7 @@ class ChatComponent extends Component
         }
 
         $this->renderUsers();
-        if ($this->isBlockedUser){
+        if ($this->isBlockedUser) {
             return;
         }
 

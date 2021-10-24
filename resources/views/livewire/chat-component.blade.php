@@ -50,8 +50,6 @@
                     </div>
                     <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                     @if (!$isBlockedUser)
-
-
                         <div class="action_menu">
                             <ul>
                                 <li><a href="{{ route('profile', $selectedUser['id']) }}"><i
@@ -59,11 +57,9 @@
                                         {{ __('chat.View') }}
                                         {{ __('chat.profile') }}</a></li>
                                 <li>
-
                                     <a href="" wire:click.prevent="confirm({{ $selectedUser['id'] }})"><i
                                             class="fas fa-ban"></i>
                                         {{ __('chat.Block') }}</a>
-
                                 </li>
                             </ul>
                         </div>
@@ -72,10 +68,10 @@
                 <div class="card-body msg_card_body">
                     @forelse ($messages as $message)
                         <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 1 ? 'last_record' : '' }}"
-                            class="d-flex justify-content-{{ $message['from'] == Auth::id() ? 'start' : 'end' }} mb-4">
-                            @if ($message['from'] == Auth::id())
+                            class="d-flex justify-content-{{ $message['from'] == $userId ? 'start' : 'end' }} mb-4">
+                            @if ($message['from'] == Auth::id() || $isAdmin)
                                 <div class="img_cont_msg">
-                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                    <img src="{{ asset('storage/' . \App\Models\User::find($message['from'])->avatar) }}"
                                         class="rounded-circle user_img_msg">
                                 </div>
                             @endif
@@ -92,7 +88,7 @@
                         <p>{{ __('chat.Say HI') }}!</p>
                     @endforelse
                 </div>
-                @if (!$isBlockedUser && !\Request::route()->getPrefix() == 'admin')
+                @if (!$isBlockedUser && !$isAdmin)
                     <div class="card-footer">
                         <form wire:submit.prevent="addMessage">
                             <div class="input-group" style="direction: ltr!important;">
