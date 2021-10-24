@@ -5,7 +5,7 @@
     <h2>{{ __('navbar.Notifications') }}</span></h2>
     @foreach ($notifications as $notification)
         <a href="{{ route('profile', $notification->data['id']) }}" class="notifications-item"
-            {{ $loop->last ? 'id=last_record' : '' }}>
+            {{ $loop->last ? 'id=last_record_notification' : '' }}>
             <img src="{{ asset('storage/' . $notification->data['avatar']) }}" alt="img">
             <div class="text">
                 </h4>
@@ -23,7 +23,7 @@
 
 @push('scripts')
     <script>
-        const lastRecord = document.getElementById('last_record');
+        const lastRecord = document.getElementById('last_record_notification');
         const options = {
             root: null,
             threshold: 1,
