@@ -145,7 +145,10 @@
 
     <script>
         $(document).ready(function() {
-            $('li').click();
+            let li = $('li');
+            if (li[0].classList.contains('active')){
+                li[0].click();
+            }
         });
     </script>
 @endpush

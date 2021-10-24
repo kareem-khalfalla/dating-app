@@ -50,11 +50,11 @@ class ChatComponent extends Component
             ? true
             : false;
 
-            if ($this->isAdmin){
-                $this->getRouteUserId = request('user')->id;
-            }
+        if ($this->isAdmin) {
+            $this->getRouteUserId = request('user')->id;
+        }
 
-            $this->userId = $this->isAdmin
+        $this->userId = $this->isAdmin
             ? \App\Models\User::find($this->getRouteUserId)->id
             : auth()->id();
 
@@ -83,14 +83,14 @@ class ChatComponent extends Component
 
     public function updatedSearch(): void
     {
-        $this->users = User::friendsByLastMsg($this->user, $this->search)->get();
+        $this->setUsers();
     }
 
     public function userSelected(array $user): void
     {
         $this->selectedUser = $user;
         $this->isOnline = User::find($this->selectedUser['id'])->isOnline();
-        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit(5)->latest()->get()->toArray());
+        $this->setMessages();
         $this->messagesCount = Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->count();
         $this->emit('scrollToBottom');
 
@@ -118,7 +118,7 @@ class ChatComponent extends Component
             $this->loadAmount += 5;
         }
 
-        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit($this->loadAmount)->latest()->get()->toArray());
+        $this->setMessages();
     }
 
     public function saveFile(): void
@@ -222,7 +222,7 @@ class ChatComponent extends Component
 
     private function renderUsers(): void
     {
-        $this->users = User::friendsByLastMsg($this->user)->get();
+        $this->setUsers();
 
         $messageUsersIds =
             Message::where('to', $this->user->id)->pluck('from')->unique()->toArray() +
@@ -247,5 +247,15 @@ class ChatComponent extends Component
         }
 
         $this->users = $this->users->merge(User::whereIn('id', $messageUsersIds)->get());
+    }
+
+    private function setUsers(): void
+    {
+        $this->users = User::friendsByLastMsg($this->user, $this->search)->get();
+    }
+
+    private function setMessages(): void
+    {
+        $this->messages = array_reverse(Message::betweenTwoUsers($this->selectedUser['id'], $this->user->id)->limit($this->loadAmount)->latest()->get()->toArray());
     }
 }
