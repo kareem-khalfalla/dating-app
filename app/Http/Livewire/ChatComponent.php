@@ -31,10 +31,9 @@ class ChatComponent extends Component
     public $loadAmount = 5;
     public $blockedId = 5;
     public $isBlockedUser = false;
+    public $isAdmin = false;
     public $file;
     public $fileName;
-
-    public $isAdmin = false;
     public $getRouteUserId;
     public $userId;
     public $startOrEnd;
@@ -227,7 +226,6 @@ class ChatComponent extends Component
         $messageUsersIds =
             Message::where('to', $this->user->id)->pluck('from')->unique()->toArray() +
             Message::where('from', $this->user->id)->pluck('to')->unique()->toArray();
-
 
         if (in_array($this->user->id, $messageUsersIds)) {
             foreach ($messageUsersIds as $key => $value) {
