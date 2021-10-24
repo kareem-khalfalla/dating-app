@@ -22,7 +22,7 @@ class FriendRequestDeniedEvent
      */
     public function __construct(public User $user ,public User $deniedUser)
     {
-        //
+        // 
     }
 
     /**

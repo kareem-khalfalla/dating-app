@@ -84,7 +84,9 @@ class ProfileActions extends Component
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
-        if (!$authUser->isFriendWith(User::find($id))) {
+        $notIn = auth()->user()->getPendingFriendships()->where('sender_id')->pluck('recipient_id')->toArray();
+
+        if (!$authUser->isFriendWith(User::find($id)) && !in_array($id, $notIn)) {
             event(new FriendRequestDeniedEvent($authUser, User::find($id)));
         }
 
