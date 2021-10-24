@@ -110,6 +110,7 @@
                                     <span wire:click="addMessage" class="input-group-text send_btn"><i
                                             class="fas fa-location-arrow"></i></span>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 @endif
