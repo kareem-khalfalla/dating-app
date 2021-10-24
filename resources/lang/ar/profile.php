@@ -6,7 +6,7 @@ return [
     'blocked users' => 'قائمة الحظر',
     'blockedList' => 'القائمة المحظورة',
     'Empty blocked list' => 'قائمة ممنوعة فارغة',
-    'Block' => 'حاجز',
+    'Block' => 'جظر',
     'unBlock' => 'رفع الحظر',
     'Addition' => 'إضافة',
     'Additions' => 'ألاضافات',

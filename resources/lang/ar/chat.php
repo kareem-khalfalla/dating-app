@@ -7,7 +7,7 @@ return [
     'Messages'          => 'رسائل',
     'View'              => 'رأي',
     'profile'           => 'الملف الشخصي',
-    'Block'             => 'حاجز',
+    'Block'             => 'جظر',
     'Say HI'            => 'قل مرحبا',
     'Type your message' => 'اكتب رسالتك',
 ];
