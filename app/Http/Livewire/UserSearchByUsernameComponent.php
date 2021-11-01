@@ -29,9 +29,11 @@ class UserSearchByUsernameComponent extends Component
         $pendingSenderIds = $authUser->getPendingFriendships()->pluck('sender_id');
         $pendingRecipientIds = $authUser->getPendingFriendships()->pluck('recipient_id');
         $blockedRecipientIds = $authUser->getBlockedFriendships()->pluck('recipient_id');
+        $blockedSenderIds = $authUser->getBlockedFriendships()->pluck('sender_id');
         $allPendingIds = $pendingSenderIds
             ->merge($pendingRecipientIds)
-            ->merge($blockedRecipientIds);
+            ->merge($blockedRecipientIds)
+            ->merge($blockedSenderIds);
 
             return view('livewire.user-search-by-username-component', [
             'users' => User::allExceptAuthUsername($this->search)->swapGender($this->search)->get()
