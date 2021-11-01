@@ -41,6 +41,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('users:delete-inactive')->daily()->runInBackground();
         $schedule->command('users:create-fake')->$createFakeUserTime()->runInBackground();
         $schedule->command('users:delete-fake')->$deleteFakeUserTime()->runInBackground();
+
+        $schedule->command('queue:work --daemon')->everyMinute()->withoutOverlapping();
     }
 
     /**
