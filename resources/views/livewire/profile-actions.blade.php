@@ -13,7 +13,7 @@
                     class="fa fa-users mr-2"></i>{{ __('profile.blocked users') }}</button>
         </div>
     @else
-        <span class="dropdown">
+        <span class="dropdown dropleft">
             <button class="btn btn-outline-secondary " type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-ellipsis-v"></i>
@@ -30,6 +30,7 @@
                     data-target="#reportAlert">{{ __('profile.report') }}</a>
             </div>
         </span>
+        
         @if ($isFriend)
             <a href="{{ route('chat') }}">
                 <button class="btn btn-outline-primary"><i class="fas fa-paper-plane"></i>

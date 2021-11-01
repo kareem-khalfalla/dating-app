@@ -11,4 +11,8 @@ return [
     'Add'                 => 'Hinzufügen',
     'Hide'                => 'Verstecken',
     'Empty members'       => 'Leere Mitglieder',
+    'username'           => 'Nutzername',
+     'age'                => 'Alter',
+     'country'            => 'Land',
+     'language'            => 'Sprache',
 ];

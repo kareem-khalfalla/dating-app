@@ -11,4 +11,8 @@ return [
     'Add'                 => 'Add',
     'Hide'                => 'Hide',
     'Empty members'       => 'Empty members',
+     'username'           => 'Username',
+     'age'                => 'Age',
+     'country'            => 'Country',
+     'language'            => 'Language',
 ];

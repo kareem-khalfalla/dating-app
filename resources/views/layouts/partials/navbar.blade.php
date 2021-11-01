@@ -90,11 +90,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}"><i
-                                class="fas fa-lg fa-envelope p-1" style='font-size: 30px ;'></i>
-                            <span
-                                style="color: red">{{ Auth::user()->newMessages() > 0 ? Auth::user()->newMessages() : '' }}</span>
-                            <span class="only_mobile">{{ __('navbar.Chat') }}</span>
+                        <a class="nav-link hover-bar d-flex" href="{{ route('chat') }}">
+                            <span class="box_num">
+                                <i class="fas fa-lg fa-envelope p-1" style='font-size: 30px ;'></i>
+                                
+                                    @if (Auth::user()->newMessages() > 0 )
+                                        <span class="span_num">{{ Auth::user()->newMessages() }}</span>
+                                    @endif
+                                    
+                                <span class="only_mobile">{{ __('navbar.Chat') }}</span>
+                            </span>
                         </a>
                     </li>
 

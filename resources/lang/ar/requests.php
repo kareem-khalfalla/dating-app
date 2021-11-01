@@ -11,4 +11,8 @@ return [
     'Add'                 => 'اضافه',
     'Hide'                => 'إخفاء',
     'Empty members'       => 'ﻻ توجد أعضاء',
+     'username'           => 'الاسم',
+     'age'                => 'السن',
+     'country'            => 'الدوله',
+     'language'            => 'اللغه',
 ];
