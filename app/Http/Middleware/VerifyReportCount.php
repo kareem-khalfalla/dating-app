@@ -16,7 +16,8 @@ class VerifyReportCount
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && count(auth()->user()->reports) >= 3) {
+        $reportsCount = count(auth()->user()->reports->unique('sender_id'));
+        if (auth()->check() && $reportsCount >= 3) {
             auth()->user()->update([
                 'status' => 0
             ]);
