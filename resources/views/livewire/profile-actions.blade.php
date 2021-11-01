@@ -21,7 +21,7 @@
 
             <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                 @if (!$user->isBlockedBy(Auth::user()))
-                    <a class="dropdown-item"
+                    <a class="dropdown-item" href="#"
                         wire:click.prevent="blockUser({{ $user->id }})">{{ __('profile.Block') }}</a>
                 @endif
                 <a class="dropdown-item" href="#" data-toggle="modal"
@@ -74,25 +74,24 @@
         <form class="modal-dialog modal-dialog-centered" role="document" wire:submit.prevent="createReport">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">Report</h3>
+                    <h3 class="modal-title" id="exampleModalLongTitle">{{ __('profile.Report') }}</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p class="lead">Report the user if you see that he is violating the laws and the
-                        action will be taken or in the event of offending you or something similar to that</p>
+                    <p class="lead">{{ __('profile.reportDescription') }}</p>
                     <textarea
                         class="form-control @error('report')
                         is-invalid
                     @enderror"
-                        wire:model.defer="report" cols="30" rows="5" placeholder="your report here..."></textarea>
+                        wire:model.defer="report" cols="30" rows="5" placeholder="{{ __('profile.your report here') }}..."></textarea>
                     @error('report')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                    <button type="submit" class="btn btn-black btn-danger mt-3">Send report</button>
+                    <button type="submit" class="btn btn-black btn-danger mt-3">{{ __('profile.Send report') }}</button>
                 </div>
             </div>
         </form>

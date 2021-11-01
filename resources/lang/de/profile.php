@@ -91,6 +91,11 @@ return [
     'food style' => 'Essensstil',
     'All friends' => 'Alle Freunde',
     'No friends' => 'Keine Freunde',
+    'Report' => 'Prüfbericht',
+    'your report here' => 'dein Bericht hier',
+    'Send report' => 'Bericht senden',
+    'reportDescription' => 'Melden Sie den Benutzer, wenn Sie feststellen, dass er gegen die Gesetze verstößt und die
+    Maßnahmen ergriffen werden oder im Falle einer Beleidigung oder ähnlichem',
     // data
     'male' => 'Male',
     'female' => 'Female',

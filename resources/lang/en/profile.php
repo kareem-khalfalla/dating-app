@@ -89,6 +89,11 @@ return [
     'food style' => 'food style',
     'All friends' => 'All friends',
     'No friends' => 'No friends',
+    'Report' => 'Report',
+    'your report here' => 'your report here',
+    'Send report' => 'Send report',
+    'reportDescription' => 'Report the user if you see that he is violating the laws and the
+    action will be taken or in the event of offending you or something similar to that',
     // data
     'male' => 'Male',
     'female' => 'Female',
