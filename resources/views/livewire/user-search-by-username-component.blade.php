@@ -20,9 +20,9 @@
                  <div class="col-8">
             
                   <p class="row m-0"><strong>{{ __('requests.username') }} :&nbsp; </strong> <span>{{ $user->username }}</span></p>
-                  <p class="row m-0"><strong>{{ __('requests.age') }} :&nbsp; </strong> <span>23</span></p>
-                  <p class="row m-0"><strong>{{ __('requests.country') }} :&nbsp; </strong> <span>egypt</span></p>
-                  <p class="row m-0"><strong>{{ __('requests.language') }} :&nbsp; </strong> <span>arabic</span></p>
+                  <p class="row m-0"><strong>{{ __('requests.age') }} :&nbsp; </strong> <span>{{ $user->profile->getAge() }}</span></p>
+                  <p class="row m-0"><strong>{{ __('requests.country') }} :&nbsp; </strong> <span>{{ $user->profile->countryOfOrigin ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}</span></p>
+                  <p class="row m-0"><strong>{{ __('requests.language') }} :&nbsp; </strong> <span>{{ $user->profile->nativeLanguage->nativeName ?? 'N/A' }}</span></p>
 
                   <button wire:click.prevent="add({{ $user->id }})" class="btn_round">{{ __('requests.Add') }}</button>
                  </div>

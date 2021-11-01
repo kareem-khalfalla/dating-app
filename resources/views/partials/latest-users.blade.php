@@ -19,7 +19,7 @@
                                 <p class="row p-1 m-0"><b>{{ __('welcome.Name') }} : </b> {{ $user->username }}</p>
 
                                 <p class="row p-1 m-0"><b>{{ __('welcome.Age') }} : </b>
-                                    {{ Carbon\Carbon::parse($user->profile->dob)->age == 0 ? 'N/A' : Carbon\Carbon::parse($user->profile->dob)->age }}
+                                    {{ $user->profile->getAge() }}
                                 </p>
                                 <p class="row p-1 m-0"><b>{{ __('welcome.From') }} : </b>
                                     {{ $user->profile->countryOfOrigin ? $user->profile->countryOfOrigin->getCountryLocale() : 'N/A' }}
