@@ -5713,7 +5713,7 @@ class CountrySeeder extends Seeder
                 'region' => 'Europe',
                 'subregion' => 'Eastern Europe',
                 'timezones' => '[{"zoneName":"Europe\\/Belgrade","gmtOffset":3600,"gmtOffsetName":"UTC+01:00","abbreviation":"CET","tzName":"Central European Time"}]',
-                'translations' => '{"kr":"코소보","cn":"科索沃"}',
+                'translations' => '{"kr":"코소보","cn":"科索沃","fa":"كوسوفو}',
                 'latitude' => '42.56129090',
                 'longitude' => '20.34030350',
                 'emoji' => '🇽🇰',
