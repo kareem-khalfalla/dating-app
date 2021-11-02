@@ -23,6 +23,6 @@ return [
     'title_requests' => 'الطلبات',
     'title_search' => 'بحث دقيق',
     'search' => 'بحث',
-     'Notifications' => 'الاشعارات',
-    
+    'Notifications' => 'الاشعارات',
+    'Empty notifications' => 'لا يوجد اي اشعارات',    
 ];

@@ -12,4 +12,5 @@ return [
     'others' => 'Andere',
     'About' => 'Über',
     'Privacy policy' => 'Datenschutz-Bestimmungen',
+    'Empty notifications' => 'Leere Benachrichtigungen',
 ];
