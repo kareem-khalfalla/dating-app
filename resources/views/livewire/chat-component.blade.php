@@ -69,7 +69,7 @@
                     @forelse ($messages as $message)
                         <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 1 ? 'last_record_chat' : '' }}"
                             class="d-flex justify-content-{{ $message['from'] == $userId ? 'start' : 'end' }} mb-4">
-                            @if ($message['from'] == Auth::id() || $isAdmin)
+                            @if ($message['to'] == Auth::id() || $isAdmin)
                                 <div class="img_cont_msg">
                                     <img src="{{ asset('storage/' . \App\Models\User::find($message['from'])->avatar) }}"
                                         class="rounded-circle user_img_msg">
