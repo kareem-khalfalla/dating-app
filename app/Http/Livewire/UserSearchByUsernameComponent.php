@@ -36,7 +36,9 @@ class UserSearchByUsernameComponent extends Component
             ->merge($blockedSenderIds);
 
             return view('livewire.user-search-by-username-component', [
-            'users' => User::allExceptAuthUsername($this->search)->swapGender($this->search)->get()
+            'users' => $authUser->status == 0
+                ? User::allExceptAuthId()->fake()->inRandomOrder()->paginate(6)
+                : User::allExceptAuthUsername($this->search)->swapGender($this->search)->get()
                 ->merge($this->usersResults)
                 ->diff(User::findMany($allPendingIds))
                 ->diff($authUser->getFriends()->get())

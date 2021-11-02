@@ -16,7 +16,7 @@ class AllRequestsComponent extends Component
         $authUser = auth()->user();
 
         return view('livewire.all-requests-component', [
-            'requests' => $authUser->getFriendRequests()->paginate(6)
+            'requests' => $authUser->getFriendRequests()->simplePaginate(6)
         ]);
     }
 

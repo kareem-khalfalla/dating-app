@@ -67,7 +67,7 @@
                 </div>
                 <div class="card-body msg_card_body">
                     @forelse ($messages as $message)
-                        <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 1 ? 'last_record' : '' }}"
+                        <div id="{{ $loop->iteration == $loadAmount - $loadAmount + 1 ? 'last_record_chat' : '' }}"
                             class="d-flex justify-content-{{ $message['from'] == $userId ? 'start' : 'end' }} mb-4">
                             @if ($message['from'] == Auth::id() || $isAdmin)
                                 <div class="img_cont_msg">
@@ -119,30 +119,9 @@
     </div>
 </div>
 
-@push('scripts')
-    <script>
-        $('.msg_card_body').on('scroll', function() {
-            if ($('.msg_card_body').scrollTop() == 0) {
-                const lastRecord = document.getElementById('last_record');
-                const options = {
-                    root: null,
-                    threshold: 1,
-                    rootMargin: '0px'
-                }
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            @this.loadMore();
-                        }
-                    });
-                });
-                if (lastRecord) {
-                    observer.observe(lastRecord);
-                }
-            }
-        });
-    </script>
+<x-loadMore id="last_record_chat" />
 
+@push('scripts')
     <script>
         $(document).ready(function() {
             let li = $('li');

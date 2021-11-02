@@ -17,6 +17,10 @@ class ProfileActions extends Component
     public $isPending;
     public $isFriend;
     public $report;
+    public $friendsCount;
+    public $pendingUsersCount;
+    public $blockedUsersCount;
+    public $loadAmount = 15;
 
     public function render(): View
     {
@@ -26,13 +30,14 @@ class ProfileActions extends Component
 
         $allIdsExceptAuthId = array_diff($getUniqueFromIds, [$authId]);
 
-        return view('livewire.profile-actions', [
-            'friends' => $this->user->status == 0
-                ? User::allExceptAuthId()->fake()->get()->random(rand(0, User::all()->count()))
-                : $this->user->getFriends()->allExceptAuthId()->paginate(6),
+        $this->friendsCount = $this->user->getFriends()->allExceptAuthId()->count();
+        $this->pendingUsersCount = User::whereIn('id', $allIdsExceptAuthId)->count();
+        $this->blockedUsersCount = User::find($authId)->getBlockedFriendships()->whereNotIn('recipient_id', [$authId])->count();
 
-            'pendingUsers' => User::whereIn('id', $allIdsExceptAuthId)->get(),
-            'blockedUsers' => User::find($authId)->getBlockedFriendships()->whereNotIn('recipient_id', [$authId])->get(),
+        return view('livewire.profile-actions', [
+            'friends' => $this->user->getFriends()->allExceptAuthId()->paginate($this->loadAmount),
+            'pendingUsers' => User::whereIn('id', $allIdsExceptAuthId)->paginate($this->loadAmount),
+            'blockedUsers' => User::find($authId)->getBlockedFriendships()->whereNotIn('recipient_id', [$authId])->paginate($this->loadAmount),
         ]);
     }
 
@@ -115,7 +120,7 @@ class ProfileActions extends Component
     {
         $this->isPending = false;
         $this->isFriend = true;
-        
+
         /** @var \App\Models\User $authUser */
         $authUser = auth()->user();
 
@@ -124,6 +129,14 @@ class ProfileActions extends Component
         event(new FriendRequestAcceptedEvent($authUser, User::find($id)));
 
         return redirect(request()->header('Referer'));
+    }
+
+    public function loadMore()
+    {
+        if ($this->loadAmount >= User::count()) {
+            return;
+        }
+        $this->loadAmount += 15;
     }
 
     public function success(string $status = ''): void

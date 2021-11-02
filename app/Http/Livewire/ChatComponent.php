@@ -244,12 +244,12 @@ class ChatComponent extends Component
             }
         }
 
-        $this->users = $this->users->merge(User::whereIn('id', $messageUsersIds)->get());
+        $this->users = $this->users->merge(User::whereIn('id', $messageUsersIds)->take($this->loadAmount)->get());
     }
 
     private function setUsers(): void
     {
-        $this->users = User::friendsByLastMsg($this->user, $this->search)->get();
+        $this->users = User::friendsByLastMsg($this->user, $this->search)->take($this->loadAmount)->get();
     }
 
     private function setMessages(): void

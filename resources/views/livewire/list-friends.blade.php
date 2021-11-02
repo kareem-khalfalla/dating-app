@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-3 card shadow m-auto">
             <div class="card-header">
-                <h4>{{ __('profile.All friends') }} [ {{ count($friends) }} ]</h4>
+                <h4>{{ __('profile.All friends') }} [ {{ $friendsCount }} ]</h4>
             </div>
             <div class="card-body">
                 @forelse ($friends as $friend)

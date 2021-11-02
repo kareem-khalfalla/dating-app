@@ -1,9 +1,8 @@
 <div wire:ignore.self style="background-color: #fff!important; overflow-y: auto; max-height: 400px"
     class="notifications dropdown-menu dropdown-menu-lg-right dropdown-secondary"
     aria-labelledby="navbarDropdownMenuLink-5">
-
     <h2>{{ __('navbar.Notifications') }}</span></h2>
-    @foreach ($notifications as $notification)
+    @forelse ($notifications as $notification)
         <a href="{{ route('profile', $notification->data['id']) }}" class="notifications-item"
             {{ $loop->last ? 'id=last_record_notification' : '' }}>
             <img src="{{ asset('storage/' . $notification->data['avatar']) }}" alt="img">
@@ -14,33 +13,10 @@
                 </p>
             </div>
         </a>
-    @endforeach
-
-    @if ($loadAmount <= count(Auth::user()->notifications))
-        <p style="color:gray; text-align: center; font: bold; padding-top: 1rem">No more notifications</p>
-    @endif
+        @empty
+        <p style="color:gray; text-align: center; font: bold; padding-top: 1rem">{{ __('navbar.Empty notifications') }}</p>
+    @endforelse
 </div>
-
-@push('scripts')
-    <script>
-        const lastRecord = document.getElementById('last_record_notification');
-        const options = {
-            root: null,
-            threshold: 1,
-            rootMargin: '0px'
-        }
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    @this.loadMore();
-                    lastRecord.remove();
-                }
-            }, options);
-        });
-
-        if (lastRecord) {
-            observer.observe(lastRecord);
-        }
-    </script>
-
-@endpush
+@if (\Route::currentRouteName()!='chat')
+    <x-loadMore id="last_record_notification" />
+@endif
