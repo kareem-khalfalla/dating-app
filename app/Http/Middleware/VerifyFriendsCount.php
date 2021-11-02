@@ -23,7 +23,7 @@ class VerifyFriendsCount
         $messagesCount = Message::query()
             ->where('to', $authUser->id)->orWhere('from', $authUser->id)->count();
 
-        if($messagesCount > 0){
+        if ($messagesCount > 0) {
             return $next($request);
         }
 
